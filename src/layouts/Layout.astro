@@ -1,35 +1,46 @@
 ---
+import "../styles/global.css";
 export interface Props {
-	title: string;
+  title: string;
 }
 
-const { title } = Astro.props;
+let { title, desc } = Astro.props;
+if (!title) title = "Ayodeji";
+if (!desc) desc = "Ayodeji - Software Developer";
+let keywords =
+  "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171717" />
+    <meta name="description" content={desc} />
+    <meta name="keywords" content={keywords} />
+    <link rel="icon" type="image/x-icon" href="/images/preview.jpg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.trulyao.dev" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content="/images/preview.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="http://www.trulyao.dev" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={desc} />
+    <meta property="twitter:image" content="/images/preview.jpg" />
+
+    <meta property="og:site_name" content="" />
+    <meta property="og:site" content="" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content="/images/preview.jpg" />
+    <meta property="og:url" content="http://www.trulyao.dev" />
+    <title>{title}</title>
+  </head>
+  <body class="w-full lg:w-3/5 2xl:w-3/6 mx-auto">
+    <slot />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
-	html {
-		font-family: system-ui, sans-serif;
-		background-color: #F6F6F6;
-	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>
