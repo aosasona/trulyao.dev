@@ -5,8 +5,16 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Ayodeji">
   <main class="h-screen max-h-screen flex flex-col justify-between py-8 px-8">
-    <h1 class="text-4xl">Ayodeji</h1>
-    <section class="flex flex-col gap-2">
+    <section>
+      <h1 class="text-4xl">Ayodeji.</h1>
+      <hr class="my-5" />
+      <h4 class="text-right font-semibold opacity-20 -mt-1">
+        Software
+        <br />
+        developer
+      </h4>
+    </section>
+    <section class="flex flex-col gap-3">
       <Link href="/about" newTab={false}>About</Link>
       <Link href="/blog" newTab={false}>Blog</Link>
       <Link href="/links" newTab={false}>Links</Link>
