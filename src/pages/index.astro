@@ -6,8 +6,10 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Ayodeji">
   <main class="h-screen max-h-screen flex flex-col justify-between py-8 px-8">
     <h1 class="text-4xl">Ayodeji</h1>
-    <section>
-      <!-- <Link href="/about" newTab={false}>About</Link> -->
+    <section class="flex flex-col gap-2">
+      <Link href="/about" newTab={false}>About</Link>
+      <Link href="/blog" newTab={false}>Blog</Link>
+      <Link href="/links" newTab={false}>Links</Link>
     </section>
   </main>
 </Layout>

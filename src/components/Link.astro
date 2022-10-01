@@ -11,10 +11,22 @@ const { href, newTab }: Props = Astro.props;
   href={href}
   target={newTab ? "_blank" : "_self"}
   rel="noreferrer noopener"
-  class="text-neutral-100 hover:text-neutral-400 hover:underline hover:underline-offset-2 transition-all"
+  class="text-white transition-all link"
 >
-  <div class="flex items-center gap-3">
+  <div class="flex items-center gap-2">
     <!-- <BsArrowUpRight size={20} /> -->
-    <p class="text-xl font-light"><slot /></p>
+    <span class="w-5 h-[1px] bg-white transition-all link-line"></span>
+    <p class="text-[16px] font-thin"><slot /></p>
   </div>
 </a>
+
+<style>
+  .link:hover .link-line {
+    width: 3rem;
+    opacity: 0.4;
+  }
+  .link:hover p {
+    color: #fff;
+    opacity: 0.4;
+  }
+</style>
