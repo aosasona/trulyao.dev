@@ -8,7 +8,7 @@ let currentTime = new Date().toDateString();
 
 <Layout title="Ayodeji">
   <main
-    class="h-screen max-h-screen flex flex-col justify-between pt-8 pb-10 px-8"
+    class="h-screen max-h-screen flex flex-col justify-between pt-6 pb-10 px-8"
   >
     <section>
       <h1 class="text-4xl">Ayodeji.</h1>
@@ -19,12 +19,6 @@ let currentTime = new Date().toDateString();
         developer
       </h4>
     </section>
-    <a
-      href="mailto:ayodeji@trulyao.dev?subject=Hello%20Ayodeji&body=Hi%20Ayodeji%2C%0A%0AI%20am%20..."
-      class="w-max text-sm font-normal border border-white self-center justify-self-center rounded-full hover:px-12 px-8 py-4 transition-all cursor-pointer"
-    >
-      Say Hi &#128075;
-    </a>
     <footer class="flex justify-between">
       <section class="flex flex-col gap-3">
         <Link href="/about" newTab={false}>About</Link>
@@ -33,11 +27,12 @@ let currentTime = new Date().toDateString();
         <Link href="/links" newTab={false}>Links</Link>
       </section>
       <section class="flex flex-col self-end items-end gap-3">
-        <div
-          class="w-max bg-teal-500 bg-opacity-25 text-teal-500 text-[10px] font-light space-grotesk uppercase px-3.5 py-1.5 rounded-full"
+        <a
+          href="mailto:ayodeji@trulyao.dev?subject=Hello%20Ayodeji&body=Hi%20Ayodeji%2C%0A%0AI%20am%20..."
+          class="w-max text-xs font-normal border border-white rounded-full hover:px-10 px-6 py-3 transition-all cursor-pointer"
         >
-          {currentTime}
-        </div>
+          Say Hi &#128075;
+        </a>
         <p class="text-xs font-semibold opacity-20">
           &copy; {currentYear} Ayodeji
         </p>
