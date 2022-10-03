@@ -1,0 +1,12 @@
+---
+const { url } = Astro.props;
+---
+
+<a
+  href={url}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="block w-full bg-neutral-800 bg-opacity-20 text-neutral-600 text-xs text-center py-4 rounded transition-colors duration-200 hover:bg-opacity-40 hover:text-neutral-600"
+>
+  <slot />
+</a>

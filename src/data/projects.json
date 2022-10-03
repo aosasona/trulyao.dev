@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Aerdeets",
+    "description": "A tech blog about web development, programming, and other tech stuff I and a few other folks find interesting.",
+    "url": "https://aerdeets.com",
+    "github_url": "https://github.com/aosasona/aerdeets",
+    "in_progress": false,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "Hitlist",
+    "description": "A cloud-based CLI tool that allows you to execute multiple commands with a single command, plus a web dashboard for easy command management on the go on any device.",
+    "url": "https://www.hitlist.dev",
+    "github_url": "https://github.com/hitlist-cli/cli",
+    "in_progress": false,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "PHP Router",
+    "description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc and still remains subjective; you write it your way (and yes, it is a terrible name sadly).",
+    "url": "https://php-router-demo.onrender.com/",
+    "github_url": "https://github.com/aosasona/php-router",
+    "in_progress": false,
+    "status": "ACTIVE"
+  }
+]

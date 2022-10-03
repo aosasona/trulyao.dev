@@ -1,0 +1,22 @@
+---
+import SectionHeader from "../components/SectionHeader.astro";
+import Layout from "../layouts/Layout.astro";
+import projects from "../data/projects.json";
+import ProjectCard from "../components/ProjectCard.astro";
+import MinimalFooter from "../components/MinimalFooter.astro";
+---
+
+<Layout title="Projects">
+  <main>
+    <SectionHeader>Projects</SectionHeader>
+    <p>
+      I've built and am still building a few things that you may or may not find
+      interesting but most of them are open source and you can check them out;
+      here are a few of them:
+    </p>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-6">
+      {projects.map((project) => <ProjectCard project={project} />)}
+    </div>
+  </main>
+  <MinimalFooter />
+</Layout>
