@@ -9,7 +9,7 @@
   },
   {
     "name": "Hitlist",
-    "description": "A cloud-based CLI tool that allows you to execute multiple commands with a single command, plus a web dashboard for easy command management on the go on any device.",
+    "description": "A CLI tool that allows you to execute multiple commands with a single command, plus a web dashboard for easy command management on the go on any device.",
     "url": "https://www.hitlist.dev",
     "github_url": "https://github.com/hitlist-cli/cli",
     "in_progress": false,
@@ -22,5 +22,37 @@
     "github_url": "https://github.com/aosasona/php-router",
     "in_progress": false,
     "status": "ACTIVE"
+  },
+  {
+    "name": "DocuSort",
+    "description": "\"Automagically\" sort, save and share documents with ease; as it should be. Available on the web, Android and iOS (coming soon).",
+    "url": "",
+    "github_url": "",
+    "in_progress": true,
+    "status": "DEVELOPMENT"
+  },
+  {
+    "name": "ResuMake",
+    "description": "An open-source resume builder with a simple yet functional UI to help you create a resume that stands out using any of the available templates... or you can code your own template :)",
+    "url": "",
+    "github_url": "",
+    "in_progress": true,
+    "status": "DEVELOPMENT"
+  },
+  {
+    "name": "NeatHTTP",
+    "description": "An axios-like cURL wrapper for PHP that allows you to make HTTP requests with ease (experimental).",
+    "url": "",
+    "github_url": "https://github.com/aosasona/neat-http",
+    "in_progress": false,
+    "status": "ARCHIVED"
+  },
+  {
+    "name": "Scrawny",
+    "description": "A simple console logger for Node.js (not filesystem, experimental).",
+    "url": "",
+    "github_url": "https://github.com/aosasona/Scrawny",
+    "in_progress": false,
+    "status": "ARCHIVED"
   }
 ]
