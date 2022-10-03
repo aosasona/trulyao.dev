@@ -1,5 +1,6 @@
 ---
 import Link from "../components/Link.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 import Layout from "../layouts/Layout.astro";
 
 const currentYear = new Date().getFullYear();
@@ -7,18 +8,15 @@ let currentTime = new Date().toDateString();
 ---
 
 <Layout title="Ayodeji">
-  <main
-    class="h-screen max-h-screen flex flex-col justify-between pt-6 pb-10 px-8"
-  >
+  <main class="h-[93vh] max-h-screen flex flex-col justify-between">
     <p
       class="fixed top-0 right-0 space-grotesk bg-amber-500 text-amber-500 bg-opacity-40 text-xs px-4 py-2"
     >
       Work in progress
     </p>
     <section>
-      <h1 class="text-4xl">Ayodeji.</h1>
-      <hr class="my-5" />
-      <h4 class="text-sm text-right font-semibold opacity-20 -mt-1">
+      <SectionHeader>Ayodeji.</SectionHeader>
+      <h4 class="text-sm text-right font-medium space-grotesk opacity-20 -mt-1">
         Software
         <br />
         developer

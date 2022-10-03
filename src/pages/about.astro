@@ -1,0 +1,75 @@
+---
+import BackHome from "../components/BackHome.astro";
+import Content from "../components/Content.astro";
+import MinimalFooter from "../components/MinimalFooter.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About">
+  <main class="lg:px-4 lg:w-3/5 2xl:w-3/6 mx-auto -mt-3">
+    <BackHome />
+    <SectionHeader>About</SectionHeader>
+    <Content>
+      <p class="mt-8 mb-10">
+        Over the past three years, I've worked as a software developer for a
+        wide range of clients and with amazing product teams, gaining expertise
+        and experience with a wide array of exciting technologies in the
+        process. I am currently a software engineering student, and I think I'd
+        say that I'm an inquisitive person who's interested in the "why" of
+        things, the human mind, Greek and Norse mythology, science fiction, and
+        a few other... weird topics?
+        <br />
+        More? I'm a developer (mostly on the back-end, although I have dabbled in
+        the front-end here and there) who is working hard to reach the "senior" level
+        of expertise. I'm working at WWIIS Services right now, and in my free time,
+        I like to build things for you and me. It's a common misconception that I'm
+        a nerd, but I'm not. You're pretty much exactly the type of person I want
+        to hang out with if you're a fan of AJR (the band), Star Wars, or Star Trek
+        (but I'd hang out with you even if you weren't). It also fascinates me to
+        learn about and experiment with cutting-edge innovation, share my findings
+        in "technical" articles, and launch brand-new products for the masses—or,
+        more lately, to create developer tools to help myself and others get stuff
+        done faster.
+      </p>
+    </Content>
+
+    <SectionHeader>Languages & Tools</SectionHeader>
+    <Content>
+      <p>
+        Here are some of the tools and technologies I have worked with over the
+        last few years; majorly or not (in no particular order):
+      </p>
+      <ul class="mt-3">
+        <li>HTML, CSS & Vanilla JavaScript</li>
+        <li>PHP</li>
+        <li>Python</li>
+        <li>Node.js</li>
+        <li>Typescript</li>
+        <li>Golang</li>
+        <li>C++</li>
+        <li>MySQL</li>
+        <li>PostgreSQL</li>
+        <li>MongoDB</li>
+        <li>Redis</li>
+        <li>Git</li>
+        <li>Linux</li>
+        <li>
+          Some frameworks/libraries I have "played" with:
+          <ul>
+            <li>React.js</li>
+            <li>React Native</li>
+            <li>Astro</li>
+            <li>Next.js</li>
+            <li>Express.js</li>
+            <li>Fastify</li>
+            <li>Nest.js</li>
+            <li>Laravel</li>
+            <li>Flask</li>
+          </ul>
+        </li>
+      </ul>
+    </Content>
+    <MinimalFooter />
+  </main>
+</Layout>
