@@ -1,0 +1,48 @@
+---
+import "../styles/global.css";
+export interface Props {
+  title: string;
+}
+
+let { title, desc } = Astro.props;
+if (!title) title = "Ayodeji";
+if (!desc) desc = "Thoughts and musings of a software engineer";
+let keywords =
+  "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#171717" />
+    <meta name="description" content={desc} />
+    <meta name="keywords" content={keywords} />
+    <link rel="icon" type="image/x-icon" href="/images/preview.jpg" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="http://www.trulyao.dev" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content="/images/preview.jpg" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="http://www.trulyao.dev" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={desc} />
+    <meta property="twitter:image" content="/images/preview.jpg" />
+
+    <meta property="og:site_name" content="" />
+    <meta property="og:site" content="" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content="/images/preview.jpg" />
+    <meta property="og:url" content="http://www.trulyao.dev" />
+    <title>{title}</title>
+  </head>
+  <body class="w-[88vw] pt-6 pb-10 mx-auto">
+    <main class="w-full lg:w-3/5 2xl:w-3/6 mx-auto">
+      <slot />
+    </main>
+  </body>
+</html>

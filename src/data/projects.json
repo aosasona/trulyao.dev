@@ -49,7 +49,7 @@
   },
   {
     "name": "Scrawny",
-    "description": "A simple console logger for Node.js (not filesystem, experimental).",
+    "description": "A simple console logger for Node.js (not file-system, experimental).",
     "url": "",
     "github_url": "https://github.com/aosasona/Scrawny",
     "in_progress": false,
