@@ -1,0 +1,41 @@
+---
+import Link from "../components/Link.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import Layout from "../layouts/Layout.astro";
+
+import links from "../data/links.json";
+import articles from "../data/articles.json";
+import MinimalFooter from "../components/MinimalFooter.astro";
+import BackHome from "../components/BackHome.astro";
+---
+
+<Layout title="Links">
+  <main class="mb-14 -mt-3">
+    <BackHome />
+    <SectionHeader>Links</SectionHeader>
+    <p>
+      Uhm... just links relevant to me; where I hangout, where you can reach me,
+      my recent builds or articles etc.
+    </p>
+    <div class="flex flex-col gap-2 mt-4 mb-6">
+      {
+        links.map((link) => (
+          <Link href={link?.url} newTab={true}>
+            {link?.name}
+          </Link>
+        ))
+      }
+    </div>
+    <SectionHeader>Articles You May Find Interesting</SectionHeader>
+    <div class="flex flex-col gap-2 mt-4 mb-6">
+      {
+        articles.map((article) => (
+          <Link href={article?.url} newTab={true}>
+            {article?.title}
+          </Link>
+        ))
+      }
+    </div>
+  </main>
+  <MinimalFooter />
+</Layout>

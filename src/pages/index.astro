@@ -11,12 +11,13 @@ let currentTime = new Date().toDateString();
   <main class="h-[93vh] max-h-screen flex flex-col justify-between">
     <section>
       <SectionHeader>Ayodeji.</SectionHeader>
-      <h4
-        class="text-sm text-right font-medium space-grotesk opacity-20 -space-y-1 -mt-1"
-      >
-        <span class="block">Software</span>
-        <span class="block">developer</span>
-      </h4>
+      <div class="flex justify-end">
+        <h4
+          class="w-max text-[11px] text-right font-medium bg-neutral-700 text-neutral-600 bg-opacity-30 space-grotesk -space-y-1 -mt-1 px-2 py-1 rounded uppercase"
+        >
+          software developer
+        </h4>
+      </div>
     </section>
     <footer class="flex justify-between">
       <section class="flex flex-col gap-3">
@@ -33,7 +34,7 @@ let currentTime = new Date().toDateString();
           Say Hi &#128075;
         </a>
         <p class="text-xs font-semibold opacity-30">
-          &copy; {currentYear} Ayodeji
+          &copy; {currentYear} Ayodeji.
         </p>
       </section>
     </footer>
