@@ -1,14 +1,17 @@
 ---
+import BackHome from "../components/BackHome.astro";
+import MinimalFooter from "../components/MinimalFooter.astro";
 import "../styles/global.css";
 export interface Props {
   title: string;
 }
 
-let { title, desc } = Astro.props;
+let { title, description: desc, keywords, date } = Astro.props?.frontmatter;
 if (!title) title = "Ayodeji";
-if (!desc) desc = "Thoughts and musings of a software engineer";
-let keywords =
-  "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+if (!desc)
+  desc =
+    "A portal into my thoughts, thoughts, experiences, ideas, visions, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.";
+if (!keywords) keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
 ---
 
 <!DOCTYPE html>
@@ -41,8 +44,17 @@ let keywords =
     <title>{title}</title>
   </head>
   <body class="w-[88vw] pt-6 pb-10 mx-auto">
-    <main class="w-full lg:w-3/5 2xl:w-3/6 mx-auto">
-      <slot />
+    <main class="w-full lg:w-3/5 2xl:w-3/6 mx-auto -mt-3">
+      <BackHome url="/blog" />
+      <div class="flex flex-col gap-2">
+        <h1 class="text-4xl">{title}</h1>
+        {date && <p class="text-gray-500 font-medium text-xs">{date}</p>}
+        <hr class="my-4" />
+      </div>
+      <section class="blog-content">
+        <slot />
+      </section>
+      <MinimalFooter />
     </main>
   </body>
 </html>

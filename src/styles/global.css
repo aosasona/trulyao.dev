@@ -63,7 +63,21 @@ hr {
   opacity: 0.1;
   margin: 1.5rem 0;
 }
-
+.blog-content a {
+  color: white;
+}
+.blog-content blockquote {
+  background-color: #ffffff05;
+  border-left: 0.25rem solid #c5c5c5;
+  padding: 1.1rem;
+  margin: 1.2rem 0;
+  color: #a5a5a5;
+}
+.blog-content blockquote p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.9;
+}
 .home-link {
   animation: home-link 1.3s ease-in-out infinite;
   font-size: 0.8rem;

@@ -8,16 +8,13 @@ import BackHome from "../components/BackHome.astro";
 ---
 
 <Layout title="Projects">
-  <main>
+  <main class="-mt-3">
     <BackHome />
     <SectionHeader>Projects</SectionHeader>
     <p>
-      Some of my free time is spent building things that you might or might not
-      find interesting, but here they are anyhow, just in case. The majority of
-      these projects are open source, so feel free to explore them and even
-      contribute. Feel free to get in touch with me if you have any cool ideas
-      that you'd like to discuss further or work on with me (probably occupied
-      at the moment though, see projects in development).
+      Some of my free time is spent building things that you might or might not find interesting, but here they are anyhow, just in case. The majority
+      of these projects are open source, so feel free to explore them and even contribute. Feel free to get in touch with me if you have any cool
+      ideas that you'd like to discuss further or work on with me (probably occupied at the moment though, see projects in development).
     </p>
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-6">
       {projects.map((project) => <ProjectCard project={project} />)}
