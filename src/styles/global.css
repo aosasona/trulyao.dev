@@ -66,6 +66,24 @@ hr {
 .blog-content a {
   color: white;
 }
+.blog-content a:hover {
+  color: #f5f5f5a4;
+  text-decoration: underline;
+}
+.blog-content p {
+  margin: 1.5rem 0;
+}
+.blog-content code {
+  background-color: #ffffff05;
+  padding: 0.9rem;
+  font-family: "Courier New", Courier, monospace;
+}
+.blog-content pre {
+  background-color: #ffffff05;
+  padding: 1rem;
+  font-family: "Courier New", Courier, monospace;
+  overflow-x: auto;
+}
 .blog-content blockquote {
   background-color: #ffffff05;
   border-left: 0.25rem solid #c5c5c5;
@@ -74,9 +92,11 @@ hr {
   color: #a5a5a5;
 }
 .blog-content blockquote p {
-  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-style: italic;
   font-size: 0.88rem;
   line-height: 1.9;
+  margin: 0;
 }
 .home-link {
   animation: home-link 1.3s ease-in-out infinite;

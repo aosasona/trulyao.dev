@@ -9,7 +9,7 @@ draft: false
 
 I am still awake at 7 a.m. Why? We kept trying to make sure the emails we were going to send out this morning were perfect, and we also did some debugging for another project. This has been the pattern lately: not sleeping till it's around 4 a.m., which is obviously unhealthy, but we try to balance it out (as if balance actually exists). Oh, and the "we" I keep mentioning includes [@\_frokes](https://twitter.com/_frokes) and me.
 
-I had built the basic bulk email delivery system the day before, which we would use to send emails to everyone on the waitlist for the next few weeks until... I can't give you a specific launch date because that would be a huge spoiler. But, so far, it's working perfectly and sending emails at breakneck speed, just as we planned (yeah, I lied, we didn't plan the speed, but it's on localhost, so why not?). If your local server is significantly slow, you should examine your code more closely.
+I had built the basic bulk email delivery system the day before, which we would use to send emails to everyone on the wait-list for the next few weeks until... I can't give you a specific launch date because that would be a huge spoiler. But, so far, it's working perfectly and sending emails at breakneck speed, just as we planned (yeah, I lied, we didn't plan the speed, but it's on localhost, so why not?). If your local server is significantly slow, you should examine your code more closely.
 
 Today also feels like the most important day of the week; we had to make a key team-related choice that wasn't easy, but I can't reveal the details, sheesh! I can't tell you lot of things right now, but let's talk about my week.
 

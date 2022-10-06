@@ -4,7 +4,11 @@ import MinimalFooter from "../../components/MinimalFooter.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import Layout from "../../layouts/Layout.astro";
 const posts = await Astro.glob("./*.md");
-const publishedPosts = posts.filter((post) => !post.frontmatter.draft);
+let publishedPosts = posts.filter((post) => !post?.frontmatter?.draft);
+
+publishedPosts = publishedPosts.sort((a, b) => {
+  return (new Date(b?.frontmatter?.date) as unknown as number) - (new Date(a?.frontmatter?.date) as unknown as number);
+});
 ---
 
 <Layout title="Blog">
