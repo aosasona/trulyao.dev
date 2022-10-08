@@ -7,8 +7,7 @@ export interface Props {
 let { title, desc } = Astro.props;
 if (!title) title = "Ayodeji";
 if (!desc) desc = "Ayodeji - Software Developer";
-let keywords =
-  "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+let keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
 ---
 
 <!DOCTYPE html>
@@ -41,11 +40,11 @@ let keywords =
     <title>{title}</title>
   </head>
   <body class="w-[88vw] pt-6 pb-10 mx-auto">
-    <p
+    <!-- <p
       class="fixed top-0 right-0 space-grotesk bg-amber-500 text-amber-500 bg-opacity-40 text-xs px-4 py-2"
     >
       Work in progress
-    </p>
+    </p> -->
     <slot />
   </body>
 </html>
