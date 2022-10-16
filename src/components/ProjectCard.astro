@@ -17,8 +17,7 @@ interface ProjectData {
   status: ProjectStatus;
 }
 
-const { name, description, status, in_progress, url, github_url } =
-  project as ProjectData;
+const { name, description, status, in_progress, url, github_url } = project as ProjectData;
 
 const statusText = {
   [ProjectStatus.ACTIVE]: "Active",
@@ -29,9 +28,7 @@ const statusText = {
 const statusClass = "status-" + Object(ProjectStatus)[status];
 ---
 
-<div
-  class="w-full flex flex-col bg-neutral-900 bg-opacity-40 p-6 aspect-square transition-all rounded"
->
+<div class="w-full flex flex-col bg-neutral-900 bg-opacity-30 p-6 aspect-square transition-all rounded">
   <h2 class="text-3xl font-semibold">{name}</h2>
   <p class="text-sm leading-relaxed opacity-50 mt-2">
     {description}
