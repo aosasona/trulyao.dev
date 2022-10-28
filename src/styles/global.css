@@ -19,15 +19,15 @@ body {
 }
 
 .space-grotesk {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
 .manrope {
-  font-family: "Manrope", sans-serif;
+  font-family: 'Manrope', sans-serif;
 }
 
 h1 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 500;
   font-size: 3rem;
   line-height: 1.2;
@@ -35,7 +35,7 @@ h1 {
 }
 
 h2 {
-  font-family: "Space Grotesk", sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 400;
   font-size: 2rem;
   line-height: 1.2;
@@ -44,7 +44,7 @@ h2 {
 
 p,
 li {
-  font-family: "Manrope", sans-serif;
+  font-family: 'Manrope', sans-serif;
   font-weight: 400;
   font-size: 0.95rem;
   line-height: 1.75;
@@ -73,15 +73,17 @@ hr {
 .blog-content p {
   margin: 1rem 0;
 }
-.blog-content code {
+.blog-content p > code {
   background-color: #ffffff05;
-  padding: 0.9rem;
-  font-family: "Courier New", Courier, monospace;
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  font-family: 'Courier New', Courier, monospace;
 }
 .blog-content pre {
-  background-color: #ffffff05;
+  background-color: #ffffff09 !important;
   padding: 1rem;
-  font-family: "Courier New", Courier, monospace;
+  font-size: 0.9rem;
+  font-family: 'Courier New', Courier, monospace;
   overflow-x: auto;
 }
 .blog-content blockquote {
@@ -92,7 +94,7 @@ hr {
   color: #a5a5a5;
 }
 .blog-content blockquote p {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: Georgia, 'Times New Roman', Times, serif;
   font-style: italic;
   font-size: 0.88rem;
   line-height: 1.9;
