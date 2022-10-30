@@ -16,6 +16,14 @@
     "status": "ACTIVE"
   },
   {
+    "name": "Stripr",
+    "description": "Remove those nasty comments you left in your code with a single command... because why not?",
+    "url": "https://github.com/aosasona/stripr#readme",
+    "github_url": "https://github.com/aosasona/stripr",
+    "in_progress": false,
+    "status": "ACTIVE"
+  },
+  {
     "name": "Aerdeets",
     "description": "A tech blog about web development, programming, and other tech stuff I and a few other folks find interesting.",
     "url": "https://aerdeets.com",
