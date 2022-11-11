@@ -8,18 +8,18 @@
     "status": "ACTIVE"
   },
   {
-    "name": "PHP Router",
-    "description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc and still remains subjective; you write it your way (and yes, it is a terrible name sadly).",
-    "url": "https://php-router-demo.onrender.com/",
-    "github_url": "https://github.com/aosasona/php-router",
-    "in_progress": false,
-    "status": "ACTIVE"
-  },
-  {
     "name": "Stripr",
     "description": "Remove those nasty comments you left in your code with a single command... because why not?",
     "url": "https://github.com/aosasona/stripr#readme",
     "github_url": "https://github.com/aosasona/stripr",
+    "in_progress": false,
+    "status": "ACTIVE"
+  },
+  {
+    "name": "PHP Router",
+    "description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc and still remains subjective; you write it your way (and yes, it is a terrible name sadly).",
+    "url": "https://php-router-demo.onrender.com/",
+    "github_url": "https://github.com/aosasona/php-router",
     "in_progress": false,
     "status": "ACTIVE"
   },
@@ -30,14 +30,6 @@
     "github_url": "https://github.com/aosasona/aerdeets",
     "in_progress": false,
     "status": "ACTIVE"
-  },
-  {
-    "name": "DocuSort",
-    "description": "\"Automagically\" sort, save and share documents with ease; as it should be. Available on the web, Android and iOS (coming soon).",
-    "url": "",
-    "github_url": "",
-    "in_progress": true,
-    "status": "DEVELOPMENT"
   },
   {
     "name": "ResuMake",
