@@ -7,36 +7,4 @@ const currentYear = new Date().getFullYear();
 let currentTime = new Date().toDateString();
 ---
 
-<Layout title="Ayodeji" hideFooter={true}>
-  <main class="h-[93vh] max-h-screen flex flex-col justify-between">
-    <section>
-      <SectionHeader>Ayodeji.</SectionHeader>
-      <div class="flex justify-end">
-        <h4
-          class="w-max text-[11px] text-right font-medium bg-neutral-700 text-neutral-600 bg-opacity-30 space-grotesk -space-y-1 -mt-1 px-2 py-1 rounded uppercase"
-        >
-          software developer
-        </h4>
-      </div>
-    </section>
-    <footer class="flex justify-between">
-      <section class="flex flex-col gap-3">
-        <Link href="/about" newTab={false}>About</Link>
-        <Link href="/projects" newTab={false}>Projects</Link>
-        <Link href="/blog" newTab={false}>Blog</Link>
-        <Link href="/links" newTab={false}>Links</Link>
-      </section>
-      <section class="flex flex-col self-end items-end gap-3">
-        <a
-          href="mailto:ayodeji@trulyao.dev?subject=Hello%20Ayodeji&body=Hi%20Ayodeji%2C%0A%0AI%20am%20..."
-          class="w-max text-xs font-normal border border-white rounded-full hover:px-10 px-6 py-3 transition-all cursor-pointer"
-        >
-          Say Hi &#128075;
-        </a>
-        <p class="text-xs font-semibold opacity-30">
-          &copy; {currentYear} Ayodeji.
-        </p>
-      </section>
-    </footer>
-  </main>
-</Layout>
+<Layout title="Ayodeji" hideFooter={true} />
