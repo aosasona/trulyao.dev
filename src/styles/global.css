@@ -14,6 +14,14 @@ body {
 	@apply bg-[#000000] text-neutral-50 text-base leading-normal font-normal transition-all;
 }
 
+main {
+	@apply max-w-4xl mx-auto px-6 sm:px-6 lg:px-8 2xl:px-0 mt-[4rem];
+}
+
+p {
+	@apply leading-relaxed text-neutral-500;
+}
+
 hr {
 	border: 0;
 	border-top: 1px solid #ffffff1b;
