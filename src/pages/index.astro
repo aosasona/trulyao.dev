@@ -1,25 +1,45 @@
 ---
+import Header from "../components/Header.astro";
 import Link from "../components/Link.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+
 import Layout from "../layouts/Layout.astro";
 
 const currentYear = new Date().getFullYear();
 let currentTime = new Date().toDateString();
 ---
 
-<Layout title="Ayodeji" hideFooter={true}>
+<Layout title="Ayodeji" hideFooter={false}>
 	<main>
-		<img src="/images/me.JPG" alt="Ayodeji" class="w-16 lg:w-24 aspect-square object-cover rounded-lg" />
+		<Header />
 
-		<div class="text-neutral-500 border-t border-b border-neutral-900 py-3 my-4">
-			<a href="/blog">~/blog</a>
-		</div>
-
-		<h1 class="text-3xl lg:text-3xl font-bold mb-4">Hello, I'm Ayodeji &#128075;</h1>
+		<h1 class="text-3xl lg:text-3xl font-bold my-4">Hi, I'm Ayodeji &#128075;</h1>
 
 		<p class="" id="about">
-			I'm a Software Engineering student somewhere in England and a mostly self-taught software developer interested in building products I would use and exploring a lot of technology while doing that and having fun. I think I'd say that I'm an inquisitive person who's interested in the "why"
-			of things, the human mind, Greek and Norse mythology, science fiction, and a few other... weird topics?
+			I'm a <span class="highlight">Software Engineering</span> student somewhere in England and a software developer. I enjoy <span class="highlight">building</span> things I would use and exploring a lot (or a bit) of other tools, languages etc while doing that.
+			<br />
+			I listen to quite a couple of <span class="highlight">(seemingly random)</span> collection of songs that may seem chaotic to you but I like them anyway. I also enjoy watching sci-fi, supernatural, mythology, and detective series with a slightly higher interest in Star Trek, Star Wars and
+			Sherlock Holmes adaptations.
 		</p>
+
+		<section class="my-6">
+			<SectionHeader>Recent playlist</SectionHeader>
+			<iframe
+				allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+				frameborder="0"
+				height="450"
+				style="width:100%;max-width:660px;overflow:hidden;background:transparent;margin-top:0.75rem;"
+				sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+				src="https://embed.music.apple.com/gb/playlist/fresh-blood/pl.u-BNA6YANTeDm1kZ6"></iframe>
+		</section>
+
+		<section class="my-6" id="tools">
+			<SectionHeader>Tools</SectionHeader>
+			<p>I have used and still use a couple of tools and languages for my development projects. I have listed a few of them below.</p>
+		</section>
+
+		<section class="my-4" id="projects">
+			<SectionHeader>Projects</SectionHeader>
+		</section>
 	</main>
 </Layout>

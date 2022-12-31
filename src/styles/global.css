@@ -39,6 +39,18 @@ a:hover {
 	@apply text-emerald-500;
 }
 
+.highlight {
+	@apply text-emerald-500;
+}
+
+/* SITE NAV */
+.site-nav {
+	@apply text-neutral-500 text-sm border-t border-b border-neutral-900 py-3 my-4;
+}
+.site-nav a {
+	@apply block w-max text-neutral-500 hover:text-emerald-500 transition-all;
+}
+
 /* BLOG */
 .blog-content a {
 	color: white;
