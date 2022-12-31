@@ -1,66 +1,58 @@
 [
 	{
 		"name": "Reda",
-		"description": "The way to own your library.",
-		"url": "https://www.usereda.app",
-		"github_url": "",
-		"in_progress": false,
-		"status": "ACTIVE"
+		"description": "Reda allows you to import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
+		"url": "usereda.app",
+		"github_url": null,
+		"image": "reda.png",
+		"status": "BETA"
 	},
 	{
 		"name": "QuikSnip",
-		"description": "Need to send a quick code snippet to a friend? QuikSnip allows you to create and share EDITABLE code snippets with ease. Unfortunately, I don't have the time to work on this project anymore as often as I'd like.",
-		"url": "https://www.quiksnip.dev",
-		"github_url": "",
-		"in_progress": false,
-		"status": "DEVELOPMENT"
+		"description": "QuikSnip allows you to create and share EDITABLE code snippets with ease.",
+		"url": "quiksnip.dev",
+		"github_url": null,
+		"image": "quiksnip.png",
+		"status": "UNSTABLE"
 	},
 	{
 		"name": "Stripr",
 		"description": "Remove those nasty comments you left in your code with a single command... because why not?",
-		"url": "https://github.com/aosasona/stripr#readme",
-		"github_url": "https://github.com/aosasona/stripr",
-		"in_progress": false,
-		"status": "ACTIVE"
+		"url": null,
+		"github_url": "github.com/aosasona/stripr",
+		"image": "stripr.png",
+		"status": null
 	},
 	{
 		"name": "Hitlist",
-		"description": "A CLI tool that allows you to execute multiple commands with a single command, plus a web dashboard for easy command management on the go on any device.",
-		"url": "https://www.hitlist.dev",
-		"github_url": "https://github.com/hitlist-cli/cli",
-		"in_progress": false,
-		"status": "ACTIVE"
+		"description": "A CLI tool that allows you to execute multiple commands with a single command.",
+		"url": "hitlist.dev",
+		"github_url": "github.com/hitlist-cli/cli",
+		"image": "hitlist.png",
+		"status": null
 	},
 	{
 		"name": "PHP Router",
-		"description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc and still remains subjective; you write it your way (and yes, it is a terrible name sadly).",
-		"url": "https://php-router-demo.onrender.com/",
-		"github_url": "https://github.com/aosasona/php-router",
-		"in_progress": false,
-		"status": "ACTIVE"
-	},
-	{
-		"name": "ResuMake",
-		"description": "An open-source resume builder with a simple yet functional UI to help you create a resume that stands out using any of the available templates... or you can code your own template :)",
-		"url": "",
-		"github_url": "",
-		"in_progress": true,
-		"status": "DEVELOPMENT"
+		"description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc",
+		"url": "phprouter.xyz",
+		"github_url": "github.com/aosasona/php-router",
+		"image": "phprouter.png",
+		"status": null
 	},
 	{
 		"name": "NeatHTTP",
 		"description": "An axios-like cURL wrapper for PHP that allows you to make HTTP requests with ease (experimental).",
-		"url": "",
-		"github_url": "https://github.com/aosasona/neat-http",
-		"in_progress": false,
+		"url": null,
+		"github_url": "github.com/aosasona/neat-http",
+		"image": "neat-http.png",
 		"status": "ARCHIVED"
 	},
 	{
 		"name": "Scrawny",
 		"description": "A simple console logger for Node.js (not file-system, experimental).",
-		"url": "",
-		"github_url": "https://github.com/aosasona/Scrawny",
-		"in_progress": false,
+		"url": null,
+		"github_url": "github.com/aosasona/Scrawny",
+		"image": "scrawny.png",
 		"status": "ARCHIVED"
 	}
 ]

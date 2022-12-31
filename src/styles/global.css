@@ -18,6 +18,10 @@ main {
 	@apply max-w-4xl mx-auto px-6 sm:px-6 lg:px-8 2xl:px-0 mt-[4rem];
 }
 
+section {
+	@apply mt-8;
+}
+
 p {
 	@apply leading-relaxed text-neutral-500;
 }
