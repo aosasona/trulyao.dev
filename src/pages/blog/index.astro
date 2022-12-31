@@ -1,38 +1,34 @@
 ---
-import BackHome from "../../components/BackHome.astro";
-import MinimalFooter from "../../components/MinimalFooter.astro";
+import Back from "../../components/Back.astro";
 import SectionHeader from "../../components/SectionHeader.astro";
 import Layout from "../../layouts/Layout.astro";
 const posts = await Astro.glob("./*.md");
 let publishedPosts = posts.filter((post) => !post?.frontmatter?.draft);
 
 publishedPosts = publishedPosts.sort((a, b) => {
-  return (new Date(b?.frontmatter?.date) as unknown as number) - (new Date(a?.frontmatter?.date) as unknown as number);
+	return (new Date(b?.frontmatter?.date) as unknown as number) - (new Date(a?.frontmatter?.date) as unknown as number);
 });
 ---
 
 <Layout title="Blog">
-  <main class="-mt-2">
-    <BackHome />
-    <SectionHeader>Blog</SectionHeader>
-    <p>
-      A portal into my thoughts, experiences, ideas, visions, interests, and more. What's the point of this? Well, I'm not sure, but here you go
-      anyhow.
-    </p>
-    <div class="flex flex-col gap-4 mt-4">
-      {
-        publishedPosts.map((post) => (
-          <div class="w-full flex flex-col bg-neutral-900 lg:bg-transparent bg-opacity-40 p-6 lg:px-0 lg:border-b lg:border-neutral-800 transition-all rounded aspect-square lg:aspect-auto">
-            <a href={post?.url} class="space-grotesk text-3xl font-semibold hover:underline hover:underline-offset-4 transition-all">
-              {post?.frontmatter?.title}
-            </a>
-            <p class="text-sm leading-relaxed opacity-50 mt-2 lg:mt-1">{post?.frontmatter?.description}</p>
-            <div class="mt-auto lg:mt-8">
-              <p class="text-xs text-right opacity-20">{post?.frontmatter?.date}</p>
-            </div>
-          </div>
-        ))
-      }
-    </div>
-  </main>
+	<main class="-mt-2">
+		<Back />
+		<SectionHeader>Blog</SectionHeader>
+		<p>A portal into my thoughts, experiences, ideas, visions, interests, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.</p>
+		<div class="flex flex-col gap-4 mt-4">
+			{
+				publishedPosts.map((post) => (
+					<div class="w-full flex flex-col bg-neutral-900 lg:bg-transparent bg-opacity-40 p-6 lg:px-0 lg:border-b lg:border-neutral-800 transition-all rounded aspect-square lg:aspect-auto">
+						<a href={post?.url} class="space-grotesk text-3xl font-semibold hover:underline hover:underline-offset-4 transition-all">
+							{post?.frontmatter?.title}
+						</a>
+						<p class="text-sm leading-relaxed opacity-50 mt-2 lg:mt-1">{post?.frontmatter?.description}</p>
+						<div class="mt-auto lg:mt-8">
+							<p class="text-xs text-right opacity-20">{post?.frontmatter?.date}</p>
+						</div>
+					</div>
+				))
+			}
+		</div>
+	</main>
 </Layout>

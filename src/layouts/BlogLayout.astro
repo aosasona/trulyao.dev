@@ -1,60 +1,58 @@
 ---
-import BackHome from "../components/BackHome.astro";
-import MinimalFooter from "../components/MinimalFooter.astro";
+import Back from "../components/Back.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 export interface Props {
-  title: string;
+	title: string;
 }
 
 let { title, description: desc, keywords, date } = Astro.props?.frontmatter;
 if (!title) title = "Ayodeji";
-if (!desc)
-  desc =
-    "A portal into my thoughts, thoughts, experiences, ideas, visions, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.";
+if (!desc) desc = "A portal into my thoughts, thoughts, experiences, ideas, visions, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.";
 if (!keywords) keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#171717" />
-    <meta name="description" content={desc} />
-    <meta name="keywords" content={keywords} />
-    <link rel="icon" type="image/x-icon" href="/images/preview.jpg" />
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="theme-color" content="#171717" />
+		<meta name="description" content={desc} />
+		<meta name="keywords" content={keywords} />
+		<link rel="icon" type="image/x-icon" href="/images/preview.jpg" />
 
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="http://www.trulyao.dev" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={desc} />
-    <meta property="og:image" content="/images/preview.jpg" />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content="http://www.trulyao.dev" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={desc} />
+		<meta property="og:image" content="/images/preview.jpg" />
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="http://www.trulyao.dev" />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={desc} />
-    <meta property="twitter:image" content="/images/preview.jpg" />
+		<meta property="twitter:card" content="summary_large_image" />
+		<meta property="twitter:url" content="http://www.trulyao.dev" />
+		<meta property="twitter:title" content={title} />
+		<meta property="twitter:description" content={desc} />
+		<meta property="twitter:image" content="/images/preview.jpg" />
 
-    <meta property="og:site_name" content="" />
-    <meta property="og:site" content="" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={desc} />
-    <meta property="og:image" content="/images/preview.jpg" />
-    <meta property="og:url" content="http://www.trulyao.dev" />
-    <title>{title}</title>
-  </head>
-  <body class="w-[88vw] pt-6 pb-10 mx-auto">
-    <main class="w-full lg:w-3/5 2xl:w-3/6 mx-auto -mt-3">
-      <BackHome url="/blog" />
-      <div class="flex flex-col gap-2">
-        <h1 class="text-4xl">{title}</h1>
-        {date && <p class="text-gray-500 font-medium text-xs my-1">{date}</p>}
-        <hr class="my-2" />
-      </div>
-      <section class="blog-content">
-        <slot />
-      </section>
-      <MinimalFooter />
-    </main>
-  </body>
+		<meta property="og:site_name" content="" />
+		<meta property="og:site" content="" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={desc} />
+		<meta property="og:image" content="/images/preview.jpg" />
+		<meta property="og:url" content="http://www.trulyao.dev" />
+		<title>{title}</title>
+	</head>
+	<body class="w-[88vw] pt-6 pb-10 mx-auto">
+		<main class="w-full lg:w-3/5 2xl:w-3/6 mx-auto -mt-3">
+			<Back url="/blog" />
+			<div class="flex flex-col gap-2">
+				<h1 class="text-4xl">{title}</h1>
+				{date && <p class="text-gray-500 font-medium text-xs my-1">{date}</p>}
+				<hr class="my-2" />
+			</div>
+			<section class="blog-content">
+				<slot />
+			</section>
+			<Footer />
+		</main>
+	</body>
 </html>

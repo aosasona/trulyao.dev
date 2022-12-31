@@ -1,7 +1,8 @@
 ---
 import Header from "../components/Header.astro";
-import Link from "../components/Link.astro";
 import SectionHeader from "../components/SectionHeader.astro";
+import ToolCard from "../components/ToolCard.astro";
+import projects from "../data/projects.json";
 
 import Layout from "../layouts/Layout.astro";
 
@@ -35,7 +36,25 @@ let currentTime = new Date().toDateString();
 
 		<section class="my-6" id="tools">
 			<SectionHeader>Tools</SectionHeader>
-			<p>I have used and still use a couple of tools and languages for my development projects. I have listed a few of them below.</p>
+			<p>I have used and still use a couple of tools and languages for my development process over the years. I have listed a few of them below (not *really* including frameworks).</p>
+			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-5 mt-5">
+				<ToolCard name="React" />
+				<ToolCard name="Astro" />
+				<ToolCard name="TailwindCSS" />
+				<ToolCard name="Typescript" />
+				<ToolCard name="Node.js" />
+				<ToolCard name="PHP" />
+				<ToolCard name="Go" />
+				<ToolCard name="Python" />
+				<ToolCard name="MySQL" />
+				<ToolCard name="PostgreSQL" />
+				<ToolCard name="MongoDB" />
+				<ToolCard name="Redis" />
+				<ToolCard name="Git" />
+				<ToolCard name="Linux" />
+				<ToolCard name="Docker" />
+				<ToolCard name="NeoVim" />
+			</div>
 		</section>
 
 		<section class="my-4" id="projects">
