@@ -42,7 +42,7 @@ interface Project {
 
 		<section id="tools">
 			<SectionHeader>Tools</SectionHeader>
-			<p>I have used and still use a couple of tools and languages for my development process over the years. I have listed a few of them below (not *really* including frameworks).</p>
+			<p>I have used and still use a couple of tools and languages for my development process. I have listed a few of them below (not *really* including frameworks).</p>
 			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-5 mt-5">
 				<ToolCard name="React" />
 				<ToolCard name="Astro" />
@@ -79,7 +79,7 @@ interface Project {
 							<div class="flex items-center justify-between mt-auto">
 								{project.status && <div class="w-max bg-neutral-900 text-neutral-500 text-[10px] font-medium px-2.5 py-1 rounded drop-shadow-md">{project.status}</div>}
 								<a href={"https://www." + (project.url ? project.url : project.github_url)} target="_blank" class="block w-max text-xs font-medium">
-									Visit website &#8594;
+									Visit website
 								</a>
 							</div>
 						</div>
