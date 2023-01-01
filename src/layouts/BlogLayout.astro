@@ -1,6 +1,7 @@
 ---
 import Back from "../components/Back.astro";
 import Footer from "../components/Footer.astro";
+import Nav from "../components/Nav.astro";
 import "../styles/global.css";
 export interface Props {
 	title: string;
@@ -16,43 +17,45 @@ if (!keywords) keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, 
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#171717" />
+		<meta name="theme-color" content="#000000" />
 		<meta name="description" content={desc} />
 		<meta name="keywords" content={keywords} />
-		<link rel="icon" type="image/x-icon" href="/images/preview.jpg" />
+		<link rel="icon" type="image/x-icon" href="favicon.ico" />
 
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="http://www.trulyao.dev" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/preview.jpg" />
+		<meta property="og:image" content="/images/me.JPG" />
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="http://www.trulyao.dev" />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={desc} />
-		<meta property="twitter:image" content="/images/preview.jpg" />
+		<meta property="twitter:image" content="/images/me.JPG" />
 
 		<meta property="og:site_name" content="" />
 		<meta property="og:site" content="" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/preview.jpg" />
+		<meta property="og:image" content="/images/me.JPG" />
 		<meta property="og:url" content="http://www.trulyao.dev" />
+
+		<script src="//unpkg.com/alpinejs" defer></script>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 		<title>{title}</title>
 	</head>
-	<body class="w-[88vw] pt-6 pb-10 mx-auto">
-		<main class="w-full lg:w-3/5 2xl:w-3/6 mx-auto -mt-3">
+	<body class="antialiased">
+		<Nav />
+		<main class="blog-content">
 			<Back url="/blog" />
-			<div class="flex flex-col gap-2">
-				<h1 class="text-4xl">{title}</h1>
-				{date && <p class="text-gray-500 font-medium text-xs my-1">{date}</p>}
-				<hr class="my-2" />
+			<div class="my-6">
+				<h1 class="text-3xl lg:text-4xl font-medium">{title}</h1>
+				<h6 class="text-xs lg:text-sm text-neutral-600 mt-2">{date}</h6>
 			</div>
-			<section class="blog-content">
-				<slot />
-			</section>
-			<Footer />
+			<slot />
 		</main>
+		<Footer />
 	</body>
 </html>
