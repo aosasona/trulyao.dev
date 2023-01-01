@@ -1,0 +1,7 @@
+---
+let { name, size } = Astro.props;
+
+if (!size) size = 20;
+---
+
+<img height={size} width={size} src={`https://cdn.simpleicons.org/${name}`} />

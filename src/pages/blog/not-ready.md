@@ -1,7 +1,7 @@
 ---
 layout: ../../layouts/BlogLayout.astro
 title: "!Ready"
-date: 20 Aug 2022
+date: 20 August 2022
 description: What went wrong?
 keywords: frikax, product, software
 draft: false

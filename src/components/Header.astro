@@ -1,0 +1,17 @@
+<header>
+	<img src="/images/me.JPG" alt="Ayodeji" class="w-20 lg:w-24 aspect-square object-cover rounded-lg" />
+	<p class="text-xs text-neutral-600 mt-3">
+		<i class="fa fa-location text-emerald-500"></i> England, UK
+	</p>
+	<div class="site-nav" x-data="{ showNav: false }">
+		<button x-on:click="showNav = !showNav" class="text-emerald-500 text-xs font-medium p-0 m-0 transition-all">
+			<i class="fa" x-bind:class="showNav ? 'fa-angle-down' : 'fa-angle-right'"></i> NAVIGATION
+		</button>
+		<div class="space-y-1.5 ml-4 mt-1" x-bind:class="showNav ? '' : 'hidden'">
+			<a href="/">~/home</a>
+			<a href="/blog">~/blog</a>
+			<a href="/#tools">~/tools</a>
+			<a href="/#projects">~/projects</a>
+		</div>
+	</div>
+</header>
