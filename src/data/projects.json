@@ -16,6 +16,14 @@
 		"status": "PoC"
 	},
 	{
+		"name": "Cleep",
+		"description": "Cleep allows you to copy and paste content across devices easily and in real-time.",
+		"url": "cleep.app",
+		"github_url": null,
+		"image": "cleep.png",
+		"status": "PoC"
+	},
+	{
 		"name": "Stripr",
 		"description": "Remove those nasty comments you left in your code with a single command... because why not?",
 		"url": null,
