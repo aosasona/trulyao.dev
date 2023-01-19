@@ -24,19 +24,19 @@
 		"status": "PoC"
 	},
 	{
-		"name": "Stripr",
-		"description": "Remove those nasty comments you left in your code with a single command... because why not?",
-		"url": null,
-		"github_url": "github.com/aosasona/stripr",
-		"image": "stripr.png",
-		"status": null
-	},
-	{
 		"name": "Hitlist",
 		"description": "A CLI tool that allows you to execute multiple commands with a single command.",
 		"url": "hitlist.dev",
 		"github_url": "github.com/hitlist-cli/cli",
 		"image": "hitlist.png",
+		"status": null
+	},
+	{
+		"name": "Stripr",
+		"description": "Remove those nasty comments you left in your code with a single command... because why not?",
+		"url": null,
+		"github_url": "github.com/aosasona/stripr",
+		"image": "stripr.png",
 		"status": null
 	},
 	{
@@ -46,21 +46,5 @@
 		"github_url": "github.com/aosasona/php-router",
 		"image": "phprouter.png",
 		"status": null
-	},
-	{
-		"name": "NeatHTTP",
-		"description": "An axios-like cURL wrapper for PHP that allows you to make HTTP requests with ease (experimental).",
-		"url": null,
-		"github_url": "github.com/aosasona/neat-http",
-		"image": "neat-http.png",
-		"status": "ARCHIVED"
-	},
-	{
-		"name": "Scrawny",
-		"description": "A simple console logger for Node.js (not file-system, experimental).",
-		"url": null,
-		"github_url": "github.com/aosasona/Scrawny",
-		"image": "scrawny.png",
-		"status": "ARCHIVED"
 	}
 ]
