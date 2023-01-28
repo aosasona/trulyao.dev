@@ -16,14 +16,6 @@
 		"status": null
 	},
 	{
-		"name": "Cleep",
-		"description": "Cleep allows you to copy and paste content across devices easily and in real-time.",
-		"url": "cleep.app",
-		"github_url": null,
-		"image": "cleep.png",
-		"status": "PoC"
-	},
-	{
 		"name": "QuikSnip",
 		"description": "QuikSnip allows you to create and share EDITABLE code snippets with ease.",
 		"url": "quiksnip.dev",
