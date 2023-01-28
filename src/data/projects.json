@@ -8,12 +8,12 @@
 		"status": "BETA"
 	},
 	{
-		"name": "QuikSnip",
-		"description": "QuikSnip allows you to create and share EDITABLE code snippets with ease.",
-		"url": "quiksnip.dev",
-		"github_url": null,
-		"image": "quiksnip.png",
-		"status": "PoC"
+		"name": "Bazooka",
+		"description": "Find and terminate processes on your machine.",
+		"url": "",
+		"github_url": "github.com/aosasona/bazooka",
+		"image": "bazooka.png",
+		"status": null
 	},
 	{
 		"name": "Cleep",
@@ -21,6 +21,14 @@
 		"url": "cleep.app",
 		"github_url": null,
 		"image": "cleep.png",
+		"status": "PoC"
+	},
+	{
+		"name": "QuikSnip",
+		"description": "QuikSnip allows you to create and share EDITABLE code snippets with ease.",
+		"url": "quiksnip.dev",
+		"github_url": null,
+		"image": "quiksnip.png",
 		"status": "PoC"
 	},
 	{
