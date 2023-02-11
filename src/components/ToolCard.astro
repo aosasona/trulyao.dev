@@ -4,7 +4,7 @@ import SimpleIcon from "./SimpleIcon.astro";
 let { name, icon } = Astro.props;
 ---
 
-<div class="flex items-center justify-start gap-2 grayscale hover:grayscale-0 cursor-pointer px-1 py-2">
+<div class="flex items-center justify-start gap-2 cursor-pointer px-1 py-2">
 	<SimpleIcon name={(icon || name)?.toLowerCase()} />
 	<p class="text-sm font-medium">{name}</p>
 </div>
