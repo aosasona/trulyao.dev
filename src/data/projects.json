@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Reda",
-		"description": "Reda allows you to import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
+		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
 		"url": "usereda.app",
 		"github_url": null,
 		"image": "reda.png",
@@ -9,7 +9,7 @@
 	},
 	{
 		"name": "Bazooka",
-		"description": "Find and terminate processes on your machine.",
+		"description": "Find and terminate processes on your machine from your browser.",
 		"url": "",
 		"github_url": "github.com/aosasona/bazooka",
 		"image": "bazooka.png",
@@ -17,15 +17,23 @@
 	},
 	{
 		"name": "QuikSnip",
-		"description": "QuikSnip allows you to create and share EDITABLE code snippets with ease.",
+		"description": "Create and share EDITABLE code snippets with ease.",
 		"url": "quiksnip.dev",
 		"github_url": null,
 		"image": "quiksnip.png",
 		"status": "PoC"
 	},
 	{
+		"name": "Jenzo",
+		"description": "Generate meta images on the fly using HTML templates.",
+		"url": null,
+		"github_url": "github.com/aosasona/jenzo",
+		"image": "jenzo.png",
+		"status": null
+	},
+	{
 		"name": "Hitlist",
-		"description": "A CLI tool that allows you to execute multiple commands with a single command.",
+		"description": "Execute multiple commands with a single command.",
 		"url": "hitlist.dev",
 		"github_url": "github.com/hitlist-cli/cli",
 		"image": "hitlist.png",
