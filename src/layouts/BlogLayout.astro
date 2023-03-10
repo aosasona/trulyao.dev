@@ -2,15 +2,28 @@
 import Back from "../components/Back.astro";
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.astro";
+import qs from "qs";
 import "../styles/global.css";
+
 export interface Props {
 	title: string;
 }
 
 let { title, description: desc, keywords, date } = Astro.props?.frontmatter;
 if (!title) title = "Ayodeji";
-if (!desc) desc = "A portal into my thoughts, thoughts, experiences, ideas, visions, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.";
-if (!keywords) keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+if (!desc)
+	desc =
+		"A portal into my thoughts, thoughts, experiences, ideas, visions, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.";
+if (!keywords)
+	keywords =
+		"ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+
+const query = qs.stringify({
+	variant: "blog",
+	style: "blog",
+	vars: `title:${title},date:${date}`,
+});
+const metaUrl = `https://og.wyte.space/api/v1/images/trulyao/preview?${query}`;
 ---
 
 <!DOCTYPE html>
@@ -26,23 +39,28 @@ if (!keywords) keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, 
 		<meta property="og:url" content="http://www.trulyao.dev" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/me.JPG" />
+		<meta property="og:image" content={metaUrl} />
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="http://www.trulyao.dev" />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={desc} />
-		<meta property="twitter:image" content="/images/me.JPG" />
+		<meta property="twitter:image" content={metaUrl} />
 
-		<meta property="og:site_name" content="" />
-		<meta property="og:site" content="" />
+		<meta property="og:site_name" content="Trulyao" />
+		<meta property="og:site" content="Trulyao" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/me.JPG" />
+		<meta property="og:image" content={metaUrl} />
 		<meta property="og:url" content="http://www.trulyao.dev" />
 
 		<script src="//unpkg.com/alpinejs" defer></script>
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+			crossorigin="anonymous"
+		/>
 
 		<title>{title}</title>
 	</head>
