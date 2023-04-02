@@ -27,7 +27,7 @@ section {
 }
 
 p {
-  @apply leading-relaxed text-neutral-500;
+  @apply leading-relaxed text-neutral-400;
 }
 
 hr {
