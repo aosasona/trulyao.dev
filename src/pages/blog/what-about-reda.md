@@ -4,7 +4,7 @@ title: What about Reda?
 date: 02 April 2023
 description: So, let's talk about Reda...
 keywords: reda, usereda, mobile app, books, reading, pdf, epub
-draft: false
+draft: true
 ---
 
 A couple of months back, I wanted to do more reading; as in actual books, not just blog articles but I did not find any PDF reader I liked enough or felt would give me a good experience. I thought to myself; "How hard could it be? I already write a bit of react, I could easily learn a bit of react native over the weekend and just build something out" (spoiler; it took about two weekends), and that what I did, I wanted it to do a limited number of things:

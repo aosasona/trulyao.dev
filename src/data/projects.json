@@ -1,18 +1,26 @@
 [
 	{
-		"name": "Reda",
-		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
-		"url": "usereda.app",
-		"github_url": null,
-		"image": "reda.png",
-		"status": "PAUSED"
-	},
-	{
 		"name": "Bazooka",
 		"description": "Find and terminate processes on your machine from your browser.",
 		"url": "",
 		"github_url": "github.com/aosasona/bazooka",
 		"image": "bazooka.png",
+		"status": null
+	},
+	{
+		"name": "Jenzo",
+		"description": "Generate meta images on the fly using HTML templates.",
+		"url": null,
+		"github_url": "github.com/aosasona/jenzo",
+		"image": "jenzo.png",
+		"status": null
+	},
+	{
+		"name": "Reda",
+		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
+		"url": "usereda.app",
+		"github_url": null,
+		"image": "reda.png",
 		"status": null
 	},
 	{
@@ -22,14 +30,6 @@
 		"github_url": null,
 		"image": "quiksnip.png",
 		"status": "PoC"
-	},
-	{
-		"name": "Jenzo",
-		"description": "Generate meta images on the fly using HTML templates.",
-		"url": null,
-		"github_url": "github.com/aosasona/jenzo",
-		"image": "jenzo.png",
-		"status": null
 	},
 	{
 		"name": "Hitlist",
