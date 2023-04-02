@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Space+Mono:400,500,600,700&display=swap);
 
 :root {
-  --secondary-dark: rgba(255 255 255 0.8);
+  --secondary-dark: #ffffff0d;
 }
 
 * {
@@ -27,7 +27,7 @@ section {
 }
 
 p {
-  @apply leading-relaxed text-neutral-500;
+  @apply leading-relaxed text-neutral-400;
 }
 
 hr {

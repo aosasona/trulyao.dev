@@ -1,6 +1,6 @@
 ---
 layout: ../../layouts/BlogLayout.astro
-title: HTH - Reda
+title: What about Reda?
 date: 02 April 2023
 description: So, let's talk about Reda...
 keywords: reda, usereda, mobile app, books, reading, pdf, epub
