@@ -3,7 +3,7 @@
 @import url(https://fonts.googleapis.com/css?family=Space+Mono:400,500,600,700&display=swap);
 
 :root {
-  --secondary-dark: #ffffff0d;
+  --secondary-dark: rgba(255 255 255 0.8);
 }
 
 * {
