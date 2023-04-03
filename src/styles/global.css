@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Space+Grotesk:100,200,300,400,500,600,700&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Inter:100,200,300,400,500,600,700&display=swap);
 @import url(https://fonts.googleapis.com/css?family=Space+Mono:400,500,600,700&display=swap);
+@import url("https://fonts.cdnfonts.com/css/souvenir-greek-bt");
 
 :root {
   --secondary-dark: #ffffff0d;
@@ -97,4 +98,8 @@ a:hover {
   line-height: 1.9;
   margin: 0;
   @apply text-emerald-500;
+}
+
+.font-souvenir {
+  font-family: "SouvenirGreek Lt BT";
 }

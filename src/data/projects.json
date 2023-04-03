@@ -25,19 +25,11 @@
 	},
 	{
 		"name": "QuikSnip",
-		"description": "Create and share EDITABLE code snippets with ease.",
+		"description": "Create and share EDITABLE code snippets with ease (unstable).",
 		"url": "quiksnip.dev",
 		"github_url": null,
 		"image": "quiksnip.png",
 		"status": "PoC"
-	},
-	{
-		"name": "Hitlist",
-		"description": "Execute multiple commands with a single command.",
-		"url": "hitlist.dev",
-		"github_url": "github.com/hitlist-cli/cli",
-		"image": "hitlist.png",
-		"status": null
 	},
 	{
 		"name": "Stripr",
@@ -46,6 +38,14 @@
 		"github_url": "github.com/aosasona/stripr",
 		"image": "stripr.png",
 		"status": null
+	},
+	{
+		"name": "Hitlist",
+		"description": "Execute multiple commands with a single command.",
+		"url": "hitlist.dev",
+		"github_url": "github.com/hitlist-cli/cli",
+		"image": "hitlist.png",
+		"status": "UNMAINTAINED"
 	},
 	{
 		"name": "PHP Router",
