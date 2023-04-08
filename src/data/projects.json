@@ -1,5 +1,13 @@
 [
 	{
+		"name": "Reda",
+		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
+		"url": "usereda.app",
+		"github_url": null,
+		"image": "reda.png",
+		"status": null
+	},
+	{
 		"name": "Bazooka",
 		"description": "Find and terminate processes on your machine from your browser.",
 		"url": "",
@@ -16,11 +24,11 @@
 		"status": null
 	},
 	{
-		"name": "Reda",
-		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
-		"url": "usereda.app",
-		"github_url": null,
-		"image": "reda.png",
+		"name": "Gots",
+		"description": "Generate Typescript types from your chosen Go types (int, string, structs etc) during run-time.",
+		"url": null,
+		"github_url": "github.com/aosasona/gots",
+		"image": "gots.png",
 		"status": null
 	},
 	{
@@ -30,14 +38,6 @@
 		"github_url": null,
 		"image": "quiksnip.png",
 		"status": "PoC"
-	},
-	{
-		"name": "Stripr",
-		"description": "Remove those nasty comments you left in your code with a single command... because why not?",
-		"url": null,
-		"github_url": "github.com/aosasona/stripr",
-		"image": "stripr.png",
-		"status": null
 	},
 	{
 		"name": "Hitlist",
