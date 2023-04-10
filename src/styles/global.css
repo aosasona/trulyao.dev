@@ -24,7 +24,7 @@ main {
 }
 
 section {
-  @apply mt-8;
+  @apply mt-12;
 }
 
 p {
@@ -54,7 +54,7 @@ a:hover {
 
 /* SITE NAV */
 .site-nav {
-  @apply text-neutral-500 text-sm border-t border-b border-neutral-900 py-3 my-4;
+  @apply text-neutral-500 text-sm border-t border-b border-neutral-900 py-3 my-6;
 }
 .site-nav a {
   @apply block w-max text-neutral-500 hover:text-emerald-500 transition-all;
@@ -101,5 +101,5 @@ a:hover {
 }
 
 .font-souvenir {
-  font-family: "SouvenirGreek Lt BT";
+  font-family: "SouvenirGreek Lt BT" !important;
 }
