@@ -11,9 +11,15 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/react": "^2.1.2",
     "@astrojs/tailwind": "^2.0.2",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "astro": "^1.4.1",
-    "tailwindcss": "^3.0.24"
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "tailwindcss": "^3.0.24",
+    "use-lanyard": "^1.4.2"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7"
