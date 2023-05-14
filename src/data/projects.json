@@ -16,6 +16,14 @@
 		"status": null
 	},
 	{
+		"name": "Phlo",
+		"description": "A minimal and fast PHP framework for the modern web",
+		"url": null,
+		"github_url": "github.com/aosasona/phlo",
+		"image": "phlo.png",
+		"status": "ALPHA"
+	},
+	{
 		"name": "Jenzo",
 		"description": "Generate meta images on the fly using HTML templates.",
 		"url": null,
@@ -30,14 +38,6 @@
 		"github_url": "github.com/aosasona/gots",
 		"image": "gots.png",
 		"status": null
-	},
-	{
-		"name": "QuikSnip",
-		"description": "Create and share EDITABLE code snippets with ease (unstable).",
-		"url": "quiksnip.dev",
-		"github_url": null,
-		"image": "quiksnip.png",
-		"status": "PoC"
 	},
 	{
 		"name": "Hitlist",
