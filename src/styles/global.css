@@ -4,102 +4,98 @@
 @import url("https://fonts.cdnfonts.com/css/souvenir-greek-bt");
 
 :root {
-  --secondary-dark: #ffffff0d;
+	--secondary-dark: #ffffff0d;
 }
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html,
 body {
-  font-family: Inter, Arial, Helvetica, sans-serif;
-  @apply bg-[#000000] text-neutral-50 text-base leading-normal font-normal transition-all;
+	font-family: Inter, Arial, Helvetica, sans-serif;
+	@apply bg-background text-neutral-50 text-base leading-normal font-normal transition-all;
 }
 
 main {
-  @apply max-w-4xl 2xl:max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 2xl:px-0 mt-[4rem];
+	@apply max-w-4xl 2xl:max-w-5xl mx-auto px-6 sm:px-6 lg:px-8 2xl:px-0 mt-[4rem];
 }
 
 section {
-  @apply mt-12;
+	@apply mt-12;
 }
 
 p {
-  @apply leading-relaxed text-neutral-400;
+	@apply leading-relaxed text-neutral-400;
 }
 
 hr {
-  border: 0;
-  border-top: 1px solid #ffffff1b;
-}
-
-ul {
-  margin-left: 1rem;
+	border: 0;
+	border-top: 1px solid #ffffff1b;
 }
 
 li {
-  list-style: disc;
+	@apply text-neutral-400 list-disc list-inside;
 }
 
 a:hover {
-  @apply text-emerald-500;
+	@apply text-emerald-500;
 }
 
 .highlight {
-  @apply text-emerald-500;
+	@apply text-emerald-500;
 }
 
 /* SITE NAV */
 .site-nav {
-  @apply text-neutral-500 text-sm border-t border-b border-neutral-900 py-3 my-6;
+	@apply text-neutral-500 text-sm border-t border-b border-neutral-900 py-3 my-6;
 }
 .site-nav a {
-  @apply block w-max text-neutral-500 hover:text-emerald-500 transition-all;
+	@apply block w-max text-neutral-500 hover:text-emerald-500 transition-all;
 }
 
 .back-link {
-  @apply w-max block text-emerald-500 hover:no-underline hover:-translate-x-1 text-sm my-3 transition-all !important;
+	@apply w-max block text-emerald-500 hover:no-underline hover:-translate-x-1 text-sm my-3 transition-all !important;
 }
 
 /* BLOG */
 .blog-content a {
-  color: white;
+	color: white;
 }
 .blog-content a:hover {
-  color: #f5f5f5a4;
-  text-decoration: underline;
+	color: #f5f5f5a4;
+	text-decoration: underline;
 }
 .blog-content p {
-  margin: 1rem 0;
+	margin: 1rem 0;
 }
 .blog-content p > code {
-  background-color: var(--secondary-dark);
-  padding: 0.15rem 0.45rem;
-  font-size: 0.75rem;
-  font-family: "Courier New", Courier, monospace;
+	background-color: var(--secondary-dark);
+	padding: 0.15rem 0.45rem;
+	font-size: 0.75rem;
+	font-family: "Courier New", Courier, monospace;
 }
 .blog-content pre {
-  background-color: var(--secondary-dark) !important;
-  padding: 1.25rem;
-  font-size: 0.85rem;
-  font-family: "Courier New", Courier, monospace;
-  overflow-x: auto;
+	background-color: var(--secondary-dark) !important;
+	padding: 1.25rem;
+	font-size: 0.85rem;
+	font-family: "Courier New", Courier, monospace;
+	overflow-x: auto;
 }
 .blog-content blockquote {
-  @apply bg-emerald-500 bg-opacity-10 border-l-2 border-emerald-500 px-4 py-2.5 my-4;
+	@apply bg-emerald-500 bg-opacity-10 border-l-2 border-emerald-500 px-4 py-2.5 my-4;
 }
 .blog-content blockquote p {
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-style: italic;
-  font-size: 0.88rem;
-  line-height: 1.9;
-  margin: 0;
-  @apply text-emerald-500;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	font-style: italic;
+	font-size: 0.88rem;
+	line-height: 1.9;
+	margin: 0;
+	@apply text-emerald-500;
 }
 
 .font-souvenir {
-  font-family: "SouvenirGreek Lt BT" !important;
+	font-family: "SouvenirGreek Lt BT" !important;
 }
