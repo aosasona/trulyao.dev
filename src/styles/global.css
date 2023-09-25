@@ -37,7 +37,7 @@ hr {
 }
 
 li {
-	@apply text-neutral-400 list-disc list-inside;
+	@apply text-neutral-400 list-disc list-inside ml-4;
 }
 
 a:hover {
@@ -65,17 +65,22 @@ a:hover {
 	color: white;
 }
 .blog-content a:hover {
-	color: #f5f5f5a4;
 	text-decoration: underline;
+}
+.blog-content h1 {
+	@apply text-3xl font-bold font-souvenir mt-8 -mb-2;
+}
+.blog-content h2 {
+	@apply text-xl text-neutral-200 font-bold font-souvenir mt-4 -mb-2;
 }
 .blog-content p {
 	margin: 1rem 0;
+	font-size: .95rem;
 }
 .blog-content p > code {
-	background-color: var(--secondary-dark);
 	padding: 0.15rem 0.45rem;
-	font-size: 0.75rem;
 	font-family: "Courier New", Courier, monospace;
+	@apply text-emerald-400 bg-emerald-400/10 text-xs font-medium;
 }
 .blog-content pre {
 	background-color: var(--secondary-dark) !important;
