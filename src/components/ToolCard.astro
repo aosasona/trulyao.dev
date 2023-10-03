@@ -1,12 +1,10 @@
 ---
-import SimpleIcon from "./SimpleIcon.astro";
+import { Icon } from "astro-icon";
 
-let { name, icon, invert = false } = Astro.props;
+let { name, icon, pack = "simple-icons", local = false, invert = local } = Astro.props;
 ---
 
-<div
-	class="flex items-center justify-start gap-2 grayscale hover:grayscale-0 cursor-pointer px-1 py-2"
->
-	<SimpleIcon name={(icon || name)?.toLowerCase()} invert={invert} />
+<div class="flex items-center justify-start gap-2 hover:opacity-75 cursor-pointer px-1 py-2">
+	<Icon pack={local ? "" : pack} name={(icon ?? name)?.toLowerCase()} class={`w-6 ${invert ? "invert" : ""}`} />
 	<p class="text-sm font-medium">{name}</p>
 </div>
