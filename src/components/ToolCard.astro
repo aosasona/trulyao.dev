@@ -5,6 +5,8 @@ let { name, icon, pack = "simple-icons", local = false, invert = local } = Astro
 ---
 
 <div class="flex items-center justify-start gap-2 hover:opacity-75 cursor-pointer px-1 py-2">
-	<Icon pack={local ? "" : pack} name={(icon ?? name)?.toLowerCase()} class={`w-6 ${invert ? "invert" : ""}`} />
+	<div class="w-6 lg:w-5 aspect-square" class:list={[{ invert: invert }]}>
+		<Icon pack={local ? "" : pack} name={(icon ?? name)?.toLowerCase()} />
+	</div>
 	<p class="text-sm font-medium">{name}</p>
 </div>
