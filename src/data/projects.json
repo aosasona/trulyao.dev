@@ -1,66 +1,74 @@
 [
-  {
-    "name": "Sidekyk",
-    "description": "Your personal AI sidekicks!",
-    "url": "sidekyk.app",
-    "github_url": null,
-    "image": "sidekyk.png",
-    "status": "PRIVATE"
-  },
-  {
-    "name": "Reda",
-    "description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
-    "url": "usereda.app",
-    "github_url": null,
-    "image": "reda.png",
-    "status": null
-  },
-  {
-    "name": "Gots",
-    "description": "Go types to Typescript types, easy peasy!",
-    "url": null,
-    "github_url": "github.com/aosasona/gots",
-    "image": "gots.png",
-    "status": null
-  },
-  {
-    "name": "Bazooka",
-    "description": "Find and terminate processes on your machine from your browser.",
-    "url": "",
-    "github_url": "github.com/aosasona/bazooka",
-    "image": "bazooka.png",
-    "status": null
-  },
-  {
-    "name": "Phlo",
-    "description": "A minimal and fast PHP framework for the modern web",
-    "url": null,
-    "github_url": "github.com/aosasona/phlo",
-    "image": "phlo.png",
-    "status": "ALPHA"
-  },
-  {
-    "name": "Jenzo",
-    "description": "Generate meta images on the fly using HTML templates.",
-    "url": null,
-    "github_url": "github.com/aosasona/jenzo",
-    "image": "jenzo.png",
-    "status": null
-  },
-  {
-    "name": "Hitlist",
-    "description": "Execute multiple commands with a single command.",
-    "url": "hitlist.dev",
-    "github_url": "github.com/hitlist-cli/cli",
-    "image": "hitlist.png",
-    "status": "UNMAINTAINED"
-  },
-  {
-    "name": "PHP Router",
-    "description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc",
-    "url": "phprouter.xyz",
-    "github_url": "github.com/aosasona/php-router",
-    "image": "phprouter.png",
-    "status": "ARCHIVED"
-  }
+	{
+		"name": "Gots",
+		"description": "Go types to Typescript types, easy peasy!",
+		"url": null,
+		"github_url": "github.com/aosasona/gots",
+		"image": "gots.png",
+		"status": null
+	},
+	{
+		"name": "Plunk.gleam",
+		"description": "A library for sending emails and interacting with the Plunk API in Gleam.",
+		"url": "https://hexdocs.pm/plunk/",
+		"github_url": "github.com/aosasona/plunk.gleam",
+		"image": "plunk.png",
+		"status": null
+	},
+	{
+		"name": "Sidekyk",
+		"description": "Your personal AI sidekicks! (Shipped privately)",
+		"url": "https://x.com/trulyao/status/1704530681475305891?s=46&t=oZkX14dN7BKTYc0mRw0ryg",
+		"github_url": null,
+		"image": "sidekyk.png",
+		"status": "PRIVATE"
+	},
+	{
+		"name": "Reda",
+		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
+		"url": "https://usereda.app",
+		"github_url": null,
+		"image": "reda.png",
+		"status": null
+	},
+	{
+		"name": "Bazooka",
+		"description": "Find and terminate processes on your machine from your browser.",
+		"url": null,
+		"github_url": "github.com/aosasona/bazooka",
+		"image": "bazooka.png",
+		"status": null
+	},
+	{
+		"name": "Phlo",
+		"description": "A minimal and fast PHP framework for the modern web",
+		"url": null,
+		"github_url": "github.com/aosasona/phlo",
+		"image": "phlo.png",
+		"status": "ALPHA"
+	},
+	{
+		"name": "Jenzo",
+		"description": "Generate meta images on the fly using HTML templates.",
+		"url": null,
+		"github_url": "github.com/aosasona/jenzo",
+		"image": "jenzo.png",
+		"status": null
+	},
+	{
+		"name": "Hitlist",
+		"description": "Execute multiple commands with a single command.",
+		"url": "https://hitlist.dev",
+		"github_url": "github.com/hitlist-cli/cli",
+		"image": "hitlist.png",
+		"status": "UNMAINTAINED"
+	},
+	{
+		"name": "PHP Router",
+		"description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc",
+		"url": null,
+		"github_url": "github.com/aosasona/php-router",
+		"image": "phprouter.png",
+		"status": "ARCHIVED"
+	}
 ]

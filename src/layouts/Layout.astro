@@ -4,14 +4,14 @@ import Nav from "../components/Nav.astro";
 import "../styles/global.css";
 export interface Props {
 	title: string;
+	desc?: string;
 	hideFooter?: boolean;
 }
 
 let { title, desc, hideFooter } = Astro.props;
 if (!title) title = "Ayodeji";
 if (!desc) desc = "Ayodeji - Software Developer";
-let keywords =
-	"ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+let keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
 ---
 
 <!DOCTYPE html>
