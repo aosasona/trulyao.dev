@@ -5,8 +5,9 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react()],
-  redirects: {
-    "/fate": "https://aosasona.github.io/fate/setup.sh",
-  },
+	integrations: [tailwind(), react()],
+	redirects: {
+		"/fate": "https://aosasona.github.io/fate/setup.sh",
+		"/live": "https://twitch.tv/iamtrulyao",
+	},
 });
