@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: Arguments
 date: 22 October 2022
 description: An argument about arguments...
@@ -27,7 +26,7 @@ easy thing to do, you pushed the code, it went live, no pressure again.
 
 Six weeks later, you wanted to save phone numbers, flags for account verification (`is_verified`, or something else),
 `last_active` and probably usernames because haha, just like YouTube, you didn't think of that. Your app has been gaining
-users faster than you thought it would and you have to push out changes FASSSSTTTTTTTTT	, so you did the same thing
+users faster than you thought it would and you have to push out changes FASSSSTTTTTTTTT , so you did the same thing
 again and now your function looks like this:
 
 ```go
@@ -65,12 +64,12 @@ Passing NULL or booleans (without or even with any sort of context) into any fun
 different things in your function's body based on that value and at that point, your function is probably doing two
 different things and has broken the [Single Responsibility
 Principle](https://stackify.com/solid-design-principles/), tsk, not great. If you ever run into this piece of code in a
-codebase and you have never heard of 'curl', would you even have an idea what it does? You're probably thinking *"Oh
-it's because it's PHP"*, zip it! Bad code like this can be written in any language. Even worse, do you think you would
+codebase and you have never heard of 'curl', would you even have an idea what it does? You're probably thinking _"Oh
+it's because it's PHP"_, zip it! Bad code like this can be written in any language. Even worse, do you think you would
 be able to use this function safely or confidently without having to toggle between files where it's been used, where you are trying to use it and the actual function declaration.
 
-A lot of languages have built-in ways to avoid this kind of code blasphemy. If you are thinking *"Yeah yeah, Python has
-named arguments and kwargs"*, please bury that thought, you would still have about 10 arguments going in, naming them
+A lot of languages have built-in ways to avoid this kind of code blasphemy. If you are thinking _"Yeah yeah, Python has
+named arguments and kwargs"_, please bury that thought, you would still have about 10 arguments going in, naming them
 doesn't make it better, **Clean Code by Robert C. Martin** suggests a developer should try to limit function arguments to
 just two or at most three. While you don't NEED to follow everything the book says, we can all agree that function calls
 with 10 arguments would become quite frustrating to read or use; named or not. The way I have decided to go around this is using
@@ -96,7 +95,7 @@ func SaveUser(user User) error {
 ```
 
 Whilst this is probably not EXACTLY how you would write it, I think we can agree this is easier to read and actually
-re-use since we now have a dedicated struct that can be used anywhere in your codebase to define a user.
+reuse since we now have a dedicated struct that can be used anywhere in your codebase to define a user.
 At some point every developer's done something as seemingly obvious or stupid like this but that's part of the job;
 learning on the job, it won't be the last mistake you make either, finding better ways to do things is
 important.
@@ -104,4 +103,3 @@ important.
 > NOTE: I am in no way recommending a certain way to do things or code, this is only my opinion and I am happy to hear what you think too.
 
 That's all I have to rant about today, have a great weekend or week (whenever you're reading this) :)
-

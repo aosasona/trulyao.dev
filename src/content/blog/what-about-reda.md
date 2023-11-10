@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: What about Reda?
 date: 02 April 2023
 description: So, let's talk about Reda...
@@ -19,7 +18,7 @@ Just before I was about to kick back, I showed it off to a few people and they l
 To my surprise, even though this was my first mobile app and it sucked (imho) and was a bit unstable (some may say even slow), people received it well, the tweet I made at a time I knew no one was awake somehow still got attention and by the end of the second week, the app had well over 250 users and in the first week, I had started to see some sort of potential and 'what it could be'. I started to borrow ideas from another app idea I was working on but never shipped because at the time, I did not really take the time or had the will to learn React Native (Flutter folks, no, do not
 write that comment)
 
-> I personally do not support React Native over Flutter or the other way, React Native made more sense to use since I was already familiar with React. 
+> I personally do not support React Native over Flutter or the other way, React Native made more sense to use since I was already familiar with React.
 
 I had fun working on the app, I probably spent too much time working on it, it was an exciting process really, it even gave me the opportunity to have a talk with the Daniel Gross, whew! I mean, at this point, I just had to go harder, and I did. I added ePub and I hated everything about that, both renderers (PDF and EPUB) weren't great and I had to do some silly workarounds to make the app somewhat usable and I did not like that I had to settle. You see, I wanted it to really have a good UX, it's not the first reader out there, obviously, so I knew I had to make it different by making it minimal and easy to understand. I was stuck; I hated the way I had to do things and I couldn't do them myself either, I had never written a react native library, I did not know Swift or Java for the native bindings even if I wanted to and I thought about rebuilding the whole app in Swift and sticking to one platform that way.
 

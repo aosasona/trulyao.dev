@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: Attack
 date: 28 May 2022
 description: We got "attacked" for some reason I am yet to figure out and it seemed quite pointless at first but, was it really?
 keywords: security, product, attack, cybersecurity
-draft: false
+draft: true
 ---
 
 At 21:49, about three hours after the end of the AMA Twitter space we had today, Frokes sent me a screenshot with the caption **"Bro 🤯".** As soon as I saw the picture on the notification card or pop-up, whatever you want to call it, I knew it was from the wait-list application, which is an internal app we use to keep track of the wait-list. I quickly stopped what I was doing to check the text.

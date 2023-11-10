@@ -10,11 +10,11 @@ import LiveActivity from "./LiveActivity";
 	<p class="text-xs text-zinc-500 font-medium mt-4">
 		<i class="fa fa-location text-emerald-500"></i> England, UK
 	</p>
-	<div class="site-nav" x-data="{ showNav: false }">
-		<button x-on:click="showNav = !showNav" class="text-emerald-500 text-xs font-medium p-0 m-0 transition-all">
-			<i class="fa" x-bind:class="showNav ? 'fa-angle-down' : 'fa-angle-right'"></i> MENU
+	<div class="site-nav">
+		<button class="text-emerald-500 text-xs font-medium p-0 m-0 transition-all" id="menu-btn">
+			<i class="fa fa-angle-right"></i> MENU
 		</button>
-		<div class="space-y-1.5 ml-4 mt-1" x-bind:class="showNav ? '' : 'hidden'">
+		<div class="hidden space-y-1.5 ml-4 lg:ml-3 mt-1" id="menu">
 			<a href="/">~/home</a>
 			<a href="/blog">~/blog</a>
 			<a href="/#tools">~/tools</a>
@@ -22,3 +22,15 @@ import LiveActivity from "./LiveActivity";
 		</div>
 	</div>
 </header>
+
+<script>
+	const menuBtn = document.getElementById("menu-btn")!;
+	const menuIcon = menuBtn.querySelector("i")!;
+	const menu = document.getElementById("menu")!;
+
+	menuBtn.addEventListener("click", () => {
+		menu.classList.toggle("hidden");
+		menuIcon.classList.toggle("fa-angle-right");
+		menuIcon.classList.toggle("fa-angle-down");
+	});
+</script>
