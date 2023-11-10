@@ -1,10 +1,9 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: Pilot
 date: 20 May 2022
 description: Even if I have no idea what exactly i'm talking about, I hope you like the read! just keep in mind that the natural order is disorder. yes, that was an avatar quote.
 keywords: ayodeji, tech, pilot
-draft: false
+draft: true
 ---
 
 I am still awake at 7 a.m. Why? We kept trying to make sure the emails we were going to send out this morning were perfect, and we also did some debugging for another project. This has been the pattern lately: not sleeping till it's around 4 a.m., which is obviously unhealthy, but we try to balance it out (as if balance actually exists). Oh, and the "we" I keep mentioning includes [@\_frokes](https://twitter.com/_frokes) and me.

@@ -1,5 +1,4 @@
 ---
-layout: ../../layouts/BlogLayout.astro
 title: A gleamy exploration
 date: 25 September 2023
 description: I found this new programming language with the soul of Erlang's fault-tolerant concurrent runtime and the body of the type-safe, fast & highly beloved Rust, you know I just had to try it out.
@@ -100,7 +99,7 @@ In this [piece of code](https://github.com/aosasona/noht.gleam/blob/b06ff2b6b1d1
 
 This one doesn't really bother me much and it was sort of expected but I thought I should mention it still, the LSP is buggy sometimes, I don't get definitions sometimes and other times I do, it doesn't show the available methods in a module when I hit the dot (.) key, it goofs up with the types sometimes (shows the return type instead of the actual variable type) but all that being said, it is not a big deal. You're probably thinking "What?? what the hell do you mean it's not a big deal?" and I get you but really, it's not and I'll tell you why.
 
-![LSP failing for type defs](../../gifs/gleam-lsp-issue.gif)
+![LSP failing for type defs](/gifs/gleam-lsp-issue.gif)
 
 - When you screw up, the LSP and compiler will tell you (that one never failed for me), missing parameters and wrong types are also reported correctly - I am just saying all the things that are important to me are working fine.
 - All packages, just like in Elixir, are automatically documented on Hex docs, even the standard library, so you can always go there to check what a function does and how to use it (although I wish the LSP would consistently show me the docs for a function when I hover over it, that would be nice).
