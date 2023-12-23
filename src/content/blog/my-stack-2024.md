@@ -181,8 +181,14 @@ My preferred terminal is [Wezterm](https://wezfurlong.org/wezterm/) since it sup
 
 ![My Setup](/images/setup.jpeg)
 
-I use a dual 23.4" Huawei monitor setup and for over 2 years, it's been fine, I have looked at other monitors and even considered an ultrawide but this feels just right to me. I prefer a dual monitor setup because I prefer having two distinct "desktops", I know you can get close to this with something like Rectangle but I like full screen as you can see, hitting `Option + B` (via [Zap](https://usezap.sh)) to go to my browser affects nothing else, my terminal doesn't suddenly move or get minimized, other things like Discord, Arc, Spotify etc that are not for writing code live in the left monitor.
+I use a dual [24" Huawei monitor](https://amzn.eu/d/6YVQrjL) setup and for over 2 years, it's been fine, I have looked at other monitors and even considered an ultrawide but this feels just right to me. I prefer a dual monitor setup because I prefer having two distinct "desktops", I know you can get close to this with something like Rectangle but I like full screen as you can see, hitting `Option + B` (via [Zap](https://usezap.sh)) to go to my browser affects nothing else, my terminal doesn't suddenly move or get minimized, other things like Discord, Arc, Spotify etc that are not for writing code live in the left monitor.
 
 I use a 2021 14" MacBook Pro (M1 Pro) and that's also been... fine, except for storage (my next laptop, perhaps in 2025?, would certainly not be 512GB). I have to run a Windows emulator sometimes for things like the Braid game because it won't run on my Mac natively (via Steam) or for accessing the Oracle Database server from home (I also don't know why this is broken on my Mac at home only but it works in the VM so...)
 
-Oh, I own a HomePod mini that works like 30% of the time - great job Apple, I thought you could do better than the Google Nest, at last that one had Bluetooth
+Oh, I own a HomePod mini that works like 30% of the time - great job Apple, I thought you could do better than the Google Nest, at least that one had Bluetooth
+
+I have a pretty [unpopular dock](https://amzn.eu/d/ajHVJE7) from Anker that supports DisplayLink because that is the only way to run both monitors with one cable on new Macs - again, great job Apple, now I can't use Amazon Prime on my laptop because it thinks I am screen-sharing.
+
+I have a Raspberry Pi 4 (8GB RAM) with a [case from DeskPi](https://deskpi.com/collections/frontpage/products/deskpi-pro-for-raspberry-pi-4) and a 512GB SSD that serves as a tiny home server to test things on and media storage.
+
+My keyboard of choice is the [Keychron K2 V2](https://www.keychron.com/products/keychron-k2-wireless-mechanical-keyboard?variant=40290116730969); aluminum build, full RGB and hot-swappable with Brown switches, I did not even know I got the highest spec until it arrived but whatever, it is a nice keyboard!
