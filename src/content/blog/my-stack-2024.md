@@ -18,7 +18,7 @@ I have talked about the languages, frameworks, databases etc. I use and why I us
 
 > I may get some things wrong here from my experience with these things but I will try as much as possible to provide accurate information, objective corrections are welcome!
 
-Before we get into all that though, I think it's only fair I give you a bit more context around what I need, what I think software should be like and all that. The more I explored, the more I ran into BROKEN software, not one or two bugs here and there but broken; whether it be bugs that made them unusable or a UX that did not seem like it was made for actual humans (this all discussion is for another article), I started to see a pattern, even in Apple's software that used to feel very polished, it felt like no one cared about software anymore, everyone wants to 'ship' as they call it, no one seems to be willing to put it the work to make their software an experience they'd want to use or they have a really low bar for quality? I don't know but from most discussions I have had with most of these _shippers_ on Twitter, it seems to be both.
+Before we get into all that though, I think it's only fair I give you a bit more context around what I need, what I think software should be like and all that. The more I explored, the more I ran into BROKEN software, not one or two bugs here and there but broken; whether it be bugs that made them unusable or a UX that did not seem like it was made for actual humans (this discussion is for another article), I started to see a pattern, even in Apple's software that used to feel very polished, it felt like no one cared about software anymore, everyone wants to 'ship' as they call it, no one seems to be willing to put it the work to make their software an experience they'd want to use or they have a really low bar for quality? I don't know but from most discussions I have had with most of these _shippers_ on Twitter, it seems to be both.
 
 Yes, I am judging you, I am judging us, I wish we would adopt the work ethics of game developers; IMO, game dev is so hard and requires a lot of discipline, no one is going to buy a game with "This production version works but you know, x just doesn't work yet, don't press y because it may delete your save data" or any of such narratives around it. I am guilty of this too, I have written bad software that I am ashamed of, I have written horrible code I would never want to see the light of day so, before I get to write an article on the state of software and how everyone should do better, I need to do better too. I know most of you reading this might have been born in the era of Microsoft Windows where everything was already slow by default (I am not blaming Microsoft, I am saying most of us got "used" to software being slow because the thing we used to run software was MS Windows which was and still is notariously slow when doing things like just using the file explorer, without using search that is, it is even worse with search), but I have seen fast software, I have used fast software, I know it is possible to make fast software and we should make fast software.
 
@@ -30,7 +30,7 @@ Oh dear, that was... uh, quite the rant, but I promise we are actually getting i
 - Re the point above, not trying to fit a square in a circle; possible but at what cost? A.K.A. please stop writing abominations (Laravel for mobile apps? what???)
 - Be able to verify the state of a piece of software with certainty (tests, readable enough to know what the hell is going on etc)
 
-These are just summaries, there are a lot more to do and I know they may not make sense to you now but you will understand as we go deeper.
+These are just summaries, there are a lot more to do and I know they may not make sense to you now, you will understand as we go deeper but a lot of the choices I have made are geared more towards these goals.
 
 # Languages
 
@@ -165,7 +165,7 @@ Now, this part is also pretty generic, but it also depends on what the applicati
 
 SQLite is just a good fit for smaller side projects and things like desktop and mobile apps that I have had to do recently, and thanks to LiteFS, accessing it outside one instance and backups are not _really_ an issue anymore.
 
-## MySQL & Postgres
+## MySQL & PostgreSQL
 
 I have very limited experience with Postgres but I have worked with MySQL for years now but to be honest, I have only really dug into both more recently. MySQL has gotten a lot of updates in recent years and performance boost but Postgres objectively can do more since it is more of a hybrid too (object-relational like Oracle12c) which is really nice but I am not picking one over the other because again, it depends on whatever the application needs (more reads? more writes? etc.). Although, it appears most people may not have to make that choice anyway since most managed services are for Postgres these days.
 
@@ -181,6 +181,8 @@ My preferred terminal is [Wezterm](https://wezfurlong.org/wezterm/) since it sup
 
 ![My Setup](/images/setup.jpeg)
 
+> There are links to some of the things I mention here
+
 I use a dual [24" Huawei monitor](https://amzn.eu/d/6YVQrjL) setup and for over 2 years, it's been fine, I have looked at other monitors and even considered an ultrawide but this feels just right to me. I prefer a dual monitor setup because I prefer having two distinct "desktops", I know you can get close to this with something like Rectangle but I like full screen as you can see, hitting `Option + B` (via [Zap](https://usezap.sh)) to go to my browser affects nothing else, my terminal doesn't suddenly move or get minimized, other things like Discord, Arc, Spotify etc that are not for writing code live in the left monitor.
 
 I use a 2021 14" MacBook Pro (M1 Pro) and that's also been... fine, except for storage (my next laptop, perhaps in 2025?, would certainly not be 512GB). I have to run a Windows emulator sometimes for things like the Braid game because it won't run on my Mac natively (via Steam) or for accessing the Oracle Database server from home (I also don't know why this is broken on my Mac at home only but it works in the VM so...)
@@ -191,4 +193,26 @@ I have a pretty [unpopular dock](https://amzn.eu/d/ajHVJE7) from Anker that supp
 
 I have a Raspberry Pi 4 (8GB RAM) with a [case from DeskPi](https://deskpi.com/collections/frontpage/products/deskpi-pro-for-raspberry-pi-4) and a 512GB SSD that serves as a tiny home server to test things on and media storage.
 
-My keyboard of choice is the [Keychron K2 V2](https://www.keychron.com/products/keychron-k2-wireless-mechanical-keyboard?variant=40290116730969); aluminum build, full RGB and hot-swappable with Brown switches, I did not even know I got the highest spec until it arrived but whatever, it is a nice keyboard!
+My keyboard of choice is the [Keychron K2 V2](https://www.keychron.com/products/keychron-k2-wireless-mechanical-keyboard?variant=40290116730969); aluminum build, full RGB and hot-swappable with Brown switches, I did not even know I got the highest spec until it arrived but whatever, it is a nice keyboard! I pair that with a Logitech MX Master 3 (I believe).
+
+The [reMarkable 2](https://remarkable.com/store/configure/vertical/GB) is my recent attempt at getting into more reading and writing, quite pricey and has lesser features and storage than the Amazon Kindle Scribe so to be honest, this was purely based on design, it just looks and feels so good, not sure I would recommend to other people over the Scribe though, the Kindle store integration alone is better than having to buy books on [ebooks.com](https://ebooks.com).
+
+I also use the AirPods Max as my preferred headphones at work and AirPods Pro (2nd generation) when I am not at work; so, not often. Most people say it sounds like crap compared to Sony's headphones but I don't know, I tried about 2-3 Sony headphones and I couldn't quite stick with them (last was the XM3 I believe), they didn't sound bad but these also do not sound bad to me.
+
+## Apps
+
+![Dock](/images/dock.png)
+
+I use certain apps often on my computer and phone, here's a short list:
+
+- Octal - Hackernews client for mobile
+- [Stats.fm](https://stats.fm) - Viewing Spotify stats
+- [Linkvite](https://linkvite.io) (Beta) - Saving and organizing bookmarks
+- Obsidian - Note taking, todo lists etc
+- Arc - Internet browser, love the vertical tabs
+- TablePlus - Database stuff
+- [OrbStack](https://orbstack.dev) - A drop-in replacement for Docker Desktop
+- [Spacedrive](https://spacedrive.com) (Beta) - File manager, waiting for node sync stuff - I do not use it a lot for now
+- Infuse 7 - Media player (supports Jellyfin)
+
+> I will probably update this article with edits if I change my mind on any of these things
