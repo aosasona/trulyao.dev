@@ -78,9 +78,9 @@ a:hover {
 	font-size: .95rem;
 }
 .blog-content p > code {
-	padding: 0.15rem 0.45rem;
+	padding: 0.15rem 0.4rem;
 	font-family: "Courier New", Courier, monospace;
-	@apply text-emerald-400 bg-emerald-400/10 text-xs font-medium;
+	@apply text-emerald-400 bg-emerald-400/10 text-xs font-semibold rounded-sm border border-emerald-500;
 }
 .blog-content pre {
 	background-color: var(--secondary-dark) !important;
