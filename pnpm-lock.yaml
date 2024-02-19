@@ -12,10 +12,10 @@ dependencies:
     specifier: ^5.0.2
     version: 5.0.2(astro@3.5.0)(tailwindcss@3.3.5)
   '@types/react':
-    specifier: ^18.0.21
+    specifier: ^18.2.37
     version: 18.2.37
   '@types/react-dom':
-    specifier: ^18.0.6
+    specifier: ^18.2.15
     version: 18.2.15
   astro:
     specifier: ^3.5.0
@@ -24,16 +24,16 @@ dependencies:
     specifier: ^0.8.1
     version: 0.8.1
   react:
-    specifier: ^18.0.0
+    specifier: ^18.2.0
     version: 18.2.0
   react-dom:
-    specifier: ^18.0.0
+    specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
   tailwindcss:
-    specifier: ^3.0.24
+    specifier: ^3.3.5
     version: 3.3.5
   use-lanyard:
-    specifier: ^1.4.2
+    specifier: ^1.5.2
     version: 1.5.2(react-dom@18.2.0)(react@18.2.0)
 
 devDependencies:

@@ -13,14 +13,14 @@
   "dependencies": {
     "@astrojs/react": "^3.0.4",
     "@astrojs/tailwind": "^5.0.2",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
     "astro": "^3.5.0",
     "astro-icon": "^0.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "tailwindcss": "^3.0.24",
-    "use-lanyard": "^1.4.2"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.5",
+    "use-lanyard": "^1.5.2"
   },
   "devDependencies": {
     "@types/qs": "^6.9.7"
