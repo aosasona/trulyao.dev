@@ -20,10 +20,7 @@ FROM ghcr.io/aosasona/chimney:latest
 
 COPY --from=build /app/dist /var/www/html
 
-# Set a cache control header for static files to 30 days
-RUN echo $'\n\
-[headers]\n\
-"Cache-Control" = "public, max-age=2592000, immutable"' >> /etc/chimney/chimney.toml
+COPY chimney.toml /etc/chimney/chimney.toml
 
 EXPOSE 80
 
