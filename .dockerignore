@@ -1,0 +1,38 @@
+# flyctl launch added from .gitignore
+# build output
+**/dist
+**/.output
+
+# dependencies
+**/node_modules
+
+# logs
+**/npm-debug.log*
+**/yarn-debug.log*
+**/yarn-error.log*
+**/pnpm-debug.log*
+
+
+# environment variables
+**/.env
+**/.env.production
+
+# macOS-specific files
+**/.DS_Store
+
+**/brimble.json
+**/.astro
+
+# flyctl launch added from .idea/.gitignore
+# Default ignored files
+.idea/shelf
+.idea/workspace.xml
+# Editor-based HTTP Client requests
+.idea/httpRequests
+# Datasource local storage ignored files
+.idea/dataSources
+.idea/dataSources.local.xml
+
+# flyctl launch added from node_modules/.pnpm/tailwindcss@3.3.5/node_modules/tailwindcss/stubs/.gitignore
+!node_modules/.pnpm/tailwindcss@3.3.5/node_modules/tailwindcss/stubs/**/*
+fly.toml
