@@ -10,7 +10,12 @@ fallback_document = ""
 "X-Content-Type-Options" = "nosniff"
 "X-XSS-Protection" = "1; mode=block"
 
+[rewrites]
+"/x" = "/twitter"
+"/stack" = "/blog/my-stack-2024"
+
 [redirects]
 "/rick" = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 "/x" = "https://twitter.com/trulyao"
 "/github" = "https://github.com/aosasona"
+"/statsfm" = "https://stats.fm/trulyao"
