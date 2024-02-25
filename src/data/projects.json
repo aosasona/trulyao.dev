@@ -58,10 +58,10 @@
 	{
 		"name": "Hitlist",
 		"description": "Execute multiple commands with a single command.",
-		"url": "https://hitlist.dev",
+		"url": null,
 		"github_url": "github.com/hitlist-cli/cli",
 		"image": "hitlist.png",
-		"status": "UNMAINTAINED"
+		"status": "ARCHIVED"
 	},
 	{
 		"name": "PHP Router",
