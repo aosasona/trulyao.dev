@@ -6,7 +6,7 @@ export interface Props {
 	hideFooter?: boolean;
 }
 
-let { title, desc, hideFooter } = Astro.props;
+let { title, desc } = Astro.props;
 if (!title) title = "Ayodeji";
 if (!desc) desc = "Ayodeji - Software Developer";
 let keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
@@ -50,8 +50,6 @@ let keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python
 		<title>{title}</title>
 	</head>
 	<body class="antialiased">
-		<Nav />
 		<slot />
-		{!hideFooter && <Footer />}
 	</body>
 </html>
