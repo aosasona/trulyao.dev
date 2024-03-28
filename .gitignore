@@ -1,3 +1,4 @@
+!/public/vendor
 # build output
 dist/
 .output/
