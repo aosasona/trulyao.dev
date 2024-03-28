@@ -8,15 +8,15 @@ export interface Props {
 
 let { title, desc } = Astro.props;
 if (!title) title = "Ayodeji";
-if (!desc) desc = "Ayodeji - Software Developer";
-let keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+if (!desc) desc = "Learning, exploring and making software I'd use.";
+let keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#0a0a0a" />
+		<meta name="theme-color" content="#1b1a18" />
 		<meta name="description" content={desc} />
 		<meta name="keywords" content={keywords} />
 		<link rel="icon" type="image/x-icon" href="favicon.ico" />
@@ -33,19 +33,12 @@ let keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python
 		<meta property="twitter:description" content={desc} />
 		<meta property="twitter:image" content="/images/me.JPG" />
 
-		<meta property="og:site_name" content="" />
+		<meta property="og:site_name" content="Trulyao" />
 		<meta property="og:site" content="" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
 		<meta property="og:image" content="/images/me.JPG" />
 		<meta property="og:url" content="https://www.trulyao.dev" />
-
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-			crossorigin="anonymous"
-		/>
 
 		<title>{title}</title>
 	</head>
