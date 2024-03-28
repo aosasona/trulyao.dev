@@ -1,18 +1,20 @@
 ---
 import "../styles/global.css";
+import NavBar from "../components/NavBar.astro";
+
 export interface Props {
 	title: string;
 	desc?: string;
-	hideFooter?: boolean;
 }
 
 let { title, desc } = Astro.props;
 if (!title) title = "Ayodeji";
 if (!desc) desc = "Learning, exploring and making software I'd use.";
-let keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
+let keywords =
+	"ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,24 +27,43 @@ let keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript,
 		<meta property="og:url" content="https://www.trulyao.dev" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/me.JPG" />
+		<meta property="og:image" content="/images/meta.jpg" />
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://www.trulyao.dev" />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={desc} />
-		<meta property="twitter:image" content="/images/me.JPG" />
+		<meta property="twitter:image" content="/images/meta.jpg" />
 
 		<meta property="og:site_name" content="Trulyao" />
 		<meta property="og:site" content="" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/me.JPG" />
+		<meta property="og:image" content="/images/meta.jpg" />
 		<meta property="og:url" content="https://www.trulyao.dev" />
+
+		<script src="/vendor/alpine-persist.js" defer is:inline></script>
+		<script src="/vendor/alpine.js" defer is:inline></script>
+
+		<script is:inline>
+			const isDarkMode =
+				(localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark";
+
+			const prefersDarkMode =
+				!("theme" in localStorage) &&
+				window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+			if (isDarkMode || prefersDarkMode) {
+				document.documentElement.classList.add("dark");
+			} else {
+				document.documentElement.classList.remove("dark");
+			}
+		</script>
 
 		<title>{title}</title>
 	</head>
 	<body class="antialiased">
+		<NavBar />
 		<slot />
 	</body>
 </html>

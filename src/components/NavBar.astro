@@ -1,0 +1,52 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<style>
+  a {
+    display: inline-block;
+  }
+
+  [data-icon] {
+    color: theme("colors.secondary.600");
+    font-size: 1rem;
+  }
+
+  [data-icon="octicon:sun-24"] {
+    color: theme("colors.secondary.900");
+  }
+</style>
+
+<nav
+  class="w-screen border-b border-b-secondary-100 dark:border-b-secondary-800 flex items-center justify-between md:justify-center space-x-5 py-4 px-8"
+  x-data="{ theme: $persist('dark').as('theme') }"
+  x-init="$watch('theme', (theme) => document.documentElement.classList.toggle('dark', theme == 'dark'))"
+>
+  <div class="space-x-5">
+    <a href="/">Home</a>
+    <a href="/blog">Blog</a>
+    <a href="/projects">Projects</a>
+    <a href="/tools">Tools</a>
+  </div>
+
+  <button
+    x-cloak
+    class="h-8 aspect-square flex items-center justify-center border border-secondary-600 dark:border-0 dark:bg-secondary-100 rounded-full transition-all duration-300"
+  >
+    <div class="sr-only">Change color scheme</div>
+
+    <template x-if="theme == 'light'">
+      <div @click="theme = 'dark'">
+        <Icon name="octicon:moon-24" />
+      </div>
+    </template>
+
+    <template x-if="theme == 'dark'">
+      <div @click="theme = 'light'">
+        <Icon name="octicon:sun-24" />
+      </div>
+    </template>
+  </button>
+</nav>
+
+<script></script>

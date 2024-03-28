@@ -12,14 +12,25 @@
 	padding: 0;
 }
 
-html,
-body {
-	font-family: "Sudo Var", "Whois", Arial, Helvetica, sans-serif;
-	font-size: 0.9rem;
-	line-height: 1.35;
-	background-color: theme("bg.light");
-	color: theme("primary.text.light")
+[x-cloak] {
+	display: none !important;
 }
+
+
+html {
+	font-family: "Sudo Var", "Whois", Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	line-height: 1.35;
+	background-color: theme("colors.secondary.light");
+	color: theme("colors.primary.text.light");
+
+
+	&.dark {
+		background-color: theme("colors.secondary.dark");
+		color: theme("colors.primary.text.dark");
+	}
+}
+
 
 h1,
 h2,
@@ -28,4 +39,19 @@ h4,
 h5,
 h6 {
 	font-family: "TheGoodMonolith", "Whois", Arial, Helvetica, sans-serif;
+}
+
+
+a {
+	color: theme("colors.secondary.600");
+	text-decoration: none;
+
+	.dark & {
+		color: theme("colors.secondary.200");
+	}
+
+	&:hover {
+		text-decoration: underline;
+		text-underline-offset: 4px;
+	}
 }
