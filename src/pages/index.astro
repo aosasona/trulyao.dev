@@ -1,47 +1,35 @@
 ---
-import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("blog", ({ data }) => {
+	return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+let publishedPosts = posts?.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <Layout title="Ayodeji">
 	<main class="container">
-		<div class="flex items-center gap-4 mt-6 mb-4">
-			<img
-				src="/images/avatar.jpg"
-				alt="Avatar"
-				class="w-24 lg:w-28 aspect-square rounded"
-			/>
+		<SiteHeader />
 
-			<div class="space-y-1 lg:space-y-2 -mt-1">
-				<h1 class="text-3xl lg:text-4xl font-bold m-0">Ayodeji.</h1>
+		<section id="about-me">
+			<p>
+				Hiya! I am Ayodeji, a software developer and a software engineering
+				student somewhere in England. I am constantly learning and very keen on
+				crafting the type of software experience I'd like to use and you can
+				fall in love with - performant, intuitive, real-time, local-first and
+				out of your way. I am a big fan of statically-typed compiled langauge
+				and your friendly Neovim enjoyer.
+			</p>
+		</section>
 
-				<a href="mailto:ayodeji@trulyao.dev" class="text-sm inline-block">
-					ayodeji@trulyao.dev
-				</a>
-
-				<div class="flex gap-2.5">
-					<a href="https://github.com/aosasona" target="_blank">
-						<Icon name="tabler:brand-github" />
-					</a>
-
-					<a href="https://x.com/trulyao" target="_blank">
-						<Icon name="tabler:brand-twitter" />
-					</a>
-
-					<a href="https://twitch.tv/iamtrulyao" target="_blank">
-						<Icon name="tabler:brand-twitch" />
-					</a>
-				</div>
-			</div>
-		</div>
-
-		<p id="about">
-			Hiya! I am Ayodeji, a software developer and a software engineering
-			student somewhere in England. I am constantly learning and very keen on
-			crafting the type of software experience I'd like to use and you can fall
-			in love with - performant, intuitive, real-time, local-first and out of
-			your way. I am a big fan of statically-typed compiled langauge and your
-			friendly Neovim enjoyer.
-		</p>
+		<section class="mt-6" id="articles">
+			<h2 class="font-bold text-2xl">Articles</h2>
+		</section>
 	</main>
 </Layout>

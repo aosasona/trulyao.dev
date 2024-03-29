@@ -1,6 +1,4 @@
 ---
-import Header from "../components/Header.astro";
-import SectionHeader from "../components/SectionHeader.astro";
 import Layout from "../layouts/Layout.astro";
 
 import { getCollection } from "astro:content";
@@ -9,31 +7,52 @@ const posts = await getCollection("blog", ({ data }) => {
 	return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+let publishedPosts = posts?.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <Layout title="Blog">
 	<main>
-		<Header />
-		<SectionHeader>Blog</SectionHeader>
-		<p>A portal into my thoughts, experiences, ideas, visions, interests, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.</p>
+		<!-- <Header /> -->
+		<!-- <SectionHeader>Blog</SectionHeader> -->
+		<p>
+			A portal into my thoughts, experiences, ideas, visions, interests, and
+			more. What's the point of this? Well, I'm not sure, but here you go
+			anyhow.
+		</p>
 		<div class="flex flex-col gap-0 mt-6">
 			{
 				publishedPosts.map((post, index) => (
 					<div class="w-full flex items-center">
-						<time datetime={post.data.date.toISOString()} class="w-1/6 flex flex-col items-center justify-center pr-4 py-2">
-							<h1 class="text-xl font-bold font-souvenir">{post?.data.date.getDate().toString().padStart(2, "0")}</h1>
+						<time
+							datetime={post.data.date.toISOString()}
+							class="w-1/6 flex flex-col items-center justify-center pr-4 py-2"
+						>
+							<h1 class="text-xl font-bold font-souvenir">
+								{post?.data.date.getDate().toString().padStart(2, "0")}
+							</h1>
 							<p class="text-xs text-neutral-600 font-medium text-center">
-								{post?.data?.date?.toLocaleString("default", { month: "short" })}, {post?.data?.date?.getFullYear()}
+								{post?.data?.date?.toLocaleString("default", {
+									month: "short",
+								})}
+								, {post?.data?.date?.getFullYear()}
 							</p>
 						</time>
 						<div class="relative w-5/6 border-l border-l-emerald-500 pl-4 py-3">
 							<div class="absolute top-0 -left-1.5 w-3 aspect-square bg-emerald-500 rounded-full" />
-							<a href={`/blog/${post?.slug}`} class="text-xl font-semibold font-souvenir transition-all">
+							<a
+								href={`/blog/${post?.slug}`}
+								class="text-xl font-semibold font-souvenir transition-all"
+							>
 								{post?.data?.title}
 							</a>
-							<p class="text-sm text-neutral-600 font-medium leading-relaxed mt-2 lg:mt-1">{post?.data?.description}</p>
-							{index === publishedPosts?.length - 1 && <div class="absolute bottom-0 -left-1.5 w-3 aspect-square bg-emerald-500 rounded-full" />}
+							<p class="text-sm text-neutral-600 font-medium leading-relaxed mt-2 lg:mt-1">
+								{post?.data?.description}
+							</p>
+							{index === publishedPosts?.length - 1 && (
+								<div class="absolute bottom-0 -left-1.5 w-3 aspect-square bg-emerald-500 rounded-full" />
+							)}
 						</div>
 					</div>
 				))
