@@ -19,7 +19,7 @@ import { Icon } from "astro-icon/components";
 
 <nav
   class="w-screen border-b border-b-secondary-100 dark:border-b-secondary-800 flex items-center justify-between md:justify-center space-x-5 py-4 px-8"
-  x-data="{ theme: $persist('dark').as('theme') }"
+  x-data="{ theme: $persist('light').as('theme') }"
   x-init="$watch('theme', (theme) => document.documentElement.classList.toggle('dark', theme == 'dark'))"
 >
   <div class="space-x-5">

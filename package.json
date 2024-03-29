@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "@iconify-json/octicon": "^1.1.52",
+    "@iconify-json/tabler": "^1.1.109",
     "@types/qs": "^6.9.12",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0"

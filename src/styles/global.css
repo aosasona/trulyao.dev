@@ -19,10 +19,11 @@
 
 html {
 	font-family: "Sudo Var", "Whois", Arial, Helvetica, sans-serif;
-	font-size: 1rem;
-	line-height: 1.35;
+	font-size: 1.075rem;
+	line-height: 1.5;
 	background-color: theme("colors.secondary.light");
 	color: theme("colors.primary.text.light");
+	transition: background-color 0.3s, color 0.3s;
 
 
 	&.dark {
@@ -47,11 +48,16 @@ a {
 	text-decoration: none;
 
 	.dark & {
-		color: theme("colors.secondary.200");
+		color: theme("colors.secondary.300");
 	}
 
 	&:hover {
+		color: theme("colors.primary.400");
 		text-decoration: underline;
 		text-underline-offset: 4px;
+
+		.dark & {
+			color: theme("colors.primary.300");
+		}
 	}
 }

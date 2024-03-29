@@ -4,6 +4,17 @@ module.exports = {
 	darkMode: "class",
 	plugins: [require("tailwindcss/nesting")],
 	theme: {
+		container: {
+			center: true,
+			padding: "1.5rem",
+			screens: {
+				sm: "100%",
+				md: "90%",
+				lg: "848px",
+				xl: "848px",
+				"2xl": "848px",
+			},
+		},
 		extend: {
 			colors: {
 				primary: {
