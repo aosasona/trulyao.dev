@@ -45,7 +45,13 @@ h6 {
 
 a {
 	color: theme("colors.secondary.600");
-	text-decoration: none;
+	text-decoration: underline;
+	text-underline-offset: 4px;
+
+	nav &,
+	[no-underline] & {
+		text-decoration: none;
+	}
 
 	.dark & {
 		color: theme("colors.secondary.300");
@@ -53,8 +59,6 @@ a {
 
 	&:hover {
 		color: theme("colors.primary.400");
-		text-decoration: underline;
-		text-underline-offset: 4px;
 
 		.dark & {
 			color: theme("colors.primary.300");

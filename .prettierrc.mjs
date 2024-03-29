@@ -6,6 +6,16 @@ export default {
     {
       files: "*.astro",
       options: {
+        printWidth: 180,
+        wrap: "preserve",
+        useTabs: false,
+        trailingComma: "es5",
+        bracketSpacing: true,
+        jsxBracketSameLine: true,
+        arrowParens: "always",
+        proseWrap: "preserve",
+        endOfLine: "auto",
+        htmlWhitespaceSensitivity: "ignore",
         parser: "astro",
       },
     },

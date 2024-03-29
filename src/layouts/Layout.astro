@@ -5,13 +5,14 @@ import NavBar from "../components/NavBar.astro";
 export interface Props {
 	title: string;
 	desc?: string;
+	metaImage?: string;
 }
 
-let { title, desc } = Astro.props;
+let { title, desc, metaImage } = Astro.props;
 if (!title) title = "Ayodeji";
 if (!desc) desc = "Learning, exploring and making software I'd use.";
-let keywords =
-	"ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
+if (!metaImage) metaImage = "/images/meta.jpg";
+let keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
 ---
 
 <!doctype html>
@@ -27,37 +28,29 @@ let keywords =
 		<meta property="og:url" content="https://www.trulyao.dev" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/meta.jpg" />
+		<meta property="og:image" content={metaImage} />
 
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content="https://www.trulyao.dev" />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={desc} />
-		<meta property="twitter:image" content="/images/meta.jpg" />
+		<meta property="twitter:image" content={metaImage} />
 
 		<meta property="og:site_name" content="Trulyao" />
 		<meta property="og:site" content="" />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/meta.jpg" />
+		<meta property="og:image" content={metaImage} />
 		<meta property="og:url" content="https://www.trulyao.dev" />
 
 		<script src="/vendor/alpine-persist.js" defer is:inline></script>
 		<script src="/vendor/alpine.js" defer is:inline></script>
 
 		<script is:inline>
-			const isDarkMode =
-				(localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark";
+			const isDarkMode = (localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark";
+			const prefersDarkMode = !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-			const prefersDarkMode =
-				!("theme" in localStorage) &&
-				window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-			if (isDarkMode || prefersDarkMode) {
-				document.documentElement.classList.add("dark");
-			} else {
-				document.documentElement.classList.remove("dark");
-			}
+			document.documentElement.classList.toggle("dark", isDarkMode || prefersDarkMode);
 		</script>
 
 		<title>{title}</title>

@@ -5,31 +5,27 @@ import SiteHeader from "../components/SiteHeader.astro";
 import { getCollection } from "astro:content";
 
 const posts = await getCollection("blog", ({ data }) => {
-	return import.meta.env.PROD ? data.draft !== true : true;
+  return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-let publishedPosts = posts?.sort(
-	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
-);
+let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout title="Ayodeji">
-	<main class="container">
-		<SiteHeader />
+  <main class="container">
+    <SiteHeader />
 
-		<section id="about-me">
-			<p>
-				Hiya! I am Ayodeji, a software developer and a software engineering
-				student somewhere in England. I am constantly learning and very keen on
-				crafting the type of software experience I'd like to use and you can
-				fall in love with - performant, intuitive, real-time, local-first and
-				out of your way. I am a big fan of statically-typed compiled langauge
-				and your friendly Neovim enjoyer.
-			</p>
-		</section>
+    <section id="about-me">
+      <p>
+        Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a software engineering student somewhere in England. I am constantly learning and very keen on
+        crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan
+        of statically-typed compiled languages but I frequently (have to) dabble in <a href="/tools">other things</a> too. I write here from time to time (although mostly about software
+        and not as often as I'd like to) and I also stream some Fridays on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
+      </p>
+    </section>
 
-		<section class="mt-6" id="articles">
-			<h2 class="font-bold text-2xl">Articles</h2>
-		</section>
-	</main>
+    <section class="mt-6" id="articles">
+      <h2 class="font-bold text-2xl">Articles</h2>
+    </section>
+  </main>
 </Layout>
