@@ -2,17 +2,26 @@
 import type { CollectionEntry } from "astro:content";
 
 export interface Props {
+  isPreview?: boolean;
   post: CollectionEntry<"blog">;
 }
 
 const {
   post: { data, slug },
+  isPreview = false,
 } = Astro.props;
 ---
 
 <style>
   a {
     text-decoration: none;
+  }
+
+  time {
+    font-size: theme("fontSize.sm");
+    color: theme("colors.secondary.600");
+
+    @apply dark:text-secondary-400;
   }
 
   .post-title {
@@ -28,9 +37,7 @@ const {
     font-size: theme("fontSize.sm");
     color: theme("colors.secondary.400");
 
-    .dark & {
-      color: theme("colors.secondary.300");
-    }
+    @apply dark:text-secondary-400;
   }
 
   .tag {
@@ -47,19 +54,25 @@ const {
 
 <div class="space-y-2">
   <a href={"/blog/" + slug} class="post-title">{data.title}</a>
-  <p class="post-description">{data.description}</p>
+  <p class="post-description" class:list={isPreview ? "hidden" : ""}>{data.description}</p>
 
-  <div>
-    {
-      data.tags && data.tags.length > 0 ? (
-        <div class="space-x-2">
-          {data.tags.map((tag) => (
-            <a href={"/blog?" + new URLSearchParams({ tag })} class="tag">
-              {tag?.trim()}
-            </a>
-          ))}
-        </div>
-      ) : null
-    }
+  <div class="flex items-center justify-between">
+    <div>
+      {
+        data.tags && data.tags.length > 0 ? (
+          <div class="space-x-2">
+            {data.tags.map((tag) => (
+              <a href={"/blog?" + new URLSearchParams({ tag })} class="tag">
+                {tag?.trim()}
+              </a>
+            ))}
+          </div>
+        ) : null
+      }
+    </div>
+
+    <time datetime={data.date.toISOString()}>
+      {new Date(data.date).toLocaleDateString()}
+    </time>
   </div>
 </div>
