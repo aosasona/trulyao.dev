@@ -14,20 +14,22 @@ const blogCollection = defineCollection({
 
 const projectCollection = defineCollection({
 	type: "data",
-	schema: z.object({
-		name: z.string().regex(/^[A-Za-z0-9-]+$/),
-		description: z.string(),
-		website_url: z.string().url().optional(),
-		github_url: z.string().url().optional(),
-		image: z.string().regex(/\.(png|jpg|jpeg|gif)$/),
-		status: z.enum([
-			"active",
-			"unmaintained",
-			"archived",
-			"private",
-			"deprecated",
-		]),
-	}),
+	schema: z.array(
+		z.object({
+			name: z.string().regex(/^[A-Za-z0-9-\.\s]+$/),
+			description: z.string(),
+			website_url: z.string().url().optional().nullable(),
+			github_url: z.string().url().optional().nullable(),
+			image: z.string().regex(/\.(png|jpg|jpeg|gif)$/),
+			status: z.enum([
+				"active",
+				"unmaintained",
+				"archived",
+				"private",
+				"deprecated",
+			]),
+		}),
+	),
 });
 
 export const collections = {

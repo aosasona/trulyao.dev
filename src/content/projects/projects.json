@@ -3,7 +3,7 @@
 		"name": "Mirror",
 		"description": "Generate Typescript types from Go types during runtime.",
 		"url": null,
-		"github_url": "github.com/aosasona/mirror",
+		"github_url": "https://github.com/aosasona/mirror",
 		"image": "gots.png",
 		"status": "active"
 	},
@@ -11,7 +11,7 @@
 		"name": "Phlo",
 		"description": "A minimal and fast PHP framework for the modern web",
 		"url": null,
-		"github_url": "github.com/aosasona/phlo",
+		"github_url": "https://github.com/aosasona/phlo",
 		"image": "phlo.png",
 		"status": "active"
 	},
@@ -19,7 +19,7 @@
 		"name": "Plunk.gleam",
 		"description": "A library for sending emails and interacting with the Plunk API in Gleam.",
 		"url": "https://hexdocs.pm/plunk/",
-		"github_url": "github.com/aosasona/plunk.gleam",
+		"github_url": "https://github.com/aosasona/plunk.gleam",
 		"image": "plunk.png",
 		"status": "active"
 	},
@@ -43,7 +43,7 @@
 		"name": "Bazooka",
 		"description": "Find and terminate processes on your machine from your browser.",
 		"url": null,
-		"github_url": "github.com/aosasona/bazooka",
+		"github_url": "https://github.com/aosasona/bazooka",
 		"image": "bazooka.png",
 		"status": "active"
 	},
@@ -51,7 +51,7 @@
 		"name": "Jenzo",
 		"description": "Generate meta images on the fly using HTML templates.",
 		"url": null,
-		"github_url": "github.com/aosasona/jenzo",
+		"github_url": "https://github.com/aosasona/jenzo",
 		"image": "jenzo.png",
 		"status": "active"
 	},
@@ -59,7 +59,7 @@
 		"name": "Hitlist",
 		"description": "Execute multiple commands with a single command.",
 		"url": null,
-		"github_url": "github.com/hitlist-cli/cli",
+		"github_url": "https://github.com/hitlist-cli/cli",
 		"image": "hitlist.png",
 		"status": "unmaintained"
 	},
@@ -67,7 +67,7 @@
 		"name": "PHP Router",
 		"description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc",
 		"url": null,
-		"github_url": "github.com/aosasona/php-router",
+		"github_url": "https://github.com/aosasona/php-router",
 		"image": "phprouter.png",
 		"status": "archived"
 	}
