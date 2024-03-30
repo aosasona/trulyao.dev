@@ -1,43 +1,11 @@
 [
 	{
-		"name": "Gots",
-		"description": "Go types to Typescript types, easy peasy!",
+		"name": "Mirror",
+		"description": "Generate Typescript types from Go types during runtime.",
 		"url": null,
-		"github_url": "github.com/aosasona/gots",
+		"github_url": "github.com/aosasona/mirror",
 		"image": "gots.png",
-		"status": null
-	},
-	{
-		"name": "Plunk.gleam",
-		"description": "A library for sending emails and interacting with the Plunk API in Gleam.",
-		"url": "https://hexdocs.pm/plunk/",
-		"github_url": "github.com/aosasona/plunk.gleam",
-		"image": "plunk.png",
-		"status": null
-	},
-	{
-		"name": "Sidekyk",
-		"description": "Your personal AI sidekicks! (Shipped privately)",
-		"url": "https://x.com/trulyao/status/1704530681475305891?s=46&t=oZkX14dN7BKTYc0mRw0ryg",
-		"github_url": null,
-		"image": "sidekyk.png",
-		"status": "PRIVATE"
-	},
-	{
-		"name": "Reda",
-		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
-		"url": "https://reda.trulyao.dev",
-		"github_url": null,
-		"image": "reda.png",
-		"status": null
-	},
-	{
-		"name": "Bazooka",
-		"description": "Find and terminate processes on your machine from your browser.",
-		"url": null,
-		"github_url": "github.com/aosasona/bazooka",
-		"image": "bazooka.png",
-		"status": null
+		"status": "active"
 	},
 	{
 		"name": "Phlo",
@@ -45,7 +13,39 @@
 		"url": null,
 		"github_url": "github.com/aosasona/phlo",
 		"image": "phlo.png",
-		"status": "ALPHA"
+		"status": "active"
+	},
+	{
+		"name": "Plunk.gleam",
+		"description": "A library for sending emails and interacting with the Plunk API in Gleam.",
+		"url": "https://hexdocs.pm/plunk/",
+		"github_url": "github.com/aosasona/plunk.gleam",
+		"image": "plunk.png",
+		"status": "active"
+	},
+	{
+		"name": "Sidekyk",
+		"description": "Your personal AI sidekicks! (Shipped privately)",
+		"url": "https://x.com/trulyao/status/1704530681475305891?s=46&t=oZkX14dN7BKTYc0mRw0ryg",
+		"github_url": null,
+		"image": "sidekyk.png",
+		"status": "private"
+	},
+	{
+		"name": "Reda",
+		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
+		"url": "https://reda.trulyao.dev",
+		"github_url": null,
+		"image": "reda.png",
+		"status": "unmaintained"
+	},
+	{
+		"name": "Bazooka",
+		"description": "Find and terminate processes on your machine from your browser.",
+		"url": null,
+		"github_url": "github.com/aosasona/bazooka",
+		"image": "bazooka.png",
+		"status": "active"
 	},
 	{
 		"name": "Jenzo",
@@ -53,7 +53,7 @@
 		"url": null,
 		"github_url": "github.com/aosasona/jenzo",
 		"image": "jenzo.png",
-		"status": null
+		"status": "active"
 	},
 	{
 		"name": "Hitlist",
@@ -61,7 +61,7 @@
 		"url": null,
 		"github_url": "github.com/hitlist-cli/cli",
 		"image": "hitlist.png",
-		"status": "ARCHIVED"
+		"status": "unmaintained"
 	},
 	{
 		"name": "PHP Router",
@@ -69,6 +69,6 @@
 		"url": null,
 		"github_url": "github.com/aosasona/php-router",
 		"image": "phprouter.png",
-		"status": "ARCHIVED"
+		"status": "archived"
 	}
 ]

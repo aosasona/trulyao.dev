@@ -3,6 +3,7 @@ title: A gleamy exploration
 date: 25 September 2023
 description: I found this new programming language with the soul of Erlang's fault-tolerant concurrent runtime and the body of the type-safe, fast & highly beloved Rust, you know I just had to try it out.
 keywords: gleam, rust, OTP, BEAM, elixir, erlang, language exploration, programming, realtime
+tags: ["gleam", "BEAM", "programming language"]
 draft: false
 ---
 

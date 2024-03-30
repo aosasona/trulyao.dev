@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
+import ArticleListItem from "../components/ArticleListItem.astro";
 
 import { getCollection } from "astro:content";
 
@@ -9,6 +10,7 @@ const posts = await getCollection("blog", ({ data }) => {
 });
 
 let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+publishedPosts = publishedPosts.slice(0, 5);
 ---
 
 <Layout title="Ayodeji">
@@ -19,13 +21,21 @@ let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.v
       <p>
         Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a software engineering student somewhere in England. I am constantly learning and very keen on
         crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan
-        of statically-typed compiled languages but I frequently (have to) dabble in <a href="/tools">other things</a> too. I write here from time to time (although mostly about software
-        and not as often as I'd like to) and I also stream some Fridays on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
+        of statically-typed compiled languages but I frequently (have to) dabble in <a href="/tools">other things</a> too. I write here from time to time and I also stream some Fridays
+        on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
       </p>
     </section>
 
-    <section class="mt-6" id="articles">
-      <h2 class="font-bold text-2xl">Articles</h2>
+    <section class="my-6" id="articles">
+      <h2 class="font-bold text-2xl">Recent Articles</h2>
+
+      <div class="mt-4 space-y-4">
+        {publishedPosts.map((post) => <ArticleListItem post={post} />)}
+      </div>
+
+      <div class="flex w-full justify-end mt-4">
+        <a href="/blog" class="text-sm">See all articles &rarr;</a>
+      </div>
     </section>
   </main>
 </Layout>

@@ -3,6 +3,7 @@ title: What about Reda?
 date: 02 April 2023
 description: So, let's talk about Reda...
 keywords: reda, usereda, ayodeji, mobile app, books, reading, pdf, epub, library, open-source
+tags: ["product update"]
 draft: false
 ---
 

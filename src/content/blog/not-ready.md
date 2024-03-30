@@ -3,6 +3,7 @@ title: "!Ready"
 date: 20 August 2022
 description: What went wrong?
 keywords: frikax, product, software
+tags: ["product update"]
 draft: false
 ---
 

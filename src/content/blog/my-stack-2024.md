@@ -3,6 +3,7 @@ title: My Stack.
 date: 23 December 2023
 description: Things I use, will use and probably will continue to use.
 keywords: stack, rust, typescript, php, gleam, golang, language, programming
+tags: ["stack", "tools", "programming language"]
 draft: false
 ---
 

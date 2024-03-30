@@ -1,0 +1,65 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+export interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const {
+  post: { data, slug },
+} = Astro.props;
+---
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  .post-title {
+    font-size: theme("fontSize.lg");
+    font-weight: theme("fontWeight.bold");
+    color: theme("colors.primary.text.light");
+    text-decoration: none;
+
+    @apply dark:text-primary-text-dark;
+  }
+
+  .post-description {
+    font-size: theme("fontSize.sm");
+    color: theme("colors.secondary.400");
+
+    .dark & {
+      color: theme("colors.secondary.300");
+    }
+  }
+
+  .tag {
+    background-color: theme("colors.primary.200");
+    color: theme("colors.primary.600");
+    font-size: theme("fontSize.xs");
+    padding: theme("spacing.1") theme("spacing[1.5]");
+    border-radius: theme("borderRadius.sm");
+    user-select: none;
+
+    @apply dark:bg-secondary-900 dark:text-primary-200;
+  }
+</style>
+
+<div class="space-y-2">
+  <a href={"/blog/" + slug} class="post-title">{data.title}</a>
+  <p class="post-description">{data.description}</p>
+
+  <div>
+    {
+      data.tags && data.tags.length > 0 ? (
+        <div class="space-x-2">
+          {data.tags.map((tag) => (
+            <a href={"/blog?" + new URLSearchParams({ tag })} class="tag">
+              {tag?.trim()}
+            </a>
+          ))}
+        </div>
+      ) : null
+    }
+  </div>
+</div>

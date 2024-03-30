@@ -1,11 +1,12 @@
 ---
 import "../styles/global.css";
 import NavBar from "../components/NavBar.astro";
+import Footer from "../components/Footer.astro";
 
 export interface Props {
-	title: string;
-	desc?: string;
-	metaImage?: string;
+  title: string;
+  desc?: string;
+  metaImage?: string;
 }
 
 let { title, desc, metaImage } = Astro.props;
@@ -17,46 +18,47 @@ let keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript,
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#1b1a18" />
-		<meta name="description" content={desc} />
-		<meta name="keywords" content={keywords} />
-		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1b1a18" />
+    <meta name="description" content={desc} />
+    <meta name="keywords" content={keywords} />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://www.trulyao.dev" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={desc} />
-		<meta property="og:image" content={metaImage} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.trulyao.dev" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={metaImage} />
 
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://www.trulyao.dev" />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={desc} />
-		<meta property="twitter:image" content={metaImage} />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://www.trulyao.dev" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={desc} />
+    <meta property="twitter:image" content={metaImage} />
 
-		<meta property="og:site_name" content="Trulyao" />
-		<meta property="og:site" content="" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={desc} />
-		<meta property="og:image" content={metaImage} />
-		<meta property="og:url" content="https://www.trulyao.dev" />
+    <meta property="og:site_name" content="Trulyao" />
+    <meta property="og:site" content="" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={metaImage} />
+    <meta property="og:url" content="https://www.trulyao.dev" />
 
-		<script src="/vendor/alpine-persist.js" defer is:inline></script>
-		<script src="/vendor/alpine.js" defer is:inline></script>
+    <script src="/vendor/alpine-persist.js" defer is:inline></script>
+    <script src="/vendor/alpine.js" defer is:inline></script>
 
-		<script is:inline>
-			const isDarkMode = (localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark";
-			const prefersDarkMode = !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    <script is:inline>
+      const isDarkMode = (localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark";
+      const prefersDarkMode = !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-			document.documentElement.classList.toggle("dark", isDarkMode || prefersDarkMode);
-		</script>
+      document.documentElement.classList.toggle("dark", isDarkMode || prefersDarkMode);
+    </script>
 
-		<title>{title}</title>
-	</head>
-	<body>
-		<NavBar />
-		<slot />
-	</body>
+    <title>{title}</title>
+  </head>
+  <body>
+    <NavBar />
+    <slot />
+    <Footer />
+  </body>
 </html>

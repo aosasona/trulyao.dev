@@ -3,6 +3,7 @@ title: Attack
 date: 28 May 2022
 description: We got "attacked" for some reason I am yet to figure out and it seemed quite pointless at first but, was it really?
 keywords: security, product, attack, cybersecurity
+tags: ["product update", "rant"]
 draft: true
 ---
 

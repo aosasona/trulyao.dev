@@ -17,13 +17,9 @@ if (!post) {
 }
 
 let {
-	data: { title, description: desc, keywords, date },
+	data: { title, description: desc, tags, keywords, date},
 } = post;
 const { Content } = await post.render();
-
-if (!title) title = "Ayodeji";
-if (!desc) desc = "A portal into my thoughts, thoughts, experiences, ideas, visions, and more. What's the point of this? Well, I'm not sure, but here you go anyhow.";
-if (!keywords) keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
 
 const formattedDAte = new Date(date).toLocaleString("en-US", { dateStyle: "long" });
 const metaRawUrl = new URL("https://og.wyte.space/api/v1/images/trulyao/preview");
@@ -35,4 +31,3 @@ metaRawUrl.searchParams.append("vars", `title:${title},date:${formattedDAte}`);
 const metaUrl = metaRawUrl.href;
 
 ---
-

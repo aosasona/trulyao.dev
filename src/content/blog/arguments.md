@@ -3,6 +3,7 @@ title: Arguments
 date: 22 October 2022
 description: An argument about arguments...
 keywords: programming, coding, clean code, rant
+tags: ["rant"]
 draft: false
 ---
 

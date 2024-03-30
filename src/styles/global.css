@@ -19,7 +19,7 @@
 
 html {
 	font-family: "Sudo Var", "Whois", Arial, Helvetica, sans-serif;
-	font-size: 1.075rem;
+	font-size: 1.025rem;
 	line-height: 1.5;
 	background-color: theme("colors.secondary.light");
 	color: theme("colors.primary.text.light");
@@ -47,6 +47,7 @@ a {
 	color: theme("colors.secondary.600");
 	text-decoration: underline;
 	text-underline-offset: 4px;
+	cursor: pointer;
 
 	nav &,
 	[no-underline] & {
