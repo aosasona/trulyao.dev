@@ -6,19 +6,21 @@ import Footer from "../components/Footer.astro";
 export interface Props {
   title: string;
   desc?: string;
+  keywords?: string;
   metaImage?: string;
 }
 
-let { title, desc, metaImage } = Astro.props;
+let { title, desc, metaImage, keywords } = Astro.props;
 if (!title) title = "Ayodeji";
 if (!desc) desc = "Learning, exploring and making software I'd use.";
 if (!metaImage) metaImage = "/images/meta.jpg";
-let keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
+if (!keywords) keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1b1a18" />
     <meta name="description" content={desc} />
