@@ -18,6 +18,16 @@
 	display: none !important;
 }
 
+::selection {
+	background-color: theme("colors.primary.400");
+	color: theme("colors.primary.text.light");
+
+	.dark & {
+		background-color: theme("colors.primary.600");
+		color: theme("colors.primary.text.dark");
+	}
+}
+
 html {
 	font-family: var(--body-font-family), var(--alt-font-family), Arial, Helvetica,
 		sans-serif;
@@ -87,21 +97,59 @@ a {
 
 article.blog-content {
 	margin-top: theme("spacing.1");
+	--scrollbar-width: none;
 
 	h1 {
 		font-size: theme("fontSize.3xl");
 	}
 
-	h2,
+	h2 {
+		font-size: theme("fontSize.2xl");
+	}
+
 	h3,
 	h4,
 	h5,
 	h6 {
-		font-size: theme("fontSize.2xl");
+		font-size: theme("fontSize.xl");
 	}
 
 	& p {
 		padding-block: theme("padding[1.5]");
+	}
+
+	& p>code {
+		font-size: 0.8rem;
+		font-family: var(--body-font-family);
+		background-color: theme("colors.secondary.200");
+		border-radius: theme("borderRadius.md");
+		border: 1px solid theme("colors.secondary.600");
+		padding: theme("padding[0.5]") theme("padding[1]");
+
+		.dark & {
+			background-color: theme("colors.secondary.900");
+			border: 1px solid theme("colors.secondary.300");
+		}
+	}
+
+	& pre {
+		padding: theme("padding.2") theme("padding.3");
+		border-radius: theme("borderRadius.md");
+		border: 2px solid theme("colors.secondary.600");
+
+		/* remove horizontal scrollbar */
+		&::-webkit-scrollbar {
+			display: none;
+		}
+
+		.dark & {
+			border: 2px solid theme("colors.secondary.800");
+		}
+
+		& code {
+			font-family: var(--body-font-family);
+			background-color: transparent;
+		}
 	}
 
 	& blockquote {
