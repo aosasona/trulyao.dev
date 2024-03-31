@@ -5,6 +5,7 @@ import icon from "astro-icon";
 import solidJs from "@astrojs/solid-js";
 
 import gruvboxMaterialTheme from "./src/themes/gruvbox-material-dark.json";
+import externalize from "./src/plugins/externalize";
 
 // https://astro.build/config
 export default defineConfig({
@@ -13,6 +14,7 @@ export default defineConfig({
     shikiConfig: {
       theme: gruvboxMaterialTheme,
     },
+    rehypePlugins: [[externalize, { domain: "trulyao.dev" }]],
   },
   redirects: {
     "/live": {
