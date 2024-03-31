@@ -3,7 +3,7 @@ title: Good Enough
 date: 15 July 2022
 description: You probably know a lot about the impostor syndrome, but this article isn't really about it. Sorry to steer you in the wrong direction. This is about not being good enough, but also not what you expect.
 keywords: programming, burnout, impostor syndrome, good enough
-tag: ["rant", "life update"]
+tags: ["rant", "life update"]
 draft: false
 ---
 
