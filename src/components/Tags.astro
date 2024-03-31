@@ -1,0 +1,19 @@
+---
+export interface Props {
+  data: string[];
+}
+
+let { data: tags } = Astro.props;
+---
+<div>
+  {
+    tags && tags.length > 0 ? (
+      <div class="space-x-2">
+        {tags.map((tag) => (
+          <!-- prettier-ignore -->
+          <a href={"/blog?" + new URLSearchParams({ tag })} class="tag">{tag?.trim()}</a>
+        ))}
+      </div>
+    ) : null
+  }
+</div>
