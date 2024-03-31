@@ -99,6 +99,15 @@ article.blog-content {
 	margin-top: theme("spacing.1");
 	--scrollbar-width: none;
 
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin-top: theme("spacing.3");
+	}
+
 	h1 {
 		font-size: theme("fontSize.3xl");
 	}
@@ -136,6 +145,7 @@ article.blog-content {
 		padding: theme("padding.2") theme("padding.3");
 		border-radius: theme("borderRadius.md");
 		border: 2px solid theme("colors.secondary.600");
+		margin-block: theme("margin[2.5]");
 
 		/* remove horizontal scrollbar */
 		&::-webkit-scrollbar {
