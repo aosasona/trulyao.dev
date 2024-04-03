@@ -43,12 +43,12 @@ const {
 </style>
 
 <div class="space-y-2">
-  <a href={"/blog/" + slug} class="post-title">{data.title}</a>
+  <a href={"/posts/" + slug} class="post-title">{data.title}</a>
   <p class="post-description" class:list={isPreview ? "hidden" : ""}>{data.description}</p>
 
   <div class="flex items-center justify-between">
     <div>
-      <Tags data={data.tags} />
+      <Tags data={data.tags || []} />
     </div>
 
     <time datetime={data.date.toISOString()}>

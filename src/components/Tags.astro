@@ -11,7 +11,7 @@ let { data: tags } = Astro.props;
       <div class="space-x-2">
         {tags.map((tag) => (
           <!-- prettier-ignore -->
-          <a href={"/blog?" + new URLSearchParams({ tag })} class="tag">{tag?.trim()}</a>
+          <a href={"/tags?" + new URLSearchParams({ t: tag })} class="tag">{tag?.trim()}</a>
         ))}
       </div>
     ) : null
