@@ -142,18 +142,23 @@ article.blog-content {
 	}
 
 	& pre {
-		padding: theme("padding.2") theme("padding.3");
+		padding: theme("padding.2") theme("padding[3.5]");
 		border-radius: theme("borderRadius.md");
-		border: 2px solid theme("colors.secondary.600");
+		border: 2px solid theme("colors.primary.300");
 		margin-block: theme("margin[2.5]");
 
-		/* remove horizontal scrollbar */
 		&::-webkit-scrollbar {
 			display: none;
 		}
 
 		.dark & {
 			border: 2px solid theme("colors.secondary.800");
+
+			&.astro-code,
+			&.astro-code span {
+				color: var(--shiki-dark) !important;
+				background-color: var(--shiki-dark-bg) !important;
+			}
 		}
 
 		& code {

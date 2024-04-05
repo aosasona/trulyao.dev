@@ -2,7 +2,8 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import solidJs from "@astrojs/solid-js";
-import gruvboxMaterialTheme from "./src/themes/gruvbox-material-dark.json";
+import gruvboxMaterialDark from "./src/themes/gruvbox-material-dark.json";
+import gruvboxMaterialLight from "./src/themes/gruvbox-material-light.json";
 import externalize from "./src/plugins/externalize";
 
 import mdx from "@astrojs/mdx";
@@ -13,7 +14,12 @@ export default defineConfig({
 	integrations: [tailwind(), icon(), solidJs(), mdx()],
 	markdown: {
 		shikiConfig: {
-			theme: gruvboxMaterialTheme,
+			themes: {
+				light: gruvboxMaterialLight,
+				dark: gruvboxMaterialDark,
+			},
+			defaultColor: false,
+			wrap: true,
 		},
 		rehypePlugins: [
 			[
