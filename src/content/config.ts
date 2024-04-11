@@ -21,7 +21,7 @@ const projectCollection = defineCollection({
       website_url: z.string().url().optional().nullable(),
       github_url: z.string().url().optional().nullable(),
       image: z.string().regex(/\.(png|jpg|jpeg|gif)$/),
-      tags: z.array(z.string().optional().nullable()),
+      tags: z.array(z.string().optional()),
       status: z.enum([
         "active",
         "unmaintained",

@@ -1,8 +1,8 @@
 [
 	{
 		"name": "Chimney",
-		"description": "A fast and lightweight static file server (and more; in the future) aimed at making it easier to deploy & serve frontend applications/sites.",
-		"url": null,
+		"description": "A fast and lightweight static file server (and more in the future).",
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/chimney",
 		"image": "chimney.png",
 		"status": "wip",
@@ -13,7 +13,7 @@
 	{
 		"name": "Mirror",
 		"description": "Generate Typescript types from Go types during runtime (previously known as Gots).",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/mirror",
 		"image": "mirror.png",
 		"status": "active",
@@ -24,7 +24,7 @@
 	{
 		"name": "Phlo",
 		"description": "A minimal and fast PHP framework for the modern web",
-		"url": null,
+		"website_url": "https://phlo.fly.dev",
 		"github_url": "https://github.com/aosasona/phlo",
 		"image": "phlo.png",
 		"status": "active",
@@ -35,7 +35,7 @@
 	{
 		"name": "Jsorm",
 		"description": "A demo JSON explorer in Gleam and HTMX",
-		"url": "https://jsorm.wyte.space",
+		"website_url": "https://jsorm.wyte.space",
 		"github_url": "https://github.com/aosasona/jsorm",
 		"image": "jsorm.png",
 		"status": "active",
@@ -49,7 +49,7 @@
 	{
 		"name": "Vanity",
 		"description": "Vanity URL service for Go modules e.g. go.trulyao.dev/mirror",
-		"url": "https://go.trulyao.dev",
+		"website_url": "https://go.trulyao.dev",
 		"github_url": "https://github.com/aosasona/vanity",
 		"image": "vanity.png",
 		"status": "active",
@@ -60,7 +60,7 @@
 	{
 		"name": "Plunk.gleam",
 		"description": "A library for sending emails and interacting with the Plunk API in Gleam.",
-		"url": "https://hexdocs.pm/plunk/",
+		"website_url": "https://hexdocs.pm/plunk/",
 		"github_url": "https://github.com/aosasona/plunk.gleam",
 		"image": "plunk.png",
 		"status": "active",
@@ -71,7 +71,7 @@
 	{
 		"name": "Migrant",
 		"description": "In-code database migration tool for Gleam projects.",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/migrant",
 		"image": "migrant.png",
 		"status": "active",
@@ -82,7 +82,7 @@
 	{
 		"name": "Dotenv",
 		"description": "Load environment variables from .env (and other) files in Gleam.",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/dotenv",
 		"image": "dotenv.png",
 		"status": "active",
@@ -93,7 +93,7 @@
 	{
 		"name": "Falcon",
 		"description": "A smoother way to send HTTP requests with an axios-like interface.",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/falcon",
 		"image": "falcon.png",
 		"status": "active",
@@ -104,7 +104,7 @@
 	{
 		"name": "Reda",
 		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
-		"url": "https://reda.trulyao.dev",
+		"website_url": "https://reda.trulyao.dev",
 		"github_url": null,
 		"image": "reda.png",
 		"status": "unmaintained",
@@ -115,7 +115,7 @@
 	{
 		"name": "Sidekyk",
 		"description": "Your personal AI sidekicks!",
-		"url": "https://x.com/trulyao/status/1704530681475305891?s=46&t=oZkX14dN7BKTYc0mRw0ryg",
+		"website_url": "https://x.com/trulyao/status/1704530681475305891?s=46&t=oZkX14dN7BKTYc0mRw0ryg",
 		"github_url": null,
 		"image": "sidekyk.png",
 		"status": "private",
@@ -128,7 +128,7 @@
 	{
 		"name": "Bazooka",
 		"description": "Find and terminate processes on your machine from your browser.",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/bazooka",
 		"image": "bazooka.png",
 		"status": "active",
@@ -140,7 +140,7 @@
 	{
 		"name": "Jenzo",
 		"description": "Generate meta images on the fly using HTML templates.",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/jenzo",
 		"image": "jenzo.png",
 		"status": "active",
@@ -151,7 +151,7 @@
 	{
 		"name": "Hitlist",
 		"description": "Execute multiple commands with a single command.",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/hitlist-cli/cli",
 		"image": "hitlist.png",
 		"status": "archived",
@@ -162,7 +162,7 @@
 	{
 		"name": "PHP Router",
 		"description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc",
-		"url": null,
+		"website_url": null,
 		"github_url": "https://github.com/aosasona/php-router",
 		"image": "phprouter.png",
 		"status": "archived",
