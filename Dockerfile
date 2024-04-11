@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY package.json pnpm-lock.yaml ./
 
+COPY *.{mjs,cjs,json} ./
+
 RUN npm install -g pnpm@8.15.1 && \
   pnpm install
 
@@ -15,7 +17,7 @@ COPY public public
 
 RUN pnpm build
 
-FROM ghcr.io/aosasona/chimney:0.2.3
+FROM ghcr.io/aosasona/chimney:latest
 
 COPY --from=build /app/dist /var/www/html
 
