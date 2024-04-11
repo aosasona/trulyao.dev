@@ -11,6 +11,7 @@ import mdx from "@astrojs/mdx";
 // TODO: remove plugins
 // https://astro.build/config
 export default defineConfig({
+  site: "https://trulyao.dev",
   integrations: [tailwind(), icon(), solidJs(), mdx()],
   markdown: {
     shikiConfig: {

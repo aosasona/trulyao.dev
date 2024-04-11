@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/markdown-remark": "^4.3.2",
     "@astrojs/mdx": "^2.2.3",
+    "@astrojs/rss": "^4.0.5",
     "@astrojs/solid-js": "^4.0.1",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.5.4",
