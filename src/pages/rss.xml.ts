@@ -2,8 +2,9 @@ import rss from "@astrojs/rss";
 import { getCollection } from "astro:content";
 
 export async function GET(context: { site: string }) {
-  const blogPosts = await getCollection("blog");
-  const posts = blogPosts.map((post) => ({
+  const blog = await getCollection("blog", ({ data }) => data.draft !== true);
+
+  const posts = blog.map((post) => ({
     title: post.data.title,
     pubDate: post.data.date,
     description: post.data.description,

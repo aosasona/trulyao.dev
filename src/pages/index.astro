@@ -9,8 +9,10 @@ const posts = await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-publishedPosts = publishedPosts.slice(0, 5);
+const publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())?.slice(0, 4);
+
+const projects = await getCollection("projects");
+console.log(projects[0]);
 ---
 
 <Layout title="Ayodeji">
@@ -26,7 +28,7 @@ publishedPosts = publishedPosts.slice(0, 5);
       </p>
     </section>
 
-    <section class="my-6" id="articles">
+    <section class="mt-6" id="articles">
       <h2 class="font-bold text-2xl">Recent Articles</h2>
 
       <div class="mt-4 space-y-4">
@@ -34,13 +36,13 @@ publishedPosts = publishedPosts.slice(0, 5);
       </div>
 
       <div class="flex w-full justify-end mt-10">
-        <a href="/blog" class="text-sm">See all articles &rarr;</a>
+        <a href="/blog" class="text-sm">View all articles &rarr;</a>
       </div>
     </section>
 
-    <hr />
+    <hr class="my-8" />
 
-    <section class="mt-12" id="projects">
+    <section id="projects">
       <h2 class="font-bold text-2xl">Latest projects</h2>
 
       <div class="mt-4 space-y-4">
@@ -48,7 +50,7 @@ publishedPosts = publishedPosts.slice(0, 5);
       </div>
 
       <div class="flex w-full justify-end mt-10">
-        <a href="/blog" class="text-sm">See all articles &rarr;</a>
+        <a href="/projects" class="text-sm">View all projects &rarr;</a>
       </div>
     </section>
   </main>
