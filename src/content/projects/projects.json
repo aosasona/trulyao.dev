@@ -58,11 +58,11 @@
 		]
 	},
 	{
-		"name": "Plunk.gleam",
+		"name": "Crossbar",
 		"description": "A library for sending emails and interacting with the Plunk API in Gleam",
-		"website_url": "https://hexdocs.pm/plunk/",
-		"github_url": "https://github.com/aosasona/plunk.gleam",
-		"image": "plunk.png",
+		"website_url": "https://hexdocs.pm/crossbar",
+		"github_url": "https://github.com/aosasona/crossbar",
+		"image": "crossbar.png",
 		"status": "active",
 		"tags": [
 			"gleam"
@@ -110,6 +110,17 @@
 		"status": "unmaintained",
 		"tags": [
 			"typescript"
+		]
+	},
+	{
+		"name": "Plunk.gleam",
+		"description": "A library for sending emails and interacting with the Plunk API in Gleam",
+		"website_url": "https://hexdocs.pm/plunk/",
+		"github_url": "https://github.com/aosasona/plunk.gleam",
+		"image": "plunk.png",
+		"status": "active",
+		"tags": [
+			"gleam"
 		]
 	},
 	{
