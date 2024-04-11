@@ -2,17 +2,19 @@
 import Layout from "../layouts/Layout.astro";
 import SiteHeader from "../components/SiteHeader.astro";
 import ArticleListItem from "../components/ArticleListItem.astro";
+import ProjectPreviewListItem from "../components/ProjectPreviewListItem.astro";
 
 import { getCollection } from "astro:content";
+
+const MAX_LATEST = 5;
 
 const posts = await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-const publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())?.slice(0, 4);
+const publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())?.slice(0, MAX_LATEST);
 
-const projects = await getCollection("projects");
-console.log(projects[0]);
+const projects = (await getCollection("projects"))?.[0]?.data?.slice(0, MAX_LATEST);
 ---
 
 <Layout title="Ayodeji">
@@ -20,11 +22,9 @@ console.log(projects[0]);
     <SiteHeader />
 
     <section id="about-me">
+      <!-- prettier-ignore -->
       <p>
-        Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a software engineering student somewhere in England. I am constantly learning and very keen on
-        crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan
-        of statically-typed compiled languages but I frequently (have to) dabble in <a href="/tools">other things</a> too. I write here from time to time and I also stream some days
-        on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
+        Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a software engineering student somewhere in England. I am constantly learning and very keen on crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan of statically-typed compiled languages but I frequently (have to) dabble in <a href="/tools">other things</a> too. I write here from time to time and I also stream some days on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
       </p>
     </section>
 
@@ -40,13 +40,13 @@ console.log(projects[0]);
       </div>
     </section>
 
-    <hr class="my-8" />
+    <hr class="my-12" />
 
     <section id="projects">
       <h2 class="font-bold text-2xl">Latest projects</h2>
 
       <div class="mt-4 space-y-4">
-        {publishedPosts.map((post) => <ArticleListItem post={post} isPreview />)}
+        {projects.map((project) => <ProjectPreviewListItem project={project} />)}
       </div>
 
       <div class="flex w-full justify-end mt-10">

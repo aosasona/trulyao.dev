@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon/components";
+import Show from "../components/Show.astro";
+import Tags from "../components/Tags.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Project = CollectionEntry<"projects">["data"][number];
+
+export interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<style>
+  a,
+  [data-icon] {
+    display: inline-block;
+  }
+</style>
+
+<div class="space-y-1.5">
+  <h4>{project.name}</h4>
+  <p class="text-secondary-400 dark:text-secondary-300">{project.description}</p>
+
+  <div class="w-full flex justify-between items-center">
+    <Tags data={(project?.tags || []) as string[]} />
+
+    <div class="space-x-2">
+      <Show when={!!project.website_url}>
+        <a href={project.website_url ?? ""} target="_blank" title="Visit website"><Icon name="tabler:external-link" /></a>
+      </Show>
+
+      <Show when={!!project.github_url}>
+        <a href={project.github_url ?? ""} target="_blank" title="View on Github"><Icon name="tabler:brand-github" /></a>
+      </Show>
+    </div>
+  </div>
+</div>
