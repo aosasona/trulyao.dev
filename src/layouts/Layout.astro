@@ -45,8 +45,13 @@ if (!keywords) keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, 
     <script src="/vendor/alpine.js" defer is:inline></script>
 
     <script is:inline>
-      const isDarkMode = (localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark";
+      const isDarkMode = (localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark"; // @fixes: alpine-persist returns a string with quotes
       const prefersDarkMode = !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+      // @fixes: so that we don't have to tap twice to switch to light mode on first visit if the device prefers dark mode
+      if (prefersDarkMode && !(localStorage.getItem("theme") ?? "")) {
+        localStorage.setItem("theme", JSON.stringify("dark"));
+      }
 
       document.documentElement.classList.toggle("dark", isDarkMode || prefersDarkMode);
     </script>

@@ -37,5 +37,19 @@ publishedPosts = publishedPosts.slice(0, 5);
         <a href="/blog" class="text-sm">See all articles &rarr;</a>
       </div>
     </section>
+
+    <hr />
+
+    <section class="mt-12" id="projects">
+      <h2 class="font-bold text-2xl">Latest projects</h2>
+
+      <div class="mt-4 space-y-4">
+        {publishedPosts.map((post) => <ArticleListItem post={post} isPreview />)}
+      </div>
+
+      <div class="flex w-full justify-end mt-10">
+        <a href="/blog" class="text-sm">See all articles &rarr;</a>
+      </div>
+    </section>
   </main>
 </Layout>

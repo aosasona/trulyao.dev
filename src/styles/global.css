@@ -56,6 +56,18 @@ h6 {
 	font-weight: bold;
 }
 
+hr {
+	border: 0;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: theme("colors.secondary.100");
+	margin: theme("margin.3") 0;
+
+	.dark & {
+		border-top-color: theme("colors.secondary.800");
+	}
+}
+
 a {
 	color: theme("colors.secondary.600");
 	text-decoration: underline;
