@@ -1,7 +1,7 @@
 [
 	{
 		"name": "Chimney",
-		"description": "A fast and lightweight static file server (and more in the future).",
+		"description": "A fast and lightweight static file server (and more in the future)",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/chimney",
 		"image": "chimney.png",
@@ -12,7 +12,7 @@
 	},
 	{
 		"name": "Mirror",
-		"description": "Generate Typescript types from Go types during runtime (previously known as Gots).",
+		"description": "Generate Typescript types from Go types during runtime (previously known as Gots)",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/mirror",
 		"image": "mirror.png",
@@ -59,7 +59,7 @@
 	},
 	{
 		"name": "Plunk.gleam",
-		"description": "A library for sending emails and interacting with the Plunk API in Gleam.",
+		"description": "A library for sending emails and interacting with the Plunk API in Gleam",
 		"website_url": "https://hexdocs.pm/plunk/",
 		"github_url": "https://github.com/aosasona/plunk.gleam",
 		"image": "plunk.png",
@@ -70,7 +70,7 @@
 	},
 	{
 		"name": "Migrant",
-		"description": "In-code database migration tool for Gleam projects.",
+		"description": "In-code database migration tool for Gleam projects",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/migrant",
 		"image": "migrant.png",
@@ -81,7 +81,7 @@
 	},
 	{
 		"name": "Dotenv",
-		"description": "Load environment variables from .env (and other) files in Gleam.",
+		"description": "Load environment variables from .env (and other) files in Gleam",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/dotenv",
 		"image": "dotenv.png",
@@ -92,7 +92,7 @@
 	},
 	{
 		"name": "Falcon",
-		"description": "A smoother way to send HTTP requests with an axios-like interface.",
+		"description": "A smoother way to send HTTP requests with an axios-like interface",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/falcon",
 		"image": "falcon.png",
@@ -103,7 +103,7 @@
 	},
 	{
 		"name": "Reda",
-		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere.",
+		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere",
 		"website_url": "https://reda.trulyao.dev",
 		"github_url": null,
 		"image": "reda.png",
@@ -127,7 +127,7 @@
 	},
 	{
 		"name": "Bazooka",
-		"description": "Find and terminate processes on your machine from your browser.",
+		"description": "Find and terminate processes on your machine from your browser",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/bazooka",
 		"image": "bazooka.png",
@@ -139,7 +139,7 @@
 	},
 	{
 		"name": "Jenzo",
-		"description": "Generate meta images on the fly using HTML templates.",
+		"description": "Generate meta images on the fly using HTML templates",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/jenzo",
 		"image": "jenzo.png",
@@ -150,7 +150,7 @@
 	},
 	{
 		"name": "Hitlist",
-		"description": "Execute multiple commands with a single command.",
+		"description": "Execute multiple commands with a single command",
 		"website_url": null,
 		"github_url": "https://github.com/hitlist-cli/cli",
 		"image": "hitlist.png",

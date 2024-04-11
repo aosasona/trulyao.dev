@@ -43,7 +43,7 @@ const projects = (await getCollection("projects"))?.[0]?.data?.slice(0, MAX_LATE
     <hr class="my-12" />
 
     <section id="projects">
-      <h2 class="font-bold text-2xl">Latest projects</h2>
+      <h2 class="font-bold text-2xl">Featured projects</h2>
 
       <div class="mt-4 space-y-4">
         {projects.map((project) => <ProjectPreviewListItem project={project} />)}
