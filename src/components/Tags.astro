@@ -1,4 +1,5 @@
 ---
+import Show from "./Show.astro"
 export interface Props {
   data: string[];
 }
@@ -14,14 +15,12 @@ function slugifyTag(tag: string) {
 }
 ---
 <div>
-  {
-    tags && tags.length > 0 ? (
+  <Show when={tags && tags.length > 0 }>
       <div class="space-x-2">
         {tags.map((tag) => (
           <!-- prettier-ignore -->
           <a href={"/tags/" + slugifyTag(tag)} class="tag">{tag?.trim()}</a>
         ))}
       </div>
-    ) : null
-  }
+  </Show>
 </div>
