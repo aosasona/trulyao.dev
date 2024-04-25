@@ -135,6 +135,18 @@ article.blog-content {
 		font-size: theme("fontSize.xl");
 	}
 
+	ul,
+	ol {
+		margin-block: theme("margin[2.5]");
+
+		& li {
+			margin-block: theme("margin.1");
+			list-style-type: disc;
+			list-style-position: inside;
+		}
+	}
+
+
 	& p {
 		padding-block: theme("padding[1.5]");
 	}
