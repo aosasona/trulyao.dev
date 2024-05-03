@@ -1,3 +1,4 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/Iosevka/6.0.0/iosevka/iosevka.min.css");
 @import url("https://fonts.cdnfonts.com/css/whois");
 @import url("https://fonts.cdnfonts.com/css/sudo-var");
 @import url("https://fonts.cdnfonts.com/css/thegoodmonolith");
@@ -31,7 +32,7 @@
 html {
 	font-family: var(--body-font-family), var(--alt-font-family), Arial, Helvetica,
 		sans-serif;
-	font-size: 1.055rem;
+	font-size: 1.05rem;
 	line-height: 1.5;
 	background-color: theme("colors.secondary.light");
 	color: theme("colors.primary.text.light");
@@ -145,6 +146,7 @@ article.blog-content {
 			margin-block: theme("margin.1");
 			list-style-type: disc;
 			list-style-position: inside;
+			margin-inline: theme("margin.4");
 		}
 	}
 
