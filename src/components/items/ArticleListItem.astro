@@ -33,6 +33,11 @@ const {
     text-decoration: none;
 
     @apply dark:text-primary-text-dark;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: theme("textUnderlineOffset.2");
+    }
   }
 
   .post-description {
