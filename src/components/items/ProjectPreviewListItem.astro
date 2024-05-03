@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
-import Show from "../components/Show.astro";
-import Tags from "../components/Tags.astro";
+import Show from "@components/misc/Show.astro";
+import Tags from "@components/misc/Tags.astro";
 import type { CollectionEntry } from "astro:content";
 
 type Project = CollectionEntry<"projects">["data"][number];
@@ -21,7 +21,7 @@ const { project } = Astro.props;
 </style>
 
 <div class="space-y-1.5">
-  <h4>{project.name}</h4>
+  <h4 class="text-primary-text-light dark:text-primary-text-dark text-lg">{project.name}</h4>
   <p class="text-secondary-400 dark:text-secondary-300">{project.description}</p>
 
   <div class="w-full flex justify-between items-center">

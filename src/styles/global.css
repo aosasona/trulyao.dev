@@ -31,7 +31,7 @@
 html {
 	font-family: var(--body-font-family), var(--alt-font-family), Arial, Helvetica,
 		sans-serif;
-	font-size: 1.025rem;
+	font-size: 1.055rem;
 	line-height: 1.5;
 	background-color: theme("colors.secondary.light");
 	color: theme("colors.primary.text.light");
@@ -99,6 +99,8 @@ a {
 	padding: theme("spacing.1") theme("spacing[1.5]");
 	border-radius: theme("borderRadius.sm");
 	user-select: none;
+	text-transform: capitalize;
+
 
 	@apply dark:bg-secondary-900 dark:text-primary-200;
 

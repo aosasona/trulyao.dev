@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ArticleListItem from "../components/ArticleListItem.astro";
+import ArticleListItem from "../components/items/ArticleListItem.astro";
 
 import { getCollection } from "astro:content";
 
@@ -13,7 +13,11 @@ let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.v
 
 <Layout title="Blog">
   <main class="container">
-    <p class="mt-6">A portal into my thoughts, experiences, ideas, visions, interests, and more. What's the point of this? Well, I'm not sure, but here you go anyway.</p>
+    <p class="mt-6">
+      I write about things that pique my interest, things that I'm learning, thinking about, working on, or just frequently-asked questions. Some of my posts may or may not be
+      related to technology/software at all, but I hope you find them interesting regardless. I am trying to write a lot more often these days and when I do, I try to share them on
+      Twitter as well but you can subscribe to the <a href="/rss.xml">RSS feed</a> to find & read new articles in your favorite reader.
+    </p>
     <div class="mt-4 space-y-5">
       {publishedPosts.map((post) => <ArticleListItem post={post} />)}
     </div>

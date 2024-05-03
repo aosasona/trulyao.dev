@@ -1,6 +1,6 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Tags from "../components/Tags.astro";
+import Tags from "@components/misc/Tags.astro";
 
 export interface Props {
   isPreview?: boolean;
@@ -26,6 +26,7 @@ const {
   }
 
   .post-title {
+    font-family: var(--header-font-family), var(--alt-font-family), Arial, Helvetica, sans-serif;
     font-size: theme("fontSize.lg");
     font-weight: theme("fontWeight.bold");
     color: theme("colors.primary.text.light");

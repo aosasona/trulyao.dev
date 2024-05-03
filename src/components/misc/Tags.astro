@@ -16,7 +16,7 @@ function slugifyTag(tag: string) {
 ---
 <div>
   <Show when={tags && tags.length > 0 }>
-      <div class="space-x-2">
+      <div class="space-x-2 lg:space-x-1">
         {tags.map((tag) => (
           <!-- prettier-ignore -->
           <a href={"/tags/" + slugifyTag(tag)} class="tag">{tag?.trim()}</a>

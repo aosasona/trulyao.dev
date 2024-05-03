@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
-import NavBar from "../components/NavBar.astro";
-import Footer from "../components/Footer.astro";
+import NavBar from "@components/layout/NavBar.astro";
+import Footer from "@components/layout/Footer.astro";
 
 export interface Props {
   title: string;
@@ -30,31 +30,19 @@ if (!keywords) keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Ayodeji" />
     <meta property="og:site" content="https://trulyao.dev" />
-    <meta property="og:url" content="https://www.trulyao.dev" />
+    <meta property="og:url" content="https://trulyao.dev" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={desc} />
     <meta property="og:image" content={metaImage} />
 
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://www.trulyao.dev" />
+    <meta property="twitter:url" content="https://trulyao.dev" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={desc} />
     <meta property="twitter:image" content={metaImage} />
 
     <script src="/vendor/alpine-persist.js" defer is:inline></script>
     <script src="/vendor/alpine.js" defer is:inline></script>
-
-    <script is:inline>
-      const isDarkMode = (localStorage.getItem("theme") ?? "")?.replaceAll('"', "") === "dark"; // @fixes: alpine-persist returns a string with quotes
-      const prefersDarkMode = !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      // @fixes: so that we don't have to tap twice to switch to light mode on first visit if the device prefers dark mode
-      if (prefersDarkMode && !(localStorage.getItem("theme") ?? "")) {
-        localStorage.setItem("theme", JSON.stringify("dark"));
-      }
-
-      document.documentElement.classList.toggle("dark", isDarkMode || prefersDarkMode);
-    </script>
 
     <title>{title}</title>
   </head>
