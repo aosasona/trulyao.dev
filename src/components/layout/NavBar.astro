@@ -55,7 +55,7 @@ import { Icon } from "astro-icon/components";
 
     // Update the theme-color meta for the appropriate colors in the broweser
     const themeColor = document.querySelector("meta[name=theme-color]");
-    themeColor.setAttribute("content", isDarkMode ? "#1b1a18" : "#faf1da");
+    themeColor.setAttribute("content", isDarkMode ? "#1b1a18" : "#fdf9ef");
   }
 
   const persistedDarkModeFlag = (localStorage.getItem("theme") ?? "") === "dark";
