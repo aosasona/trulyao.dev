@@ -23,18 +23,10 @@ export default defineConfig({
       wrap: true,
     },
     rehypePlugins: [
-      [
-        externalize,
-        {
-          domain: "trulyao.dev",
-        },
-      ],
+      [externalize, { domain: "trulyao.dev" }],
     ],
   },
   redirects: {
-    "/live": {
-      status: 302,
-      destination: "https://twitch.tv/iamtrulyao",
-    },
+    "/live": { status: 302, destination: "https://twitch.tv/iamtrulyao" },
   },
 });
