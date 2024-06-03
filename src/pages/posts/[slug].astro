@@ -4,11 +4,10 @@ import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
 
 import Tags from "@components/misc/Tags.astro";
-import SiteHeader from "@components/layout/SiteHeader.astro";
 
 import H1 from "@components/mdx/H1.astro";
 import H2 from "@components/mdx/H2.astro";
-import CodeSnippet from "@components/mdx/CodeSnippet.astro";
+import { getMetaUrl } from "@lib/utils";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -30,34 +29,81 @@ let {
 } = post;
 const { Content, headings } = await post.render();
 
-// TODO: REMOVE
-console.log(headings);
-
-const formattedDAte = new Date(date).toLocaleString("en-US", { dateStyle: "long" });
-const metaRawUrl = new URL("https://og.wyte.space/api/v1/images/trulyao/preview");
-metaRawUrl.searchParams.append("variant", "blog");
-metaRawUrl.searchParams.append("style", "blog");
-metaRawUrl.searchParams.append("size", "medium");
-metaRawUrl.searchParams.append("vars", `title:${title},date:${formattedDAte}`);
-
-const metaUrl = metaRawUrl.href;
+const metaUrl = getMetaUrl(title, date);
 ---
 
 <style>
   [data-icon] {
     display: inline-block;
   }
+
+  .table-of-contents-container {
+    @apply bg-secondary-light dark:bg-secondary-dark border border-secondary-dark dark:border-primary-text-dark p-2 my-6 rounded-xl 2xl:fixed 2xl:w-80 2xl:top-20 2xl:right-8 2xl:overflow-hidden 2xl:z-10;
+
+    & .header {
+      @apply flex justify-between items-center bg-secondary-dark dark:bg-secondary-light text-secondary-light dark:text-secondary-dark px-4 py-2 rounded-md;
+
+      & h3 {
+        @apply text-lg 2xl:text-lg;
+      }
+    }
+
+    & .contents-list {
+      @apply h-80 2xl:h-96 overflow-y-auto;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
+
+      & ul {
+        @apply list-none space-y-1.5 pt-2 pb-4;
+
+        & li {
+          @apply px-3;
+        }
+      }
+    }
+  }
 </style>
 
 <Layout {title} {desc} metaImage={metaUrl} {keywords}>
   <main class="container mt-6">
-    <SiteHeader />
+    <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-normal">{title}</h1>
 
-    <h1 class="text-4xl md:text-5xl font-bold">{title}</h1>
-    <div class="my-3.5">
-      <Tags data={tags || []} />
-    </div>
+    <div class="my-3.5"><Tags data={tags || []} /></div>
+
     <p>Published on <u class="underline-offset-4">{date.toLocaleString("en-US", { dateStyle: "long" })}</u></p>
+
+    {
+      headings.length > 0 ? (
+        <div class="table-of-contents-container" x-data="{ showContent: true }">
+          <div class="header">
+            <h3>Table of contents</h3>
+            <button @click="showContent = !showContent" class="text-xl -mt-1" aria-label="Toggle table of contents">
+              <template x-if="!showContent">
+                <Icon name="octicon:chevron-down-16" />
+              </template>
+
+              <template x-if="showContent">
+                <Icon name="octicon:chevron-up-16" />
+              </template>
+            </button>
+          </div>
+
+          <template x-if="showContent">
+            <div class="contents-list">
+              <ul>
+                {headings.map((heading) => (
+                  <li style={`margin-left: ${(heading.depth - 1) * 1.25}rem`}>
+                    <a href={`#${heading.slug}`}>{heading.text}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </template>
+        </div>
+      ) : null
+    }
 
     <article class="blog-content">
       <Content components={{ h1: H1, h2: H2 }} />
@@ -71,7 +117,7 @@ const metaUrl = metaRawUrl.href;
 
     <!-- prettier-ignore -->
     <p class="mt-6 text-sm leading-loose bg-secondary-dark text-primary-text-dark dark:bg-primary-100 dark:text-secondary-900 px-6 py-4">
-      <b>Disclaimer</b>: This article represents my own opinions and experiences at the time of writing this articles. These opinions may change over time and my experiences could be different from yours, if you find anything that is objectively incorrect or that you need to discuss further, please contact me via any of the links in the header section of this website.
+      <b>Disclaimer</b>: This article represents my own opinions and experiences at the time of writing this articles. These opinions may change over time and my experiences could be different from yours, if you find anything that is objectively incorrect or that you need to discuss further, please contact me via any of the links in the header section of this website's homepage.
     </p>
   </main>
 </Layout>
