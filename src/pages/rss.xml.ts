@@ -9,13 +9,12 @@ export async function GET(context: { site: string }) {
     pubDate: post.data.date,
     description: post.data.description,
     link: `/posts/${post.slug}`,
-  })
-  );
+  }));
 
   return rss({
     title: "Ayodeji's Blog",
     description: "A blog about anything and everything I find interesting.",
     site: context.site,
-    items: posts
-  })
+    items: posts,
+  });
 }
