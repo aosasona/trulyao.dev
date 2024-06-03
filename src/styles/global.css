@@ -3,6 +3,10 @@
 @import url("https://fonts.cdnfonts.com/css/sudo-var");
 @import url("https://fonts.cdnfonts.com/css/thegoodmonolith");
 
+/* PrismJS Theme */
+@import url("./prism-gruvbox.css");
+
+
 :root {
 	--body-font-family: "Iosevka";
 	/* --body-font-family: "Sudo Var"; */
@@ -10,10 +14,10 @@
 	--header-font-family: "Sudo Var";
 	--alt-font-family: "Whois";
 
-	/* settings for sudo var */
-	/* --body-font-size: 1.10rem; */
-	/* --body-line-height: 1.65; */
-	/* --body-letter-spacing: .03rem; */
+	/* settings for sudo var
+	--body-font-size: 1.10rem;
+	--body-line-height: 1.65;
+	--body-letter-spacing: .03rem; */
 
 	/* settings for Iosevka */
 	--body-font-size: .9rem;
@@ -42,8 +46,7 @@
 }
 
 html {
-	font-family: var(--body-font-family), var(--alt-font-family), Arial, Helvetica,
-		sans-serif;
+	font-family:  var(--body-font-family), var(--alt-font-family), Arial, Helvetica, sans-serif;
 	font-size: var(--body-font-size);
 	line-height: var(--body-line-height);
 	letter-spacing: var(--body-letter-spacing);
@@ -186,8 +189,11 @@ article.blog-content {
 		}
 	}
 
+
 	& pre {
-		padding: theme("padding.3") theme("padding.3");
+		border: 1px solid theme("colors.primary.200");
+		border-radius: theme("borderRadius.md");
+		padding: theme("padding.2") theme("padding.3");
 		margin-block: theme("margin[2.5]");
 
 		&::-webkit-scrollbar {
@@ -195,11 +201,7 @@ article.blog-content {
 		}
 
 		.dark & {
-			&.astro-code,
-			&.astro-code span {
-				color: var(--shiki-dark) !important;
-				background-color: var(--shiki-dark-bg) !important;
-			}
+			border: 1px solid theme("colors.secondary.800");
 		}
 
 		& code {
@@ -233,3 +235,4 @@ article.blog-content {
     opacity: 0.8;
   }
 }
+

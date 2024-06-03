@@ -14,14 +14,7 @@ export default defineConfig({
   site: "https://trulyao.dev",
   integrations: [tailwind(), icon(), solidJs(), mdx()],
   markdown: {
-    shikiConfig: {
-      themes: {
-        light: gruvboxMaterialLight,
-        dark: gruvboxMaterialDark,
-      },
-      defaultColor: false,
-      wrap: false,
-    },
+    syntaxHighlight: "prism",
     rehypePlugins: [[externalize, { domain: "trulyao.dev" }]],
   },
   redirects: {
