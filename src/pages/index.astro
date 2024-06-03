@@ -5,6 +5,7 @@ import ArticleListItem from "@components/items/ArticleListItem.astro";
 import ProjectPreviewListItem from "@components/items/ProjectPreviewListItem.astro";
 
 import { getCollection } from "astro:content";
+import H1 from "@components/mdx/H1.astro";
 
 const MAX_LATEST = 5;
 
@@ -24,12 +25,12 @@ const projects = (await getCollection("projects"))?.[0]?.data?.slice(0, MAX_LATE
     <section id="about-me">
       <!-- prettier-ignore -->
       <p>
-        Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a software engineering student somewhere in England. I am constantly learning and very keen on crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan of statically-typed compiled languages but I frequently (have to) dabble in <a href="/tools">other things</a> too. I write here from time to time and I also stream infrequently on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
+        Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a software engineering student somewhere in England. I am constantly learning and very keen on crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan of statically-typed compiled languages, PHP and the BEAM but I frequently (have to) dabble in <a href="/tools">other things</a> too. I <a href="/blog">write</a> here from time to time and I also stream infrequently on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
       </p>
     </section>
 
     <section class="mt-6" id="articles">
-      <h2 class="font-bold text-2xl">Latest posts</h2>
+      <H1>Latest posts</H1>
 
       <div class="mt-4 space-y-4">
         {publishedPosts.map((post) => <ArticleListItem post={post} isPreview />)}
@@ -43,7 +44,7 @@ const projects = (await getCollection("projects"))?.[0]?.data?.slice(0, MAX_LATE
     <hr class="my-12" />
 
     <section id="projects">
-      <h2 class="font-bold text-2xl">Featured projects</h2>
+      <H1>Featured projects</H1>
 
       <div class="mt-4 space-y-4">
         {projects.map((project) => <ProjectPreviewListItem project={project} />)}

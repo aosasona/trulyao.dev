@@ -51,6 +51,23 @@ if (!keywords) keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, 
     <script src="/vendor/alpine-persist.js" defer is:inline></script>
     <script src="/vendor/alpine.js" defer is:inline></script>
 
+    <script>
+      const headers = document.querySelectorAll("[data-section-header]");
+      if (headers?.length > 1) {
+        headers.forEach((header) => {
+          header?.addEventListener("click", () => {
+            const slug = header.id;
+            const url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            const hash = `#${slug}`;
+            const fullUrl = `${url}${hash}`;
+
+            navigator.clipboard.writeText(fullUrl);
+            window.location.hash = slug;
+          });
+        });
+      }
+    </script>
+
     <title>{title}</title>
   </head>
   <body>

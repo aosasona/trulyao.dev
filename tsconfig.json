@@ -14,6 +14,9 @@
       ],
       "@static/*": [
         "src/static/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
       ]
     }
   }

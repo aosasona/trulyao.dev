@@ -20,11 +20,9 @@ export default defineConfig({
         dark: gruvboxMaterialDark,
       },
       defaultColor: false,
-      wrap: true,
+      wrap: false,
     },
-    rehypePlugins: [
-      [externalize, { domain: "trulyao.dev" }],
-    ],
+    rehypePlugins: [[externalize, { domain: "trulyao.dev" }]],
   },
   redirects: {
     "/live": { status: 302, destination: "https://twitch.tv/iamtrulyao" },

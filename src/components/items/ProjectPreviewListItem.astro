@@ -21,13 +21,13 @@ const { project } = Astro.props;
 </style>
 
 <div class="space-y-1.5">
-  <h4 class="text-primary-text-light dark:text-primary-text-dark text-lg">{project.name}</h4>
-  <p class="text-secondary-400 dark:text-secondary-300 text-sm">{project.description}</p>
+  <h2 class="text-primary-text-light dark:text-primary-text-dark text-xl">{project.name}</h2>
+  <p class="text-secondary-400 dark:text-secondary-300">{project.description}</p>
 
   <div class="w-full flex justify-between items-center">
     <Tags data={(project?.tags || []) as string[]} />
 
-    <div class="space-x-2">
+    <div class="text-lg space-x-2">
       <Show when={!!project.website_url}>
         <a href={project.website_url ?? ""} target="_blank" title="Visit website"><Icon name="tabler:external-link" /></a>
       </Show>

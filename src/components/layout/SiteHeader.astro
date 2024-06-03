@@ -1,8 +1,6 @@
 ---
 import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
-// TODO: fix this
-// import avatar from "@static/avatar.png";
 ---
 
 <div class="flex items-center gap-4 my-6">
@@ -26,8 +24,12 @@ import { Image } from "astro:assets";
         <Icon name="tabler:brand-twitch" />
       </a>
 
-      <a href="/rss.xml" title="RSS">
+      <a href="/rss.xml" title="RSS Feed">
         <Icon name="tabler:rss" />
+      </a>
+
+      <a href="/feed.json" title="JSONFeed" class="text-2xl -mt-1">
+        <Icon name="tabler:json" />
       </a>
     </div>
   </div>
