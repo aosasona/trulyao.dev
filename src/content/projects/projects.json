@@ -59,7 +59,7 @@
 	},
 	{
 		"name": "Crossbar",
-		"description": "A library for sending emails and interacting with the Plunk API in Gleam",
+		"description": "A tiny data validation library in pure Gleam",
 		"website_url": "https://hexdocs.pm/crossbar",
 		"github_url": "https://github.com/aosasona/crossbar",
 		"image": "crossbar.png",

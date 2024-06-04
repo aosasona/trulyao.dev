@@ -16,8 +16,8 @@
 	--alt-font-family: "Whois";
 
 	--body-font-size: .9rem;
-	--body-line-height: 1.75;
-	--body-letter-spacing: .075rem;
+	--body-line-height: 1.65;
+	--body-letter-spacing: .055rem;
 
 	&.dark {
 		--foreground-color: theme("colors.primary.text.dark");

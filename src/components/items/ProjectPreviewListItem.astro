@@ -27,7 +27,7 @@ const { project } = Astro.props;
   <div class="w-full flex justify-between items-center">
     <Tags data={(project?.tags || []) as string[]} />
 
-    <div class="text-lg space-x-2">
+    <div class="text-xl space-x-2.5">
       <Show when={!!project.website_url}>
         <a href={project.website_url ?? ""} target="_blank" title="Visit website"><Icon name="tabler:external-link" /></a>
       </Show>
