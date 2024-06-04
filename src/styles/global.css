@@ -17,7 +17,7 @@
 
 	--body-font-size: .9rem;
 	--body-line-height: 1.65;
-	--body-letter-spacing: .055rem;
+	--body-letter-spacing: .025rem;
 
 	&.dark {
 		--foreground-color: theme("colors.primary.text.dark");

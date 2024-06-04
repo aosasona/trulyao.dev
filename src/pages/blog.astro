@@ -22,7 +22,7 @@ let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.v
     <p class="mb-8">
       I write about things that pique my interest, things that I'm learning, thinking about, working on, or just frequently-asked questions. Some of my posts may or may not be related to technology/software at all, but I hope you find them interesting regardless. I am trying to write a lot more often these days and when I do, I try to share them on Twitter as well but you can subscribe to the <a href="/rss.xml">RSS feed</a> or <a href="/feed.json">JSONFeed</a> to find & read new articles in your favorite reader.
     </p>
-    <div class="mt-4 space-y-5">
+    <div class="mt-4 space-y-6">
       {publishedPosts.map((post) => <ArticleListItem post={post} />)}
     </div>
   </main>
