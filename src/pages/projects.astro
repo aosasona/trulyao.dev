@@ -1,0 +1,24 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SiteHeader from "@components/layout/SiteHeader.astro";
+import ProjectPreviewListItem from "@components/items/ProjectPreviewListItem.astro";
+
+import { getCollection } from "astro:content";
+
+const projects = (await getCollection("projects"))?.[0]?.data;
+---
+
+<Layout title="Ayodeji">
+  <main class="container">
+    <SiteHeader />
+
+    <!-- prettier-ignore -->
+    <p>
+      During my free time and outside my day job, I work on a ton of side projects (and unsuccessfully so far; proper products). I am very interested in making developer tools and trying out new (to me) technologies to see things from a different perspective and fill in the blanks for things I may not know from working with my usual stack. Here are some of the things I have handpicked but you can find a lot more of them on my <a href="https://github.com/aosasona" target="_blank">GitHub</a>.
+    </p>
+
+    <div class="mt-4 space-y-6">
+      {projects.map((project) => <ProjectPreviewListItem project={project} />)}
+    </div>
+  </main>
+</Layout>
