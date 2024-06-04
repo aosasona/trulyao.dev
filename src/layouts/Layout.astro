@@ -8,9 +8,11 @@ export interface Props {
   desc?: string;
   keywords?: string;
   metaImage?: string;
+  pubDate?: Date;
+  tags?: string[];
 }
 
-let { title, desc, metaImage, keywords } = Astro.props;
+let { title, desc, metaImage, keywords, tags = [], pubDate = null } = Astro.props;
 if (!title) title = "Ayodeji";
 if (!desc) desc = "Learning, exploring and making software I'd use.";
 if (!metaImage) metaImage = "/images/meta.jpg";
@@ -41,6 +43,9 @@ if (!keywords) keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, 
     <meta property="twitter:description" content={desc} />
     <meta property="twitter:image" content={metaImage} />
 
+    {!!pubDate ? <meta name="article:published_time" content={pubDate.toISOString()} /> : null}
+    {tags?.map((tag) => <meta name="article:tag" content={tag} />)}
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Iosevka/6.0.0/iosevka/iosevka.min.css"
@@ -48,7 +53,7 @@ if (!keywords) keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, 
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/Iosevka/6.0.0/iosevka/iosevka.min.css" rel="stylesheet" />
+    <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet" />
 
     <script src="/vendor/alpine-persist.js" defer is:inline></script>
     <script src="/vendor/alpine.js" defer is:inline></script>

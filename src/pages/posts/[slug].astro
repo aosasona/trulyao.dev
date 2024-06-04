@@ -8,6 +8,7 @@ import Tags from "@components/misc/Tags.astro";
 import H1 from "@components/mdx/H1.astro";
 import H2 from "@components/mdx/H2.astro";
 import { getMetaUrl } from "@lib/utils";
+import Code from "@components/mdx/Code.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -66,13 +67,13 @@ const metaUrl = getMetaUrl(title, date);
   }
 </style>
 
-<Layout {title} {desc} metaImage={metaUrl} {keywords}>
+<Layout {title} {desc} metaImage={metaUrl} {keywords} {tags} pubDate={date}>
   <main class="container mt-6">
     <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-normal">{title}</h1>
 
     <div class="my-3.5"><Tags data={tags || []} /></div>
 
-    <p>Published on <u class="underline-offset-4">{date.toLocaleString("en-US", { dateStyle: "long" })}</u></p>
+    <p>Published on <b>{date.toLocaleString("en-US", { dateStyle: "long" })}</b></p>
 
     {
       headings.length > 0 ? (
@@ -90,23 +91,21 @@ const metaUrl = getMetaUrl(title, date);
             </button>
           </div>
 
-          <template x-if="showContent">
-            <div class="contents-list">
-              <ul>
-                {headings.map((heading) => (
-                  <li style={`margin-left: ${(heading.depth - 1) * 1.25}rem`}>
-                    <a href={`#${heading.slug}`}>{heading.text}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </template>
+          <div class="contents-list" x-show="showContent">
+            <ul>
+              {headings.map((heading) => (
+                <li style={`margin-left: ${(heading.depth - 1) * 1.25}rem`}>
+                  <a href={`#${heading.slug}`}>{heading.text}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       ) : null
     }
 
     <article class="blog-content">
-      <Content components={{ h1: H1, h2: H2 }} />
+      <Content components={{ h1: H1, h2: H2, pre: Code }} />
     </article>
 
     <p class="mt-4">

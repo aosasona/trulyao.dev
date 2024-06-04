@@ -1,28 +1,30 @@
-@import url("https://cdnjs.cloudflare.com/ajax/libs/Iosevka/6.0.0/iosevka/iosevka.min.css");
 @import url("https://fonts.cdnfonts.com/css/whois");
-@import url("https://fonts.cdnfonts.com/css/sudo-var");
-@import url("https://fonts.cdnfonts.com/css/thegoodmonolith");
+@import url('https://fonts.cdnfonts.com/css/kay-pho-du');
 
 /* PrismJS Theme */
 @import url("./prism-gruvbox.css");
 
 
 :root {
-	--body-font-family: "Iosevka";
-	/* --body-font-family: "Sudo Var"; */
-	/* --header-font-family: "TheGoodMonolith"; */
-	--header-font-family: "Sudo Var";
+	--foreground-color: theme("colors.primary.text.light");
+	--background-color: theme("colors.secondary.light");
+
+	--highlight-border-color: theme("colors.primary.200");
+
+	--body-font-family: "Iosevka Web";
+	--header-font-family: "Kay Pho Du";
 	--alt-font-family: "Whois";
 
-	/* settings for sudo var
-	--body-font-size: 1.10rem;
-	--body-line-height: 1.65;
-	--body-letter-spacing: .03rem; */
-
-	/* settings for Iosevka */
 	--body-font-size: .9rem;
 	--body-line-height: 1.75;
 	--body-letter-spacing: .075rem;
+
+	&.dark {
+		--foreground-color: theme("colors.primary.text.dark");
+		--background-color: theme("colors.secondary.dark");
+
+		--highlight-border-color: theme("colors.secondary.800");
+	}
 }
 
 * {
@@ -55,8 +57,8 @@ html {
 	transition: background-color 0.3s, color 0.3s;
 
 	&.dark {
-		background-color: theme("colors.secondary.dark");
-		color: theme("colors.primary.text.dark");
+		background-color: var(--background-color);
+		color: var(--foreground-color);
 	}
 }
 
@@ -111,12 +113,12 @@ a {
 	background-color: theme("colors.primary.200");
 	color: theme("colors.primary.600");
 	font-size: theme("fontSize.xs");
-	padding: theme("spacing.1") theme("spacing[1.5]");
+	padding: theme("spacing.1") theme("spacing.2");
 	border-radius: theme("borderRadius.sm");
 	user-select: none;
 
 
-	@apply dark:bg-secondary-900 dark:text-primary-200;
+	@apply dark:bg-secondary-900 dark:text-primary-100;
 
 	a& {
 		text-decoration: none;
@@ -190,24 +192,40 @@ article.blog-content {
 	}
 
 
-	& pre {
-		border: 1px solid theme("colors.primary.200");
+	& pre, .code-block {
+		position: relative;
+		font-size: 0.95rem;
+		background: theme("colors.primary.100");
+		border: 1px solid var(--highlight-border-color);
 		border-radius: theme("borderRadius.md");
-		padding: theme("padding.2") theme("padding.3");
-		margin-block: theme("margin[2.5]");
+		border-top-left-radius: 0;
+		padding: theme("padding[2.5]") theme("padding.4");
+		overflow: auto;
 
 		&::-webkit-scrollbar {
 			display: none;
 		}
 
 		.dark & {
-			border: 1px solid theme("colors.secondary.800");
+			@apply bg-secondary-950/50;
 		}
 
 		& code {
 			font-family: var(--body-font-family);
 			background-color: transparent;
 		}
+	}
+
+	& .code-language {
+		width: max-content;
+		color: var(--foreground-color);
+		background-color: var(--highlight-border-color);
+		font-size: 0.9rem;
+
+		padding-inline: theme("padding.4");
+		margin-top: theme("margin[2.5]");
+		border-radius: theme("borderRadius.md") theme("borderRadius.md") 0 0;
+		user-select: none;
 	}
 
 	& blockquote {

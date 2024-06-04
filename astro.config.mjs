@@ -2,8 +2,6 @@ import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import solidJs from "@astrojs/solid-js";
-import gruvboxMaterialDark from "./src/themes/gruvbox-material-dark.json";
-import gruvboxMaterialLight from "./src/themes/gruvbox-material-light.json";
 import externalize from "./src/plugins/externalize";
 
 import mdx from "@astrojs/mdx";
