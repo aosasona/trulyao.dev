@@ -10,7 +10,10 @@ import H1 from "@components/mdx/H1.astro";
 import ProjectPreviewListItem from "@components/items/ProjectPreviewListItem.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
+  const posts = await getCollection("blog", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+
   const projects = (await getCollection("projects"))?.[0]?.data;
 
   const postTags = posts.map((post) => post.data.tags).flat();
