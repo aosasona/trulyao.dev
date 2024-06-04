@@ -1,0 +1,43 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ArticleListItem from "@components/items/ArticleListItem.astro";
+import SiteHeader from "@components/layout/SiteHeader.astro";
+import Tags from "@components/misc/Tags.astro";
+
+import { getCollection } from "astro:content";
+import { slugify } from "@lib/utils";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  const tags = [...new Set(posts.map((post) => post.data.tags).flat())]; // Collect all tags across all posts, this could ideally be better if tags had their own collection
+  return tags.map((tag) => ({
+    params: { slug: slugify(tag ?? "") },
+    props: {
+      tag: tag,
+      posts: posts.filter((post) => post?.data?.tags?.includes(tag ?? "")),
+      otherTags: tags,
+    },
+  }));
+}
+
+let { tag, posts, otherTags } = Astro.props;
+---
+
+<Layout title={`Tag: ${tag}`}>
+  <main class="container">
+    <SiteHeader />
+
+    <p>Showing results for tag: <strong>{tag}</strong></p>
+
+    <div class="my-6">
+      <div class="sticky-section-label">All tags</div>
+      <div class="border border-[var(--highlight-border-color)] px-3 py-2 rounded-md rounded-tl-none">
+        <Tags data={otherTags as string[]} />
+      </div>
+    </div>
+
+    <div class="mt-4 space-y-5">
+      {posts.map((post) => <ArticleListItem post={post} />)}
+    </div>
+  </main>
+</Layout>

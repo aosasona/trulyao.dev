@@ -127,6 +127,18 @@ a {
 	}
 }
 
+.sticky-section-label {
+	width: max-content;
+	color: var(--foreground-color);
+	background-color: var(--highlight-border-color);
+	font-size: 0.9rem;
+
+	padding-inline: theme("padding.4");
+	margin-top: theme("margin[2.5]");
+	border-radius: theme("borderRadius.md") theme("borderRadius.md") 0 0;
+	user-select: none;
+}
+
 article.blog-content {
 	margin-top: theme("spacing.1");
 	--scrollbar-width: none;
@@ -218,17 +230,6 @@ article.blog-content {
 		}
 	}
 
-	& .code-language {
-		width: max-content;
-		color: var(--foreground-color);
-		background-color: var(--highlight-border-color);
-		font-size: 0.9rem;
-
-		padding-inline: theme("padding.4");
-		margin-top: theme("margin[2.5]");
-		border-radius: theme("borderRadius.md") theme("borderRadius.md") 0 0;
-		user-select: none;
-	}
 
 	& blockquote {
 		font-size: 0.925rem;

@@ -5,7 +5,7 @@ const langauge = html?.match(/class="language-(.*?)"/)?.[1] || "unknown";
 ---
 
 <div class="my-3">
-  <div class="code-language">{langauge}</div>
+  <div class="sticky-section-label">{langauge}</div>
   <div class="code-block">
     <Fragment set:html={html} />
   </div>
