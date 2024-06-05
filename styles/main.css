@@ -1,95 +1,36 @@
 @import url(https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900);
-@import url(https://fonts.googleapis.com/css?family=Staatliches:100,200,300,400,500,600,700,800,900);
-@import url(https://fonts.googleapis.com/css?family=Bebas+Neue:100,200,300,400,500,600,700,800,900);
-@import url(https://fonts.googleapis.com/css?family=Albert+Sans:100,200,300,400,500,600,700,800,900);
 
-:root {
-  --primary-color: #505050;
-  --bg-color: #090909;
-  --slight-white: #ffffff;
-  --faded: #ffffff16;
-}
 * {
+  font-family: "Poppins", "Helvetica Neue", Arial, Helvetica, sans-serif;
   margin: 0;
   border: 0;
   box-sizing: border-box !important;
+  font-weight: 200;
   scroll-behavior: smooth !important;
-  letter-spacing: 0.12em;
+  line-height: 1.75em !important;
+  letter-spacing: 0.06em !important;
   /* border: 1px solid red !important; */
 }
 html,
 body {
-  font-family: "Staatliches", "Bebas Neue", "Poppins", "Helvetica Neue", Arial,
-    Helvetica, sans-serif;
-  line-height: 1.34em !important;
-  background-color: var(--bg-color);
-  color: var(--primary-color);
-}
-a {
-  color: #909090;
-  text-decoration-line: underline !important;
-  text-decoration-style: solid !important;
-  text-underline-offset: 2px;
-}
-a:hover {
-  color: white;
+  background: #1a1a1a;
+  color: #707070;
+  /* background-image: url(/images/bg.svg);
+  background-repeat: no-repeat !important;
+  background-attachment: fixed !important;
+  background-size: cover;
+  background-position: center; */
 }
 li a:hover {
-  color: var(--slight-white);
-}
-img {
-  filter: brightness(0.5);
-}
-/* p {
-  font-family: "Albert Sans", "Helvetica Neue", Arial, Helvetica, sans-serif !important;
-  font-size: 0.9em;
-} */
-.Author-Name {
-  border-top: 2px solid var(--faded);
-}
-.Albert-Sans {
-  font-family: "Albert Sans", "Helvetica Neue", Arial, Helvetica, sans-serif !important;
-}
-.Active-Tab {
-  border-top: 2px solid var(--slight-white);
-  border-bottom: 2px solid var(--slight-white);
-}
-.Inactive-Tab {
-  border-top: 2px solid var(--faded);
-}
-.Inactive-Tab:last-child {
-  border-bottom: 2px solid var(--faded);
-}
-.Article-Description {
-  font-size: 0.85em;
-  line-height: 1.5;
-  font-family: "Albert Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
-  color: #6060609e;
-}
-.Article-Body {
-  font-family: "Albert Sans", "Helvetica Neue", Arial, Helvetica, sans-serif !important;
-  font-size: 0.9em !important;
-  line-height: 1.75;
-}
-.Article-Card {
-  border-bottom: 2px solid rgba(35, 35, 35, 0.98);
-  transition: all;
-}
-.Article-Card:first-child {
-  border-top: 2px solid rgba(35, 35, 35, 0.98);
-}
-.Article-Card:hover {
-  border-bottom: 2px solid var(--slight-white);
-}
-.NavBar {
-  background-color: var(--bg-color);
+  color: white;
 }
 .Link {
   display: block;
   line-height: 1.9rem;
+  text-decoration: underline;
 }
 .Link:hover {
-  color: var(--slight-white);
+  color: white;
 }
 .Loader {
   animation: 320ms Loader linear infinite;
@@ -102,36 +43,15 @@ img {
   border-right: 2.5px solid white;
   border-radius: 50%;
 }
-.Clock {
-  text-decoration-color: rgb(82, 82, 82);
-}
-.Home-Entry-Text {
-  border: 1px solid var(--primary-color);
-}
-.Home-Overlay {
-  background-color: rgba(34, 34, 34, 0.97);
-  position: absolute;
-  bottom: 0%;
-  left: 0;
-  right: 0;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-  z-index: 9;
-  transition: 0.4s ease;
-}
-.Home-Image-Container:hover .Home-Overlay {
-  height: 0;
-  bottom: 100%;
-  cursor: pointer;
-}
-.Home-Image {
-  filter: brightness(0.5);
-}
 
 @media (min-width: 768px) {
-  .Article-Card:first-child {
-    border-top: none;
+  html,
+  body {
+    background-image: url(/images/bg.svg);
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    background-size: cover;
+    background-position: center;
   }
 }
 
@@ -140,3 +60,7 @@ img {
     transform: rotate(360deg);
   }
 }
+
+@tailwind base;
+@tailwind utilities;
+@tailwind components;

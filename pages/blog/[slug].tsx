@@ -10,18 +10,25 @@ import parse from "html-react-parser";
 import { ParsedUrlQuery } from "querystring";
 import * as timeago from "timeago.js";
 import { AnimatePresence, motion } from "framer-motion";
-import QRCode from "react-qr-code";
-import { gql } from "graphql-request";
-import graphcms from "services/graphql.service";
-import Share from "@/components/Share";
-import RecCard from "@/components/RecCard";
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+  TelegramShareButton,
+} from "react-share";
+import {
+  FaFacebookF,
+  FaTelegram,
+  FaTelegramPlane,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa";
 
 interface Props {
   article: any;
-  recommendations: any;
 }
 
-const SinglePost: NextPage<Props> = ({ article, recommendations }) => {
+const SinglePost: NextPage<Props> = ({ article }) => {
   const [Nav, setNav] = useState(false);
 
   useEffect(() => {
@@ -37,7 +44,6 @@ const SinglePost: NextPage<Props> = ({ article, recommendations }) => {
       window.removeEventListener("scroll", () => {});
     };
   }, []);
-
   return (
     <>
       {article ? (
@@ -45,13 +51,7 @@ const SinglePost: NextPage<Props> = ({ article, recommendations }) => {
           initial={{ opacity: 0, x: -300 }}
           animate={{ opacity: 1, x: 0 }}
         >
-          <Meta
-            title={
-              article?.title?.charAt(0)?.toUpperCase() +
-              article?.title?.slice(1)
-            }
-            desc={article?.description}
-          />
+          <Meta title={article.title} desc={article.description} />
           <AnimatePresence>
             {Nav && (
               <motion.div
@@ -59,83 +59,73 @@ const SinglePost: NextPage<Props> = ({ article, recommendations }) => {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 1, y: -150 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="w-full grid grid-cols-3 items-center bg-[#111111] fixed top-0 drop-shadow-md z-[99] py-3 lg:py-4 px-3 lg:px-5"
+                className="w-full grid grid-cols-3 items-center bg-neutral-700 bg-opacity-25 backdrop-blur-md py-3 lg:py-4 px-3 lg:px-5 fixed top-0 z-[99]"
               >
-                <Back url="/blog" bg={false} />
-                <h2 className="Albert-Sans text-neutral-400 text-[16px] font-medium place-self-center">
-                  {article?.title}
+                <Back url="/blog" />
+                <h2 className="text-neutral-400 text-[16px] font-normal place-self-center">
+                  {article.title}
                 </h2>
-                <p className="text-neutral-500 text-[10px] px-2 py-[4px] self-center place-self-end">
-                  {timeago.format(article?.createdAt)}
+                <p className="bg-neutral-800 text-neutral-500 text-[10px] px-2 py-[4px] self-center place-self-end">
+                  {timeago.format(article.createdAt)}
                 </p>
               </motion.div>
             )}
           </AnimatePresence>
-          <main className="w-[92%] lg:w-5/6 2xl:w-5/6 grid grid-cols-1 lg:grid-cols-12 lg:gap-5 mx-auto mt-[4vh] lg:mt-[7vh]">
-            {/* MAIN ARTICLE */}
-            <section className="w-full col-span-8 lg:px-3">
-              <Back url="/blog" />
-              <h1 className="text-5xl lg:text-7xl my-5 first-letter:uppercase">
-                {article?.title}
-              </h1>
-              <div className="text-xs lg:text-sm flex items-center justify-between my-2">
-                <Moment
-                  format="MMM Do YYYY hh:mm"
-                  className="font-normal text-neutral-600"
-                >
-                  {article?.createdAt}
-                </Moment>
-                <p className="bg-neutral-800 text-neutral-500 text-[10px] px-2 py-[2px]">
-                  {readingTime(article?.content?.html).text}
-                </p>
+          <main className="w-[93%] lg:w-4/6 2xl:w-3/6 mx-auto mt-[6vh] lg:mt-[9vh]">
+            <Back url="/blog" />
+            <h1 className="text-5xl lg:text-7xl font-light my-5 first-letter:uppercase">
+              {article.title}
+            </h1>
+            <div className="text-xs flex items-center justify-between my-2">
+              <Moment
+                format="MMM Do YYYY hh:mm"
+                className="font-normal text-neutral-600"
+              >
+                {article.createdAt}
+              </Moment>
+              <p className="bg-neutral-800 text-neutral-500 text-[10px] px-2 py-[2px]">
+                {readingTime(article.content).text}
+              </p>
+            </div>
+            <section className="mt-2">
+              <div className="text-[14px] leading-relaxed bg-neutral-800 bg-opacity-60 py-4 px-[13px] lg:py-8 lg:px-6 lg:leading-relaxed text-left lg:text-sm mt-5 backdrop-blur-md cursor-text">
+                {parse(article.content)}
               </div>
-              <section className="mt-1">
-                <div className="Article-Body py-4 lg:py-8 text-left mt-2 cursor-text">
-                  {parse(article?.content?.html)}
-                </div>
-              </section>
-
-              {/* MOBILE - READ Next */}
-              <section className="mt-1 lg:hidden">
-                {recommendations.length > 0 && (
-                  <>
-                    <h1 className="text-2xl opacity-40">Read Next</h1>
-                    {recommendations.map(
-                      (recommendation: any, index: number) => (
-                        <RecCard key={index} article={recommendation} />
-                      )
-                    )}
-                  </>
-                )}
-                {/* SHARE */}
-                <Share article={article} />
-              </section>
-
-              <Footer />
             </section>
-
-            {/* DESKTOP */}
-            <section className="col-span-4 hidden lg:block">
-              {recommendations.length > 0 && (
-                <>
-                  <h1 className="text-2xl opacity-40 px-1">Read Next</h1>
-                  {recommendations.map((recommendation: any, index: number) => (
-                    <RecCard key={index} article={recommendation} />
-                  ))}
-                </>
-              )}
-              {/* SHARE */}
-              <Share article={article} />
-
-              <QRCode
-                title={article?.title}
-                value={`https://www.trulyao.dev/blog/${article?.slug}`}
-                className="mx-auto my-6"
-                fgColor="#404040"
-                bgColor="#080808"
-                level="L"
-              />
-            </section>
+            <div className="bg-neutral-700 backdrop-blur-md bg-opacity-30 py-2">
+              <h3 className="text-center py-1 text-xs font-light">
+                Share To...
+              </h3>
+              <div className="flex justify-evenly pt-5 pb-6">
+                <FacebookShareButton
+                  url={`https://www.trulyao.dev/blog/${article.slug}`}
+                  quote={article.title}
+                >
+                  <FaFacebookF size={19} />
+                </FacebookShareButton>
+                <TwitterShareButton
+                  url={`https://www.trulyao.dev/blog/${article.slug}`}
+                  title={article.title}
+                  related={["trulyao", "frikax", "breegehq"]}
+                >
+                  <FaTwitter size={19} />
+                </TwitterShareButton>
+                <WhatsappShareButton
+                  url={`https://www.trulyao.dev/blog/${article.slug}`}
+                  title={article.title}
+                  separator=" - "
+                >
+                  <FaWhatsapp size={19} />
+                </WhatsappShareButton>
+                <TelegramShareButton
+                  url={`https://www.trulyao.dev/blog/${article.slug}`}
+                  title={article.title}
+                >
+                  <FaTelegramPlane size={19} />
+                </TelegramShareButton>
+              </div>
+            </div>
+            <Footer />
           </main>
         </motion.div>
       ) : (
@@ -157,16 +147,10 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const query = gql`
-    {
-      articles {
-        slug
-      }
-    }
-  `;
-  const response = await graphcms.request(query);
+  const query = await fetch(`${API_URL}/articles`);
+  const response = await query.json();
   const paths = response.articles.map((article: any) => {
-    const slug = article?.slug;
+    const slug = article.slug;
     return {
       params: { slug },
     };
@@ -176,43 +160,14 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const { slug } = ctx?.params as IParams;
-  const query = gql`
-  {
-    article(where: {slug: "${slug}"}) {
-        title
-        description
-        slug
-        content {
-          html
-        }
-        createdAt
-    }
-  }`;
-
-  const response = await graphcms.request(query);
-
-  // GET RECOMMENDATIONS
-  const recommendationsQuery = gql`
-    {
-      articles(where: { slug_not: "${slug}" }, orderBy: createdAt_DESC, first: 1) {
-        title
-        description
-        slug
-        content {
-          text
-        }
-        createdAt
-      }
-    }
-  `;
-  const recommendationsResponse = await graphcms.request(recommendationsQuery);
-  const recommendations = recommendationsResponse.articles;
+  const { slug } = ctx.params as IParams;
+  const query = await fetch(`${API_URL}/article/${slug}`);
+  const response = await query.json();
+  // console.log(response);
 
   return {
     props: {
-      article: response?.article || null,
-      recommendations: recommendations,
+      article: response?.data || null,
     },
     revalidate: 10,
   };

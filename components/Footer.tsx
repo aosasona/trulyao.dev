@@ -8,7 +8,7 @@ const Footer = () => {
       <LinkIcon link="twitter.com/trulyao">
         <FaTwitter size={20} />
       </LinkIcon>
-      {/* <p className="Albert-Sans text-[12px]">
+      <p className="text-[11px] lg:text-[13px]">
         Built by{" "}
         <a
           href="https://twitter.com/trulyao"
@@ -17,18 +17,6 @@ const Footer = () => {
           className="text-neutral-300"
         >
           Ayodeji
-        </a>
-      </p>
-      
-      */}
-      <p>
-        <a
-          href="mailto:osasonaayodeji1@gmail.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-sm text-neutral-400"
-        >
-          Contact Me
         </a>
       </p>
       <LinkIcon link="github.com/aosasona">
