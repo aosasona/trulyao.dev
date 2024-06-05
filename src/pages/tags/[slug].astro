@@ -1,0 +1,74 @@
+---
+import Layout from "@layouts/Layout.astro";
+import ArticleListItem from "@components/items/ArticleListItem.astro";
+import SiteHeader from "@components/layout/SiteHeader.astro";
+import Tags from "@components/misc/Tags.astro";
+
+import { getCollection } from "astro:content";
+import { slugify } from "@lib/utils";
+import H1 from "@components/mdx/H1.astro";
+import ProjectPreviewListItem from "@components/items/ProjectPreviewListItem.astro";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog", ({ data }) => {
+    return import.meta.env.PROD ? data.draft !== true : true;
+  });
+
+  const projects = (await getCollection("projects"))?.[0]?.data;
+
+  const postTags = posts.map((post) => post.data.tags).flat();
+  const projectTags = projects.map((project) => project?.tags).flat();
+
+  let tags = [...new Set([...postTags, ...projectTags])]; // Collect all tags across all posts and projects, this could ideally be better if tags had their own collection
+  tags = (tags?.filter((tag) => !!tag) as string[])?.sort((a, b) => a?.localeCompare(b)); // Remove undefined tags
+
+  return tags.map((tag) => ({
+    params: { slug: slugify(tag ?? "") },
+    props: {
+      tag: tag,
+      posts: posts.filter((post) => post?.data?.tags?.includes(tag ?? ""))?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+      projects: projects.filter((project) => project?.tags?.includes(tag ?? ""))?.sort((a, b) => a?.name?.localeCompare(b?.name)),
+      otherTags: tags,
+    },
+  }));
+}
+
+let { tag, posts, projects, otherTags } = Astro.props;
+---
+
+<Layout title={`Tag: ${tag}`}>
+  <main class="container">
+    <SiteHeader />
+
+    <p>Showing results for tag: <strong>{tag}</strong></p>
+
+    <div class="my-8">
+      <div class="sticky-section-label">All tags</div>
+      <div class="border border-[var(--highlight-border-color)] p-3 rounded-md rounded-tl-none">
+        <Tags data={otherTags as string[]} />
+      </div>
+    </div>
+
+    <section class="mt-6" id="articles">
+      <H1>Articles</H1>
+
+      <div class="mt-4 space-y-5">
+        {posts?.length && posts?.length > 0 ? posts.map((post) => <ArticleListItem post={post} />) : <p class="opacity-60">No articles found with this tag.</p>}
+      </div>
+    </section>
+
+    <section class="mt-10" id="projects">
+      <H1>Projects</H1>
+
+      <div class="mt-4 space-y-5">
+        {
+          projects?.length && projects?.length > 0 ? (
+            projects.map((project) => <ProjectPreviewListItem project={project} />)
+          ) : (
+            <p class="opacity-60">No projects found with this tag.</p>
+          )
+        }
+      </div>
+    </section>
+  </main>
+</Layout>

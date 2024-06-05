@@ -1,0 +1,54 @@
+---
+import { Icon } from "astro-icon/components";
+import Show from "@components/misc/Show.astro";
+import Tags from "@components/misc/Tags.astro";
+import type { CollectionEntry } from "astro:content";
+
+type Project = CollectionEntry<"projects">["data"][number];
+
+export interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<style>
+  a,
+  [data-icon] {
+    display: inline-block;
+  }
+</style>
+
+<div>
+  <div class="relative w-full aspect-video object-cover rounded-md mb-4 sm:hidden overflow-hidden">
+    <Show when={project.status != "active"}>
+      <div class="text-sm absolute top-2 right-2 bg-[var(--background-color)] text-[var(--foreground-color)] border border-[var(--highlight-border-color)] px-2.5 py-1 rounded-md">
+        {project.status}
+      </div>
+    </Show>
+    <img src={`/images/projects/${project.image}`} alt={project.name} class="w-full h-full" />
+  </div>
+
+  <div class="flex flex-col gap-y-1.5">
+    <h2 class="text-primary-text-light dark:text-primary-text-dark text-xl">
+      {project.name}
+      {project.status != "active" ? <sup class="hidden sm:inline-block text-sm font-light opacity-60">({project.status})</sup> : null}
+    </h2>
+    <p class="text-primary-text-light/60 dark:text-primary-text-dark/60">{project.description}</p>
+
+    <div class="w-full flex justify-between items-center">
+      <Tags data={(project?.tags || []) as string[]} />
+
+      <div class="text-xl space-x-2.5">
+        <Show when={!!project.website_url}>
+          <a href={project.website_url ?? ""} target="_blank" title="Visit website"><Icon name="tabler:external-link" /></a>
+        </Show>
+
+        <Show when={!!project.github_url}>
+          <a href={project.github_url ?? ""} target="_blank" title="View on Github"><Icon name="tabler:brand-github" /></a>
+        </Show>
+      </div>
+    </div>
+  </div>
+</div>

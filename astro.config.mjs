@@ -1,13 +1,21 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import icon from "astro-icon";
+import solidJs from "@astrojs/solid-js";
+import externalize from "./src/plugins/externalize";
 
-import react from "@astrojs/react";
+import mdx from "@astrojs/mdx";
 
+// TODO: remove plugins
 // https://astro.build/config
 export default defineConfig({
-	integrations: [tailwind(), react()],
-	redirects: {
-		"/fate": "https://aosasona.github.io/fate/setup.sh",
-		"/live": "https://twitch.tv/iamtrulyao",
-	},
+  site: "https://trulyao.dev",
+  integrations: [tailwind(), icon(), solidJs(), mdx()],
+  markdown: {
+    syntaxHighlight: "prism",
+    rehypePlugins: [[externalize, { domain: "trulyao.dev" }]],
+  },
+  redirects: {
+    "/live": { status: 302, destination: "https://twitch.tv/iamtrulyao" },
+  },
 });

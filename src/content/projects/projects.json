@@ -1,0 +1,184 @@
+[
+	{
+		"name": "Chimney",
+		"description": "A fast and lightweight static file server (and more in the future)",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/chimney",
+		"image": "chimney.png",
+		"status": "wip",
+		"tags": [
+			"rust"
+		]
+	},
+	{
+		"name": "Mirror",
+		"description": "Generate Typescript types from Go types during runtime (previously known as Gots)",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/mirror",
+		"image": "mirror.png",
+		"status": "active",
+		"tags": [
+			"go"
+		]
+	},
+	{
+		"name": "Phlo",
+		"description": "A minimal and fast PHP framework for the modern web",
+		"website_url": "https://phlo.fly.dev",
+		"github_url": "https://github.com/aosasona/phlo",
+		"image": "phlo.png",
+		"status": "active",
+		"tags": [
+			"php"
+		]
+	},
+	{
+		"name": "Jsorm",
+		"description": "A demo JSON explorer in Gleam and HTMX",
+		"website_url": "https://jsorm.wyte.space",
+		"github_url": "https://github.com/aosasona/jsorm",
+		"image": "jsorm.png",
+		"status": "active",
+		"tags": [
+			"gleam",
+			"htmx",
+			"typescript",
+			"fly.io"
+		]
+	},
+	{
+		"name": "Vanity",
+		"description": "Vanity URL service for Go modules e.g. go.trulyao.dev/mirror",
+		"website_url": "https://go.trulyao.dev",
+		"github_url": "https://github.com/aosasona/vanity",
+		"image": "vanity.png",
+		"status": "active",
+		"tags": [
+			"go"
+		]
+	},
+	{
+		"name": "Crossbar",
+		"description": "A tiny data validation library in pure Gleam",
+		"website_url": "https://hexdocs.pm/crossbar",
+		"github_url": "https://github.com/aosasona/crossbar",
+		"image": "crossbar.png",
+		"status": "active",
+		"tags": [
+			"gleam"
+		]
+	},
+	{
+		"name": "Migrant",
+		"description": "In-code database migration tool for Gleam projects",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/migrant",
+		"image": "migrant.png",
+		"status": "active",
+		"tags": [
+			"gleam"
+		]
+	},
+	{
+		"name": "Dotenv",
+		"description": "Load environment variables from .env (and other) files in Gleam",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/dotenv",
+		"image": "dotenv.png",
+		"status": "active",
+		"tags": [
+			"gleam"
+		]
+	},
+	{
+		"name": "Falcon",
+		"description": "A smoother way to send HTTP requests with an axios-like interface",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/falcon",
+		"image": "falcon.png",
+		"status": "active",
+		"tags": [
+			"gleam"
+		]
+	},
+	{
+		"name": "Reda",
+		"description": "Import, organise, share and read your books, articles, and other digital documents anytime, anywhere",
+		"website_url": "https://reda.trulyao.dev",
+		"github_url": null,
+		"image": "reda.png",
+		"status": "unmaintained",
+		"tags": [
+			"typescript"
+		]
+	},
+	{
+		"name": "Plunk.gleam",
+		"description": "A library for sending emails and interacting with the Plunk API in Gleam",
+		"website_url": "https://hexdocs.pm/plunk/",
+		"github_url": "https://github.com/aosasona/plunk.gleam",
+		"image": "plunk.png",
+		"status": "active",
+		"tags": [
+			"gleam"
+		]
+	},
+	{
+		"name": "Sidekyk",
+		"description": "Your personal AI sidekicks!",
+		"website_url": "https://x.com/trulyao/status/1704530681475305891?s=46&t=oZkX14dN7BKTYc0mRw0ryg",
+		"github_url": null,
+		"image": "sidekyk.png",
+		"status": "private",
+		"tags": [
+			"go",
+			"typescript",
+			"react native"
+		]
+	},
+	{
+		"name": "Bazooka",
+		"description": "Find and terminate processes on your machine from your browser",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/bazooka",
+		"image": "bazooka.png",
+		"status": "active",
+		"tags": [
+			"go",
+			"typescript"
+		]
+	},
+	{
+		"name": "Jenzo",
+		"description": "Generate meta images on the fly using HTML templates",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/jenzo",
+		"image": "jenzo.png",
+		"status": "active",
+		"tags": [
+			"typescript"
+		]
+	},
+	{
+		"name": "Hitlist",
+		"description": "Execute multiple commands with a single command",
+		"website_url": null,
+		"github_url": "https://github.com/hitlist-cli/cli",
+		"image": "hitlist.png",
+		"status": "archived",
+		"tags": [
+			"typescript"
+		]
+	},
+	{
+		"name": "PHP Router",
+		"description": "A composer package that brings Express-like routing to PHP with support for middleware, class-based callbacks, dynamic routes etc",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/php-router",
+		"image": "phprouter.png",
+		"status": "archived",
+		"tags": [
+			"php"
+		]
+	}
+]

@@ -1,6 +1,26 @@
 {
   "extends": "astro/tsconfigs/strict",
   "compilerOptions": {
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@layouts/*": [
+        "src/layouts/*"
+      ],
+      "@icons/*": [
+        "src/icons/*"
+      ],
+      "@static/*": [
+        "src/static/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ]
+    }
   }
 }

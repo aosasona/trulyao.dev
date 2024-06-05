@@ -1,0 +1,179 @@
+---
+import Layout from "@layouts/Layout.astro";
+import SiteHeader from "@components/layout/SiteHeader.astro";
+
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+import go from "@icons/go.svg";
+import php from "@icons/php.svg";
+import typescript from "@icons/typescript.svg";
+import docker from "@icons/docker.svg";
+import tailwindcss from "@icons/tailwindcss.svg";
+import git from "@icons/git.svg";
+import neovim from "@icons/neovim.svg";
+import mysql from "@icons/mysql.svg";
+import redis from "@icons/redis.svg";
+import sqlite from "@icons/sqlite.svg";
+import rust from "@icons/rust.svg";
+import swift from "@icons/swift.svg";
+import H2 from "@components/mdx/H2.astro";
+
+type Tool = {
+  name: string;
+  description: string;
+  logo: ImageMetadata;
+  color: `#${string}`;
+};
+
+const tools: Tool[] = [
+  {
+    name: "PHP",
+    description:
+      "My first langauge and my go-to for full-stack web development, I currently use it at work and personally for web-based projects with no hard performance requirements or extensive client-side functionality (like a PWA requirement).",
+    logo: php,
+    color: "#777BB4",
+  },
+  {
+    name: "Go",
+    description: "Good choice for concurrent, performant & scalable backend services (and other things you definitely do not want to imagine) with single-binary* deployments.",
+    logo: go,
+    color: "#00ADD8",
+  },
+  {
+    name: "Typescript",
+    description:
+      'Mostly a "linter" but better than nothing when working with Javascript. I use it for most of my frontend projects (Solid, React & Astro) and when I have to work with Bun or Node.js',
+    logo: typescript,
+    color: "#3178C6",
+  },
+  {
+    name: "Rust",
+    description:
+      "A systems programming language with goals I absolutely love and I have been learning in my free time, very useful for performance and safety-critical applications.",
+    logo: rust,
+    color: "#000000",
+  },
+  {
+    name: "Swift",
+    description: "A well-designed & performant langauge I occasionally and painfully (thanks to Xcode) use for native iOS, iPadOS and macOS applications.",
+    logo: swift,
+    color: "#FA7343",
+  },
+  {
+    name: "Neovim",
+    description:
+      "An highly extensible modal text editor available on any machine/server I am on at any given time. It makes it extremely easy for me to write and navigate code without ever leaving the keyboard or my terminal and at the speed of thought.",
+    logo: neovim,
+    color: "#57A143",
+  },
+  {
+    name: "MySQL",
+    description: "A relational database management system that I have used for years as a part of the LAMP stack I started with!",
+    logo: mysql,
+    color: "#4479A1",
+  },
+  {
+    name: "SQLite",
+    description:
+      "A single-file, ACID-compliant relational database that I frequently use for my smaller projects (and sometimes for larger ones too!), stateful CLIs and mobile applications.",
+    logo: sqlite,
+    color: "#003B57",
+  },
+  {
+    name: "Redis",
+    description: "A key-value store that I use for caching, session storage and other abominable things you don't want to think about.",
+    logo: redis,
+    color: "#DC382D",
+  },
+  {
+    name: "Docker",
+    description: "Useful for running applications in a consistent kind-of-reproducible environment, and my preferred way to develop and deploy applications.",
+    logo: docker,
+    color: "#2496ED",
+  },
+  {
+    name: "Tailwind CSS",
+    description: 'A utility-first CSS framework which comes in quite handy for "designing in code" and making responsive designs easier to implement on the web.',
+    logo: tailwindcss,
+    color: "#38B2AC",
+  },
+  {
+    name: "Git",
+    description: "Uh... preferred and the most popular version control system?",
+    logo: git,
+    color: "#F05032",
+  },
+];
+---
+
+<Layout title="Tools">
+  <main class="container">
+    <SiteHeader />
+
+    <h2 class="text-3xl mb-3">Tools</h2>
+
+    <!-- prettier-ignore -->
+    <p>
+      My primary stack includes PHP, Go and Typescript but I have used a variety of other languages and tools over the years out of necessity or out of curiosity. Here are some of the tools I have used and am comfortable with, there are a lot not on this list that I have school-related experience with or have no interest in generally working with again.
+    </p>
+
+    <ul class="flex flex-col gap-y-4 lg:gap-y-5 mt-5">
+      {
+        tools.map((tool) => (
+          <li class="w-full flex items-start md:items-center gap-3">
+            <div
+              class="w-10 min-w-10 md:w-12 md:min-w-12 aspect-square object-cover flex items-center justify-center rounded-md mt-1 md:mt-0"
+              style={{ backgroundColor: tool.color }}>
+              <Image src={tool.logo} alt={tool.name} class="w-5 md:w-6 aspect-square invert" />
+            </div>
+
+            <div class="space-y-0.5">
+              <h3 class="text-xl">{tool.name}</h3>
+              <p class="text-sm md:text-base opacity-75">{tool.description}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+
+    <section class="my-8">
+      <H2>Things I am excited for</H2>
+      <ul class="list-disc list-inside mt-3">
+        <!-- prettier-ignore -->
+        <li>
+          <a href="https://www.solidjs.com/" target="_blank">Solid.js</a> - I have used React a lot but I start new projects with this, it is more performant and has better first-party/primitives support.
+        </li>
+        <li><a href="https://gleam.run" target="_blank">Gleam</a> - I have written and still write quite a lot of it for my side-projects.</li>
+        <li><a href="https://inko-lang.org" target="_blank">Inko</a> - It is like Rust but apparently easier!</li>
+        <li><a href="https://elixir-lang.org" target="_blank">Elixir</a> - Awesome for real-time software but I haven't had a lot of time to try it out.</li>
+        <li><a href="https://flatbuffers.dev" target="_blank">Flatbuffers</a> - More efficient than gRPC & protobufs</li>
+        <li><a href="https://surrealdb.com" target="_blank">SurrealDB</a></li>
+        <li><a href="https://nixos.org" target="_blank">Nix (OS and package manager)</a></li>
+        <li><a href="https://hermitcore.org" target="_blank">Hermit Unikernel</a></li>
+        <li><a href="https://katacontainers.io/" target="_blank">Kata Containers</a></li>
+        <li><a href="https://localfirstweb.dev/" target="_blank">Local-first development</a> - not really a tool but...</li>
+      </ul>
+    </section>
+
+    <section class="my-8">
+      <H2>Other things I have used</H2>
+
+      <ul class="list-disc list-inside mt-3">
+        <li><b>C++</b> - school experience and occassional self-torture</li>
+        <li><b>Java</b> - school experience</li>
+        <li><b>Kotlin</b> - also school experience, but I enjoyed it</li>
+        <li><b>Python</b> - school experience and occasional scripting</li>
+        <li><b>Erlang</b></li>
+        <li><b>PostgreSQL</b> - I haven't used this much but I intend to use it more in the future</li>
+        <li><b>MongoDB</b></li>
+        <li><b>Laravel</b></li>
+      </ul>
+    </section>
+
+    <!-- prettier-ignore -->
+    <p class="text-sm bg-[var(--foreground-color)] text-[var(--background-color)] px-4 py-3">
+      I am always interested in trying out new things, just to see how they suck and how they are better than my current tools, if you have any suggestions or anything that excites you, feel free to @ me on Twitter/X!
+    </p>
+  </main>
+</Layout>

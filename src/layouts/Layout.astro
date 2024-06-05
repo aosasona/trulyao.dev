@@ -1,59 +1,85 @@
 ---
-import Footer from "../components/Footer.astro";
-import Nav from "../components/Nav.astro";
 import "../styles/global.css";
+import NavBar from "@components/layout/NavBar.astro";
+import Footer from "@components/layout/Footer.astro";
+
 export interface Props {
-	title: string;
-	desc?: string;
-	hideFooter?: boolean;
+  title: string;
+  desc?: string;
+  keywords?: string;
+  metaImage?: string;
+  pubDate?: Date;
+  tags?: string[];
 }
 
-let { title, desc, hideFooter } = Astro.props;
+let { title, desc, metaImage, keywords, tags = [], pubDate = null } = Astro.props;
 if (!title) title = "Ayodeji";
-if (!desc) desc = "Ayodeji - Software Developer";
-let keywords = "ayodeji, osasona, trulyao, ayo, developer, engineer, php, python, java, c++, node, typescript";
+if (!desc) desc = "Learning, exploring and making software I'd use.";
+if (!metaImage) metaImage = "/images/meta.jpg";
+if (!keywords) keywords = "ayodeji, aosasona, trulyao, osasona, go, typescript, javascript, rust, gleam, software, engineer";
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#0a0a0a" />
-		<meta name="description" content={desc} />
-		<meta name="keywords" content={keywords} />
-		<link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fdf9ef" />
+    <meta name="description" content={desc} />
+    <meta name="keywords" content={keywords} />
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
 
-		<meta property="og:type" content="website" />
-		<meta property="og:url" content="https://www.trulyao.dev" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/me.JPG" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ayodeji" />
+    <meta property="og:site" content="https://trulyao.dev" />
+    <meta property="og:url" content="https://trulyao.dev" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={desc} />
+    <meta property="og:image" content={metaImage} />
 
-		<meta property="twitter:card" content="summary_large_image" />
-		<meta property="twitter:url" content="https://www.trulyao.dev" />
-		<meta property="twitter:title" content={title} />
-		<meta property="twitter:description" content={desc} />
-		<meta property="twitter:image" content="/images/me.JPG" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://trulyao.dev" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={desc} />
+    <meta property="twitter:image" content={metaImage} />
 
-		<meta property="og:site_name" content="" />
-		<meta property="og:site" content="" />
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={desc} />
-		<meta property="og:image" content="/images/me.JPG" />
-		<meta property="og:url" content="https://www.trulyao.dev" />
+    {!!pubDate ? <meta name="article:published_time" content={pubDate.toISOString()} /> : null}
+    {tags?.map((tag) => <meta name="article:tag" content={tag} />)}
 
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-			integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-			crossorigin="anonymous"
-		/>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Iosevka/6.0.0/iosevka/iosevka.min.css"
+      integrity="sha512-3hU20586NsplKRzjf2jQN5vTRTI2EsXObrHDOBLGdkiRkneg699BlmBXWGHHFHADCF3TOk2BREsVy7qTkmvQqQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="https://iosevka-webfonts.github.io/iosevka/Iosevka.css" rel="stylesheet" />
 
-		<title>{title}</title>
-	</head>
-	<body class="antialiased">
-		<Nav />
-		<slot />
-		{!hideFooter && <Footer />}
-	</body>
+    <script src="/vendor/alpine-persist.js" defer is:inline></script>
+    <script src="/vendor/alpine.js" defer is:inline></script>
+
+    <script>
+      const headers = document.querySelectorAll("[data-section-header]");
+      if (headers?.length > 1) {
+        headers.forEach((header) => {
+          header?.addEventListener("click", () => {
+            const slug = header.id;
+            const url = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            const hash = `#${slug}`;
+            const fullUrl = `${url}${hash}`;
+
+            navigator.clipboard.writeText(fullUrl);
+            window.location.hash = slug;
+          });
+        });
+      }
+    </script>
+
+    <title>{title}</title>
+  </head>
+  <body>
+    <NavBar />
+    <slot />
+    <Footer />
+  </body>
 </html>

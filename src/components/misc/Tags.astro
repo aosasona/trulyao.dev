@@ -1,0 +1,18 @@
+---
+import Show from "./Show.astro"
+import { slugify } from "@lib/utils";
+export interface Props {
+  data: string[];
+}
+
+let { data: tags } = Astro.props;
+
+---
+<Show when={tags && tags.length > 0 }>
+    <div class="flex gap-2 flex-wrap">
+      {tags.map((tag) => (
+        <!-- prettier-ignore -->
+        <a href={"/tags/" + slugify(tag)} class="tag">{tag?.toLowerCase()?.trim()}</a>
+      ))}
+    </div>
+</Show>

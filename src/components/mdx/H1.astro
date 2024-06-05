@@ -1,0 +1,12 @@
+---
+import { Icon } from "astro-icon/components";
+import { slugify } from "@lib/utils";
+
+let html = await Astro.slots.render("default");
+const slugifiedContent = slugify(html);
+---
+
+<h1 class="font-extrabold text-3xl relative" id={slugifiedContent} data-section-header>
+  <Icon name="tabler:hash" class="text-primary-400 absolute top-[50%] translate-y-[-50%] -left-9 opacity-0" data-section-hash />
+  <slot />
+</h1>

@@ -1,108 +1,58 @@
 ---
-import Header from "../components/Header.astro";
-import SectionHeader from "../components/SectionHeader.astro";
-import ToolCard from "../components/ToolCard.astro";
-import projects from "../data/projects.json";
+import Layout from "@layouts/Layout.astro";
+import SiteHeader from "@components/layout/SiteHeader.astro";
+import ArticleListItem from "@components/items/ArticleListItem.astro";
+import ProjectPreviewListItem from "@components/items/ProjectPreviewListItem.astro";
 
-import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import H1 from "@components/mdx/H1.astro";
 
-interface Project {
-	name: string;
-	description: string;
-	url: string | null;
-	github_url: string | null;
-	image: string;
-	status: string | null;
-}
+const MAX_LATEST = 5;
+
+const posts = await getCollection("blog", ({ data }) => {
+  return import.meta.env.PROD ? data.draft !== true : true;
+});
+
+const publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())?.slice(0, MAX_LATEST);
+
+const projects = (await getCollection("projects"))?.[0]?.data?.slice(0, MAX_LATEST);
 ---
 
-<Layout title="Ayodeji" hideFooter={false}>
-	<main>
-		<Header />
+<Layout title="Ayodeji">
+  <main class="container">
+    <SiteHeader />
 
-		<h1 class="text-3xl lg:text-3xl font-bold font-souvenir mb-4 mt-6">Hi, I'm Ayodeji &#128075;</h1>
+    <section id="about-me">
+      <!-- prettier-ignore -->
+      <p>
+        Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a software engineering student somewhere in England. I am constantly learning and very keen on crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan of statically-typed compiled languages, PHP and the BEAM but I frequently (have to) dabble in <a href="/tools">other things</a> too. I <a href="/blog">write</a> here from time to time and I also stream infrequently on <a href="https://twitch.tv/iamtrulyao">Twitch</a>.
+      </p>
+    </section>
 
-		<p id="about">
-			I'm a <span class="highlight">Software Engineering</span> student somewhere in England and a software developer. I enjoy <span class="highlight">building</span> things that run
-			on computers and exploring a lot (or a bit) of other tools, languages etc while doing that.
-			<br />
-			I <span class="highlight">experiment</span> a lot and build out my silly ideas (I stream on <a href="/live" class="text-violet-400" target="_blank">Twitch</a> from time to time);
-			unfortunately, a lot of these stay private on my Github profile, although few of them make it out there. Developer tools, databases, and real-time systems are some of the things
-			I find interesting and enjoy working on or learning about these days, I also try to do <a href="/blog" target="_blank" class="text-emerald-500">a bit of writing</a> when I can
-			to help people learn from my experiences.
-		</p>
+    <section class="mt-6" id="articles">
+      <H1>Latest posts</H1>
 
-		<section id="tools">
-			<SectionHeader>Tools</SectionHeader>
-			<p>
-				My primary stack includes PHP, Go & Typescript. I have listed some of the languages/tools I have used or still use below; there are a lot more but these are the ones I
-				deemed necessary to list.
-			</p>
-			<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-5">
-				<ToolCard name="Astro" local />
-				<ToolCard name="React" local />
-				<ToolCard name="TailwindCSS" local />
-				<ToolCard name="PHP" local />
-				<ToolCard name="Typescript" local />
-				<ToolCard name="Go" local />
-				<ToolCard name="Gleam" local />
-				<ToolCard name="SQLite" local />
-				<ToolCard name="MySQL" local />
-				<ToolCard name="PostgreSQL" local />
-				<ToolCard name="MongoDB" local />
-				<ToolCard name="Redis" local />
-				<ToolCard name="Git" local />
-				<ToolCard name="Linux" local />
-				<ToolCard name="Docker" local />
-				<ToolCard name="NeoVim" local />
-			</div>
+      <div class="mt-4 space-y-5">
+        {publishedPosts.map((post) => <ArticleListItem post={post} />)}
+      </div>
 
-			<div class="border border-neutral-500 rounded-lg p-4 mt-5">
-				<p>-&gt; Other things I am currently learning, intend to take a deeper dive into or get started with at some point in the future</p>
-				<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-5 mt-5">
-					<ToolCard name="Swift" local />
-					<ToolCard name="Rust" local />
-					<ToolCard name="Kubernetes" local />
-					<ToolCard name="SurrealDB" local />
-				</div>
-			</div>
-		</section>
+      <div class="flex w-full justify-end mt-10">
+        <a href="/blog" class="text-sm">View all articles &rarr;</a>
+      </div>
+    </section>
 
-		<section id="projects">
-			<SectionHeader>Projects</SectionHeader>
-			<p>
-				During my free time, I like to build things that I find interesting and/or would use; sometimes to learn more about something or just to fix a problem that's particularly
-				frustrated me enough at that point in time. Here are a couple of them, you can find other random things I build on my GitHub profile.
-			</p>
+    <hr class="my-12" />
 
-			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 lg:gap-8 mt-5">
-				{
-					(projects as Project[]).map((project) => (
-						<div class="flex flex-col gap-1.5">
-							<div class="relative w-full border border-neutral-900 aspect-[1.5] overflow-hidden rounded-lg cursor-pointer">
-								<img src={`/projects/${project.image}`} class="w-full h-full hover:scale-125 object-cover object-center transition-all" />
-							</div>
-							<h3 class="text-lg font-bold mt-1 leading-none">{project.name}</h3>
-							<p class="text-sm">{project.description}</p>
-							<div class="flex items-center justify-between mt-auto">
-								{project.status ? <div class="w-max bg-neutral-900 text-neutral-500 text-[10px] font-medium px-2.5 py-1 rounded drop-shadow-md">{project.status}</div> : <div />}
-								<div class="flex gap-4 items-center lg:px-1">
-									{project.url ? (
-										<a href={project.url} target="_blank" class="block w-max text-xs font-medium">
-											<i class="fa fa-external-link text-base" />
-										</a>
-									) : null}
-									{project.github_url ? (
-										<a href={"https://www." + project.github_url} target="_blank" class="block w-max text-xs font-medium">
-											<i class="fa-brands fa-github text-lg" />
-										</a>
-									) : null}
-								</div>
-							</div>
-						</div>
-					))
-				}
-			</div>
-		</section>
-	</main>
+    <section id="projects">
+      <H1>Featured projects</H1>
+
+      <div class="mt-4 space-y-5">
+        {projects.map((project) => <ProjectPreviewListItem project={project} />)}
+      </div>
+
+      <div class="flex w-full justify-end mt-10">
+        <a href="/projects" class="text-sm">View all projects &rarr;</a>
+      </div>
+    </section>
+  </main>
 </Layout>

@@ -1,0 +1,70 @@
+---
+title: Arguments
+date: 2022-10-22
+description: An argument about arguments...
+keywords: programming, coding, clean code, rant
+tags: ["rant", "programming"]
+draft: false
+---
+
+Functions; they're everywhere, and arguments; they're everywhere; especially Twitter, sorry, not that type of argument,
+we're talking about function arguments. If you have no idea what I am talking about, check out [this
+link](https://www.geeksforgeeks.org/function-arguments-in-golang/).
+
+At some point in your life, like me, you have written or still write functions with this type of signature:
+
+```go
+func SaveUser(firstName string, lastName string, email string) error {
+...
+}
+```
+
+In this case, `SaveUser` is most likely some sort of wrapper around a database operation which made sense to you since you would only have to change the code in there once if you switched your database or something, no pressure. You went on with this, "it works", and few weeks later, you realized you wanted to save ages too, so you created the database migration, opened up your `xx/x.go` file and added one more argument because why not? It seemed like the easy thing to do, you pushed the code, it went live, no pressure again.
+
+Six weeks later, you wanted to save phone numbers, flags for account verification (`is_verified`, or something else), `last_active` and probably usernames because haha, just like YouTube, you didn't think of that. Your app has been gaining users faster than you thought it would and you have to push out changes FASSSSTTTTTTTTT , so you did the same thing again and now your function looks like this:
+
+```go
+func SaveUser(firstName string, lastName string, email string, age int, phoneNumber int, isVerified bool, lastActive
+string) error {
+...
+}
+```
+
+Your function call now looks even worse and oh dear, you know where this is heading. Naive you, it worked so you just left it that way not knowing it'll come back to bite you in the ass. Four months later, you now have over 100 files and thousands of lines of code and tens or hundreds of other functions with a similar signature, you have also now hired an assistant who has no choice but to use some of those functions you wrote and both of you now have to look at a bunch of files just to know what exactly a function is taking in and even you are
+frustrated.
+
+I have done this, you have done this and in most cases, we have not been able to go back to fix this. Why am I talking about this? Well, I did write a function months ago that did this sort of thing and it didn't seem so bad at the time since it was a typed language (Typescript) and your IDE would help out (gosh, WTF was I on?), I did not realise I had committed this gruesome error until I had to work with a particular cURL wrapper function in a 10-year old codebase and when I felt the frustration of looking at a piece of function call that looked like this:
+
+```php
+$result = XYZ::cURL(null, "url.com", true, null, null, "POST", null, CURL_...);
+```
+
+I felt sorry for whoever was working with that piece of horrible code I wrote then, they must have PTSD now, I absolutely felt like $hit but I can't go back to fix it now, I left the project already and all I could do was consciously make sure I didn't write anything like this ever. This piece of code was probably written at a time when they needed to do things fast but sadly, as in any fast-paced development environment, no one went back to fix that particular function and there are a lot of other things wrong with this function call, let's talk about the obvious prominent ones.
+
+> Note: the snippet above was not the actual code, this is just to give you an idea of what the call looked like.
+
+Passing NULL or booleans (without or even with any sort of context) into any function is a very BAD idea, it probably suggests you are acting on that piece of data and doing different things in your function's body based on that value and at that point, your function is probably doing two different things and has broken the [Single Responsibility Principle](https://stackify.com/solid-design-principles/), tsk, not great. If you ever run into this piece of code in a codebase and you have never heard of 'curl', would you even have an idea what it does? You're probably thinking _"Oh it's because it's PHP"_, zip it! Bad code like this can be written in any language. Even worse, do you think you would be able to use this function safely or confidently without having to toggle between files where it's been used, where you are trying to use it and the actual function declaration.
+
+A lot of languages have built-in ways to avoid this kind of code blasphemy. If you are thinking _"Yeah yeah, Python has named arguments and kwargs"_, please bury that thought, you would still have about 10 arguments going in, naming them doesn't make it better, **Clean Code by Robert C. Martin** suggests a developer should try to limit function arguments to just two or at most three. While you don't NEED to follow everything the book says, we can all agree that function calls with 10 arguments would become quite frustrating to read or use; named or not. The way I have decided to go around this is using associative arrays in PHP, objects in JS/TS & structs in Golang, there are probably better ways to do this but this still makes your code a bit more readable (if you have other ways you handle this, let me know; @ me on Twitter or leave a comment under any post where I shared this article). Now you can have something like this that would be much easier to use and understand.
+
+```go
+type User struct {
+	FirstName 	string
+	LastName	string
+	Email		string
+	Age			int
+	PhoneNumber	int
+	IsVerified	bool
+	LastActive	string
+}
+
+func SaveUser(user User) error {
+...
+}
+```
+
+Whilst this is probably not EXACTLY how you would write it, I think we can agree this is easier to read and actually reuse since we now have a dedicated struct that can be used anywhere in your codebase to define a user. At some point every developer's done something as seemingly obvious or stupid like this but that's part of the job; learning on the job, it won't be the last mistake you make either, finding better ways to do things is important.
+
+> NOTE: I am in no way recommending a certain way to do things or code, this is only my opinion and I am happy to hear what you think too.
+
+That's all I have to rant about today, have a great weekend or week (whenever you're reading this) :)

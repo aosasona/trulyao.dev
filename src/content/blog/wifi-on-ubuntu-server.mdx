@@ -1,0 +1,18 @@
+---
+title: Getting a Wi-Fi connection setup on Ubuntu 22.04 (server edition)
+date: 2024-04-25
+description: Surely, it is possible and extremely easy to setup a wireless network on a server running Ubuntu 22.04 (server edition) in 2024, right?... right?
+keywords: ubuntu, 22.04, server, wifi, linux, kernel, network manager, nmcli, systemd
+tags: ["linux", "guide"]
+draft: true
+---
+
+
+So, I got a new Mini PC for my dissertation project which requires access to the KVM which is only available on non-ARM chips (as far as I know) and for other things that may need a real `x86_64` CPU. All the "desktop" devices I own are `aarch64` (in case you don't know what that means, it just means they have ARM chips - different from what was used in MacBooks pre-dating the [2020 13-inch M1 MacBook Pro](https://support.apple.com/en-gb/111893)); my 14-inch MacBook Pro M1 Pro, and my Raspberry Pi 4 (which currently serves as my home media server), so I found one of the [cheapest mini PC](https://www.amazon.co.uk/dp/B09MFKZFYG) (with fairly decent spec as you can see below; + 512GB SSD) I could find on the market which of course, as you would expect, came with Windows installed, eww.
+
+> No, I could not get what I needed (KVM hypervisor) to work via Parrallels, or UTM even though I tried emulation and even emulating an Intel chip, might be skill issue, most likely but after a few dats, I was fed up. I did not try VMWare Fusion, but I doubt it would work either, I do not have the money to attempt that experiment by getting a license for it.
+>
+> I did even rent a cheap Intel bare-metal server from OVH which also did not work (we will talk about that and all this in future articles), I probably should have tried Digital Ocean (I believe they indeed do support nested emulation with KVM) or Hetzner but at this point, I was tired and it just felt like the wiser choice was to buy hardware I could keep for years and have direct access to on my table (and my home network of course) for future experiments, maybe even learn NixOS with it!
+
+![Neofetch output](/images/playd-dev-neofetch.png)
+
