@@ -1,0 +1,199 @@
+@import url(https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Staatliches:100,200,300,400,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Albert+Sans:100,200,300,400,500,600,700,800,900);
+
+@font-face {
+  font-family: "Open Sauce";
+  src: url("/fonts/opensauce-medium.woff2") format("woff2"),
+    url("/fonts/opensauce-medium.woff2") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Open Sauce";
+  src: url("/fonts/opensauce-regular.woff2") format("woff2"),
+    url("/fonts/opensauce-regular.woff2") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --highlight-color: #eef3ec;
+  --primary-color: #bac3b8;
+  --secondary-color: rgb(250, 255, 228);
+  --faded-color: #5e635e;
+  --bg-color: #141414;
+}
+
+* {
+  margin: 0;
+  border: 0;
+  box-sizing: border-box !important;
+  scroll-behavior: smooth !important;
+  letter-spacing: 0.04em;
+  font-display: swap;
+  /* border: 1px solid red !important; */
+  cursor: url("/assets/cursor.svg"), url("/assets/cursor.jpg"),
+    url("/assets/cursor.png"), auto;
+}
+
+html,
+body {
+  color: var(--primary-color);
+  font-family: "Open Sauce", "Albert Sans", "Poppins", sans-serif;
+}
+body {
+  background-color: var(--bg-color);
+}
+.staatliches {
+  font-family: "Staatliches", "Open Sauce", "Albert Sans", "Poppins", sans-serif;
+}
+.article-body b {
+  color: var(--highlight-color);
+  white-space: pre-line;
+}
+.article-body a {
+  color: var(--highlight-color);
+  text-decoration: underline;
+  opacity: 0.75;
+}
+.article-body a:hover {
+  text-decoration: none;
+  opacity: 1;
+}
+.faded-article {
+  opacity: 0.25;
+  filter: blur(6px) !important;
+  transition: opacity 0.3s ease-in-out;
+}
+.header-text {
+  font-family: "Open Sauce", "Albert Sans", "Poppins", sans-serif;
+  font-weight: 900;
+}
+.header-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--primary-color);
+  margin: 1rem 0;
+}
+.header-link {
+  width: max-content;
+  font-size: 0.9rem;
+  display: block;
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  padding: 0.5rem 1rem;
+}
+.header-link:hover {
+  color: var(--highlight-color);
+  transform: translateY(-0.5rem) rotate(6deg);
+}
+.header-link:hover:before {
+  content: attr(data-description);
+  position: absolute;
+  font-size: 0.65rem;
+  top: 100%;
+  margin: 0 auto;
+  opacity: 0.6;
+  width: max-content;
+  max-width: 300px;
+  line-height: 1.5;
+  background-color: #2a2a2a;
+  padding: 0.7rem 1rem;
+  transition: all 0.1s ease-in-out;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  z-index: 99;
+}
+.hero-cta {
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  text-decoration: none;
+  padding: 1.25rem 1.75rem;
+  user-select: none;
+  transition: all 0.2s ease-in-out;
+}
+.hero-cta-line {
+  display: inline-block;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--primary-color);
+  margin: 0 1rem;
+  transition: all 0.2s ease-in-out;
+}
+.hero-cta:hover {
+  color: var(--highlight-color);
+  border: none;
+  padding: 1.25rem 0rem;
+}
+.hero-cta:hover .hero-cta-line {
+  width: 75%;
+  background-color: var(--highlight-color);
+}
+.hero-image {
+  width: 90%;
+}
+.hero-image img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 1 / 1;
+  margin-inline: auto;
+  filter: brightness(0.6) sepia(0.15) hue-rotate(15deg);
+  transition: all 0.2s ease-in-out;
+}
+.hero-image:hover img {
+  filter: brightness(1);
+}
+.hero-image::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  left: -1rem;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+.hero-image::after {
+  content: "";
+  position: absolute;
+  bottom: -1rem;
+  right: -1rem;
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  z-index: -1;
+}
+.hero-quote {
+  font-size: 0.8rem;
+  border-top: 3px solid var(--primary-color);
+}
+.nav-link-container {
+  display: flex;
+  align-items: center;
+  transition: all 0.15s ease-in-out;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+  scrollbar-width: none;
+}
+.nav-line {
+  display: block;
+  width: 2rem;
+  height: 2px;
+  background-color: var(--primary-color);
+  opacity: 0.5;
+  margin: 0 1rem;
+  transition: all 0.15s ease-in-out;
+}
+.nav-link-container:hover .nav-line {
+  background-color: var(--highlight-color);
+  opacity: 1;
+  width: 5rem;
+}
+.nav-link-container:hover h1 {
+  color: var(--highlight-color);
+  opacity: 1;
+}

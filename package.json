@@ -1,28 +1,40 @@
 {
-  "name": "trulyao",
-  "type": "module",
-  "version": "1.0.0",
+  "name": "next-ts",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "TAILWIND_MODE=watch astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.4",
-    "@astrojs/tailwind": "^5.0.2",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "astro": "^3.5.0",
-    "astro-icon": "^0.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "tailwindcss": "^3.0.24",
-    "use-lanyard": "^1.4.2"
+    "axios": "^0.27.2",
+    "framer-motion": "^6.5.1",
+    "graphql": "^16.5.0",
+    "graphql-request": "^4.3.0",
+    "gsap": "^3.10.4",
+    "html-react-parser": "^3.0.1",
+    "locomotive-scroll": "^4.1.4",
+    "moment": "^2.29.4",
+    "next": "12.1.6",
+    "nprogress": "^0.2.0",
+    "react": "18.1.0",
+    "react-dom": "18.1.0",
+    "react-icons": "^4.4.0",
+    "react-moment": "^1.1.2",
+    "reading-time": "^1.5.0"
   },
   "devDependencies": {
-    "@types/qs": "^6.9.7"
+    "@types/node": "17.0.33",
+    "@types/nprogress": "^0.2.0",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.4",
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.15.0",
+    "eslint-config-next": "12.1.6",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.0.24",
+    "typescript": "4.6.4"
   }
 }
