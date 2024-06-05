@@ -21,9 +21,9 @@ const { project } = Astro.props;
 </style>
 
 <div>
-  <div class="relative w-full aspect-video object-cover rounded-sm mb-4 sm:hidden overflow-hidden">
+  <div class="relative w-full aspect-video object-cover rounded-md mb-4 sm:hidden overflow-hidden">
     <Show when={project.status != "active"}>
-      <div class="text-sm absolute top-2 right-2 bg-[var(--background-color)] text-[var(--foreground-color)] border border-[var(--highlight-border-color)] px-2.5 py-1 rounded-sm">
+      <div class="text-sm absolute top-2 right-2 bg-[var(--background-color)] text-[var(--foreground-color)] border border-[var(--highlight-border-color)] px-2.5 py-1 rounded-md">
         {project.status}
       </div>
     </Show>
