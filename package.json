@@ -1,28 +1,48 @@
 {
   "name": "trulyao",
-  "type": "module",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "TAILWIND_MODE=watch astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
+    "dev": "next dev -p 4200",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "tailwind": "npx tailwind -i ./styles/main.css -o ./styles/globals.css --watch"
   },
   "dependencies": {
-    "@astrojs/react": "^3.0.4",
-    "@astrojs/tailwind": "^5.0.2",
-    "@types/react": "^18.0.21",
-    "@types/react-dom": "^18.0.6",
-    "astro": "^3.5.0",
-    "astro-icon": "^0.8.1",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "tailwindcss": "^3.0.24",
-    "use-lanyard": "^1.4.2"
+    "framer-motion": "^6.3.3",
+    "graphql": "^16.5.0",
+    "graphql-request": "4.3.0",
+    "html-react-parser": "^1.4.12",
+    "moment": "^2.29.3",
+    "moment-timezone": "^0.5.34",
+    "mongoose": "^6.3.3",
+    "next": "12.1.6",
+    "nprogress": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "18.1.0",
+    "react-icons": "^4.3.1",
+    "react-live-clock": "^6.0.1",
+    "react-moment": "^1.1.2",
+    "react-qr-code": "^2.0.7",
+    "react-share": "^4.4.0",
+    "react-toastify": "^9.0.1",
+    "reading-time": "^1.5.0",
+    "suneditor": "^2.43.5",
+    "suneditor-react": "^3.4.0",
+    "timeago.js": "^4.0.2",
+    "underscore.string": "^3.3.6"
   },
   "devDependencies": {
-    "@types/qs": "^6.9.7"
+    "@types/node": "17.0.33",
+    "@types/nprogress": "^0.2.0",
+    "@types/react": "18.0.9",
+    "@types/react-dom": "18.0.4",
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.15.0",
+    "eslint-config-next": "12.1.6",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.0.24",
+    "typescript": "4.6.4"
   }
 }
