@@ -9,6 +9,7 @@ import H1 from "@components/mdx/H1.astro";
 import H2 from "@components/mdx/H2.astro";
 import { getMetaUrl } from "@lib/utils";
 import Code from "@components/mdx/Code.astro";
+import H3 from "@components/mdx/H3.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -110,7 +111,7 @@ const metaUrl = getMetaUrl(title, date);
     </Fragment>
 
     <article class="blog-content">
-      <Content components={{ h1: H1, h2: H2, pre: Code }} />
+      <Content components={{ h1: H1, h2: H2, h3: H3, pre: Code }} />
     </article>
 
     <p class="mt-4">
