@@ -1,0 +1,88 @@
+---
+title: No newline at the end of file
+date: 2024-06-06
+description: You ran `git status` and got this weird diff at the end that read "No newline at the end of file" and now the reviewer is telling you to fix it, let's take a closer look.
+keywords: programming, vim, troubleshooting, neovim, git, newline, carriage return, crlf, file, eol, dos, unix, windows, linux, fleet, phpstorm, remote development, ssh, mosh, zellij, wezterm
+tags: ["neovim", "linux", "git", "windows"]
+draft: false
+---
+
+# Some background
+
+My work-issued laptop is a Windows machine and for the last 2 years or so, I have had to use PHPStorm which is sort of integrated with our development server(s) and it is fine for the most part, I have tuned it over time to feel more like my preferred text editor; Neovim,  with the use of [IdeaVim](https://github.com/JetBrains/ideavim) and a couple of keyboard mappings to make in-editor and code navigation easier and significantly closer. But there is only so much I could do in there to make it any closer but it is still always jarring when I get home and go back to working in Neovim.
+
+Also due to how our dev environment is setup, we would often have files out of sync with the Git source and it is not fun to track that down when it happens, it essentially meant that our dev environment did not closely mirror production and always made bug hunting more frustrating since we had to also confirm it wasn't some file that changed under us in the environment or an actual bug in our new code... but the dev servers themselves are closely configured to match production, and this whole situation just makes that pointless!
+
+## What I tried
+
+There had to be a way to make this workflow better, there had been discussions in passing about moving development to the server(s) directly with our laptops just being thin clients, this sounded good to me as I have had similar workflow in the past and still do with my iPad Air (I will write about that setup later), it was time to explore that.
+
+### Fleet
+To tackle this, I decided to move to just working directly on the server, and it seemed like a great opportunity to finally try out Jetbrain's new editor ([Fleet](https://www.jetbrains.com/fleet/)) that has been advertised a lot as useful for remote development, it wasn't the best experience but _**this was (and still is) beta software and they ship lots of updates every week**_, I did not expect it to be feature complete and on par with the older PHPStorm but the Vim mode emulation was completely unusable for me since they had to remake one from scratch and it was missing a lot - as I understand it, it uses an entirely new plugin system and IdeaVim is not supported?
+
+> If you are wondering why I did not try PHPStorm itself first for remote development, I completely forgot it had that feature even though I had seen it earlier, I haven't seen the "splash screen" in a long while now, but the feature was boldly highlighted on Fleet's homepage that I had been on a couple of times recently.
+
+### PHPStorm (Remote Development)
+After that whole thing, I realised PHPStorm did support remote development and could install its own binary on the target server, so I proceeded to use that, most of my settings got messed up and I had to reconfigure them and that worked okay once again, I did not entirely love it but it was usable.. pfft.
+
+### Neovim (via SSH/Mosh)
+I had to edit a commit message and my default editor was Vi (the server only had that, and Nano), my boss remembered I was a Neovim user and offered to install Neovim on the server for me instead (I do not have install permissions), I accepted instantly, this was it... I could finally use Neovim directly in my preferred terminal emulator (that I finally now got to use Bash too); Wezterm. I couldn't import my [personal config](https://github.com/aosasona/nvim) since it has a lot of dependency on a few things like the Go compiler, Rust, a C compiler, etc to support all the different things I do in there, so I [wrote one from scratch](https://github.com/aosasona/work-nvim-config) and that's been pretty... fine. I also added [Mosh](https://mosh.org/) and [Zellij](https://zellij.dev/) to the mix about two weeks ago and it has been a nice environment to work in!
+
+# The problem
+
+As I mentioned earlier, my work machine runs Windows, but the dev servers obviously run an enterprise distribution of Linux I shall not name. The problem first surfaced with a commit I made for a task, I was inspecting the diff again on the pull request page and saw something strange like this:
+
+```diff
+-} // This is the last line of the file
+\ No newline at end of file
++} // This is the last line of the file
+```
+
+This made no sense to my brain at first, I completely forgot about the OS differences because PHPStorm managed tabs, new lines etc. for me transparently since the client was technically still on Windows (even though the IDE server was on a Linux machine), so I shrugged it off as a UI bug in the version control platform we use, created the pull request anyway and carried on.
+
+> I know you are screaming at your screen right now; "Just tell me the goddamn problem and get to the solution", we're getting there, I promise!
+
+Yes, that came back to bite me in the behind, because I had dismissed it earlier, I forgot about it for a short period... that was until I got a comment from my boss asking me to fix it and be careful about whatever my editor was doing, apparently, it's been in other commits and I simply hadn't noticed.
+
+## What was going on exactly?
+I had a proper look with `git show` in the terminal and oh... there it was, the sneaky `^M`, ah! It was the DOS file format and CR all along! Hang on, let me explain that. You see, Windows represents new lines with `\r\n` instead of UNIX's regular `\n` and different applications account for that in different ways.
+
+> `\r` is the _"carriage return"_ (CR) character essentially telling the computer "this is the end, move the cursor back to the beginning", sort of like how typewriters worked back in the day (or so I've heard, I never paid much attention to my Mom's typewriter when she had it) and `\n` is the _"line feed"_ (LF) - also commonly known as the "new line" - character, that combination Windows uses is also called `CRLF` (Carriage Return/Line Feed)
+
+Vim (and by extension; Neovim) here added the `^M` character to the end of the file to indicate the carriage return (\r) on that last line (meaning "this is the end of this line, move the cursor back to the beginning"), but not the new line one (LF or \n) because there was indeed no newline there, it correctly detected the file as `dos` and just did what `dos` did.
+
+## What I tried
+I initially thought _"Okay, I will just set file format to unix and that'll be it"_ forgetting that it will try to convert the whole thing, running `:set fileformat=unix` and `:w` was definitely not a good idea, I ran a hard git reset to try again. I added `dos` and `unix` to the file formats list thinking it will figure out the difference and fix it (looking back now, that was also silly, that is not what that does), ran `:update` and... of course, that did not do it. I tried replacing the invisible PITA character many ways but that also either did not work or broke the whole file somehow.. I thought about using Vim to just convert from DOS to Unix format but you can already see the problems:
+
+- It will convert the whole file, not just the last line
+- It will cause a lot of unnecessary changes in the diffs
+- It will be reverted the next time one of my colleagues edits the file on their Windows machine
+
+This was made worse by the fact that I couldn't just set now format globally as it also caused a lot of other problems in other files, I had to find a way to fix this on a per-file basis as I worked on them. During my search for a solution, I found answers that suggested using `:set binary noeol` and other things, that was a horrible idea, it turned it all red after rewriting the whole line to strip it all out, don't do it!
+
+> You can see my severe skill issues at play here, while I did sort of know what the problem was, I was having a bit of a trouble figuring out how to fix it without causing more problems.
+>
+> Ours being a fairly old codebase, it had a mix of a lot of conventions when it came to tabs, expanding tabs etc and things like that but PHPStorm handled most of that nicely for me, I got [sleuth](https://github.com/tpope/vim-sleuth) to handle most of that for me and it isn't an issue anymore it seems. Perhaps I should have endured PHPStorm, how I work in the terminal is just quite burned into my brain now and this is the first time I have had to worry about what OS the other person was using.
+
+
+
+# The solution I settled on
+
+I ended up on doing the following to remove the EOL (end of line) trailing character from the last line of the file (but it is a temporary solution):
+
+```vim
+:set noeol nofixeol
+" :update You may need to do this for some odd reason
+:w
+```
+
+I would go as far making this an [autocmd](https://neovim.io/doc/user/autocmd.html) or just a default setting, and I believe I have tried that but something else that I can't remember went wrong and I had to revert it, I will try again and update this post if I can get it to work.
+
+> Sorry, I have a pretty flaky memory, I should have written this sooner, but I hope this helps someone else out there somehow!
+
+This isn't really a permanent solution, I am open to whatever suggestions you might have, I am still learning and I would love to hear from you!
+
+# TLDR;
+- Windows uses `CRLF` for new lines, Linux uses `LF`
+- If you see `No newline at end of file` in your diffs, it is likely a `CRLF` issue
+- You can temporarily fix it in Vim for that session by running `:set noeol nofixeol` and saving the file

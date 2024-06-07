@@ -191,7 +191,7 @@ article.blog-content {
 		object-fit: cover;
 	}
 
-	& p>code {
+	& p>code, & li>code {
 		font-size: 0.8rem;
 		font-family: var(--body-font-family);
 		background-color: theme("colors.secondary.200");
@@ -256,4 +256,3 @@ article.blog-content {
     opacity: 0.8;
   }
 }
-
