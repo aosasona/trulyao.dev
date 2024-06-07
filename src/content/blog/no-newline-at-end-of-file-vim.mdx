@@ -2,9 +2,9 @@
 title: No newline at the end of file
 date: 2024-06-07
 description: You ran `git status` and got this weird diff at the end that read "No newline at the end of file" and now the reviewer is telling you to fix it, let's take a closer look.
-keywords: programming, vim, troubleshooting, Neovim, git, newline, carriage return, crlf, file, eol, dos, unix, windows, linux, fleet, phpstorm, remote development, ssh, mosh, zellij, wezterm
-tags: ["Neovim", "linux", "git", "windows"]
-draft: false
+keywords: programming, vim, troubleshooting, neovim, git, newline, carriage return, crlf, file, eol, dos, unix, windows, linux, fleet, phpstorm, remote development, ssh, mosh, zellij, wezterm
+tags: ["neovim", "linux", "git", "windows"]
+draft: true
 ---
 
 # Some background
@@ -77,7 +77,7 @@ This was made worse by the fact that I couldn't just set now format globally as 
 > Ours being a fairly old codebase, it had a mix of a lot of conventions when it came to tabs, expanding tabs etc and things like that but PHPStorm handled most of that nicely for me, I got [sleuth](https://github.com/tpope/vim-sleuth) to handle most of that for me and it isn't an issue anymore it seems. Perhaps I should have endured PHPStorm, how I work in the terminal is just quite burned into my brain now and this is the first time I have had to worry about what OS the other person was using.
 
 
-# The solution I settled on
+# The (hacky) solution I settled on
 
 I ended up on doing the following to remove the EOL (end of line) trailing character from the last line of the file (but it is a temporary solution):
 
