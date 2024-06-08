@@ -90,8 +90,7 @@ a {
 	text-underline-offset: 4px;
 	cursor: pointer;
 
-	nav &,
-	[no-underline] & {
+	nav &, [no-underline] & {
 		text-decoration: none;
 	}
 
@@ -139,6 +138,7 @@ a {
 }
 
 article.blog-content {
+	max-width: 100%;
 	margin-top: theme("spacing.1");
 	--scrollbar-width: none;
 
@@ -148,7 +148,9 @@ article.blog-content {
 	h4,
 	h5,
 	h6 {
+		max-width: 100%;
 		margin-top: theme("spacing.5");
+		white-space: pre-line;
 	}
 
 	h1 {
