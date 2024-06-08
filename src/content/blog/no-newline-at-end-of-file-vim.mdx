@@ -9,16 +9,16 @@ draft: false
 
 # Some background
 
-My work-issued laptop is a Windows machine and for the last 2 years or so, I have had to use PHPStorm which is sort of integrated with our development server(s) and it is fine for the most part, I have tuned it over time to feel more like my preferred text editor; Neovim,  with the use of [IdeaVim](https://github.com/JetBrains/ideavim) and a couple of keyboard mappings to make in-editor and code navigation easier and significantly closer. But there is only so much I could do in there to make it any closer but it is still always jarring when I get home and go back to working in Neovim.
+My work-issued laptop is a Windows machine and for the last two years or so, I have had to use PHPStorm which is sort of integrated with our development server(s) and it is fine for the most part. I have tuned it over time to feel more like my preferred text editor; Neovim,  with the use of [IdeaVim](https://github.com/JetBrains/ideavim) and a couple of keyboard mappings to make in-editor and in-code navigation easier and significantly closer to what I am used to. There was only so much I could do in there to make it any closer to my Neovim + Wezterm setup, but it was still always jarring when I got home, went back to working in Neovim and resumed the next day to go back into PHPStorm.
 
-Also due to how our dev environment is setup, we would often have files out of sync with the Git source and it is not fun to track that down when it happens, it essentially meant that our dev environment did not closely mirror production and always made bug hunting more frustrating since we had to also confirm it wasn't some file that changed under us in the environment or an actual bug in our new code... but the dev servers themselves are closely configured to match production, and this whole situation just makes that pointless!
+Also due to how our dev environment is setup, we would often have files out of sync with the Git source and it is not fun to track that down when it happens (yes, your FTP-sniffing senses are correct). This essentially meant that our dev environment did not closely mirror production and always made bug hunting more frustrating since we had to also confirm it wasn't some file that changed under us in the environment or an actual bug in our new code... but the dev servers themselves are closely configured to match production, and this whole situation just makes that a wasted effort!
 
 ## What I tried
 
-There had to be a way to make this workflow better, there had been discussions in passing about moving development to the server(s) directly with our laptops just being thin clients, this sounded good to me as I have had similar workflow in the past and still do with my iPad Air (I will write about that setup later), it was time to explore that.
+There had to be a way to make this workflow better. There had been discussions in passing about moving development to the server(s) directly with our laptops becoming thin clients, this sounded good to me as I have had similar workflow in the past and still do with my iPad Air (I will write about that setup later), it was time to explore that.
 
 ### Fleet
-To tackle this, I decided to move to just working directly on the server, and it seemed like a great opportunity to finally try out Jetbrain's new editor ([Fleet](https://www.jetbrains.com/fleet/)) that has been advertised a lot as useful for remote development, it wasn't the best experience but _**this was (and still is) beta software and they ship lots of updates every week**_, I did not expect it to be feature complete and on par with the older PHPStorm but the Vim mode emulation was completely unusable for me since they had to remake one from scratch and it was missing a lot - as I understand it, it uses an entirely new plugin system and IdeaVim is not supported?
+I decided to move to just working directly on the server to remove the upload latency and the files going out of sync, and it seemed like a great opportunity to finally try out Jetbrain's new editor ([Fleet](https://www.jetbrains.com/fleet/)) that has been advertised a lot as useful for remote development, it wasn't the best experience but _**this was (and still is) beta software and they ship lots of updates every week**_, I did not expect it to be feature complete and on par with the older PHPStorm but the Vim mode emulation was completely unusable for me since they had to remake one from scratch and it was missing a lot - as I understand it, it uses an entirely new plugin system and IdeaVim is not supported?
 
 > If you are wondering why I did not try PHPStorm itself first for remote development, I completely forgot it had that feature even though I had seen it earlier, I haven't seen the "splash screen" in a long while now, but the feature was boldly highlighted on Fleet's homepage that I had been on a couple of times recently.
 
@@ -26,7 +26,19 @@ To tackle this, I decided to move to just working directly on the server, and it
 After that whole thing, I realised PHPStorm did support remote development and could install its own binary on the target server, so I proceeded to use that, most of my settings got messed up and I had to reconfigure them and that worked okay once again, I did not entirely love it but it was usable.. pfft.
 
 ### Neovim (via SSH/Mosh)
-I had to edit a commit message and my default editor was Vi (the server only had that, and Nano), my boss remembered I was a Neovim user and offered to install Neovim on the server for me instead (I do not have install permissions), I accepted instantly, this was it... I could finally use Neovim directly in my preferred terminal emulator (that I finally now got to use Bash too); Wezterm. I couldn't import my [personal config](https://github.com/aosasona/nvim) since it has a lot of dependency on a few things like the Go compiler, Rust, a C compiler, etc to support all the different things I do in there, so I [wrote one from scratch](https://github.com/aosasona/work-nvim-config) and that's been pretty... fine. I also added [Mosh](https://mosh.org/) and [Zellij](https://zellij.dev/) to the mix about two weeks ago and it has been a nice environment to work in!
+I had to edit a commit message and my default editor was a weird version of Vi (I cannot remember what it was called but the server only had that, and Nano), my boss noticed it did different things to what I expected and remembered I was a Neovim user and offered to install Neovim on the server for me instead (I do not have install permissions), I accepted instantly, this was it... I could finally use Neovim directly in my preferred terminal emulator (that I finally now got to use Bash too); Wezterm. I couldn't import my [personal config](https://github.com/aosasona/nvim) since it has a lot of dependency on a few things like the Go compiler, Rust, a C compiler, etc to support all the different things I do in there, so I [wrote one from scratch](https://github.com/aosasona/work-nvim-config) loosely based on [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) and that's been pretty... fine. I also added [Mosh](https://mosh.org/) and [Zellij](https://zellij.dev/) to the mix about two weeks ago and it has been a nice environment to work in!
+
+## More context for the switch
+
+My reason for wanting to switch to Neovim at work wasn't because I am a "Neovim best, other editors bad" kind of person (although I do love Neovim and I think you should try it out), I like my terminal workflow which I have really tuned to be quite personal (jumping between my editor and the terminal without much thought or movement, having my sessions stored as they were regardless of what branch I was on or what directory I was in and ready to go instantly! etc.) but I knew I had to put up with PHPStorm since that is what everyone else was using and to be fair, I kind of like it and what it has to offer out of the box, but it was annoyingly slow(-er); like showing errors for seconds after I had fixed them, taking a while to become responsive every time I switched branches and it had to update its indexes (which I did a lot because I haven't bothered to learn git worktrees yet), and other smaller issues like just moving between files (I am really used to `telescope` and `ripgrep`!). I do understand why it has to do some of these things because I have seen, used and like the features it offers, and I did try some suggested fixes on the internet (feeding it more RAM, clearing the cache so it can rebuild it for some reason and other things) but they did not make any real difference.
+
+> I asked some other people in the office and apparently no one else thought it was slow, some folks on Twitter also said they were fine with the performance - perhaps I am the problem and it's not... slow?
+
+Our repos are fairly large and we share code a lot, which means I usually have multiple projects open, switching branches often and stuff like that, my Neovim setup handles that really well, I would say "but to be fair it is also on a more powerful machine, compared to my work machine" except my work machine is rather decently spec-ed and I have had similar experience with Goland, Webstorm and PHPStorm on my personal daily-driver; the 2021 14" M1 Pro Macbook Pro (same RAM as my work machine; 16GB) with just about two or three windows/workspaces open.
+
+> And oh, Jetbrains had 20GB of cache on my personal machine which I just cleared today after getting rid of the last Jetbrains IDE I had left (Android Studio). This is not a campaign against Jetbrains, I really like their products and I have been using them for a long time, they just did not work for me anymore and I am perhaps too poor to buy the ideal machine they will run extremely well on, if they can ever.
+
+<br />
 
 # The problem
 
@@ -34,39 +46,38 @@ As I mentioned earlier, my work machine runs Windows, but the dev servers obviou
 
 ```diff
 -} // This is the last line of the file
-\ No newline at end of file
 +} // This is the last line of the file
+\ No newline at end of file
 ```
 
-This made no sense to my brain at first, I completely forgot about the OS differences because PHPStorm managed tabs, new lines etc. for me transparently since the client was technically still on Windows (even though the IDE server was on a Linux machine), so I shrugged it off as a UI bug in the version control platform we use, created the pull request anyway and carried on.
+This made no sense to my brain at first, I completely forgot about the OS differences because PHPStorm managed tabs, new lines etc., for me transparently since the client was technically still on Windows (even though the IDE server was on a Linux machine), so I shrugged it off as a UI bug in the version control platform we use, created the pull request anyway, and carried on.
 
-> I know you are screaming at your screen right now; "Just tell me the goddamn problem and get to the solution", we're getting there, I promise!
+> I know you are yelling at your screen right now; "Just tell me the goddamn problem and get to the solution", we're getting there, I promise!
 
 Yes, that came back to bite me in the behind, because I had dismissed it earlier, I forgot about it for a short period... that was until I got a comment from my boss asking me to fix it and be careful about whatever my editor was doing, apparently, it's been in other commits and I simply hadn't noticed.
 
 ## What was going on exactly?
-I had a proper look with `git show` in the terminal and oh... there it was, the sneaky `^M`, ah! It was the DOS file format and CR all along! Hang on, let me explain that. You see, Windows represents new lines with `\r\n` instead of UNIX's regular `\n` and different applications account for that in different ways.
+I had a proper look with `git show` in the terminal and oh... there it was, the sneaky `^M`. Ah! It was the DOS file format and CR all along! Hang on, let me explain that. You see, Windows represents new lines with `\r\n` instead of UNIX's regular `\n`, and different applications account for that in different ways.
 
-> `\r` is the _"carriage return"_ (CR) character essentially telling the computer "this is the end, move the cursor back to the beginning", sort of like how typewriters worked back in the day (or so I've heard, I never paid much attention to my Mom's typewriter when she had it) and `\n` is the _"line feed"_ (LF) - also commonly known as the "new line" - character, that combination Windows uses is also called `CRLF` (Carriage Return/Line Feed)
+> `\r` is the _"carriage return"_ (CR) character essentially telling the computer "this is the end of this line, move the cursor back to the beginning", sort of like how typewriters worked back in the day (or so I've heard, I never paid much attention to my Mom's typewriter when she had it) and `\n` is the _"line feed"_ (LF) - also commonly known as the "new line" - character, that combination Windows uses is also called `CRLF` (Carriage Return/Line Feed)
 
 Vim (and by extension; Neovim) here added the `^M` character to the end of the file to indicate the carriage return (\r) on that last line (meaning "this is the end of this line, move the cursor back to the beginning"), but not the new line one (LF or \n) because there was indeed no newline there, it correctly detected the file as `dos` and just did what `dos` did.
 
 ## What I tried
-I initially thought _"Okay, I will just set file format to unix and that'll be it"_ forgetting that it will try to convert the whole thing, running `:set fileformat=unix` and `:w` was definitely not a good idea, I ran a hard git reset to try again. I added `dos` and `unix` to the file formats list thinking it will figure out the difference and fix it (looking back now, that was also silly, that is not what that does), ran `:update` and... of course, that did not do it. I tried replacing the invisible PITA character many ways but that also either did not work or broke the whole file somehow.. I thought about using Vim to just convert from DOS to Unix format but you can already see the problems:
+I initially thought, _"Okay, I will just set file format to unix and that'll be it"_ forgetting that it will try to convert the whole thing. Running `:set fileformat=unix` and `:w` was definitely not a good idea, I ran a hard git reset to try again. I added `dos` and `unix` to the file formats list thinking it will figure out the difference and fix it (looking back now, that was also silly; that is not what that does), ran `:update` and... of course, that did not do it. I tried replacing the invisible PITA character many ways but that also either did not work or broke the whole file somehow... I thought about using Vim to just convert from DOS to Unix format but you can already see the problems:
 
 - It will convert the whole file, not just the last line
 - It will cause a lot of unnecessary changes in the diffs
 - It will be reverted the next time one of my colleagues edits the file on their Windows machine
 
-This was made worse by the fact that I couldn't just set now format globally as it also caused a lot of other problems in other files, I had to find a way to fix this on a per-file basis as I worked on them. During my search for a solution, I found answers that suggested using `:set binary noeol` and other things, that was a horrible idea, it turned it all red after rewriting the whole line to strip it all out, don't do it!
+This was made worse by the fact that I couldn't just set the `eol` config globally as it also caused a lot of other problems in other files, I had to find a way to fix this on a per-file basis as I worked on them. During my search for a solution, I found answers that suggested using `:set binary noeol` and other things, that was a horrible idea, it turned it all red after rewriting the whole line to strip it all out, don't do it!
 
 > You can see my severe skill issues at play here, while I did sort of know what the problem was, I was having a bit of a trouble figuring out how to fix it without causing more problems.
 >
 > Ours being a fairly old codebase, it had a mix of a lot of conventions when it came to tabs, expanding tabs etc and things like that but PHPStorm handled most of that nicely for me, I got [sleuth](https://github.com/tpope/vim-sleuth) to handle most of that for me and it isn't an issue anymore it seems. Perhaps I should have endured PHPStorm, how I work in the terminal is just quite burned into my brain now and this is the first time I have had to worry about what OS the other person was using.
 
 
-
-# The solution I settled on
+# The (hacky) solution I settled on
 
 I ended up on doing the following to remove the EOL (end of line) trailing character from the last line of the file (but it is a temporary solution):
 
@@ -76,13 +87,59 @@ I ended up on doing the following to remove the EOL (end of line) trailing chara
 :w
 ```
 
-I would go as far making this an [autocmd](https://neovim.io/doc/user/autocmd.html) or just a default setting, and I believe I have tried that but something else that I can't remember went wrong and I had to revert it, I will try again and update this post if I can get it to work.
+I would go as far as making this an [autocmd](https://Neovim.io/doc/user/autocmd.html) or just a default setting, and I believe I have tried that but something else that I can't remember went wrong and I had to revert it, I will try again and update this post if I can get it to work.
 
 > Sorry, I have a pretty flaky memory, I should have written this sooner, but I hope this helps someone else out there somehow!
 
-This isn't really a permanent solution, I am open to whatever suggestions you might have, I am still learning and I would love to hear from you!
+## Update - 2024/06/07
+
+Today, I finally decided to add the autocmd with some restrictions that I'll explain below, here's what that [looked like](https://github.com/aosasona/work-nvim-config/blob/bb7bc6cbd23cd6b996599caa1d430eddd5ed8a16/lua/utils.lua#L30-L50):
+
+```lua
+-- file: lua/utils.lua
+function M.handle_eol()
+  local eol = vim.api.nvim_buf_get_option(0, "eol")
+  local fixeol = vim.api.nvim_buf_get_option(0, "fixeol")
+  local current_filetype = vim.bo.filetype
+  local current_file_format = vim.bo.fileformat
+
+  if eol or fixeol and (current_file_format ~= "unix" or current_filetype == "php") then
+    M.set_eol({})
+    vim.notify("Handled EOL for this buffer", vim.log.levels.INFO)
+  end
+end
+
+function M.set_eol(opts)
+  vim.api.nvim_buf_set_option(0, "eol", false)
+  vim.api.nvim_buf_set_option(0, "fixeol", false)
+  vim.cmd([[ update ]])
+
+  if opts["save"] ~= nil and opts["save"] == true then
+    vim.cmd([[ w ]])
+  end
+end
+
+-- file: init.lua
+vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+  desc = "Handle EOL automatically depending on previous setting",
+  callback = utils.handle_eol,
+})
+```
+
+The weird restrictions exist instead of just letting it do it for all files by default because I have tried that and it caused issues with certain files that I had to  manually set `eol` for (they somehow had different settings and opening them caused them to create a diff I did not want). I also restricted the autocmd to PHP files because that is what I edit often, for other files, I added a keymap like this for doing that manually:
+
+```lua
+-- file: init.lua
+local function set_eol()
+  utils.set_eol({ save = true })
+end
+
+vim.keymap.set("n", "<leader>eo", set_eol, { desc = "Disable and fix DOS EOL manually" })
+````
+
+These things aren't really permanent solutions, I am open to whatever suggestions you might have (help!!) and I would love to hear from you!
 
 # TLDR;
 - Windows uses `CRLF` for new lines, Linux uses `LF`
 - If you see `No newline at end of file` in your diffs, it is likely a `CRLF` issue
-- You can temporarily fix it in Vim for that session by running `:set noeol nofixeol` and saving the file
+- You can often temporarily fix it in Vim for that session by running `:set noeol nofixeol` and saving the file.
