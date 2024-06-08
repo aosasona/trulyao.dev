@@ -1,5 +1,6 @@
 @import url("https://fonts.cdnfonts.com/css/whois");
-@import url('https://fonts.cdnfonts.com/css/kay-pho-du');
+@import url("https://fonts.cdnfonts.com/css/kay-pho-du");
+@import url("https://cdn.xeiaso.net/static/css/iosevka/family.css");
 
 /* PrismJS Theme */
 @import url("./prism-gruvbox.css");
@@ -11,13 +12,13 @@
 
 	--highlight-border-color: theme("colors.primary.200");
 
-	--body-font-family: "Iosevka Web";
+	--body-font-family: "Iosevka Curly Iaso", sans-serif;
 	--header-font-family: "Kay Pho Du";
 	--alt-font-family: "Whois";
 
 	--body-font-size: .9rem;
-	--body-line-height: 1.65;
-	--body-letter-spacing: .025rem;
+	--body-line-height: 1.75;
+	--body-letter-spacing: .005rem;
 
 	&.dark {
 		--foreground-color: theme("colors.primary.text.dark");
