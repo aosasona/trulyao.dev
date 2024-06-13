@@ -61,7 +61,9 @@ I had a proper look with `git show` in the terminal and oh... there it was, the 
 
 > `\r` is the _"carriage return"_ (CR) character essentially telling the computer "this is the end of this line, move the cursor back to the beginning", sort of like how typewriters worked back in the day (or so I've heard, I never paid much attention to my Mom's typewriter when she had it) and `\n` is the _"line feed"_ (LF) - also commonly known as the "new line" - character, that combination Windows uses is also called `CRLF` (Carriage Return/Line Feed)
 
-Vim (and by extension; Neovim) here added the `^M` character to the end of the file to indicate the carriage return (\r) on that last line (meaning "this is the end of this line, move the cursor back to the beginning"), but not the new line one (LF or \n) because there was indeed no newline there, it correctly detected the file as `dos` and just did what `dos` did.
+~Vim (and by extension; Neovim) here added the `^M` character to the end of the file to indicate the carriage return (\r) on that last line (meaning "this is the end of this line, move the cursor back to the beginning"), but not the new line one (LF or \n) because there was indeed no newline there, it correctly detected the file as `dos` and just did what `dos` did.~
+
+> This was partially right but I had the wrong diagnosis here, sort of. Scroll down to read the latest update which contains more accurate information.
 
 ## What I tried
 I initially thought, _"Okay, I will just set file format to unix and that'll be it"_ forgetting that it will try to convert the whole thing. Running `:set fileformat=unix` and `:w` was definitely not a good idea, I ran a hard git reset to try again. I added `dos` and `unix` to the file formats list thinking it will figure out the difference and fix it (looking back now, that was also silly; that is not what that does), ran `:update` and... of course, that did not do it. I tried replacing the invisible PITA character many ways but that also either did not work or broke the whole file somehow... I thought about using Vim to just convert from DOS to Unix format but you can already see the problems:
@@ -77,7 +79,7 @@ This was made worse by the fact that I couldn't just set the `eol` config global
 > Ours being a fairly old codebase, it had a mix of a lot of conventions when it came to tabs, expanding tabs etc and things like that but PHPStorm handled most of that nicely for me, I got [sleuth](https://github.com/tpope/vim-sleuth) to handle most of that for me and it isn't an issue anymore it seems. Perhaps I should have endured PHPStorm, how I work in the terminal is just quite burned into my brain now and this is the first time I have had to worry about what OS the other person was using.
 
 
-# The (hacky) solution I settled on
+# The (hacky) solution I (initially) settled on
 
 I ended up on doing the following to remove the EOL (end of line) trailing character from the last line of the file (but it is a temporary solution):
 
@@ -91,7 +93,7 @@ I would go as far as making this an [autocmd](https://Neovim.io/doc/user/autocmd
 
 > Sorry, I have a pretty flaky memory, I should have written this sooner, but I hope this helps someone else out there somehow!
 
-## Update - 2024/06/07
+# Update - 2024/06/07
 
 Today, I finally decided to add the autocmd with some restrictions that I'll explain below, here's what that [looked like](https://github.com/aosasona/work-nvim-config/blob/bb7bc6cbd23cd6b996599caa1d430eddd5ed8a16/lua/utils.lua#L30-L50):
 
@@ -139,7 +141,32 @@ vim.keymap.set("n", "<leader>eo", set_eol, { desc = "Disable and fix DOS EOL man
 
 These things aren't really permanent solutions, I am open to whatever suggestions you might have (help!!) and I would love to hear from you!
 
+
+# Update - 2024/06/11
+After having to deal with it again, it hit me that perhaps I was looking at the problem from the wrong perspective, maybe I had the wrong solution because I thought I had the right problem but didn't. I finally decided stop being a lazy twat and took the time to investigate because I just knew the solutions I had tried weren't the best and they certainly were not right. So, I launched PHPStorm to have a look at the current configuration, it was set to `CLRF` which is correct, I looked at a couple of other settings and then proceeded to do the one thing I should have taken 5 minutes to actually do; I read the f*cking manual (for Neovim).
+
+I had read up on some of the EOL handling bits earlier but I didn't really go far into the other bits because I just needed to have it fixed and get back to work. I finally read the Neovim docs for `eol` and `fixeol` with more attention and oh... It was right there, it finally clicked. I knew Vim's behaviour and I knew how the line endings worked, I just didn't put it together until now.
+
+See, PHPStorm knew that the line had actually ended and did not need to add the carriage return or a new line but Vim saw that as unexpected (because of some "weird" EOL and EOF handling, [this](https://unix.stackexchange.com/a/263919) may be a better explanation of Vi's - and in turn Vim's - behaviour), so, it did what it knew how to, it *"fixed"* it by adding the carriage return on every line that did not have it and that was the last time there. Now that I finally knew the problem, the solution was rather simple, set `nofixeol` to false globally so it doesn't fix it anymore, essentially telling Neovim; "Don't fix my broken line endings, leave it as it is".
+
+```lua
+vim.opt.fixeol = false
+````
+
+Or directly via Neovim's command mode (or .vimrc):
+
+```vim
+:set nofixeol
+```
+
+So far, I have not had any issues with this and it has been working as expected, I will update this post if I run into any issues with this solution; which I don't expect to happen.
+
+> [This article](https://thoughtbot.com/blog/no-newline-at-end-of-file) is about a similar problem but the author WANTED a new line at the end of the file instead of removing the carriage return character.
+
+<br />
+
 # TLDR;
 - Windows uses `CRLF` for new lines, Linux uses `LF`
 - If you see `No newline at end of file` in your diffs, it is likely a `CRLF` issue
 - You can often temporarily fix it in Vim for that session by running `:set noeol nofixeol` and saving the file.
+- [RTFM](https://en.wikipedia.org/wiki/RTFM)
