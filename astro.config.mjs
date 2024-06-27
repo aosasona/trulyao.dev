@@ -16,6 +16,6 @@ export default defineConfig({
     rehypePlugins: [[externalize, { domain: "trulyao.dev" }]],
   },
   redirects: {
-    "/live": { status: 302, destination: "https://twitch.tv/iamtrulyao" },
+    "/live": { status: 302, destination: "https://twitch.tv/truly_ao" },
   },
 });
