@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 @import url("https://fonts.cdnfonts.com/css/whois");
 @import url("https://fonts.cdnfonts.com/css/kay-pho-du");
 @import url("https://cdn.xeiaso.net/static/css/iosevka/family.css");
@@ -5,62 +6,65 @@
 /* PrismJS Theme */
 @import url("./prism-gruvbox.css");
 
-
 :root {
-	--foreground-color: theme("colors.primary.text.light");
-	--background-color: theme("colors.secondary.light");
+  --foreground-color: theme("colors.primary.text.light");
+  --background-color: theme("colors.secondary.light");
 
-	--highlight-border-color: theme("colors.primary.200");
+  --highlight-border-color: theme("colors.primary.200");
 
-	--body-font-family: "Iosevka Curly Iaso", sans-serif;
-	--header-font-family: "Kay Pho Du";
-	--alt-font-family: "Whois";
+  --body-font-family: "Jetbrains Mono", sans-serif;
+  --code-font-family: "Iosevka Curly Iaso", sans-serif;
+  --header-font-family: "Kay Pho Du";
+  --alt-font-family: "Whois";
 
-	--body-font-size: .9rem;
-	--body-line-height: 1.75;
-	--body-letter-spacing: .005rem;
+  --body-font-size: 0.9rem;
+  --body-line-height: 1.95;
+  --body-letter-spacing: theme("letterSpacing.tight");
 
-	&.dark {
-		--foreground-color: theme("colors.primary.text.dark");
-		--background-color: theme("colors.secondary.dark");
+  &.dark {
+    --foreground-color: theme("colors.primary.text.dark");
+    --background-color: theme("colors.secondary.dark");
 
-		--highlight-border-color: theme("colors.secondary.800");
-	}
+    --highlight-border-color: theme("colors.secondary.800");
+  }
 }
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 [x-cloak] {
-	display: none !important;
+  display: none !important;
 }
 
 ::selection {
-	background-color: theme("colors.primary.400");
-	color: theme("colors.primary.text.light");
+  background-color: theme("colors.primary.400");
+  color: theme("colors.primary.text.light");
 
-	.dark & {
-		background-color: theme("colors.primary.600");
-		color: theme("colors.primary.text.dark");
-	}
+  .dark & {
+    background-color: theme("colors.primary.600");
+    color: theme("colors.primary.text.dark");
+  }
 }
 
 html {
-	font-family:  var(--body-font-family), var(--alt-font-family), monospace, Helvetica, Arial, sans-serif;
-	font-size: var(--body-font-size);
-	line-height: var(--body-line-height);
-	letter-spacing: var(--body-letter-spacing);
-	background-color: theme("colors.secondary.light");
-	color: theme("colors.primary.text.light");
-	transition: background-color 0.3s, color 0.3s;
+  font-family: var(--body-font-family), var(--alt-font-family), monospace,
+    Helvetica, Arial, sans-serif;
+  font-size: var(--body-font-size);
+  line-height: var(--body-line-height);
+  letter-spacing: var(--body-letter-spacing);
+  background-color: theme("colors.secondary.light");
+  color: theme("colors.primary.text.light");
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 
-	&.dark {
-		background-color: var(--background-color);
-		color: var(--foreground-color);
-	}
+  &.dark {
+    background-color: var(--background-color);
+    color: var(--foreground-color);
+  }
 }
 
 h1,
@@ -69,184 +73,185 @@ h3,
 h4,
 h5,
 h6 {
-	font-family: var(--header-font-family), var(--alt-font-family), Arial, Helvetica, sans-serif;
-	font-weight: bold;
+  font-family: var(--header-font-family), var(--alt-font-family), Arial,
+    Helvetica, sans-serif;
+  font-weight: bold;
 }
 
 hr {
-	border: 0;
-	border-top-width: 1px;
-	border-top-style: solid;
-	border-top-color: theme("colors.secondary.100");
-	margin: theme("margin.3") 0;
+  border: 0;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: theme("colors.secondary.100");
+  margin: theme("margin.3") 0;
 
-	.dark & {
-		border-top-color: theme("colors.secondary.800");
-	}
+  .dark & {
+    border-top-color: theme("colors.secondary.800");
+  }
 }
 
 a {
-	color: theme("colors.secondary.600");
-	text-decoration: underline;
-	text-underline-offset: 4px;
-	cursor: pointer;
+  color: theme("colors.secondary.600");
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
 
-	nav &, [no-underline] & {
-		text-decoration: none;
-	}
+  nav &,
+  [no-underline] & {
+    text-decoration: none;
+  }
 
-	.dark & {
-		color: theme("colors.secondary.300");
-	}
+  .dark & {
+    color: theme("colors.secondary.300");
+  }
 
-	&:hover {
-		color: theme("colors.primary.400");
+  &:hover {
+    color: theme("colors.primary.400");
 
-		.dark & {
-			color: theme("colors.primary.300");
-		}
-	}
+    .dark & {
+      color: theme("colors.primary.300");
+    }
+  }
 }
 
 .tag {
-	display: block;
-	background-color: theme("colors.primary.200");
-	color: theme("colors.primary.600");
-	font-size: theme("fontSize.xs");
-	padding: theme("spacing[0.5]") theme("spacing.2");
-	border-radius: theme("borderRadius.sm");
-	user-select: none;
-	white-space: nowrap;
+  display: block;
+  background-color: theme("colors.primary.200");
+  color: theme("colors.primary.600");
+  font-size: theme("fontSize.xs");
+  padding: theme("spacing[0.5]") theme("spacing.2");
+  border-radius: theme("borderRadius.sm");
+  user-select: none;
+  white-space: nowrap;
 
+  @apply dark:bg-secondary-900 dark:text-primary-100;
 
-	@apply dark:bg-secondary-900 dark:text-primary-100;
-
-	a& {
-		text-decoration: none;
-	}
+  a& {
+    text-decoration: none;
+  }
 }
 
 .sticky-section-label {
-	width: max-content;
-	color: var(--foreground-color);
-	background-color: var(--highlight-border-color);
-	font-size: 0.9rem;
+  width: max-content;
+  color: var(--foreground-color);
+  background-color: var(--highlight-border-color);
+  font-size: 0.9rem;
 
-	padding-inline: theme("padding.4");
-	margin-top: theme("margin[2.5]");
-	border-radius: theme("borderRadius.md") theme("borderRadius.md") 0 0;
-	user-select: none;
+  padding-inline: theme("padding.4");
+  margin-top: theme("margin[2.5]");
+  border-radius: theme("borderRadius.md") theme("borderRadius.md") 0 0;
+  user-select: none;
 }
 
 article.blog-content {
-	max-width: 100%;
-	margin-top: theme("spacing.1");
-	--scrollbar-width: none;
+  max-width: 100%;
+  margin-top: theme("spacing.1");
+  --scrollbar-width: none;
 
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		max-width: 100%;
-		margin-top: theme("spacing.5");
-		white-space: pre-line;
-	}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    max-width: 100%;
+    margin-top: theme("spacing.5");
+    white-space: pre-line;
+  }
 
-	h1 {
-		font-size: theme("fontSize.3xl");
-	}
+  h1 {
+    font-size: theme("fontSize.3xl");
+  }
 
-	h2 {
-		font-size: theme("fontSize.2xl");
-	}
+  h2 {
+    font-size: theme("fontSize.2xl");
+  }
 
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-size: theme("fontSize.xl");
-	}
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: theme("fontSize.xl");
+  }
 
-	ul,
-	ol {
-		margin-block: theme("margin[2.5]");
+  ul,
+  ol {
+    margin-block: theme("margin[2.5]");
 
-		& li {
-			margin-block: theme("margin.1");
-			list-style-type: disc;
-			list-style-position: inside;
-			margin-inline: theme("margin.4");
-		}
-	}
+    & li {
+      margin-block: theme("margin.1");
+      list-style-type: disc;
+      list-style-position: inside;
+      margin-inline: theme("margin.4");
+    }
+  }
 
+  & p {
+    padding-block: theme("padding[1.5]");
+  }
 
-	& p {
-		padding-block: theme("padding[1.5]");
-	}
+  & img {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    object-fit: cover;
+  }
 
-	& img {
-		width: 100%;
-		max-width: 100%;
-		display: block;
-		object-fit: cover;
-	}
+  & p > code,
+  & li > code {
+    font-size: 0.8rem;
+    font-family: var(--code-font-family), var(--alt-font-family), monospace;
+    background-color: theme("colors.secondary.200");
+    border-radius: theme("borderRadius.sm");
+    border: 1px solid theme("colors.secondary.600");
+    padding: theme("padding[0.5]") theme("padding[1.5]");
 
-	& p>code, & li>code {
-		font-size: 0.8rem;
-		font-family: var(--body-font-family), var(--alt-font-family), monospace;
-		background-color: theme("colors.secondary.200");
-		border-radius: theme("borderRadius.sm");
-		border: 1px solid theme("colors.secondary.600");
-		padding: theme("padding[0.5]") theme("padding[1.5]");
+    .dark & {
+      background-color: theme("colors.secondary.900");
+      border: 1px solid theme("colors.secondary.300");
+    }
+  }
 
-		.dark & {
-			background-color: theme("colors.secondary.900");
-			border: 1px solid theme("colors.secondary.300");
-		}
-	}
+  & pre,
+  .code-block {
+    position: relative;
+    font-size: 0.95rem;
+    background: theme("colors.primary.100");
+    border: 1px solid var(--highlight-border-color);
+    border-radius: theme("borderRadius.md");
+    border-top-left-radius: 0;
+    padding: theme("padding[2.5]") theme("padding.4");
+    overflow: auto;
 
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
-	& pre, .code-block {
-		position: relative;
-		font-size: 0.95rem;
-		background: theme("colors.primary.100");
-		border: 1px solid var(--highlight-border-color);
-		border-radius: theme("borderRadius.md");
-		border-top-left-radius: 0;
-		padding: theme("padding[2.5]") theme("padding.4");
-		overflow: auto;
+    .dark & {
+      @apply bg-secondary-950/50;
+    }
 
-		&::-webkit-scrollbar {
-			display: none;
-		}
+    & code {
+      font-family: var(--code-font-family), var(--alt-font-family), monospace;
+      background-color: transparent;
+    }
+  }
 
-		.dark & {
-			@apply bg-secondary-950/50;
-		}
+  & blockquote {
+    font-size: 0.95rem;
+    font-family: var(--alt-font-family), monospace;
+    line-height: 1.45rem;
+    letter-spacing: theme("letterSpacing.wide");
+    background-color: theme("colors.secondary.200");
+    border-left: 5px solid theme("colors.secondary.900");
+    margin-block: theme("margin[2.5]");
+    padding: theme("padding[0.5]") theme("padding.4");
 
-		& code {
-			font-family: var(--body-font-family), var(--alt-font-family), monospace;
-			background-color: transparent;
-		}
-	}
-
-
-	& blockquote {
-		font-size: 0.925rem;
-		font-family: var(--alt-font-family), monospace;
-		line-height: 1.45rem;
-		background-color: theme("colors.secondary.200");
-		border-left: 5px solid theme("colors.secondary.900");
-		margin-block: theme("margin[2.5]");
-		padding: theme("padding[0.5]") theme("padding.4");
-
-		.dark & {
-			background-color: theme("colors.secondary.900");
-			border-left: 4px solid theme("colors.secondary.200");
-		}
-	}
+    .dark & {
+      background-color: theme("colors.secondary.900");
+      border-left: 4px solid theme("colors.secondary.200");
+    }
+  }
 }
 
 /* Section styles */

@@ -22,7 +22,7 @@ const { project } = Astro.props;
 
 <div class="space-y-1.5">
   <h2 class="text-primary-text-light dark:text-primary-text-dark text-xl">{project.name}</h2>
-  <p class="text-primary-text-light/60 dark:text-primary-text-dark/60">{project.description}</p>
+  <p class="text-sm text-primary-text-light/60 dark:text-primary-text-dark/60 leading-relaxed tracking-normal">{project.description}</p>
 
   <div class="w-full flex justify-between items-center">
     <Tags data={(project?.tags || []) as string[]} />
