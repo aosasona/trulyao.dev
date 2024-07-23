@@ -39,10 +39,15 @@ const metaUrl = getMetaUrl(title, date);
   [data-icon] {
     display: inline-block;
   }
+
+  .container {
+    margin-left: 0;
+    margin-right: 0;
+  }
 </style>
 
 <Layout {title} {desc} metaImage={metaUrl} {keywords} {tags} pubDate={date}>
-  <div class="w-max max-w-full flex items-start gap-2 mt-6 mx-auto">
+  <div class="w-fit max-w-full flex items-start gap-2 mt-6 mx-auto">
     <main class="container">
       <h1 class="text-4xl md:text-5xl font-bold leading-tight tracking-normal">{title}</h1>
       <div class="my-3.5"><Tags data={tags || []} /></div>
