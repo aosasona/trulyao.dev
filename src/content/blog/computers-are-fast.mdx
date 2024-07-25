@@ -1,12 +1,89 @@
 ---
-title: Computers are fast. Very fast.
-date: 2024-07-23
+title: Did you forget? Computers are fast.
+date: 2024-07-25
 description: It seems people have forgotten just how fast and powerful computers are and how much they keep evolving, let's remind ourselves.
-keywords: programming, performance, speed, cpu, milliseconds, optimisation, computers
+keywords: programming, performance, speed, cpu, milliseconds, optimisation, computers, decline, bad software, slow, optimisation
 tags: ["rant", "software development"]
 draft: true
 ---
 
-I logged on to ~~Twitter~~ X today and I saw a thread with a discussion that reminded me of something I have been thinking about a lot lately, it was [this tweet](https://x.com/mattpocockuk/status/1814247057286189102?s=46&t=oZkX14dN7BKTYc0mRw0ryg). Hang on, hang on, let me explain before you burn me at the stake for disagreeing that it is neglible. Actually, I do agree that it is neglible in the CI case (which is what they are referring to here), I am not here to argue against that. The amount of time it would take Github Actions to start and get to your actual job would eat up any gains anyway; 200ms is indeed neglible here for **most** people.
+# What triggered this article
+I logged on to ~~Twitter~~ X two days ago and I saw a thread with a discussion that reminded me of something I have been thinking about a lot lately, it was [this tweet](https://x.com/mattpocockuk/status/1814247057286189102). Hang on, hang on, let me explain before you burn me at the stake for disagreeing that it is neglible. Actually, I do agree that it is neglible in the CI case (which is what they are referring to here), I am not here to argue against that. The amount of time it would take Github Actions to start and get to your actual job would eat up any gains anyway; 200ms is indeed neglible here for **most** people.
 
 ![Matt Pocock's Tweet](/images/matt-p-node-tweet.jpg)
+
+I did not grow up with *fast* software or in "the early days" of computers by any means, I grew up in the early iPhone and Windows XP era which wasn't so long ago, but the more I interact with the tech community and use newer software (even the ones I had written myself and perhaps even will still write in the next couple of months), the more I feel like we have forgotten how powerful computers are and how fast they really can be!
+
+# My history with computers
+
+*(Warning: you may want to skip to the next section, this could be its own article)*
+
+Let me give you a bit more context regarding my history with computers. I grew up around computers and I was very interested in them because my Mom worked on them a lot *(fun fact: she even had one of those electric typewriters from back in the day)*, my first Desktop encounter was with **Windows Vista** I believe, and then **Windows XP** when she setup our home computer, after I broke that computer somehow during one of my explorations, it had to be repaired and the computer guy put the latest and greatest at the time on it; **Windows 7**... and I hated it, I can't tell you why but I missed XP, the computer just seemed better BEFORE the repair.
+
+I remember Windows being less bloated and annoying than I find it now but still it was slow, and to be fair, the hardware was really bad too; Pentium 3/4 CPU I think, no GPU, about 512MB of RAM I think (at most 2GB; I can't remember but I do remember it was really really bad). There was no Wi-Fi card and we didn't have Ethernet; I had to use wired tethering on a very cheap data plan I could buy with my lunch money just to quickly run whatever search I had typed into IE beforehand and at least view some things before it ran out, you probably get the picture. It was around this time I saw something called "HTML" in Microsoft Word's "Save As" menu, double-clicking this file would open it in the browser, it was strange and I was curious.
+
+This was my first encounter with "programming"; I didn't play Minecraft, hell I did not even know what it was, I sort of knew what YouTube was but come on, I was trying to get a few clicks out of my 50MB data plan, I wasn't about to watch a video; I don't think I would have known what to search for either. I got my first feature phone with a QWERTY keyboard around this time from my Dad (his old device); a Nokia Asha 200 (yes, you're getting old too), I became a tinkerer, I did things to that device, hell, I even got WhatsApp on it back then, it was very difficult, although I do recall that the newer model; the 205, supported it out of the box, it was fun digging into these things until I broke them.
+
+> At this stage, I only really knew about using Notepad and uh... Microsoft Word to build HTML pages, I played with MS Access to connect these things together and save data the way websites I had used must have done it but never really got it; due to the nature of my Mom's work, we had all the MS suite apps installed - Publisher, Excel, Word etc and they ironically had a thing to do with my interests in graphics and coding as I grew up.
+
+Re-telling the full history will be difficult and lengthy but before and few years around this period, I used a few hand-me-down devices before they "gave up": the Nokia C1-01 from my brother who had just graduted high school, a broken HTC Desire from my sister (my first android device... which could only stay on for about an hour before heating itself to death), a Blackberry from one of her friends (also broken, but I didn't mind, I got to explore these things), a Samsung Galaxy S3 from my Uncle (also broken, but also didn't care), an iPod Touch 6G from another Uncle (this one was only about 6 years ago, I still have it but the screen is shattered; the only device I had physically broken myself) and a Samsung Galaxy A3 (2015); the timeline is all messy but frankly, I can't remember myself, I probably skipped one or two. Now, that last one is what got me to spend more time on XDA Forums, I was installing custom ROMs, and rooting devices and whatever stupid kid me could think of (I did break a cheap smartwatch I had and stayed up all night finding a compatible ROM; the best I could find permanently killed the camera).
+
+I also finally learned I couldn't just make pages in MS Word/Notepad (not Notepad++) and have the HTML put the data in the database as I wanted to (what a stupid kid), I discovered PHP, and frankly, I wasn't sure I was cut out for it at first. Our school had started using Computer-Based Tests and the URL caught my attention, specifically the end of it; ".php". Then I went on to download PDFs since again, I couldn't stay online at a stretch, I purchased midnight plans to download WAMP and then Notepad++ which I could copy from my phone (which uses less data) to the PC via a cable, are you still following? Good, we're almsost done. Okay, back to computers, I don't remember what I won or who gave me the money but I badgered my Mom to help me get one of those small HP student laptops with it, it was my first laptop and I could write code on it, it wasn't fast by any means, it also had Windows 7 but this time I had a whooping 4GB of RAM!.
+
+> Oh, I still hated Windows 7 by the way, it just was significantly slower than the Vista and XP I grew up with.
+
+I got into mods; login screen mods, skin and transformation packs, game mods (I could sort of run GTA: Vice City again), tinkering with the registry and other things, I was working with PHP more, all I could think of was code. Then our house got burgled, that laptop was the sole thing that was stolen and it crushed my soul, I went back to using the painfully slow home PC, I did a bunch of my programming there and that hard disk still holds my earliest projects from long before I discovered GitHub. My Dad got his own laptop a couple of months later, and he let me use it under certain conditions and... uh I broke it and learned what a ransomware was the hard way, I installed a ransomware while trying to find something and it locked me out of all files and apps before asking me to pay this $900 to get my files back, they stole my browser data (this I am sure about because my accounts were accessed), and a lot of things I will never know about; it was a shit show and I lost all files.
+
+Fast forward to my final year in high school, I realised I could make some money doing this thing I was already spending all my free time doing, so I got into freelancing, I did get taken advantage of but I did learn a lot and made enough to buy my first laptop by myself! It was shitty but it was also my own money. I had a year after high school, I leaned more into programming, got my first Mac with some help. It was the perfect computer; at least I thought it was, it was used of course but it was fast, it was thinner than anything else I had used up till that point. It finally died a few years ago in 2021/22 due to some hardware issues that caused it to overheat and it wasn't worth repairing, I gave almost what I had at the time to get the base model 14" M1 Pro, it was worth it to me since it seemed like a machine I would use for years and I was right; I am writing this article on it right now!
+
+
+# A huge misconception
+
+I gave you all that history to give you more context; I did not grow up with well-speced computers or mobile devices so I am not "spoilt" by having decently fast hardware or money to buy the best software, but I still was able to learn how to code, figure out how to use GIMP for graphics editing and edit videos with VSDC which was the only editor I could run at a usable performance. Now those things were painfully slow, the apps would take forever to start, they would freeze, windows would crash yada yada yada and I had to learn to wait. So, this article isn't coming from a place of being "spoilt" or unreasonable.
+
+But it is 2024, my Apple Watch has more memory than the PC I used for most of my life, my iPad has nearly the same chip as my laptop that never seems to slow down regardless of what I throw at it, yet... I stil have to wait for a lot of things, a lot.
+
+For a long while, a large part of my life really, I went on thinking this was normal, that computers just weren't powerful enough, that apps had to take a while to start because they were doing a lot, web apps **had** to be slow of course, they have to query data and do this and that; there was simply no getting around it! I didn't care much about the performance of code even I wrote because "these things happen!"... oh what a fool I had been.
+
+# It is not normal
+
+A few years ago, I heard [Jonathan Blow](https://www.youtube.com/watch?v=ZSRHeXYDLko) and someone else before that talk about performance and as I listened, it began to occur to me; no, these things aren't normal! I learned more about how things actually worked and I realised even more that these things are most definitely not normal. While kid-me attributed the insane slowdown that came from going from Windows Vista up to Windows 7 to it just being "normal" since we had an older piece of hardware and the OS was newer (which he was partially right about), older me was starting to realise how bad the slowdown really was and that it also definitely wasn't normal!
+
+Thinking about how much work even the Raspberry Pi can do per second and that Postman/Hoppscotch still takes about 15 seconds to startup, or that Jetbrains IDEs can't seemingly cope with my own not-so-large projects, it pisses me off, I know that it is not normal, these things could be faster, my hardware is fast enough to render videos in Final Cut Pro in almost no time yet nothing seems to be able to take less than double-digit seconds to open (even if they are fully local). I have a 5G network with decent upload and download speeds and I still cannot navigate Github in a sane amount of time and when it does work, 20% of the time, the new UI is broken somehow. THIS IS NOT SUPPOSED TO BE NORMAL.
+
+I cannot stand waiting around for things anymore, this is mainly why I have moved to doing a lot of my work in the terminal these days; both at work and at home, it is just significantly more responsive to me.
+
+
+# Four seconds is a lot
+
+Someone in that thread mentioned 4 seconds not being a lot of time and in that context, again, I agree, this is not a dig at them or even directly related to that conversation<sup>[1]</sup> but 4 seconds is a lot for a computer these days. For scale, 4 seconds is 4,000 milliseconds, and for those games you'd love to maintain 120FPS on your expensive device that probably can't even run Discord and VSCode at the same time, the game developers have had to write code that repaints and redraws in less than 8 (EIGHT) milliseconds! In 4 seconds, your screen and that game can literally redraw its elements (sometimes the whole screen) hundreds of times while your fancy little app is still bouncing in my MacOS dock.
+
+> [1] I rarely even write things that run on Node.js or JS in general these days, so, I don't particularly care about that discussion.
+
+I don't care about what you are going to say about the network boundary or whatever, yes, it does exist, but we both know that is not why our code is painfully slow, we both know most games are multiplayer these days and are not breaking the laws of physics to stay (or at least appear to be) performant even across the network; so it is possible to be faster in a lot of places and sometimes with a little bit of care.
+
+As programmers, especially web programmers, it feels like we have really forgotten how much work computers can do in very little time, we are so busy putting layers upon layers of abstraction and straying further from the foundation while convincing ourselves it's a worthy trade-off for a better DX or "developer velocity"; no, good software takes time and effort, just ask those game devs. I am not just ignoring the business needs, I get it, code has to be shot out fast to please the company and your boss, still, a little bit of care won't hurt (>_-)
+
+That horrible Windows Explorer can be [this](https://x.com/vkrajacic/status/1779178723465441705) [fast](https://x.com/vkrajacic/status/1729944069437042874), no, it is not doing any more work that should make it slow by default. Visual Studio doesn't have to take forever to startup or launch your debugger (I rage-quit everytime I launch Visual Studio), it can be [this](https://x.com/ryanjfleury/status/1801685216001724548?s=46&t=oZkX14dN7BKTYc0mRw0ryg) fast, you can find a lot more examples following these people and more people like [Casey](https://x.com/cmuratori), [Dax](https://x.com/thdxr), [Tsoding](https://x.com/tsoding) and a lot of other people I can't recall right now.
+
+# "Ego check"
+
+Look, the whole point of this article isn't to blame you, not alone at least, I blame me too. I am not asking you to do "premature optimisation" (which is usually people being too lazy to just do the darn thing), I just want you to NOT be okay with things being slow.
+
+I want you to keep it at the back of your mind that your bank's app does not need 25 seconds to start up regardless of whatever excuses you have told yourself about security and whatnot; there is nothing you can do about it personally but I want you to remember this should **NOT** be the norm.
+
+I want you to remember that three thousand lines of text is smaller than a megabyte and should not cause your editor to crawl to a halt, that isn't normal, it's how you end up with [this sluggish nonsense](https://github.com/aosasona/jsorm) that I am ashamed of even if it is a demo or whatever. I am pointing to myself and you to show you I am not in denial about this, neither should you be. Next time you think it is okay for something to take long or eat up a bunch of memory, pinch yourself and ask if that's actually true, and more often than not, it isn't.
+
+I want you to take a step back, slow down, be more intentional about every line of code you put out into the world and learn how and why things works, I have been on years-long mission to do this too, it will greatly help you understand and deliver better software, you can do better. Yes, it is hard, but you really should care, don't contribute to the landfill of bad software.
+
+# More things to look at
+- [Performance Excuses Debunked](https://youtu.be/x2EOOJg8FkA?si=JD4SI6ZjUdp6JEMm)
+- [Clean Code, Horrible Performance](https://youtu.be/tD5NrevFtbU?si=64kBJIX9LD-wI_lv)
+- [People expect technology to suck because it actually sucks](https://tonsky.me/blog/tech-sucks/)
+- [The art of living with broken things](https://youtu.be/dyfC37iTDcQ?si=-667_OT3y_MT0DK4)
+- [#FAIL](https://www.youtube.com/watch?v=6xrGo1IIB3w)
+- [It is fast or it is wrong](https://tonsky.me/blog/slow-wrong/)
+- [Software disenchantment](https://tonsky.me/blog/disenchantment/)
+- [Why modern software is slow](https://randomascii.wordpress.com/2022/09/29/why-modern-software-is-slow-windows-voice-recorder/)
+- [Leveraging Rust and the GPU to render user interfaces at 120 FPS](https://zed.dev/blog/videogame)
+- [(PODCAST) Maybe Programmers Are Just Bad ft. Casey Muratori](https://www.youtube.com/watch?v=qqUgl6pFx8Q)
