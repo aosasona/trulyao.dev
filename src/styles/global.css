@@ -1,7 +1,6 @@
-@import url("https://fonts.cdnfonts.com/css/whois");
-
 @import url('https://fonts.cdnfonts.com/css/schibsted-grotesk');
-@import url('https://fonts.cdnfonts.com/css/m-plus-1-code');
+@import url("https://fonts.cdnfonts.com/css/kay-pho-du");
+@import url("https://fonts.cdnfonts.com/css/whois");
 
 
 /* PrismJS Theme */
@@ -14,8 +13,8 @@
   --highlight-border-color: theme("colors.primary.200");
 
   --body-font-family: "Schibsted Grotesk", sans-serif;
-  --code-font-family: "M PLUS 1 Code", sans-serif;
-  --header-font-family: "Schibsted Grotesk";
+  --code-font-family: "Whois", monospace;
+  --header-font-family: "Kay Pho Du";
   --alt-font-family: "Whois";
 
   --body-font-size: 0.9rem;
@@ -239,7 +238,7 @@ article.blog-content {
   }
 
   & blockquote {
-    font-size: 0.95rem;
+    font-size: 0.975rem;
     font-family: var(--alt-font-family), monospace;
     line-height: 1.45rem;
     letter-spacing: theme("letterSpacing.normal");
