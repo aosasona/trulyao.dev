@@ -1,7 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 @import url("https://fonts.cdnfonts.com/css/whois");
-@import url("https://fonts.cdnfonts.com/css/kay-pho-du");
-@import url("https://cdn.xeiaso.net/static/css/iosevka/family.css");
+
+@import url('https://fonts.cdnfonts.com/css/schibsted-grotesk');
+@import url('https://fonts.cdnfonts.com/css/m-plus-1-code');
+
 
 /* PrismJS Theme */
 @import url("./prism-gruvbox.css");
@@ -12,14 +13,14 @@
 
   --highlight-border-color: theme("colors.primary.200");
 
-  --body-font-family: "Jetbrains Mono", sans-serif;
-  --code-font-family: "Iosevka Curly Iaso", sans-serif;
-  --header-font-family: "Kay Pho Du";
+  --body-font-family: "Schibsted Grotesk", sans-serif;
+  --code-font-family: "M PLUS 1 Code", sans-serif;
+  --header-font-family: "Schibsted Grotesk";
   --alt-font-family: "Whois";
 
   --body-font-size: 0.9rem;
   --body-line-height: 1.95;
-  --body-letter-spacing: theme("letterSpacing.tight");
+  --body-letter-spacing: theme("letterSpacing.normal");
 
   &.dark {
     --foreground-color: theme("colors.primary.text.dark");
@@ -241,7 +242,7 @@ article.blog-content {
     font-size: 0.95rem;
     font-family: var(--alt-font-family), monospace;
     line-height: 1.45rem;
-    letter-spacing: theme("letterSpacing.wide");
+    letter-spacing: theme("letterSpacing.normal");
     background-color: theme("colors.secondary.200");
     border-left: 5px solid theme("colors.secondary.900");
     margin-block: theme("margin[2.5]");
