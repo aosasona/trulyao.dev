@@ -12,9 +12,10 @@
 
   --highlight-border-color: theme("colors.primary.200");
 
-  --body-font-family: "Schibsted Grotesk", sans-serif;
+  --body-font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
   --code-font-family: "Whois", monospace;
   --header-font-family: "Kay Pho Du";
+  /* --header-font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif; */
   --alt-font-family: "Whois";
 
   --body-font-size: 0.9rem;
