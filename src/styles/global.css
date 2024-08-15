@@ -78,7 +78,18 @@ h5,
 h6 {
   font-family: var(--header-font-family), var(--alt-font-family), Arial,
     Helvetica, sans-serif;
+}
+
+h1 {
   font-weight: bold;
+}
+
+h2, h3 {
+  font-weight: 600;
+}
+
+h4, h5, h6 {
+  font-weight: 500;
 }
 
 hr {
