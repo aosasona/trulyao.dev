@@ -7,7 +7,7 @@ import { getCollection } from "astro:content";
 import H1 from "@components/mdx/H1.astro";
 import MinimalArticleListItem from "@components/items/MinimalArticleListItem.astro";
 
-const MAX_LATEST = 5;
+const MAX_LATEST = 6;
 
 const posts = await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;

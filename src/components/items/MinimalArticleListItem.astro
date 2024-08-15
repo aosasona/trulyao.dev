@@ -12,7 +12,7 @@ const {
 } = Astro.props;
 ---
 
-<div>
+<div class="flex gap-2.5">
   <time datetime={data.date.toISOString()} class="text-secondary-outline">
     {new Date(data.date).toLocaleDateString("en-GB")}
   </time>

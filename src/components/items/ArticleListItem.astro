@@ -26,12 +26,14 @@ const {
   }
 
   .post-title {
+    display: block;
     font-family: var(--header-font-family), var(--alt-font-family), Arial, Helvetica, sans-serif;
     font-size: theme("fontSize.xl");
     font-weight: theme("fontWeight.bold");
     line-height: theme("lineHeight.tight");
     color: theme("colors.primary.text.light");
     text-decoration: none;
+    margin-bottom: theme("margin.4");
 
     @apply dark:text-primary-text-dark;
 
@@ -42,11 +44,11 @@ const {
   }
 
   .post-description {
-    @apply text-[14px] text-primary-text-light/60 dark:text-primary-text-dark/60 leading-relaxed tracking-normal;
+    @apply text-[14px] text-primary-text-light/60 dark:text-primary-text-dark/60 leading-relaxed tracking-normal -mt-2 mb-3;
   }
 </style>
 
-<div class="space-y-2">
+<div>
   <a href={"/posts/" + slug} class="post-title">{data.title}</a>
   <p class="post-description" class:list={isPreview ? "hidden" : ""}>{data.description}</p>
 

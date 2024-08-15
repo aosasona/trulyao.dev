@@ -4,12 +4,22 @@ import ArticleListItem from "../components/items/ArticleListItem.astro";
 import SiteHeader from "@components/layout/SiteHeader.astro";
 
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 const posts = await getCollection("blog", ({ data }) => {
   return import.meta.env.PROD ? data.draft !== true : true;
 });
 
 let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+let postsByYear: Record<string, Array<CollectionEntry<"blog">>> = {};
+for (const post of publishedPosts) {
+  const year = post.data.date.getFullYear().toString();
+  if (!postsByYear[year]) {
+    postsByYear[year] = [];
+  }
+  postsByYear[year].push(post);
+}
+const years = Object.keys(postsByYear).sort((a, b) => parseInt(b) - parseInt(a));
 ---
 
 <Layout title="Blog">
@@ -22,8 +32,19 @@ let publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.v
     <p class="mb-8">
       I write about things that pique my interest, things that I'm learning, thinking about, working on, or just frequently-asked questions. Some of my posts may or may not be related to technology/software at all, but I hope you find them interesting regardless. I am trying to write a lot more often these days and when I do, I try to share them on Twitter as well but you can subscribe to the <a href="/rss.xml">RSS feed</a> or <a href="/feed.json">JSONFeed</a> to find & read new articles in your favorite reader.
     </p>
-    <div class="mt-4 space-y-6">
-      {publishedPosts.map((post) => <ArticleListItem post={post} />)}
+    <div class="mt-4 space-y-20">
+      {
+        years.map((year) => (
+          <div id={`year-${year}`}>
+            <h2 class="w-min bg-secondary-dark dark:bg-secondary-light text-lg text-primary-text-dark dark:text-primary-text-light px-3 py-0.5 mb-5">{year}</h2>
+            <ul class="space-y-6">
+              {postsByYear[year].map((post) => (
+                <ArticleListItem post={post} />
+              ))}
+            </ul>
+          </div>
+        ))
+      }
     </div>
   </main>
 </Layout>
