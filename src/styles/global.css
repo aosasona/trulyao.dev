@@ -1,6 +1,5 @@
-@import url('https://fonts.cdnfonts.com/css/schibsted-grotesk');
-@import url("https://fonts.cdnfonts.com/css/kay-pho-du");
 @import url("https://fonts.cdnfonts.com/css/whois");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 
 
 /* PrismJS Theme */
@@ -12,10 +11,9 @@
 
   --highlight-border-color: theme("colors.primary.200");
 
-  --body-font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body-font-family: "IBM Plex Mono", "Helvetica Neue", Arial, sans-serif;
   --code-font-family: "Whois", monospace;
-  --header-font-family: "Kay Pho Du";
-  /* --header-font-family: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif; */
+  --header-font-family: "IBM Plex Mono";
   --alt-font-family: "Whois";
 
   --body-font-size: 0.9rem;
@@ -65,6 +63,10 @@ html {
   &.dark {
     background-color: var(--background-color);
     color: var(--foreground-color);
+  }
+
+  @media(min-width: 1200px) {
+    font-size: 1rem;
   }
 }
 
