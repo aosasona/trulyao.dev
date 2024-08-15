@@ -17,7 +17,7 @@
   --alt-font-family: "Whois";
 
   --body-font-size: 0.9rem;
-  --body-line-height: 1.95;
+  --body-line-height: 1.85;
   --body-letter-spacing: theme("letterSpacing.normal");
 
   &.dark {
@@ -65,7 +65,7 @@ html {
     color: var(--foreground-color);
   }
 
-  @media(min-width: 1200px) {
+  @media(min-width: 2000px) {
     font-size: 1rem;
   }
 }
@@ -138,11 +138,11 @@ a {
   width: max-content;
   color: var(--foreground-color);
   background-color: var(--highlight-border-color);
-  font-size: 0.9rem;
+  font-size: 0.875rem;
 
   padding-inline: theme("padding.4");
   margin-top: theme("margin[2.5]");
-  border-radius: theme("borderRadius.md") theme("borderRadius.md") 0 0;
+  border-radius: theme("borderRadius.sm") theme("borderRadius.sm") 0 0;
   user-select: none;
 }
 
@@ -202,8 +202,9 @@ article.blog-content {
 
   & p > code,
   & li > code {
-    font-size: 0.8rem;
+    font-size: 0.875rem;
     font-family: var(--code-font-family), var(--alt-font-family), monospace;
+    letter-spacing: theme("letterSpacing.wide");
     background-color: theme("colors.secondary.200");
     border-radius: theme("borderRadius.sm");
     border: 1px solid theme("colors.secondary.600");
@@ -218,10 +219,10 @@ article.blog-content {
   & pre,
   .code-block {
     position: relative;
-    font-size: 0.95rem;
+    font-size: 0.975rem;
     background: theme("colors.primary.100");
     border: 1px solid var(--highlight-border-color);
-    border-radius: theme("borderRadius.md");
+    border-radius: theme("borderRadius.sm");
     border-top-left-radius: 0;
     padding: theme("padding[2.5]") theme("padding.4");
     overflow: auto;
@@ -235,6 +236,7 @@ article.blog-content {
     }
 
     & code {
+      letter-spacing: theme("letterSpacing.wide");
       font-family: var(--code-font-family), var(--alt-font-family), monospace;
       background-color: transparent;
     }
@@ -243,8 +245,8 @@ article.blog-content {
   & blockquote {
     font-size: 0.975rem;
     font-family: var(--alt-font-family), monospace;
-    line-height: 1.45rem;
-    letter-spacing: theme("letterSpacing.normal");
+    line-height: 1.65rem;
+    letter-spacing: theme("letterSpacing.wide");
     background-color: theme("colors.secondary.200");
     border-left: 5px solid theme("colors.secondary.900");
     margin-block: theme("margin[2.5]");

@@ -1,0 +1,63 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Tags from "@components/misc/Tags.astro";
+
+// TODO: update all this
+export interface Props {
+  isPreview?: boolean;
+  post: CollectionEntry<"blog">;
+}
+
+const {
+  post: { data, slug },
+  isPreview = false,
+} = Astro.props;
+---
+
+<style>
+  a {
+    text-decoration: none;
+  }
+
+  time {
+    font-size: theme("fontSize.sm");
+    color: theme("colors.secondary.600");
+
+    @apply text-primary-text-light/60 dark:text-primary-text-dark/60;
+  }
+
+  .post-title {
+    font-family: var(--header-font-family), var(--alt-font-family), Arial, Helvetica, sans-serif;
+    font-size: theme("fontSize.xl");
+    font-weight: theme("fontWeight.bold");
+    line-height: theme("lineHeight.tight");
+    color: theme("colors.primary.text.light");
+    text-decoration: none;
+
+    @apply dark:text-primary-text-dark;
+
+    &:hover {
+      text-decoration: underline;
+      text-underline-offset: theme("textUnderlineOffset.4");
+    }
+  }
+
+  .post-description {
+    @apply text-[14px] text-primary-text-light/60 dark:text-primary-text-dark/60 leading-relaxed tracking-normal;
+  }
+</style>
+
+<div class="space-y-2">
+  <a href={"/posts/" + slug} class="post-title">{data.title}</a>
+  <p class="post-description" class:list={isPreview ? "hidden" : ""}>{data.description}</p>
+
+  <div class="flex items-center justify-between">
+    <div class="max-w-[75%]">
+      <Tags data={data.tags || []} />
+    </div>
+
+    <time datetime={data.date.toISOString()}>
+      {new Date(data.date).toLocaleDateString("en-GB")}
+    </time>
+  </div>
+</div>
