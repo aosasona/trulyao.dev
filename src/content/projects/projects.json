@@ -33,47 +33,11 @@
 		]
 	},
 	{
-		"name": "Jsorm",
-		"description": "A demo JSON explorer in Gleam and HTMX",
-		"website_url": "https://jsorm.wyte.space",
-		"github_url": "https://github.com/aosasona/jsorm",
-		"image": "jsorm.png",
-		"status": "active",
-		"tags": [
-			"gleam",
-			"htmx",
-			"typescript",
-			"fly.io"
-		]
-	},
-	{
-		"name": "Vanity",
-		"description": "Vanity URL service for Go modules e.g. go.trulyao.dev/mirror",
-		"website_url": "https://go.trulyao.dev",
-		"github_url": "https://github.com/aosasona/vanity",
-		"image": "vanity.png",
-		"status": "active",
-		"tags": [
-			"go"
-		]
-	},
-	{
 		"name": "Crossbar",
 		"description": "A tiny data validation library in pure Gleam",
 		"website_url": "https://hexdocs.pm/crossbar",
 		"github_url": "https://github.com/aosasona/crossbar",
 		"image": "crossbar.png",
-		"status": "active",
-		"tags": [
-			"gleam"
-		]
-	},
-	{
-		"name": "Migrant",
-		"description": "In-code database migration tool for Gleam projects",
-		"website_url": null,
-		"github_url": "https://github.com/aosasona/migrant",
-		"image": "migrant.png",
 		"status": "active",
 		"tags": [
 			"gleam"
@@ -91,6 +55,28 @@
 		]
 	},
 	{
+		"name": "Vanity",
+		"description": "Vanity URL service for Go modules e.g. go.trulyao.dev/mirror",
+		"website_url": "https://go.trulyao.dev",
+		"github_url": "https://github.com/aosasona/vanity",
+		"image": "vanity.png",
+		"status": "active",
+		"tags": [
+			"go"
+		]
+	},
+	{
+		"name": "Migrant",
+		"description": "In-code database migration tool for Gleam projects",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/migrant",
+		"image": "migrant.png",
+		"status": "active",
+		"tags": [
+			"gleam"
+		]
+	},
+	{
 		"name": "Falcon",
 		"description": "A smoother way to send HTTP requests with an axios-like interface",
 		"website_url": null,
@@ -99,6 +85,20 @@
 		"status": "active",
 		"tags": [
 			"gleam"
+		]
+	},
+	{
+		"name": "Jsorm",
+		"description": "A demo JSON explorer in Gleam and HTMX",
+		"website_url": "https://jsorm.wyte.space",
+		"github_url": "https://github.com/aosasona/jsorm",
+		"image": "jsorm.png",
+		"status": "active",
+		"tags": [
+			"gleam",
+			"htmx",
+			"typescript",
+			"fly.io"
 		]
 	},
 	{
