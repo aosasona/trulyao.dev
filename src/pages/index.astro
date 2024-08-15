@@ -1,11 +1,11 @@
 ---
 import Layout from "@layouts/Layout.astro";
 import SiteHeader from "@components/layout/SiteHeader.astro";
-import ArticleListItem from "@components/items/ArticleListItem.astro";
 import ProjectPreviewListItem from "@components/items/ProjectPreviewListItem.astro";
 
 import { getCollection } from "astro:content";
 import H1 from "@components/mdx/H1.astro";
+import MinimalArticleListItem from "@components/items/MinimalArticleListItem.astro";
 
 const MAX_LATEST = 5;
 
@@ -33,7 +33,7 @@ const projects = (await getCollection("projects"))?.[0]?.data?.slice(0, MAX_LATE
       <H1>Latest posts</H1>
 
       <div class="mt-5 space-y-5">
-        {publishedPosts.map((post) => <ArticleListItem post={post} />)}
+        {publishedPosts.map((post) => <MinimalArticleListItem post={post} />)}
       </div>
 
       <div class="flex w-full justify-end mt-10">
