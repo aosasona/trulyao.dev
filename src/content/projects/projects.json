@@ -1,5 +1,29 @@
 [
 	{
+		"name": "Mirror",
+		"description": "Go library for runtime type generation (existing and non-existing/dynamic types)",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/mirror",
+		"image": "mirror.png",
+		"status": "active",
+		"tags": [
+			"go"
+		]
+	},
+	{
+		"name": "Bore",
+		"description": "SQLite-backed clipboard for headless environments",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/bore",
+		"image": "bore.png",
+		"status": "wip",
+		"tags": [
+			"go",
+			"linux",
+			"neovim"
+		]
+	},
+	{
 		"name": "Chimney",
 		"description": "A fast and lightweight static file server (and more in the future)",
 		"website_url": null,
@@ -11,25 +35,14 @@
 		]
 	},
 	{
-		"name": "Mirror",
-		"description": "Generate Typescript types from Go types during runtime (previously known as Gots)",
+		"name": "Dotenv",
+		"description": "Load environment variables from .env (and other) files in Gleam",
 		"website_url": null,
-		"github_url": "https://github.com/aosasona/mirror",
-		"image": "mirror.png",
+		"github_url": "https://github.com/aosasona/dotenv",
+		"image": "dotenv.png",
 		"status": "active",
 		"tags": [
-			"go"
-		]
-	},
-	{
-		"name": "Phlo",
-		"description": "A minimal and fast PHP framework for the modern web",
-		"website_url": "https://phlo.fly.dev",
-		"github_url": "https://github.com/aosasona/phlo",
-		"image": "phlo.png",
-		"status": "active",
-		"tags": [
-			"php"
+			"gleam"
 		]
 	},
 	{
@@ -44,14 +57,14 @@
 		]
 	},
 	{
-		"name": "Dotenv",
-		"description": "Load environment variables from .env (and other) files in Gleam",
-		"website_url": null,
-		"github_url": "https://github.com/aosasona/dotenv",
-		"image": "dotenv.png",
+		"name": "Phlo",
+		"description": "A minimal and fast PHP framework for the modern web",
+		"website_url": "https://phlo.fly.dev",
+		"github_url": "https://github.com/aosasona/phlo",
+		"image": "phlo.png",
 		"status": "active",
 		"tags": [
-			"gleam"
+			"php"
 		]
 	},
 	{
@@ -71,6 +84,17 @@
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/migrant",
 		"image": "migrant.png",
+		"status": "active",
+		"tags": [
+			"gleam"
+		]
+	},
+	{
+		"name": "Plunk.gleam",
+		"description": "A library for sending emails and interacting with the Plunk API in Gleam",
+		"website_url": "https://hexdocs.pm/plunk/",
+		"github_url": "https://github.com/aosasona/plunk.gleam",
+		"image": "plunk.png",
 		"status": "active",
 		"tags": [
 			"gleam"
@@ -110,17 +134,6 @@
 		"status": "unmaintained",
 		"tags": [
 			"typescript"
-		]
-	},
-	{
-		"name": "Plunk.gleam",
-		"description": "A library for sending emails and interacting with the Plunk API in Gleam",
-		"website_url": "https://hexdocs.pm/plunk/",
-		"github_url": "https://github.com/aosasona/plunk.gleam",
-		"image": "plunk.png",
-		"status": "active",
-		"tags": [
-			"gleam"
 		]
 	},
 	{
