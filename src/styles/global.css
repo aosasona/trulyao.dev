@@ -250,6 +250,24 @@ article.blog-content {
       letter-spacing: theme("letterSpacing.wide");
       font-family: var(--code-font-family), var(--alt-font-family), monospace;
       background-color: transparent;
+
+      & .deleted {
+        background: theme("colors.red.300");
+        padding: theme("padding[0.5]") theme("padding.1");
+
+        .dark & {
+          background: theme("colors.red.700");
+        }
+      }
+
+      & .inserted {
+        background: theme("colors.green.300");
+        padding: theme("padding[0.5]") theme("padding.1");
+
+        .dark & {
+          background: theme("colors.green.700");
+        }
+      }
     }
   }
 
