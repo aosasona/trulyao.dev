@@ -1,6 +1,5 @@
 @import url("https://fonts.cdnfonts.com/css/whois");
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap");
 
 /* PrismJS Theme */
 @import url("./prism-gruvbox.css");
@@ -65,7 +64,7 @@ html {
     color: var(--foreground-color);
   }
 
-  @media(min-width: 2000px) {
+  @media (min-width: 2000px) {
     font-size: 1rem;
   }
 }
@@ -84,11 +83,14 @@ h1 {
   font-weight: bold;
 }
 
-h2, h3 {
+h2,
+h3 {
   font-weight: 600;
 }
 
-h4, h5, h6 {
+h4,
+h5,
+h6 {
   font-weight: 500;
 }
 
@@ -231,6 +233,7 @@ article.blog-content {
   .code-block {
     position: relative;
     font-size: 0.975rem;
+    line-height: 1.5rem;
     background: theme("colors.primary.100");
     border: 1px solid var(--highlight-border-color);
     border-radius: theme("borderRadius.sm");
@@ -247,7 +250,7 @@ article.blog-content {
     }
 
     & code {
-      letter-spacing: theme("letterSpacing.wide");
+      letter-spacing: 0.0175em;
       font-family: var(--code-font-family), var(--alt-font-family), monospace;
       background-color: transparent;
 

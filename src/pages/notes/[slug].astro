@@ -54,7 +54,7 @@ const metaUrl = getMetaUrl(title, date);
 
       <p>Published on <b>{date.toLocaleString("en-US", { dateStyle: "long" })}</b></p>
 
-      <TableOfContents {headings} />
+      {headings.length > 0 ? <TableOfContents {headings} /> : null}
 
       <article class="blog-content">
         <Content components={{ h1: H1, h2: H2, h3: H3, pre: Code }} />
@@ -67,6 +67,6 @@ const metaUrl = getMetaUrl(title, date);
       </p>
     </main>
 
-    <TableOfContents {headings} asSidebar />
+    {headings.length > 0 ? <TableOfContents {headings} asSidebar /> : null}
   </div>
 </Layout>
