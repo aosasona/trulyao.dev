@@ -11,12 +11,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "^4.3.2",
-    "@astrojs/mdx": "^2.3.1",
+    "@astrojs/markdown-remark": "^5.2.0",
+    "@astrojs/mdx": "^3.1.7",
     "@astrojs/rss": "^4.0.7",
-    "@astrojs/solid-js": "^4.4.1",
-    "@astrojs/tailwind": "^5.1.0",
-    "astro": "^4.15.4",
+    "@astrojs/solid-js": "^4.4.2",
+    "@astrojs/tailwind": "^5.1.1",
+    "astro": "^4.15.11",
     "astro-icon": "^1.1.1",
     "sharp": "^0.33.5",
     "solid-js": "^1.8.22",
