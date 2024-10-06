@@ -1,0 +1,64 @@
+---
+title: "Fix: Response to preflight request doesn't pass..."
+date: 2024-10-06
+keywords: bug, fetch, javascript, web, browser, go
+draft: false
+---
+
+While working with a server using something like Go's built-in Mux router (or any other one really), you might encounter this annoying error when you try to connect to your API running on a different port and you can't simply throw your usual `cors` middleware package in for some reason:
+
+![Preflight error screenshot](/images/screenshots/fetch-preflight-error.png)
+
+It'll be even more annoying because it is not your typical CORS error and the requests are clearly not hitting your handler functions! Don't worry, it is an easy fix. You just need to setup a catch-all endpoints that responds to the `OPTION` method and returns the appropriate headers. In [Robin](https://github.com/aosasona/robin/blob/b8b9df1073413ef30252b2d68122822ffb34970c/instance.go#L59) which uses a single endpoint, it is handled this way:
+
+```go
+// Handle CORS preflight requests
+mux.HandleFunc("/"+i.route, func(w http.ResponseWriter, r *http.Request) {
+	if r.Method == "OPTIONS" {
+		w.Header().Set("Access-Control-Allow-Origin", strings.Join(opts.Origins, ","))
+		w.Header().Set("Access-Control-Allow-Headers", strings.Join(opts.Headers, ","))
+		w.Header().Set("Access-Control-Allow-Methods", strings.Join(opts.Methods, ","))
+		w.Header().Set("Access-Control-Expose-Headers", strings.Join(opts.ExposedHeaders, ","))
+		w.Header().Set("Access-Control-Allow-Credentials", fmt.Sprintf("%t", opts.AllowCredentials))
+
+		if opts.MaxAge > 0 {
+			w.Header().Set("Access-Control-Max-Age", fmt.Sprintf("%d", opts.MaxAge))
+		}
+		return
+	}
+})
+```
+
+For just the `Pre-Flight`, you don't necessarily need to provide all these, but the function this was extracted from is used for both the pre-flight and proper requests. That's it, really, you can also just set the `mode` to `"no-cors"` in the fetch call as in:
+
+```javascript
+fetch("http://foo.bar", {
+  method: "POST",
+  body: JSON.stringify({ d: "hello" }),
+  mode: "no-cors",
+});
+```
+
+In case you are wondering how `CorsOptions` is defined, here you go:
+
+```go
+type CorsOptions struct {
+	// Allowed origins
+	Origins []string
+
+	// Allowed headers
+	Headers []string
+
+	// Allowed methods
+	Methods []string
+
+	// Exposed headers
+	ExposedHeaders []string
+
+	// Allow credentials
+	AllowCredentials bool
+
+	// Max age
+	MaxAge int
+}
+```
