@@ -1,8 +1,20 @@
 ---
 title: Introducing Robin
-date: 2024-10-10
+date: 2024-10-06
 description: Robin is a new(-ish) and experimental way to build type-safe full-stack web applications in Go and Typescript
 keywords: types, rspc, trpc, web, backend, frontend, full-stack, type-safe, typescript, go, golang, web applications, robin, experiment
 tags: ["golang", "typescript", "web development"]
 draft: false
 ---
+
+# Why I use Go
+
+> Bear with me, I know this article says "Introducing Robin" but you see a lot of Go and general programming language stuff, just hang on, I promise it will make sense!
+
+For the past few months; on and off, I have been working on something that is mostly how **I** want to build web services in Go. I have certain... reservations about Go and I think anyone who's ever mentioned Go in a conversation with me at this point knows that but why do I still bother with it? Why have I chosen to write most of my web apps and a [lot](https://github.com/aosasona/vanity) of [other](https://github.com/aosasona/lito) things [in](https://github.com/aosasona/bore) and [for](https://github.com/aosasona/mirror) it?
+
+Well, it's simple. I spent a good chunk of last year evaluating a lot of languages from different "genres" like [Rust](https://https://www.rust-lang.org), [Gleam](https://gleam.run), [Crystal](https://crystal-lang.org/), [Inko](https://inko-lang.org/), [Elixir](https://elixir-lang.org), [Erlang](https://erlang.org), [Zig](https://ziglang.org) and a few others I don't even remember. The one I kept coming back to because while it was annoying, it had most of what I needed - which is what really matters - and that was Go. That's not to say the other ones are bad by any means, I had a ton of fun writing most of the ones I did; especially Gleam and Rust! I even maintain a few packages in the Gleam ecosystem even though I no longer write Gleam (momentarily; I haven't needed it - see what I was saying?).
+
+For most things I write, I could do in Rust, it is the language that will come up in nearly every comparison to Go, but after writing [a bit of Rust](https://github.com/aosasona/chimney), I have come to realize it was just a tad too much for me; the compile times, the cryptic error messages when things fail catatrosphically (although a lot of things in Rust have nicer error messages than anything I have ever used, until you break a Trait or similar), the "rituals" blah blah blah. I get it, I truly get what Rust offers me, I talk about it a lot, I love Rust... but I don't want to write an API in Rust, sorry. I have a few requirements for most of the things I work on personally:
+
+- Compilation to a "lean" static binary (this rules out a lot of languages already; PHP, JS, Python etc)
