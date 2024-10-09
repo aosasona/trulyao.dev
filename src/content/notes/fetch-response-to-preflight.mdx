@@ -15,21 +15,23 @@ It'll be even more annoying because it is not your typical CORS error and the re
 // Handle CORS preflight requests
 mux.HandleFunc("/"+i.route, func(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "OPTIONS" {
-		w.Header().Set("Access-Control-Allow-Origin", strings.Join(opts.Origins, ","))
-		w.Header().Set("Access-Control-Allow-Headers", strings.Join(opts.Headers, ","))
-		w.Header().Set("Access-Control-Allow-Methods", strings.Join(opts.Methods, ","))
-		w.Header().Set("Access-Control-Expose-Headers", strings.Join(opts.ExposedHeaders, ","))
-		w.Header().Set("Access-Control-Allow-Credentials", fmt.Sprintf("%t", opts.AllowCredentials))
+		if opts.PreflightHeaders != nil {
+			for k, v := range opts.PreflightHeaders {
+				w.Header().Set(k, v)
+			}
 
-		if opts.MaxAge > 0 {
-			w.Header().Set("Access-Control-Max-Age", fmt.Sprintf("%d", opts.MaxAge))
+			return
 		}
-		return
+
+		w.Header().Set("Access-Control-Allow-Origin", strings.Join(opts.Origins, ","))
+		w.Header().Set("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers")
+		w.Header().Set("Access-Control-Allow-Credentials", "true")
+		w.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS")
 	}
 })
 ```
 
-For just the `Pre-Flight`, you don't necessarily need to provide all these, but the function this was extracted from is used for both the pre-flight and proper requests. That's it, really, you can also just set the `mode` to `"no-cors"` in the fetch call as in:
+For just the `Pre-Flight`, you don't necessarily need to provide all these (it depends on the browser and other things like whether you are sending credentials or not etc.), but the function this was extracted from is used for both the pre-flight and proper requests. That's it, really, you can also just set the `mode` to `"no-cors"` in the fetch call as in:
 
 ```javascript
 fetch("http://foo.bar", {
@@ -60,5 +62,8 @@ type CorsOptions struct {
 
 	// Max age
 	MaxAge int
+
+	// Preflight headers
+	PreflightHeaders map[string]string
 }
 ```
