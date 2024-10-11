@@ -1,6 +1,6 @@
 ---
 title: Effortless & type-safe full-stack web apps in Go!
-date: 2024-10-06
+date: 2024-10-11
 description: "Or as an alternative title: Introducing Robin - a new way to build type-safe full-stack applications in Go!"
 keywords: types, rspc, trpc, web, backend, frontend, full-stack, type-safe, typescript, go, golang, web applications, robin, experiment
 tags: ["golang", "typescript", "web development"]
@@ -9,34 +9,294 @@ draft: false
 
 # Why I use Go
 
-> Bear with me, I know this article says "Introducing Robin" but you see a lot of Go and general programming language stuff, just hang on, I promise it will make sense!
+> Bear with me, I know this article is supposed to be introducing a new library but you see a lot of Go and general programming language stuff, just hang on, I promise it will make sense!
 
 For the past few months; on and off, I have been working on something that is mostly how **I** want to build web services in Go. I have certain... reservations about Go and I think anyone who's ever mentioned Go in a conversation with me at this point knows that but why do I still bother with it? Why have I chosen to write most of my web apps and a [lot](https://github.com/aosasona/vanity) of [other](https://github.com/aosasona/lito) things [in](https://github.com/aosasona/bore) and [for](https://github.com/aosasona/mirror) it?
 
-Well, it's simple. I spent a good chunk of last year evaluating a lot of languages from different "genres" like [Rust](https://https://www.rust-lang.org), [Gleam](https://gleam.run), [Crystal](https://crystal-lang.org/), [Inko](https://inko-lang.org/), [Elixir](https://elixir-lang.org), [Erlang](https://erlang.org), [Zig](https://ziglang.org) and a few others I don't even remember. The one I kept coming back to because while it was annoying, it had most of what I needed - which is what really matters - and that was Go. That's not to say the other ones are bad by any means, I had a ton of fun writing most of the ones I did; especially Gleam and Rust! I even maintain a few packages in the Gleam ecosystem even though I no longer write Gleam (momentarily; I haven't needed it - see what I was saying?).
+Well, it's simple. I spent a good chunk of last year evaluating a lot of languages from different "genres" like [Rust](https://https://www.rust-lang.org), [Gleam](https://gleam.run), [Crystal](https://crystal-lang.org/), [Inko](https://inko-lang.org/), [Elixir](https://elixir-lang.org), [Erlang](https://erlang.org), [Zig](https://ziglang.org) and a few others I don't even remember. There was one I kept coming back to because while it was annoying, it had most of what I needed - which is what really matters - and that was Go. That's not to say the other ones are bad by any means, I had a ton of fun writing most of the ones I did; especially Gleam and Rust! I even maintain a few packages in the Gleam ecosystem even though I no longer write Gleam (momentarily; I haven't needed it - see what I was saying?).
 
-For most things I write, I could do in Rust, it is the language that will come up in nearly every comparison to Go, but after writing [a bit of Rust](https://github.com/aosasona/chimney), I have come to realize it was just a tad too much for me; the compile times, the cryptic error messages when things fail catatrosphically (although a lot of things in Rust have nicer error messages than anything I have ever used, until you break a Trait or similar), the "rituals" blah blah blah. I get it, I truly get what Rust offers me, I talk about it a lot, I love Rust... but I don't want to write an API in Rust, sorry. I have a few requirements for most of the things I work on personally:
+For most things I write, I could do in Rust, it is the language that will come up in nearly every comparison to Go, but after writing [a bit of Rust](https://github.com/aosasona/chimney) and sometimes failing to (I have a few projects I ended up rewriting _FROM_ Rust), I have come to realize it was just a tad too much for me; the compile times, the cryptic error messages when things fail catatrosphically (although a lot of things in Rust have nicer error messages than anything I have ever used, until you break a Trait or similar), the "rituals" blah blah blah. I get it, I truly get what Rust offers me, I talk about it a lot, I love Rust... but I don't want to write an web backend in Rust, sorry. I have a few requirements for most of the things I work on personally:
 
 - Producing a "lean" static binary (this rules out a lot of languages already; PHP, JS, Python etc)
 - **Concurrency (via green threads, coroutines, goroutines, or similar)**: I like to keep applications as self-contained as possible which means I will most likely eventually need to run periodic, concurrent and/or background jobs
 - Low resource usage (CPU and memory) by default
-- **Real** compile-time (and runtime) type safety
+- **Real** compile-time (and runtime) type safety (i.e not JavaScript with an expensive linter)
 - **Fast compilation**: This is essential for quick iterations!
 - Good performance out of the box
 - Automatic memory management; obviously!
+- Portability
 
-There are probably a bit more I have missed but as you might have already noticed; it's 2024 and most langauges can already do these things one way or another (you can even make desktop apps with Laravel now - **please, for the love of everything, don't**) but the major picture here is not those things _seperately_ but as a _single_ "package" and this is where Go shines. Sure, I can find a lot of things to complain about but in the end, it ticks all these boxes mostly (I would not consider Go fully type-safe without nil safety but that is just me :/), it falls short as a lot with its design that has seemingly chosen to ignore every advancement in language design but, and this is the important bit, it works for most things!
+There are probably a bit more I have missed but as you might have already noticed; it's 2024 and most langauges can already do these things one way or another (you can even make desktop apps with Laravel now - **please, for the love of everything, don't**) but the major picture here is not those things _seperately_ but as a _single_ "package" - a combination of all - and this is where Go shines. Sure, I can find a lot of things to complain about but in the end, it ticks all these boxes mostly (I would not consider Go fully type-safe without nil safety but that is just me :/), it falls short at a lot with its design that has seemingly chosen to ignore every advancement in language design to be able to claim "simplicity" but, and this is the important bit, it works for most things!
 
 # Attempt #1, or "The origin"
 
-Around the time I was working on [a side project](https://github.com/aosasona/sidekyk) a while back, I worked on a thing called [`gots`](https://github.com/aosasona/gots) (now known as [`mirror`](https://github.com/aosasona/mirror)) which could take your Go types and use that to spit out fairly decent Typescript type definitions. `gots` was used to generate API types from the same Go types used in the HTTP handlers to provide some form of type-safety across the server &amp; client boundaries and additionally, some near-instant feedback; if I changed an exported type on the server, the corresponding Typescript definition would change and I would get a compile error, nice!
+Around the time I was working on [a side project](https://github.com/aosasona/sidekyk) a while back, I worked on a thing called [`gots`](https://github.com/aosasona/gots) (now known as [`mirror`](https://github.com/aosasona/mirror)) which could take your Go types and use that to spit out fairly decent Typescript type definitions. `gots` was used to generate API types from the same Go types used in the HTTP handlers (for JSON unmarshalling, and related schema things) to provide some form of type-safety across the server &amp; client boundaries and additionally, some near-instant feedback; if I changed an exported type on the server, the corresponding Typescript definition would change and I would get a compile error, nice!
 
-This worked fairly okay but if you know anything about writing web applications; especially the frontend, getting the types is a very small (but still rather consequential) slice when it comes to writing proper code to communicate with the backend, I still had to recall the various HTTP methods, paths, write some more code to handle and filter the different errors properly, have duplicate/similar calls everywhere even though I had made a common abstraction to make it easier etc, you can find most of that code [here](https://github.com/aosasona/sidekyk/tree/master/mobile/src/lib/requests). It did not stop with that project, I would start a new things and have to go through the same setup over and over again regardless of the boilerplate I already had; you just cannot cover all cases.
+This worked fairly okay but if you know anything about writing web applications; especially the frontend, getting the types is a very small (but still rather consequential) slice when it comes to writing proper code to communicate with the backend, I still had to recall the various HTTP methods, paths, write some more code to handle and filter the different errors properly, have duplicate/similar calls everywhere even though I had made a common abstraction to make it easier etc, you can find most of that code [here](https://github.com/aosasona/sidekyk/tree/master/mobile/src/lib/requests). It did not stop with that project, I would start new things and have to go through the same setup over and over again regardless of the boilerplate I already had; you just cannot cover all cases.
 
 > And to be clear, I am also aware Robin will NOT cover all cases either! Also, yes I know you can generate OpenAPI schemas and then use codegen tools and yada yada yada but there's still that friction there for me.
 
-It was overly repetitive, more human-error prone, required knowing which types to put in which places, what endpoints took what payload and what the valid endpoints even were (yes, again, I know you can just document your stuff with Swagger or OpenAPI or \<insert thing here\>; they still require lots of manual effort; leave me alone, stop reading now), it kind of got... tiring. I like to find things that are just unnecessarily complex and attempt to "automate" them away for myself at least even if it doesn't work for anyone else (that's one of the fun parts of this job!) and in this case, I just want to work on my dumb little side projects with less friction and not care about those things. And, I think we both know I wasn't going to switch to writing TypeScript on the server for everything just to use trpc; come on, there was only one _sane_ thing to do; write my own!
+It was overly repetitive, more human-error prone, required knowing which types to put in which places, what endpoints took what payload and what the valid endpoints even were (yes, again, I know you can just document your stuff with Swagger or OpenAPI or \<insert thing here\>; they still require lots of manual effort; leave me alone, stop reading now), it kind of got... tiring. I like to find things that are just unnecessarily complex and attempt to "automate" them away for myself at least even if it doesn't work for anyone else (that's one of the fun parts of this job!) and in this case, I just want to work on my dumb little side projects with less friction and not care about those things. And, I think we both know I wasn't going to switch to writing TypeScript on the server for everything just to use tRPC; come on, there was only one _sane_ thing to do; write my own!
 
 > Am I being sarcastic about the sane bit? You'll never know.
+>
+> Also, yes, sometimes, I end up realising these automations or "abstractions" were wrong and I am not afraid of being wrong there; at least I had fun working on these things.
 
-# Fine, I'll do it myself
+# But, first...
+
+Whether I could or should do it was not the question anymore, I already knew I could generate valid and fairly accurate Typescript types, I was already doing it, but first, I had to rewrite something; as usual. The original version of `gots` was clearly thrown together in a weekend or so, a few months ago, I moved it to `mirror` where it now currently lives, I have rewritten it to be more customisable, more accurate, handle more edge cases (like [embedded structs](https://github.com/aosasona/gots/issues/3)) gracefully, to support more languages (although, I have only implemented Typescript support) and better code overall.
+
+So, technically, robin can support the same languages mirror can under the hood and the rewrite was a very big part of that, it also introduced hooks which gave more control to the user; allowing you to modify and even add fields or whole types that never existed before on the go (robin makes heavy use of this)! The parts were also more decoupled for users (A.K.A me) to build on independently if needed, this was a crucial part of the rewrite as it enabled you to now bring in your own parser, plugin in your own custom langauge support etc.
+
+# Okay, I will do it myself
+
+While working on mirror and slowly working on "designing" robin in the "get it to work" phase, I came across [another project](https://github.com/blue-rpc/bluerpc) with similar goals and thought I wouldn't have to do it anymore but unfortunately, it still wasn't a good fit for me. I wanted something that was mainly "just Go"; you write normal Go functions, you return normal Go types, you use normal Go routing libraries or the built-in HTTP server etc. but this was clearly designed to take over everything which I didn't like, I knew that whatever I was going to make obviously wasn't going to be the answer to all the prayers but I needed it to stil give the user a lot of freedom while still being somewhat strict where required.
+
+I despise being forced into a certain way of doing something by a "library", it is why most things I work on end up with a some customisation options where possible (and as much as time permits), I knew I still had to do it myself. So, I started working on it slowly, it got to a "working point" months ago when I initially [shared it](https://x.com/trulyao/status/1774227849374839064?s=46&t=oZkX14dN7BKTYc0mRw0ryg), unfortunately, I had to pause to finish the Mirror rewrite and work on a few things in between.
+
+I planned to use it to build my dissertation project (as the ultimate field test, let's hope I don't regret this - but so far, it has been a decent experience), so I pushed towards an initial release and we're there now! There is still a lot to figure out, there is still a very long way to go but right now, you can use it in your side projects if you are willing to deal with breaking changes every few weeks and nothing but a living documentation through me and bad examples. The best part is, the more I use it, the more I find things that could be improved or added and that is the whole point of this initial release.
+
+Of course, there are a few drawbacks with the biggest being a probable performance dip (although, not much I hope) due to how it has to work internally, but there's also missing documentation since I haven't had the time to do that, most of the _big_ features are still in the planned phase, it currently only supports Typescript only (no JSDoc) etc. but robin is currently usable for smaller and even bigger (personal) projects, it has built-in client generation so you don't have to install another NPM package for the client, it allows you to handle errors based on whatever criteria you want, and in my opinion, allows you to move fast(-er)!
+
+# What does it look like?
+
+Building with robin currently requires using Typescript and you can find some basic examples [here](https://github.com/aosasona/robin/tree/master/examples) and a more app-like demo [here](https://github.com/aosasona/robin-todo), but of course, I still need to show you some code here, don't I?
+
+## The server
+
+The server code is relatively straight-forward, you need to create a robin instance, add your procedures and attach it to a single route (don't worry, it won't force you to return `200 OK` for all responses like another thing we shall not name, we actually have proper status codes!) or you can also use the built-in `Serve` method as shown in this example:
+
+```go
+package main
+
+import (
+	"errors"
+	"log"
+	"time"
+
+	"go.trulyao.dev/robin"
+)
+
+type Todo struct {
+	Title     string    `json:"title"`
+	Completed bool      `json:"completed"`
+	CreatedAt time.Time `json:"created_at,omitempty"`
+}
+
+func main() {
+	r, err := robin.New(robin.Options{
+	  // You get to decide some bits here, you an choose to just generate the schema and not the bindings if you want too
+		CodegenOptions: robin.CodegenOptions{
+			Path:             ".",
+			GenerateBindings: true,
+			ThrowOnError:     true,
+			UseUnionResult:   true,
+		},
+	})
+	if err != nil {
+		log.Fatalf("Failed to create a new Robin instance: %s", err)
+	}
+
+	i, err := r.
+		Add(robin.Query("ping", ping)).
+		Add(robin.Query("fail", fail)).
+		Add(robin.Query("todos.list", listTodos)).
+		Add(robin.Mutation("todos.create", createTodo)).
+		Build()
+	if err != nil {
+		log.Fatalf("Failed to build Robin instance: %s", err)
+	}
+
+	if err := i.Export(); err != nil {
+		log.Fatalf("Failed to export client: %s", err)
+	}
+
+	if err := i.Serve(robin.ServeOptions{Port: 8060, Route: "/"}); err != nil {
+		log.Fatalf("Failed to serve Robin instance: %s", err)
+		return
+	}
+}
+
+func ping(ctx *robin.Context, _ robin.Void) (string, error) {
+	return "pong", nil
+}
+
+func listTodos(ctx *robin.Context, _ robin.Void) ([]Todo, error) {
+	return []Todo{
+		{"Hello world!", false, time.Now()},
+		{"Hello world again!", true, time.Now()},
+	}, nil
+}
+
+func createTodo(ctx *robin.Context, todo Todo) (Todo, error) {
+	todo.CreatedAt = time.Now()
+	return todo, nil
+}
+
+// Yes, you can just return normal errors!
+func fail(ctx *robin.Context, _ robin.Void) (robin.Void, error) {
+	return robin.Void{}, errors.New("This is a procedure error!")
+}
+```
+
+As you can see, your procedure functions are mostly just normal functions that take in a robin context (contains the original request and response structs and a few convenient functions), your automatically un-marshalled payload and returns whatever response you want as a basic Go type or an error, that's it. Robin also allows providing your own error handler function to filter out what to send or not send to the user like this:
+
+```go
+// Your custom error type
+type Error struct {
+	Message string
+	Code    int
+}
+
+func (e Error) MarshalJSON() ([]byte, error) {
+	return []byte(e.Message), nil
+}
+
+func (e Error) Error() string {
+	return e.Message
+}
+
+func NewError(message string, code int) *Error {
+	return &Error{Message: message, Code: code}
+}
+
+type SerializableCustomError struct {
+	Message string
+	Code    int
+}
+
+func (s *SerializableCustomError) MarshalJSON() ([]byte, error) {
+	return json.Marshal(map[string]interface{}{
+		"message": s.Message,
+		"code":    s.Code,
+	})
+}
+
+func errorHandler(err error) (robin.Serializable, int) {
+	message := err.Error()
+	code := 500
+
+	if e, ok := err.(Error); ok {
+		code = e.Code
+		message = e.Message
+	} else if e, ok := err.(robin.Error); ok {
+		code = e.Code
+		message = "Something went wrong"
+		// You can proceed to log internal errors here or similar
+	}
+
+	return &SerializableCustomError{Message: message, Code: code}, code
+}
+
+func main() {
+	r, err := robin.New(robin.Options{
+	  // ...
+		ErrorHandler:    errorHandler, // Register the error handler
+		// ...
+	})
+
+	// ...
+}
+```
+
+This mirrors the same pattern I have used in previous Go applications where I only allow custom error types through as they are because I don't want any of the other ones getting out there to the user, I have seen horrible error handling practices out there, robin tries to help you avoid that easily; it usually takes me a lot more code in past projects to implement this for each one, [here](https://github.com/aosasona/go-echo-boilerplate/blob/master/pkg/response/response.go) is a basic example from my now-deprecated boilerplate. While robin does use generics under the hood, I have taken great care to make sure you never actually have to think about it in your handler or anywhere else.
+
+> You are probably thinking "this is too much magic" and you'd probably be right, that's fine, you don't have to use robin, I am aware it won't work for everyone but I implore you to be a tad more open-minded, probably give it a shot and come back to me with your list of complaints that I will be happy to consider.
+>
+> Oh, yeah, there is [middleware support](https://github.com/aosasona/robin-todo/blob/974a022c2d46653abdf472e5165884989cc421c6/main.go#L92-L106) too.
+
+## The client
+
+Calling your procedures on the client side is fairly straight-forward and you can choose to use other libraries like [Tanstack Query](https://tanstack.com/query/latest) but the generated client comes with a fairly decent amount of error handling (with options you can choose from; including using result types or just throwing!), here's an example:
+
+```typescript
+import Client, { RequestOpts } from "./bindings";
+
+// By default, the credentials mode is not set, so you have to bring in your own client function if you want to send cookies or similar - this might change in the future depending on demand
+export function httpClient(url: string, opts?: RequestOpts): Promise<Response> {
+  return fetch(url, {
+    method: opts?.method || "GET",
+    headers: opts?.headers || {},
+    body: opts?.body || undefined,
+    credentials: "include",
+  });
+}
+
+const client = Client.new({
+  endpoint: "http://localhost:8081/_robin",
+  clientFn: httpClient,
+});
+
+await client.queries.ping();
+
+const todos = await client.queries.todosList();
+const newTodo = await client.mutations.todosCreate({
+  title: "Buy milk",
+  completed: false,
+});
+
+console.log("todos -> ", todos);
+console.log("newTodo -> ", newTodo);
+
+// This should throw since the generated client is set to throw on errors
+await client.queries.fail();
+```
+
+The client is fully typed and will provide appropriate types for the payload and return types. Turning off `ThrowOnError` and enabling the `UseUnionResult` option will force you to have an `ok` check before accessing any of either the `error` or `data` field, like this:
+
+```typescript
+// This will not throw but it wil now require a guarded access
+const result = await client.queries.fail();
+if (result.ok) {
+  // The `result.data` field is now available
+}
+
+if (!result.ok) {
+  // The `result.error` field is now available too
+}
+```
+
+I understand this can be annoying to do in every single place so I have provided alternatives, you can simply choose to let it throw and have a wrapper function (or let something like Tanstack Query handle it) or turn off the `UseUnionResult` option and you'll get back a type like this which will still require optional chaining to access the fields but will no longer force you to do a the `ok` check:
+
+```typescript
+type Result = {
+  ok: boolean;
+  data?: ReturnOf</* ... */>;
+  error?: unknown;
+};
+```
+
+# What next
+
+As I mentioned in the previous section, this version, the code you see [here](https://github.com/aosasona/robin) right now is mostly experimental to figure out how people will use it, how they expect to use it, what the optimal APIs look like and other things like that which means that eventually and most likely at the point of a **V1** release, there will be a full rewrite focusing on significant performance gains, saner code and other things. These are a few things I intend to work on over the next few months:
+
+- At least some documentation
+- Live/Real-time procedures
+- Pure Javascript client generation (using JSDoc)
+- REST endpoints generation (yes, you should in fact be able to generate REST endpoints for external API usage)
+- Perhaps a way to version payloads?
+- Automatic documentation generation for your APIs (including probably OpenAPI, JSON Schema etc)
+- Batched procedures (a way to send multiple requests to call multiple procedures at once without actually making them multiple requests)
+
+Of course, there will be more discovered as usage increases and you can follow the Github issues to know what's planned or to simply make suggestions.
+
+# FAQs that no one has actually asked
+
+## Is it a library or a framework?
+
+Personally, I think it is small and unobstructive enough to just be a library you can compose as you want but I don't really care, call it what you want.
+
+## Will it ever support [my other language]?
+
+Perhaps in the future, while support for that language can be added in mirror, this version of robin itself assumes Typescript as the default and will until or even past a 1.0 release.
+
+## Can I contribute?
+
+I cannot promise to swiftly review PRs due to time constraints at the moment but you are free to send in feedback or even code, I'd love to hear from you if you do use it!
+
+# Relevant links
+
+- Robin: [github.com/aosasona/robin](https://github.com/aosasona/robin)
+- Robin GoDocs: [pkg.go.dev/go.trulyao.dev/robin](https://pkg.go.dev/go.trulyao.dev/robin)
+- Robin Tasks application example: [github.com/aosasona/robin-todo](https://github.com/aosasona/robin-todo)
+- Mirror: [github.com/aosasona/mirror](https://github.com/aosasona/mirror)
