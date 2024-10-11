@@ -26,7 +26,7 @@ export function getMetaUrl(title: string, pubDate: Date) {
   }
 
   cachedMetaUrl = new URL(
-    "https://og.wyte.space/api/v1/images/trulyao/preview",
+    "https://og.trulyao.dev/api/v1/images/trulyao/preview",
   );
   cachedMetaUrl.searchParams.append("variant", "blog");
   cachedMetaUrl.searchParams.append("style", "blog");
