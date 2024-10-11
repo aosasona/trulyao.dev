@@ -204,7 +204,15 @@ article.blog-content {
 
   & p {
     padding-block: theme("padding[1.5]");
+  }
+
+  & > p {
     text-indent: 1.75rem;
+  }
+
+  & li > p {
+    text-indent: 0;
+    display: inline;
   }
 
   & img {
