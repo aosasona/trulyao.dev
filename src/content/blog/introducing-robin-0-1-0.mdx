@@ -1,7 +1,7 @@
 ---
-title: Introducing Robin
+title: Effortless & type-safe full-stack web apps in Go!
 date: 2024-10-06
-description: Robin is a new(-ish) and experimental way to build type-safe full-stack web applications in Go and Typescript
+description: "Or as an alternative title: Introducing Robin - a new way to build type-safe full-stack applications in Go!"
 keywords: types, rspc, trpc, web, backend, frontend, full-stack, type-safe, typescript, go, golang, web applications, robin, experiment
 tags: ["golang", "typescript", "web development"]
 draft: false
@@ -17,4 +17,26 @@ Well, it's simple. I spent a good chunk of last year evaluating a lot of languag
 
 For most things I write, I could do in Rust, it is the language that will come up in nearly every comparison to Go, but after writing [a bit of Rust](https://github.com/aosasona/chimney), I have come to realize it was just a tad too much for me; the compile times, the cryptic error messages when things fail catatrosphically (although a lot of things in Rust have nicer error messages than anything I have ever used, until you break a Trait or similar), the "rituals" blah blah blah. I get it, I truly get what Rust offers me, I talk about it a lot, I love Rust... but I don't want to write an API in Rust, sorry. I have a few requirements for most of the things I work on personally:
 
-- Compilation to a "lean" static binary (this rules out a lot of languages already; PHP, JS, Python etc)
+- Producing a "lean" static binary (this rules out a lot of languages already; PHP, JS, Python etc)
+- **Concurrency (via green threads, coroutines, goroutines, or similar)**: I like to keep applications as self-contained as possible which means I will most likely eventually need to run periodic, concurrent and/or background jobs
+- Low resource usage (CPU and memory) by default
+- **Real** compile-time (and runtime) type safety
+- **Fast compilation**: This is essential for quick iterations!
+- Good performance out of the box
+- Automatic memory management; obviously!
+
+There are probably a bit more I have missed but as you might have already noticed; it's 2024 and most langauges can already do these things one way or another (you can even make desktop apps with Laravel now - **please, for the love of everything, don't**) but the major picture here is not those things _seperately_ but as a _single_ "package" and this is where Go shines. Sure, I can find a lot of things to complain about but in the end, it ticks all these boxes mostly (I would not consider Go fully type-safe without nil safety but that is just me :/), it falls short as a lot with its design that has seemingly chosen to ignore every advancement in language design but, and this is the important bit, it works for most things!
+
+# Attempt #1, or "The origin"
+
+Around the time I was working on [a side project](https://github.com/aosasona/sidekyk) a while back, I worked on a thing called [`gots`](https://github.com/aosasona/gots) (now known as [`mirror`](https://github.com/aosasona/mirror)) which could take your Go types and use that to spit out fairly decent Typescript type definitions. `gots` was used to generate API types from the same Go types used in the HTTP handlers to provide some form of type-safety across the server &amp; client boundaries and additionally, some near-instant feedback; if I changed an exported type on the server, the corresponding Typescript definition would change and I would get a compile error, nice!
+
+This worked fairly okay but if you know anything about writing web applications; especially the frontend, getting the types is a very small (but still rather consequential) slice when it comes to writing proper code to communicate with the backend, I still had to recall the various HTTP methods, paths, write some more code to handle and filter the different errors properly, have duplicate/similar calls everywhere even though I had made a common abstraction to make it easier etc, you can find most of that code [here](https://github.com/aosasona/sidekyk/tree/master/mobile/src/lib/requests). It did not stop with that project, I would start a new things and have to go through the same setup over and over again regardless of the boilerplate I already had; you just cannot cover all cases.
+
+> And to be clear, I am also aware Robin will NOT cover all cases either! Also, yes I know you can generate OpenAPI schemas and then use codegen tools and yada yada yada but there's still that friction there for me.
+
+It was overly repetitive, more human-error prone, required knowing which types to put in which places, what endpoints took what payload and what the valid endpoints even were (yes, again, I know you can just document your stuff with Swagger or OpenAPI or \<insert thing here\>; they still require lots of manual effort; leave me alone, stop reading now), it kind of got... tiring. I like to find things that are just unnecessarily complex and attempt to "automate" them away for myself at least even if it doesn't work for anyone else (that's one of the fun parts of this job!) and in this case, I just want to work on my dumb little side projects with less friction and not care about those things. And, I think we both know I wasn't going to switch to writing TypeScript on the server for everything just to use trpc; come on, there was only one _sane_ thing to do; write my own!
+
+> Am I being sarcastic about the sane bit? You'll never know.
+
+# Fine, I'll do it myself
