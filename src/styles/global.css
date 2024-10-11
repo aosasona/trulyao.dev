@@ -15,7 +15,7 @@
   --header-font-family: "IBM Plex Mono";
   --alt-font-family: "Whois";
 
-  --body-font-size: 0.9rem;
+  --body-font-size: 0.88rem;
   --body-line-height: theme("lineHeight.loose");
   --body-letter-spacing: theme("letterSpacing.normal");
 
@@ -206,6 +206,15 @@ article.blog-content {
     padding-block: theme("padding[1.5]");
   }
 
+  & > p {
+    text-indent: 1.75rem;
+  }
+
+  & li > p {
+    text-indent: 0;
+    display: inline;
+  }
+
   & img {
     width: 100%;
     max-width: 100%;
@@ -283,6 +292,11 @@ article.blog-content {
     border-left: 5px solid theme("colors.secondary.900");
     margin-block: theme("margin[2.5]");
     padding: theme("padding[0.5]") theme("padding.4");
+
+    & > p {
+      text-indent: 0;
+      font-size: 1rem;
+    }
 
     .dark & {
       background-color: theme("colors.secondary.900");
