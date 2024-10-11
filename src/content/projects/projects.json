@@ -1,5 +1,17 @@
 [
 	{
+		"name": "Robin",
+		"description": "An experimental new(-ish) way to build type-safe full-stack web applications with Go",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/robin",
+		"image": "robin.png",
+		"status": "active",
+		"tags": [
+			"go",
+			"typescript"
+		]
+	},
+	{
 		"name": "Mirror",
 		"description": "Go library for runtime type generation (existing and non-existing/dynamic types)",
 		"website_url": null,
