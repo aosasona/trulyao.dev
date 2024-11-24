@@ -1,0 +1,275 @@
+---
+title: update_001.robin
+date: 2024-11-24
+description: "What's new in Robin since the last time I talked about it"
+keywords: types, rspc, trpc, web, backend, frontend, full-stack, type-safe, typescript, go, golang, web applications, robin, experiment
+tags: ["go", "typescript", "web development", "update"]
+draft: false
+---
+
+# Why write this article?
+
+This post is a follow-up to my [last article](/posts/introducing-robin) and the first in a series of updates I intend to start posting for the things I work on. While you can indeed read the changelogs (which I try to keep informative as possible but still fail at in my opinion), it requires you to be actively following me or the project on GitHub, but there is a good chance you had a look at the project when I first talked about it, realised it didn't have what you wanted, clicked off, and forgot about it; perhaps one of these updates will includes the things you want.
+
+# Middleware functions
+
+Middleware support was added very early into the library but was not really talked about; here is the [commit](https://github.com/aosasona/robin/commit/7b678ec72f1348141d8f1ed727d7da0baeef664c) that added that feature. It does what it says on the tin, middleware functions are functions that are executed before the actual procedure function, you can chain as many as you need and they are guaranteed to be executed in that order.
+
+<p class="-ml-8">Middleware functions have the following signature:</p>
+
+```go
+type Middleware func(*Context) error
+```
+
+Unlike normal procedures, you can only return errors (or `nil` if it should continue down the chain) and this is on purpose, middleware functions are designed to only be, well, middleware functions; they are not the final destination, they are not supposed to behave like normal procedures and leave you wondering where the `Ok` response was actually sent; that will ALWAYS be in the procedure function.
+
+Middleware functions, as you might have noticed, also do not take the deserialized input but rather just the raw context for a very good reason; **re-usability**. Forcing middleware functions to conform to a specific input type makes it difficult to reuse them across procedures or even across projects (i.e. as separate packages if necessary).
+
+This comes with the downside that you'd have to deserialize the body twice (once explicitly, and the other implicitly by Robin), I have refrained from adding an option to tell robin "Don't worry, I have deserialized the input already, here it is, skip the process and just use this" because, while I do want to provide some level of control, I won't pretend this library is not opinionated and it has to be. It is designed to keep things less confusing, keep the gnarly details out of your way until you need them and prevent silly human errors, you WILL forget to deserialize at some point, tell Robin you have and cause a panic.
+
+> It is easy to feel this is a library for idiots who need to be protected from themselves; like myself, but that is not the case. I prefer to let the computer do work it is good at and not get in my own way, we don't need to bang rocks together all the time to show just how intelligent and infallible we are.
+>
+> To be fair, that is a tough balance to achieve - what should and should not be hidden away? Robin is an experiment for now, and some things may be removed in the future.
+
+> In the future, I may add this option with a variety of checks - that is already possible - but I don't see a need for it now.
+
+## Example
+
+### Definition
+
+```go
+package foo
+
+import (
+	"encoding/base64"
+	"log/slog"
+	"net/http"
+
+	"todo/repository"
+
+	apperrors "todo/pkg/errors"
+
+	"go.trulyao.dev/robin"
+)
+
+func RequireAuth(c *robin.Context) error {
+	authCookie, found := c.Cookie("auth")
+	if !found {
+		return apperrors.New(http.StatusUnauthorized, "Unauthorized")
+	}
+
+	username, err := base64.StdEncoding.DecodeString(authCookie.Value)
+	if err != nil {
+		slog.Error("Failed to decode auth cookie", slog.String("cookie", authCookie.Value))
+		return apperrors.New(http.StatusUnauthorized, "Unauthorized")
+	}
+
+	user, err := repository.UserRepo().FindByUsername(string(username))
+	if err != nil {
+		slog.Error("Failed to find user", slog.String("username", string(username)))
+		return apperrors.New(http.StatusUnauthorized, "Unauthorized")
+	}
+
+	c.Set("user", user)
+	return nil
+}
+
+func Log(c *robin.Context) error {
+	// do something here
+	return nil
+}
+```
+
+> As you might have noticed, Robin has an undocumented in-memory `State` container where you can store data and access it later down the chain for convenience.
+
+### Usage
+
+```go
+func main() {
+	// There are other ways to set the middleware functions like the `QueryWithMiddleware` constructor
+	...
+	instance, err := r.Add(robin.Query("list-todos", ListTodos).WithMiddleware(Log, RequireAuth))
+	...
+	// Execution order: `Log` -> `RequireAuth` -[if nil]-> `ListTodos`
+}
+```
+
+> This was extracted from an earlier version of the [Todo list demo app](https://github.com/aosasona/robin-todo).
+
+# Global middlware functions
+
+You might have noticed a problem already, passing your middleware functions one-by-one to tens or may even hundreds of procedures can get exhausting really fast and would somewhat defeat the effeciency/iteration-speed reasons for going with this library in the first place.
+
+For this reason, [version 0.4](https://github.com/aosasona/robin/releases/tag/v0.4.0) added support for (named) global middleware which still provide nearly the same guarantees as before and can be added to the instance itself with one key change: they are now _opt-out_ instead of _opt-in_. You can find the rationale for the current design of global middleware functions [here](https://github.com/aosasona/robin/issues/32).
+
+> In the future, I may introduce some sort of procedure grouping functionality as `robin.Group` to make it easier to apply middleware functions to only a certain group of procedures instead of having to mass-opt-out (and in turn recreating the original "repitition" problem) - tracked as [#40](https://github.com/aosasona/robin/issues/40)
+
+## Example
+
+### Usage
+
+```go
+func main() {
+	...
+	r.Use("log", Log)
+	r.Use("require-auth", RequireAuth)
+
+	instance, err := r.
+		// **None** of the global middleware functions will be executed for this procedure
+		Add(robin.Query("whoami", WhoAmI).ExcludeMiddleware("*")).
+		// **All** of the global middleware functions will be executed for this procedure
+		Add(robin.Query("list-todos", ListTodos)).
+		// The `require-auth` middleware function will not be executed for the following procedures
+		Add(robin.Mutation("sign-in", h.SignIn).ExcludeMiddleware("require-auth")).
+		Add(robin.Mutation("sign-up", h.SignUp).ExcludeMiddleware("require-auth")).
+	...
+}
+```
+
+> There is a known issue where arbitrary names can be passed to `ExcludeMiddleware` are not validated, this is tracked as [#35](https://github.com/aosasona/robin/issues/35)
+
+# REST-ful endpoints
+
+While Robin generates a type-safe **TypeScript** client for you, there are cases where you probably want to expose a REST-ful API for other developers to build on, or you simply are not working in TypeScript and cannot use the client. It is fairly easy to reverse-engineer the client to get the URLs but you will soon find out they are not REST-ful and are (in my opinion) ugly and hard to remember, which makes sense, they were not designed for you to look at or use outside the generated client(s). [This PR](https://github.com/aosasona/robin/pull/38) laid the foundation for future work like generating Open API/Swagger specs and web documentation amongst other things, which means you can expose REST-ful endpoints today!
+
+I will admit it is still clearly under-developed (because it is), and is quite limited when it comes to customisation, but there is now a new method `WithAlias` to set a different endpoint for the REST-ful layer.
+
+## Example
+
+## Definition
+
+You don't need to rewrite your existing code to make use of this feature, you just need to pass in a new option to the `Serve` options (if you are using that) to enable REST endpoints, or attach the handlers manually using the new `BuildRestEndpoints` and `BuildProcedureHttpHandler` methods on the instance.
+
+> See documentation for [BuildProcedureHttpHandler](https://pkg.go.dev/go.trulyao.dev/robin#Instance.BuildProcedureHttpHandler) and [BuildRestEndpoints](https://pkg.go.dev/go.trulyao.dev/robin#Instance.BuildRestEndpoints)
+
+```go
+func main() {
+	r, err := robin.New(robin.Options{/* ... */})
+	if err != nil {
+		log.Fatalf("Failed to create a new Robin instance: %s", err)
+	}
+
+	i, err := r.
+		Add(robin.Query("ping", ping)).
+		Add(robin.Query("list-todos", listTodos)). // You can name your procedures like this or use an alias as shown below
+		Add(robin.Mutation("create.todo", createTodo).WithAlias("/todo/new")). // You can also add aliases to mutations! (not like this though, bad path)
+		Build()
+	if err != nil {
+		log.Fatalf("Failed to build Robin instance: %s", err)
+	}
+
+	if err := i.Serve(
+		robin.ServeOptions{
+			/* ... */
+			RestApiOptions: &robin.RestApiOptions{Enable: true},
+		}); err != nil {
+		log.Fatalf("Failed to serve Robin instance: %s", err)
+		return
+	}
+}
+
+func ping(ctx *robin.Context, _ robin.Void) (string, error) { /*...*/ }
+
+func listTodos(ctx *robin.Context, _ robin.Void) ([]Todo, error) { /*...*/ }
+
+func createTodo(ctx *robin.Context, todo Todo) (Todo, error) { /*...*/ }
+```
+
+By default, the library will strip out certain prefixes based on the procedure type to make the endpoints cleaner and drop the leading verbs which only make sense in the generated client but not for REST-ful endpoints. For example, `list-todos` will become a `GET /<path>/todos` request instead of `GET /<path>/list-todos`, you can override this by using the `WithAlias` method.
+
+## Usage
+
+You can proceed to call the REST endpoints using any tool you prefer in any language, here is an HTTP file matching the Robin instance defined above (along with matching CURL commands):
+
+```http
+@url=http://localhost:8060/api
+
+GET {{url}}/ping
+Content-Type: application/json
+Accept: application/json
+
+###
+
+# List todos
+GET {{url}}/todos
+Content-Type: application/json
+Accept: application/json
+
+###
+
+# Create todo
+POST {{url}}/todo/new
+Content-Type: application/json
+Accept: application/json
+
+{
+	"d": {
+		"title": "Test todo",
+		"completed": true
+	}
+}
+```
+
+```shell
+# ping
+curl -X GET 'http://localhost:8060/api/ping'
+```
+
+```shell
+# list-todos
+curl -X GET 'http://localhost:8060/api/todos'
+```
+
+```shell
+# create.todo
+curl -X POST 'http://localhost:8060/api/todo' \
+  --data-raw $'{
+  "d": {
+    "title": "Todo\'s title",
+    "completed": true
+  }
+}'
+```
+
+> The default REST endpoint path is `/api`, you can also customize this in the `RestApiOptions`
+
+# Minor changes
+
+## Extra options in client
+
+<small>Tracked as [#31](https://github.com/aosasona/robin/issues/31)</small>{" "}
+
+Users can now supply extra fetch options like `credentials` to the built-in HTTP client used by the generated client, this previously required providing a custom implementation.
+
+### Example
+
+```typescript
+import Client from "./bindings";
+
+const client = Client.new({
+  endpoint: import.meta.env.DEV ? "http://localhost:8081/_robin" : "/_robin",
+  fetchOpts: {
+    credentials: "include",
+  },
+});
+
+export default client;
+```
+
+## Exposed pre-flight and CORS handlers
+
+<small>Tracked as [#30](https://github.com/aosasona/robin/issues/30)</small>
+
+The default (customisable) CORS handlers used by the built-in `Serve` method on the robin instance are now available to users who do not want to use the built-in `Serve` method.
+
+## Major Bug fixes
+
+- Prevent overriding procedures with the same name but different types[(#33)](https://github.com/aosasona/robin/issues/33)
+
+# Conclusion
+
+You can view the live version of the demo todo application [here](https://robin-todo.fly.dev) with the source code available at [github.com/aosasona/robin-todo](https://github.com/aosasona/robin-todo).
+
+I have also started work on the documentation site, which is not going to be available for a long while as I have other commitments at the moment but you can follow the progress (if any) at [https://robin.trulyao.dev](https://robin.trulyao.dev).
+
+That's it for now, you can track planned & on-going work and known issues [here](https://github.com/aosasona/robin/issues), you can also open an issue to tell me what you currently dislike or would like to see in the future!
