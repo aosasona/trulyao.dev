@@ -13,22 +13,24 @@ import H3 from "@components/mdx/H3.astro";
 import TableOfContents from "@components/layout/TableOfContents.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog");
-  return posts.map((post) => ({ params: { slug: post.slug }, props: { post } }));
+	const posts = await getCollection("blog");
+	return posts.map((post) => ({
+		params: { slug: post.slug },
+		props: { post },
+	}));
 }
 
 let { post } = Astro.props;
 
 if (!post) {
-  return new Response(null, {
-    status: 404,
-    statusText: "Not Found",
-  });
+	return new Response(null, {
+		status: 404,
+		statusText: "Not Found",
+	});
 }
 
 let {
-  data: { title, description: desc, tags, keywords, date },
-  slug,
+	data: { title, description: desc, tags, keywords, date },
 } = post;
 const { Content, headings } = await post.render();
 
