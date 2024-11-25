@@ -136,7 +136,7 @@ I will admit it is still clearly under-developed (because it is), and is quite l
 
 ## Example
 
-## Definition
+### Definition
 
 You don't need to rewrite your existing code to make use of this feature, you just need to pass in a new option to the `Serve` options (if you are using that) to enable REST endpoints, or attach the handlers manually using the new `BuildRestEndpoints` and `BuildProcedureHttpHandler` methods on the instance.
 
@@ -177,7 +177,7 @@ func createTodo(ctx *robin.Context, todo Todo) (Todo, error) { /*...*/ }
 
 By default, the library will strip out certain prefixes based on the procedure type to make the endpoints cleaner and drop the leading verbs which only make sense in the generated client but not for REST-ful endpoints. For example, `list-todos` will become a `GET /<path>/todos` request instead of `GET /<path>/list-todos`, you can override this by using the `WithAlias` method.
 
-## Usage
+### Usage
 
 You can proceed to call the REST endpoints using any tool you prefer in any language, here is an HTTP file matching the Robin instance defined above (along with matching CURL commands):
 
