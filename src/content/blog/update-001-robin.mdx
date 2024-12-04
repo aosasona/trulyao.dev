@@ -15,7 +15,7 @@ This post is a follow-up to my [last article](/posts/introducing-robin) and the 
 
 Middleware support was added very early into the library but was not really talked about; here is the [commit](https://github.com/aosasona/robin/commit/7b678ec72f1348141d8f1ed727d7da0baeef664c) that added that feature. It does what it says on the tin, middleware functions are functions that are executed before the actual procedure function, you can chain as many as you need and they are guaranteed to be executed in that order.
 
-<p class="-ml-8">Middleware functions have the following signature:</p>
+Middleware functions have the following signature:
 
 ```go
 type Middleware func(*Context) error
