@@ -4,7 +4,7 @@ import { Icon } from "astro-icon/components";
 const { id } = Astro.props;
 ---
 
-<h3 class="w-max font-bold text-xl relative" id={id} data-section-header>
+<h4 class="w-max font-bold text-lg relative" id={id} data-section-header>
   <Icon name="tabler:hash" class="text-primary-400 absolute top-[50%] translate-y-[-50%] -left-6 opacity-0" data-section-hash />
   <slot />
-</h3>
+</h4>

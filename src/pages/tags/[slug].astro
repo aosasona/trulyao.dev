@@ -10,27 +10,33 @@ import H1 from "@components/mdx/H1.astro";
 import ProjectPreviewListItem from "@components/items/ProjectPreviewListItem.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("blog", ({ data }) => {
-    return import.meta.env.PROD ? data.draft !== true : true;
-  });
+	const posts = await getCollection("blog", ({ data }) => {
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
 
-  const projects = (await getCollection("projects"))?.[0]?.data;
+	const projects = (await getCollection("projects"))?.[0]?.data;
 
-  const postTags = posts.map((post) => post.data.tags).flat();
-  const projectTags = projects.map((project) => project?.tags).flat();
+	const postTags = posts.map((post) => post.data.tags).flat();
+	const projectTags = projects.map((project) => project?.tags).flat();
 
-  let tags = [...new Set([...postTags, ...projectTags])]; // Collect all tags across all posts and projects, this could ideally be better if tags had their own collection
-  tags = (tags?.filter((tag) => !!tag) as string[])?.sort((a, b) => a?.localeCompare(b)); // Remove undefined tags
+	let tags = [...new Set([...postTags, ...projectTags])]; // Collect all tags across all posts and projects, this could ideally be better if tags had their own collection
+	tags = (tags?.filter((tag) => !!tag) as string[])?.sort((a, b) =>
+		a?.localeCompare(b),
+	); // Remove undefined tags
 
-  return tags.map((tag) => ({
-    params: { slug: slugify(tag ?? "") },
-    props: {
-      tag: tag,
-      posts: posts.filter((post) => post?.data?.tags?.includes(tag ?? ""))?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
-      projects: projects.filter((project) => project?.tags?.includes(tag ?? ""))?.sort((a, b) => a?.name?.localeCompare(b?.name)),
-      otherTags: tags,
-    },
-  }));
+	return tags.map((tag) => ({
+		params: { slug: slugify(tag ?? "") },
+		props: {
+			tag: tag,
+			posts: posts
+				.filter((post) => post?.data?.tags?.includes(tag ?? ""))
+				?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()),
+			projects: projects
+				.filter((project) => project?.tags?.includes(tag ?? ""))
+				?.sort((a, b) => a?.name?.localeCompare(b?.name)),
+			otherTags: tags,
+		},
+	}));
 }
 
 let { tag, posts, projects, otherTags } = Astro.props;

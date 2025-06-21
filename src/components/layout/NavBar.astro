@@ -8,7 +8,7 @@ import { Icon } from "astro-icon/components";
   }
 
   [data-icon] {
-    color: theme("colors.secondary.600");
+    color: theme("colors.secondary.400");
     font-size: 1rem;
   }
 
@@ -17,7 +17,7 @@ import { Icon } from "astro-icon/components";
   }
 
   [data-icon="octicon:sun-24"] {
-    color: theme("colors.secondary.900");
+    color: theme("colors.primary.400");
   }
 </style>
 
@@ -34,7 +34,7 @@ import { Icon } from "astro-icon/components";
 
     <button
       x-cloak
-      class="h-8 aspect-square flex items-center justify-center border border-secondary-600 dark:border-0 dark:bg-secondary-200 rounded-full transition-all duration-300"
+      class="h-8 aspect-square flex items-center justify-center transition-all duration-300"
       @click="$store.theme.mode === 'dark' ? $store.theme.enableLightMode() : $store.theme.enableDarkMode()"
       title="Change color scheme"
     >

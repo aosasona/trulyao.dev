@@ -3,6 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import icon from "astro-icon";
 import solidJs from "@astrojs/solid-js";
 import externalize from "./src/plugins/externalize";
+import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 
 import mdx from "@astrojs/mdx";
 
@@ -13,7 +14,7 @@ export default defineConfig({
 	integrations: [tailwind(), icon(), solidJs(), mdx()],
 	markdown: {
 		syntaxHighlight: "prism",
-		rehypePlugins: [[externalize, { domain: "trulyao.dev" }]],
+		rehypePlugins: [[externalize, { domain: "trulyao.dev" }], rehypeHeadingIds],
 	},
 	redirects: {
 		"/live": { status: 302, destination: "https://twitch.tv/3x3cv3" },

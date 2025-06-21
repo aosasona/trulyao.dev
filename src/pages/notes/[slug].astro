@@ -7,28 +7,31 @@ import Tags from "@components/misc/Tags.astro";
 
 import H1 from "@components/mdx/H1.astro";
 import H2 from "@components/mdx/H2.astro";
+import H3 from "@components/mdx/H3.astro";
 import { getMetaUrl } from "@lib/utils";
 import Code from "@components/mdx/Code.astro";
-import H3 from "@components/mdx/H3.astro";
 import TableOfContents from "@components/layout/TableOfContents.astro";
+import H4 from "@components/mdx/H4.astro";
 
 export async function getStaticPaths() {
-  const notes = await getCollection("notes");
-  return notes.map((note) => ({ params: { slug: note.slug }, props: { note } }));
+	const notes = await getCollection("notes");
+	return notes.map((note) => ({
+		params: { slug: note.slug },
+		props: { note },
+	}));
 }
 
 let { note } = Astro.props;
 
 if (!note) {
-  return new Response(null, {
-    status: 404,
-    statusText: "Not Found",
-  });
+	return new Response(null, {
+		status: 404,
+		statusText: "Not Found",
+	});
 }
 
 let {
-  data: { title, description: desc, tags, keywords, date },
-  slug,
+	data: { title, description: desc, tags, keywords, date },
 } = note;
 const { Content, headings } = await note.render();
 
@@ -57,7 +60,7 @@ const metaUrl = getMetaUrl(title, date);
       {headings.length > 0 ? <TableOfContents {headings} /> : null}
 
       <article class="blog-content">
-        <Content components={{ h1: H1, h2: H2, h3: H3, pre: Code }} />
+        <Content components={{ h1: H1, h2: H2, h3: H3, h4: H4, pre: Code }} />
       </article>
 
       <p class="mt-8">

@@ -8,58 +8,120 @@ type Props = {
 };
 
 const { headings, asSidebar = false } = Astro.props;
+
+// We need to get the current section based on the URL hash so we can highlight it
+const currentSection = Astro.url.hash.replace("#", "");
 ---
 
 <style>
-  [data-icon] {
-    display: inline-block;
-  }
+[data-icon] {
+	display: inline-block;
+}
 
-  .toc-desktop-wrapper {
-    @media (min-width: 1024px) {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 45px;
-    }
-    @apply lg:border lg:border-secondary-100 lg:dark:border-secondary-900;
-  }
+.toc-desktop-wrapper {
+	@media (min-width: 1024px) {
+		position: -webkit-sticky;
+		position: sticky;
+		top: 45px;
+	}
+	@apply lg:border lg:border-secondary-100 lg:dark:border-secondary-900;
+}
 
-  .table-of-contents-container {
-    background-color: var(--background-color);
-    border: 2px solid var(--foreground-color);
+.table-of-contents-container {
+	background-color: var(--background-color);
+	border: 2px solid var(--foreground-color);
 
-    @apply lg:w-80 lg:overflow-hidden lg:border-none p-1 pb-0 my-4 lg:my-0 lg:p-0 rounded-lg lg:rounded-none;
+	@apply lg:w-80 lg:overflow-hidden lg:border-none p-1 pb-0 my-4 lg:my-0 lg:p-0 rounded-lg lg:rounded-none;
 
-    & .header {
-      @apply flex justify-between items-center bg-secondary-dark dark:bg-secondary-light text-secondary-light dark:text-secondary-dark px-4 py-2 mb-1 rounded-md;
+	& .header {
+		@apply flex justify-between items-center bg-secondary-dark dark:bg-secondary-light text-secondary-light dark:text-secondary-dark px-4 py-2 mb-1 rounded-md;
 
-      & h3 {
-        @apply text-lg lg:text-base cursor-pointer;
-      }
-    }
+		& h3 {
+			@apply text-lg lg:text-base cursor-pointer;
+		}
+	}
 
-    & .contents-list {
-      @apply h-80 lg:h-auto overflow-y-auto lg:text-[13px] lg:px-2;
+	& .contents-list {
+		@apply h-80 lg:h-auto overflow-y-auto lg:text-[13px] lg:px-2;
 
-      &::-webkit-scrollbar {
-        display: none;
-      }
+		&::-webkit-scrollbar {
+			display: none;
+		}
 
-      & ul {
-        @apply list-none space-y-1.5 pt-2 pb-3;
+		& ul {
+			@apply list-none pt-2 pb-3;
 
-        & li {
-          @apply px-3;
-        }
-      }
-    }
-  }
+			& li {
+				@apply px-3;
+
+				&.active {
+					@apply bg-primary-100 dark:bg-primary-950;
+
+					&[data-is-nested] {
+						@apply border-l-2 border-l-primary-600 dark:border-l-primary-400 rounded-l-none;
+					}
+
+					& > a {
+						@apply text-primary-600 dark:text-primary-400;
+					}
+				}
+
+				&[data-is-nested] {
+					@apply border-l border-l-secondary-100 dark:border-l-secondary-900 pl-2.5;
+				}
+			}
+		}
+	}
+}
 </style>
+
+<script>
+	const tableOfContentLinks = Array.from(document.querySelectorAll(".table-of-contents-container[data-sidebar] li"));
+	const headings = tableOfContentLinks
+		.map((item) => {
+			const link = item.querySelector("a");
+			return document.querySelector(decodeURIComponent(link?.getAttribute("href") || ""));
+		})
+		.filter(Boolean);
+
+	function highlightCurrentSection() {
+		let closestIndex = -1;
+		let minDistance = Infinity;
+
+		for (let i = 0; i < headings.length; i++) {
+			const heading = headings[i];
+			if (!heading) continue;
+
+			const rect = heading.getBoundingClientRect();
+			const distance = Math.abs(rect.top);
+
+			if(rect.bottom > 0) break; // Stop checking if we hit a heading that is below the top of the viewport
+			if(rect.top > 0) continue; // Ignore headings that are high up in the viewport
+
+			if(rect.top <= 100 && distance < minDistance) {
+				minDistance = distance;
+				closestIndex = i;
+			}
+
+			tableOfContentLinks.forEach((link) => link.classList.remove("active"));
+			if (closestIndex !== -1) {
+				const activeLink = tableOfContentLinks[closestIndex];
+				activeLink.classList.add("active");
+			}
+		}
+	}
+
+	window.addEventListener("scroll", highlightCurrentSection, { passive: true});
+	window.addEventListener("resize", highlightCurrentSection);
+	window.addEventListener("DOMContentLoaded", () => {
+		highlightCurrentSection();
+	});
+</script>
 
 <div class="toc-desktop-wrapper" class:list={{ "hidden lg:block": asSidebar, "lg:hidden": !asSidebar }}>
   {
     headings.length > 0 ? (
-      <div class="table-of-contents-container" x-data="{ showContent: true }">
+      <div class="table-of-contents-container" x-data="{ showContent: true }" data-sidebar={asSidebar}>
         <div class="header lg:!hidden">
           <h3>Table of contents</h3>
           <button @click="showContent = !showContent" class="text-lg -mt-1 lg:hidden" aria-label="Toggle table of contents">
@@ -80,8 +142,8 @@ const { headings, asSidebar = false } = Astro.props;
         <div class="contents-list" x-show="showContent">
           <ul>
             {headings.map((heading) => (
-              <li style={`margin-left: ${(heading.depth - 1) * 1.25}rem`}>
-          <a href={`#${heading.slug}`} class="no-underline hover:underline hover:underline-offset-2">{heading.text}</a>
+				<li style={`margin-left: ${(heading.depth - 1) * 0.95}rem`} class={currentSection == heading.slug ? "active" : ""} data-is-nested={heading.depth !== 1} data-header-id={heading.slug}>
+                <a href={`#${heading.slug}`} class="no-underline hover:underline hover:underline-offset-2">{heading.text}</a>
               </li>
             ))}
           </ul>

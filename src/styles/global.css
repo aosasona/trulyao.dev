@@ -1,4 +1,4 @@
-@import url("https://fonts.cdnfonts.com/css/whois");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
 /* PrismJS Theme */
@@ -11,9 +11,9 @@
   --highlight-border-color: theme("colors.primary.200");
 
   --body-font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
-  --code-font-family: "Whois", monospace;
+  --code-font-family: "JetBrains Mono", monospace;
   --header-font-family: "Inter";
-  --alt-font-family: "Whois";
+  --alt-font-family: "JetBrains Mono";
 
   --body-font-size: 0.95rem;
   --body-line-height: theme("lineHeight.loose");
@@ -151,7 +151,7 @@ a {
   width: max-content;
   color: var(--foreground-color);
   background-color: var(--highlight-border-color);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
 
   padding-inline: theme("padding.4");
   margin-top: theme("margin[2.5]");
@@ -220,7 +220,7 @@ article.blog-content {
 
   & p > code,
   & li > code {
-    font-size: 0.875rem;
+    font-size: 0.85rem;
     font-family: var(--code-font-family), var(--alt-font-family), monospace;
     letter-spacing: theme("letterSpacing.wide");
     background-color: theme("colors.secondary.200");
@@ -237,8 +237,8 @@ article.blog-content {
   & pre,
   .code-block {
     position: relative;
-    font-size: 0.975rem;
-    line-height: 1.5rem;
+    font-size: 0.8rem;
+    line-height: 1.4rem;
     background: theme("colors.primary.100");
     border: 1px solid var(--highlight-border-color);
     border-radius: theme("borderRadius.sm");
@@ -280,19 +280,15 @@ article.blog-content {
   }
 
   & blockquote {
-    font-size: 0.975rem;
+    font-size: 0.85rem;
     font-family: var(--alt-font-family), monospace;
-    line-height: 1.65rem;
-    letter-spacing: theme("letterSpacing.wide");
+    line-height: 1.6rem;
+    letter-spacing: theme("letterSpacing.normal");
     background-color: theme("colors.secondary.200");
     border-left: 5px solid theme("colors.secondary.900");
     margin-block: theme("margin[2.5]");
-    padding: theme("padding[0.5]") theme("padding.4");
-
-    & > p {
-      text-indent: 0;
-      font-size: 1rem;
-    }
+    padding: theme("padding[1]") theme("padding.4");
+    font-style: italic;
 
     .dark & {
       background-color: theme("colors.secondary.900");

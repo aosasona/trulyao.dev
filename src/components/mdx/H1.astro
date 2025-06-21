@@ -1,12 +1,10 @@
 ---
 import { Icon } from "astro-icon/components";
-import { slugify } from "@lib/utils";
 
-let html = await Astro.slots.render("default");
-const slugifiedContent = slugify(html);
+const { id } = Astro.props;
 ---
 
-<h1 class="w-max font-extrabold text-4xl relative" id={slugifiedContent} data-section-header>
+<h1 class="w-max font-extrabold text-4xl relative" id={id} data-section-header>
   <Icon name="tabler:hash" class="text-primary-400 absolute top-[50%] translate-y-[-50%] -left-9 opacity-0" data-section-hash />
   <slot />
 </h1>
