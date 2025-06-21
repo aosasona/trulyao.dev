@@ -3,11 +3,11 @@ import type { CollectionEntry } from "astro:content";
 import Tags from "@components/misc/Tags.astro";
 
 export interface Props {
-  note: CollectionEntry<"notes">;
+	note: CollectionEntry<"notes">;
 }
 
 const {
-  note: { data, slug },
+	note: { data, slug },
 } = Astro.props;
 ---
 

@@ -19,7 +19,7 @@ const { headings, asSidebar = false } = Astro.props;
     @media (min-width: 1024px) {
       position: -webkit-sticky;
       position: sticky;
-      top: 0;
+      top: 45px;
     }
     @apply lg:border lg:border-secondary-100 lg:dark:border-secondary-900;
   }
@@ -74,14 +74,14 @@ const { headings, asSidebar = false } = Astro.props;
         </div>
 
         <div class="hidden lg:block px-4 py-2 border-b border-b-secondary-100 dark:border-b-secondary-900">
-          <h2 class="font-bold">Jump to...</h2>
+          <h2 class="font-bold font-body">Table of contents</h2>
         </div>
 
         <div class="contents-list" x-show="showContent">
           <ul>
             {headings.map((heading) => (
               <li style={`margin-left: ${(heading.depth - 1) * 1.25}rem`}>
-          <a href={`#${heading.slug}`} class="no-underline">{heading.text}</a>
+          <a href={`#${heading.slug}`} class="no-underline hover:underline hover:underline-offset-2">{heading.text}</a>
               </li>
             ))}
           </ul>

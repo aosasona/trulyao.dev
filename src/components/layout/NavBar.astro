@@ -36,6 +36,7 @@ import { Icon } from "astro-icon/components";
       x-cloak
       class="h-8 aspect-square flex items-center justify-center border border-secondary-600 dark:border-0 dark:bg-secondary-200 rounded-full transition-all duration-300"
       @click="$store.theme.mode === 'dark' ? $store.theme.enableLightMode() : $store.theme.enableDarkMode()"
+      title="Change color scheme"
     >
       <div class="sr-only">Change color scheme</div>
 

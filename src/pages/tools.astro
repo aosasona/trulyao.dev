@@ -20,90 +20,96 @@ import swift from "@icons/swift.svg";
 import H2 from "@components/mdx/H2.astro";
 
 type Tool = {
-  name: string;
-  description: string;
-  logo: ImageMetadata;
-  color: `#${string}`;
+	name: string;
+	description: string;
+	logo: ImageMetadata;
+	color: `#${string}`;
 };
 
 const tools: Tool[] = [
-  {
-    name: "PHP",
-    description:
-      "My first language and my go-to for full-stack web development, I currently use it at work and personally for web-based projects with no hard performance requirements or extensive client-side functionality (like a PWA requirement).",
-    logo: php,
-    color: "#777BB4",
-  },
-  {
-    name: "Go",
-    description: "Good choice for concurrent, performant & scalable backend services (and other things you definitely do not want to imagine) with single-binary* deployments.",
-    logo: go,
-    color: "#00ADD8",
-  },
-  {
-    name: "Typescript",
-    description:
-      'Mostly a "linter" but better than nothing when working with Javascript. I use it for most of my frontend projects (Solid, React & Astro) and when I have to work with Bun or Node.js',
-    logo: typescript,
-    color: "#3178C6",
-  },
-  {
-    name: "Rust",
-    description:
-      "A systems programming language with goals I absolutely love and I have been learning in my free time, very useful for performance and safety-critical applications.",
-    logo: rust,
-    color: "#000000",
-  },
-  {
-    name: "Swift",
-    description: "A well-designed & performant language I occasionally and painfully (thanks to Xcode) use for native iOS, iPadOS and macOS applications.",
-    logo: swift,
-    color: "#FA7343",
-  },
-  {
-    name: "Neovim",
-    description:
-      "An highly extensible modal text editor available on any machine/server I am on at any given time. It makes it extremely easy for me to write and navigate code without ever leaving the keyboard or my terminal and at the speed of thought.",
-    logo: neovim,
-    color: "#57A143",
-  },
-  {
-    name: "MySQL",
-    description: "A relational database management system that I have used for years as a part of the LAMP stack I started with!",
-    logo: mysql,
-    color: "#4479A1",
-  },
-  {
-    name: "SQLite",
-    description:
-      "A single-file, ACID-compliant relational database that I frequently use for my smaller projects (and sometimes for larger ones too!), stateful CLIs and mobile applications.",
-    logo: sqlite,
-    color: "#003B57",
-  },
-  {
-    name: "Redis",
-    description: "A key-value store that I use for caching, session storage and other abominable things you don't want to think about.",
-    logo: redis,
-    color: "#DC382D",
-  },
-  {
-    name: "Docker",
-    description: "Useful for running applications in a consistent kind-of-reproducible environment, and my preferred way to develop and deploy applications.",
-    logo: docker,
-    color: "#2496ED",
-  },
-  {
-    name: "Tailwind CSS",
-    description: 'A utility-first CSS framework which comes in quite handy for "designing in code" and making responsive designs easier to implement on the web.',
-    logo: tailwindcss,
-    color: "#38B2AC",
-  },
-  {
-    name: "Git",
-    description: "Uh... preferred and the most popular version control system?",
-    logo: git,
-    color: "#F05032",
-  },
+	{
+		name: "Go",
+		description:
+			"Good choice for concurrent, performant & scalable backend services (and other things you definitely do not want to imagine) with single-binary* deployments.",
+		logo: go,
+		color: "#00ADD8",
+	},
+	{
+		name: "Typescript",
+		description:
+			'Mostly a "linter" but better than nothing when working with Javascript. I use it for most of my frontend projects (Solid, React & Astro) and when I have to work with Bun or Node.js',
+		logo: typescript,
+		color: "#3178C6",
+	},
+	{
+		name: "PHP",
+		description:
+			"My first language and my go-to for full-stack web development, I currently use it at work and personally for web-based projects with no hard performance requirements or extensive client-side functionality (like a PWA requirement).",
+		logo: php,
+		color: "#777BB4",
+	},
+	{
+		name: "Rust",
+		description:
+			"A systems programming language with goals I absolutely love and I have been learning in my free time, very useful for performance and safety-critical applications.",
+		logo: rust,
+		color: "#000000",
+	},
+	{
+		name: "Swift",
+		description:
+			"A well-designed & performant language I occasionally and painfully (thanks to Xcode) use for native iOS, iPadOS and macOS applications.",
+		logo: swift,
+		color: "#FA7343",
+	},
+	{
+		name: "Neovim",
+		description:
+			"An highly extensible modal text editor available on any machine/server I am on at any given time. It makes it extremely easy for me to write and navigate code without ever leaving the keyboard or my terminal and at the speed of thought.",
+		logo: neovim,
+		color: "#57A143",
+	},
+	{
+		name: "MySQL",
+		description:
+			"A relational database management system that I have used for years as a part of the LAMP stack I started with!",
+		logo: mysql,
+		color: "#4479A1",
+	},
+	{
+		name: "SQLite",
+		description:
+			"A single-file, ACID-compliant relational database that I frequently use for my smaller projects (and sometimes for larger ones too!), stateful CLIs and mobile applications.",
+		logo: sqlite,
+		color: "#003B57",
+	},
+	{
+		name: "Redis",
+		description:
+			"A key-value store that I use for caching, session storage and other abominable things you don't want to think about.",
+		logo: redis,
+		color: "#DC382D",
+	},
+	{
+		name: "Docker",
+		description:
+			"Useful for running applications in a consistent kind-of-reproducible environment, and my preferred way to develop and deploy applications.",
+		logo: docker,
+		color: "#2496ED",
+	},
+	{
+		name: "Tailwind CSS",
+		description:
+			'A utility-first CSS framework which comes in quite handy for "designing in code" and making responsive designs easier to implement on the web.',
+		logo: tailwindcss,
+		color: "#38B2AC",
+	},
+	{
+		name: "Git",
+		description: "Uh... preferred and the most popular version control system?",
+		logo: git,
+		color: "#F05032",
+	},
 ];
 ---
 
@@ -121,11 +127,11 @@ const tools: Tool[] = [
     <ul class="flex flex-col gap-y-4 lg:gap-y-5 mt-5">
       {
         tools.map((tool) => (
-          <li class="w-full flex items-start md:items-center gap-3">
+          <li class="w-full flex items-start gap-3">
             <div
-              class="w-10 min-w-10 md:w-12 md:min-w-12 aspect-square object-cover flex items-center justify-center rounded-md mt-1 md:mt-0"
+              class="w-10 min-w-10 aspect-square object-cover flex items-center justify-center rounded-md mt-1 md:mt-0"
               style={{ backgroundColor: tool.color }}>
-              <Image src={tool.logo} alt={tool.name} class="w-5 md:w-6 aspect-square invert" />
+              <Image src={tool.logo} alt={tool.name} class="w-5 aspect-square invert" />
             </div>
 
             <div class="space-y-0.5">
