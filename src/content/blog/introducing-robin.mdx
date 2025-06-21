@@ -15,13 +15,13 @@ For the past few months; on and off, I have been working on something that is mo
 
 Well, it's simple. I spent a good chunk of last year evaluating a lot of languages from different "genres" like [Rust](https://https://www.rust-lang.org), [Gleam](https://gleam.run), [Crystal](https://crystal-lang.org/), [Inko](https://inko-lang.org/), [Elixir](https://elixir-lang.org), [Erlang](https://erlang.org), [Zig](https://ziglang.org) and a few others I don't even remember. There was one I kept coming back to because while it was annoying, it had most of what I needed - which is what really matters - and that was Go. That's not to say the other ones are bad by any means, I had a ton of fun writing most of the ones I did; especially Gleam and Rust! I even maintain a few packages in the Gleam ecosystem even though I no longer write Gleam (momentarily; I haven't needed it - see what I was saying?).
 
-For most things I write, I _could_ use Rust, it is the language that will come up in nearly every comparison to Go, but after writing [a bit of Rust](https://github.com/aosasona/chimney) and sometimes failing to (I have a few projects I ended up rewriting _FROM_ Rust), I have come to realize it was just a tad too much for me; the compile times, the cryptic error messages when things fail catastrophically (although a lot of things in Rust have nicer error messages than anything I have ever used, until you break a Trait or similar), the "rituals" blah blah blah. I get it, I truly get what Rust offers me, I talk about it a lot, I love Rust... but I don't want to write an web backend in Rust, sorry. I have a few requirements for most of the things I work on personally:
+For most things I write, I _could_ use Rust, it is the language that will come up in nearly every comparison to Go, but after writing [a bit of Rust](https://github.com/aosasona/chimney) and sometimes failing to (I have a few projects I ended up rewriting _FROM_ Rust), I have come to realize it was just a tad too much for me; the compile times, the cryptic error messages when things fail catastrophically (although a lot of things in Rust have nicer error messages than anything I have ever used, until you break a Trait or similar), the "rituals" blah blah blah. I get it, I truly get what Rust offers me, I talk about it a lot, I love Rust... but I don't want to write a web backend in Rust, sorry. I have a few requirements for most of the things I work on personally:
 
 - Producing a "lean" static binary (this rules out a lot of languages already; PHP, JS, Python etc)
 - **Concurrency (via green threads, coroutines, goroutines, or similar)**: I like to keep applications as self-contained as possible which means I will most likely eventually need to run periodic, concurrent and/or background jobs
 - Low resource usage (CPU and memory) by default
 - **Real** compile-time (and runtime) type safety (i.e not JavaScript with an expensive linter)
-- **Fast compilation**: This is essential for quick iterations!
+- **Fast compilation**: This is essential for quick iteration!
 - Good performance out of the box
 - Automatic memory management; obviously!
 - Portability
