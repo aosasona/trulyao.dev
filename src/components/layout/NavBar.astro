@@ -60,20 +60,14 @@ import { Icon } from "astro-icon/components";
   }
 
   const persistedDarkModeFlag = (localStorage.getItem("theme") ?? "") === "dark";
-  const prefersDarkMode = !("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-  // @fixes: so that we don't have to tap twice to switch to light mode on first visit if the device prefers dark mode
-  if (prefersDarkMode && !(localStorage.getItem("theme") ?? "")) {
-    localStorage.setItem("theme", JSON.stringify("dark"));
-  }
 
   // Set the theme on page load
-  handleThemeChange(persistedDarkModeFlag || prefersDarkMode);
+  handleThemeChange(persistedDarkModeFlag);
 
   // Initialize Alpine store for theme
   document.addEventListener("alpine:init", () => {
     Alpine.store("theme", {
-      mode: persistedDarkModeFlag || prefersDarkMode ? "dark" : "light",
+      mode: persistedDarkModeFlag ? "dark" : "light",
 
       setMode(value) {
         this.mode = value;
