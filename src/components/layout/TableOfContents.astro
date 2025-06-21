@@ -95,8 +95,8 @@ const currentSection = Astro.url.hash.replace("#", "");
 			const rect = heading.getBoundingClientRect();
 			const distance = Math.abs(rect.top);
 
-			if(rect.bottom > 100) break; // Stop checking if we hit a heading that is below the top of the viewport
-			if(rect.top > 100) continue; // Ignore headings that are high up in the viewport
+			// if(rect.bottom > 100) break; // Stop checking if we hit a heading that is below the top of the viewport
+			// if(rect.top > 100) continue; // Ignore headings that are high up in the viewport
 
 			if(rect.top <= 75 && distance < minDistance) {
 				minDistance = distance;
