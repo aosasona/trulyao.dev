@@ -19,10 +19,10 @@ RUN pnpm build
 
 FROM ghcr.io/aosasona/chimney:latest
 
-COPY --from=build /app/dist /var/www/html
+COPY --from=build /app/dist /var/www/html/trulyao
 
-COPY chimney.toml /etc/chimney/chimney.toml
+COPY chimney.toml /var/www/html/trulyao/chimney.toml
 
 EXPOSE 80
 
-CMD ["run"]
+CMD ["serve", "-c", "/etc/chimney/config.toml"]
