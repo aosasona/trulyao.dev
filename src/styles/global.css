@@ -297,6 +297,24 @@ article.blog-content {
   }
 }
 
+.posts-container {
+  @apply -mb-12;
+
+  & > .post-year-container {
+    & > ul {
+      @apply space-y-6 border-l border-l-secondary-200 dark:border-l-secondary-900 pl-4 py-5 md:pl-5 md:py-6;
+
+    }
+
+    &:last-child {
+      & > ul {
+        @apply pb-8 md:pb-16;
+        ;
+      }
+    }
+  }
+}
+
 /* Section styles */
 [data-section-header]:hover,
 [data-section-header]:focus {
