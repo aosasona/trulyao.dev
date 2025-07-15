@@ -1,0 +1,30 @@
+---
+import { Icon } from "astro-icon/components";
+
+export type Props = {
+	title: string;
+	slug: string;
+	direction: "next" | "previous";
+};
+
+const { title, slug, direction } = Astro.props;
+---
+<style>
+  [data-icon] {
+    display: inline-block;
+  }
+</style>
+
+<a href={"/posts/" + slug} class="no-underline hover:text-primary-400 hover:dark:text-primary-300 transition-all">
+  <div class="py-2 space-y-0.5 transition-all" class:list={direction === "previous" ? "text-left" : "text-right"}>
+    <p class="text-xs text-secondary-400 dark:text-secondary-600 hover">
+      {direction === "previous"
+        ? <span><Icon name="octicon:chevron-left-16" /> Previous</span>
+        : <span>Next <Icon name="octicon:chevron-right-16" /></span>
+      }
+    </p>
+    <div class="grid">
+    <p class="font-semibold text-sm truncate">{title}</p>
+    </div>
+  </div>
+</a>

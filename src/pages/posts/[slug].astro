@@ -12,16 +12,34 @@ import Code from "@components/mdx/Code.astro";
 import H3 from "@components/mdx/H3.astro";
 import TableOfContents from "@components/layout/TableOfContents.astro";
 import H4 from "@components/mdx/H4.astro";
+import PostPaginationButton from "@components/layout/PostPaginationButton.astro";
 
 export async function getStaticPaths() {
-	const posts = await getCollection("blog");
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: { post },
-	}));
+	let posts = await getCollection("blog", ({ data }) => {
+		return import.meta.env.PROD ? data.draft !== true : true;
+	});
+
+	posts = posts?.sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+	const staticPaths = [];
+
+	for (let i = 0; i < posts.length; i++) {
+		const post = posts[i];
+		let data = {
+			params: { slug: post.slug },
+			props: {
+				post,
+				previousPost: i > 0 ? posts[i - 1] : null,
+				nextPost: i < posts.length - 1 ? posts[i + 1] : null,
+			},
+		};
+		staticPaths.push(data);
+	}
+
+	return staticPaths;
 }
 
-let { post } = Astro.props;
+let { post, previousPost, nextPost } = Astro.props;
 
 if (!post) {
 	return new Response(null, {
@@ -68,6 +86,18 @@ const metaUrl = getMetaUrl(title, date);
           Github
         </a>
       </p>
+
+      {previousPost || nextPost ? (
+	<div class="grid grid-cols-2 md:flex md:flex-row items-center justify-between gap-6 md:gap-4 mt-8">
+	  {previousPost ? (
+	    <PostPaginationButton title={previousPost.data.title} slug={previousPost.slug} direction="previous" />
+	  ) : null}
+
+	  {nextPost ? (
+	    <PostPaginationButton title={nextPost.data.title} slug={nextPost.slug} direction="next" />
+	  ) : null}
+	</div>
+      ) : null}
 
       <!-- prettier-ignore -->
       <p class="text-sm leading-loose bg-secondary-dark text-primary-text-dark dark:bg-primary-100 dark:text-secondary-900 px-6 py-4 mt-8">
