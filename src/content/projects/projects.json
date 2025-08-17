@@ -1,15 +1,12 @@
 [
 	{
-		"name": "Robin",
-		"description": "An experimental new(-ish) way to build type-safe full-stack web applications with Go",
-		"website_url": null,
-		"github_url": "https://github.com/aosasona/robin",
-		"image": "robin.png",
-		"status": "active",
-		"tags": [
-			"go",
-			"typescript"
-		]
+		"name": "Hubble",
+		"description": "A minimal proof-of-concept of my dissertation project: a lightweight, unified knowledge-base management system built for user-extensibility and self-hosting, with privacy, security, and full data ownership at its core",
+		"website_url": "https://preview.hubble.keystroke.tools",
+		"github_url": "https://github.com/aosasona/hubble-preview",
+		"image": "hubble.png",
+		"status": "demo",
+		"tags": ["rust", "go", "typescript", "react", "tailwindcss"]
 	},
 	{
 		"name": "Mirror",
@@ -18,9 +15,25 @@
 		"github_url": "https://github.com/aosasona/mirror",
 		"image": "mirror.png",
 		"status": "active",
-		"tags": [
-			"go"
-		]
+		"tags": ["go"]
+	},
+	{
+		"name": "Chimney",
+		"description": "A fast and lightweight static file server based on Hyper and Tokio",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/chimney",
+		"image": "chimney.png",
+		"status": "wip",
+		"tags": ["rust"]
+	},
+	{
+		"name": "Robin",
+		"description": "An experimental new(-ish) way to build type-safe full-stack web applications with Go",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/robin",
+		"image": "robin.png",
+		"status": "active",
+		"tags": ["go", "typescript"]
 	},
 	{
 		"name": "Bore",
@@ -29,33 +42,16 @@
 		"github_url": "https://github.com/aosasona/bore",
 		"image": "bore.png",
 		"status": "wip",
-		"tags": [
-			"go",
-			"linux",
-			"neovim"
-		]
-	},
-	{
-		"name": "Chimney",
-		"description": "A fast and lightweight static file server (and more in the future)",
-		"website_url": null,
-		"github_url": "https://github.com/aosasona/chimney",
-		"image": "chimney.png",
-		"status": "wip",
-		"tags": [
-			"rust"
-		]
+		"tags": ["go", "linux", "neovim"]
 	},
 	{
 		"name": "Dotenv",
-		"description": "Load environment variables from .env (and other) files in Gleam",
+		"description": "The most-used library for loading environment variables from .env (and other) files in Gleam",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/dotenv",
 		"image": "dotenv.png",
 		"status": "active",
-		"tags": [
-			"gleam"
-		]
+		"tags": ["gleam"]
 	},
 	{
 		"name": "Crossbar",
@@ -64,9 +60,7 @@
 		"github_url": "https://github.com/aosasona/crossbar",
 		"image": "crossbar.png",
 		"status": "active",
-		"tags": [
-			"gleam"
-		]
+		"tags": ["gleam"]
 	},
 	{
 		"name": "Phlo",
@@ -75,9 +69,7 @@
 		"github_url": "https://github.com/aosasona/phlo",
 		"image": "phlo.png",
 		"status": "active",
-		"tags": [
-			"php"
-		]
+		"tags": ["php"]
 	},
 	{
 		"name": "Vanity",
@@ -86,9 +78,7 @@
 		"github_url": "https://github.com/aosasona/vanity",
 		"image": "vanity.png",
 		"status": "active",
-		"tags": [
-			"go"
-		]
+		"tags": ["go"]
 	},
 	{
 		"name": "Migrant",
@@ -97,9 +87,7 @@
 		"github_url": "https://github.com/aosasona/migrant",
 		"image": "migrant.png",
 		"status": "active",
-		"tags": [
-			"gleam"
-		]
+		"tags": ["gleam"]
 	},
 	{
 		"name": "Plunk.gleam",
@@ -108,9 +96,7 @@
 		"github_url": "https://github.com/aosasona/plunk.gleam",
 		"image": "plunk.png",
 		"status": "active",
-		"tags": [
-			"gleam"
-		]
+		"tags": ["gleam"]
 	},
 	{
 		"name": "Falcon",
@@ -119,9 +105,7 @@
 		"github_url": "https://github.com/aosasona/falcon",
 		"image": "falcon.png",
 		"status": "active",
-		"tags": [
-			"gleam"
-		]
+		"tags": ["gleam"]
 	},
 	{
 		"name": "Jsorm",
@@ -130,12 +114,7 @@
 		"github_url": "https://github.com/aosasona/jsorm",
 		"image": "jsorm.png",
 		"status": "active",
-		"tags": [
-			"gleam",
-			"htmx",
-			"typescript",
-			"fly.io"
-		]
+		"tags": ["gleam", "htmx", "typescript", "fly.io"]
 	},
 	{
 		"name": "Reda",
@@ -144,9 +123,7 @@
 		"github_url": null,
 		"image": "reda.png",
 		"status": "unmaintained",
-		"tags": [
-			"typescript"
-		]
+		"tags": ["typescript"]
 	},
 	{
 		"name": "Sidekyk",
@@ -155,11 +132,7 @@
 		"github_url": null,
 		"image": "sidekyk.png",
 		"status": "private",
-		"tags": [
-			"go",
-			"typescript",
-			"react native"
-		]
+		"tags": ["go", "typescript", "react native"]
 	},
 	{
 		"name": "Bazooka",
@@ -168,10 +141,7 @@
 		"github_url": "https://github.com/aosasona/bazooka",
 		"image": "bazooka.png",
 		"status": "active",
-		"tags": [
-			"go",
-			"typescript"
-		]
+		"tags": ["go", "typescript"]
 	},
 	{
 		"name": "Jenzo",
@@ -180,9 +150,7 @@
 		"github_url": "https://github.com/aosasona/jenzo",
 		"image": "jenzo.png",
 		"status": "active",
-		"tags": [
-			"typescript"
-		]
+		"tags": ["typescript"]
 	},
 	{
 		"name": "Hitlist",
@@ -191,9 +159,7 @@
 		"github_url": "https://github.com/hitlist-cli/cli",
 		"image": "hitlist.png",
 		"status": "archived",
-		"tags": [
-			"typescript"
-		]
+		"tags": ["typescript"]
 	},
 	{
 		"name": "PHP Router",
@@ -202,8 +168,6 @@
 		"github_url": "https://github.com/aosasona/php-router",
 		"image": "phprouter.png",
 		"status": "archived",
-		"tags": [
-			"php"
-		]
+		"tags": ["php"]
 	}
 ]

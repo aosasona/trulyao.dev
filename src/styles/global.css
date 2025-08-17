@@ -131,20 +131,21 @@ a {
 }
 
 .tag {
-  display: block;
-  background-color: theme("colors.primary.200");
-  color: theme("colors.primary.600");
-  font-size: theme("fontSize.xs");
-  padding: theme("spacing[0.5]") theme("spacing.2");
-  border-radius: theme("borderRadius.sm");
-  user-select: none;
-  white-space: nowrap;
+	display: block;
+	background-color: theme("colors.primary.200");
+	color: theme("colors.primary.600");
+	font-size: theme("fontSize.xs");
+	padding: theme("spacing[0.5]") theme("spacing.2");
+	border-radius: theme("borderRadius.sm");
+	line-height: 1.1rem;
+	user-select: none;
+	white-space: nowrap;
 
-  @apply dark:bg-secondary-900 dark:text-primary-100;
+	@apply dark:bg-secondary-900 dark:text-primary-100;
 
-  a& {
-    text-decoration: none;
-  }
+	a& {
+		text-decoration: none;
+	}
 }
 
 .sticky-section-label {
