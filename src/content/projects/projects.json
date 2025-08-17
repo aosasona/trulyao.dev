@@ -4,18 +4,9 @@
 		"description": "A minimal proof-of-concept of my dissertation project: a lightweight, unified knowledge-base management system built for user-extensibility and self-hosting, with privacy, security, and full data ownership at its core",
 		"website_url": "https://preview.hubble.keystroke.tools",
 		"github_url": "https://github.com/aosasona/hubble-preview",
-		"image": "chimney.png",
+		"image": "hubble.png",
 		"status": "demo",
 		"tags": ["rust", "go", "typescript", "react", "tailwindcss"]
-	},
-	{
-		"name": "Chimney",
-		"description": "A fast and lightweight static file server based on Hyper and Tokio",
-		"website_url": null,
-		"github_url": "https://github.com/aosasona/chimney",
-		"image": "chimney.png",
-		"status": "wip",
-		"tags": ["rust"]
 	},
 	{
 		"name": "Mirror",
@@ -25,6 +16,15 @@
 		"image": "mirror.png",
 		"status": "active",
 		"tags": ["go"]
+	},
+	{
+		"name": "Chimney",
+		"description": "A fast and lightweight static file server based on Hyper and Tokio",
+		"website_url": null,
+		"github_url": "https://github.com/aosasona/chimney",
+		"image": "chimney.png",
+		"status": "wip",
+		"tags": ["rust"]
 	},
 	{
 		"name": "Robin",
@@ -46,7 +46,7 @@
 	},
 	{
 		"name": "Dotenv",
-		"description": "Load environment variables from .env (and other) files in Gleam",
+		"description": "The most-used library for loading environment variables from .env (and other) files in Gleam",
 		"website_url": null,
 		"github_url": "https://github.com/aosasona/dotenv",
 		"image": "dotenv.png",
