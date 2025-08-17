@@ -21,17 +21,29 @@ const projects = (await getCollection("projects"))?.[0]?.data?.slice(
 	0,
 	MAX_LATEST,
 );
+
+const yearsProgramming = new Date().getFullYear() - 2017;
 ---
 
-<Layout title="Ayodeji">
+<Layout title="Ayodeji O.">
   <main class="container">
     <SiteHeader />
 
-    <section id="about-me">
+    <section id="about-me" class="space-y-3">
       <!-- prettier-ignore -->
       <p>
-        Hiya! I am Ayodeji, a software developer, your friendly Neovim enjoyer and a final-year Software Engineering student somewhere in England. I am constantly learning and very keen on crafting the type of software experience I'd like to use and you can fall in love with - performant, intuitive, real-time, local-first and out of your way. I am a big fan of statically-typed compiled languages, PHP and the BEAM but I frequently (have to) dabble in <a href="/tools">other things</a> too. I <a href="/blog">write</a> here from time to time and I also stream infrequently on <a href="https://twitch.tv/truly_ao">Twitch</a>.
+        Hiya! I'm Ayodeji; a software engineer, an enjoyer of visual media and a Rookie Motorsports fan (Formula 1, really). I am constantly learning and very keen on crafting the type of software experience I'd like to use—open, fast, intuitive, local-first, and politely out of your way.
       </p>
+
+      <p>
+        Programming, with its fun discoveries and challenges, is at the very top of the list of things I absolutely enjoy; both as a profession and as a hobby. I am a big fan of statically-typed compiled languages (e.g. Go), PHP, and the BEAM, but I often (have to) dabble in <a href="/tools">other things</a> too. I <a href="/blog">write</a> here from time to time, and I stream infrequently on <a href="https://twitch.tv/truly_ao">Twitch</a>.
+      </p>
+
+      <p>
+        I have been programming <em>consistently</em> for ~{yearsProgramming} years and professionally for about {yearsProgramming-2} years. I got into it <a href="/posts/computers-are-fast#my-history-with-computers">via Microsoft Word</a> (don't think about it) as a thirteen-year-old. I (painfully) also have a Bachelor's degree in Software Engineering from the <i>University of Northampton</i> (class of 2025), and I am based somewhere in the UK.
+      </p>
+
+      <p>You can reliably reach me via the e-mail address at the top of this page, or on X; also linked above.</p>
     </section>
 
     <section class="mt-6" id="articles">
