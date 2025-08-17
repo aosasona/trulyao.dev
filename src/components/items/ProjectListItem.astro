@@ -7,7 +7,7 @@ import type { CollectionEntry } from "astro:content";
 type Project = CollectionEntry<"projects">["data"][number];
 
 export interface Props {
-  project: Project;
+	project: Project;
 }
 
 const { project } = Astro.props;
@@ -21,23 +21,23 @@ const { project } = Astro.props;
 </style>
 
 <div>
-  <div class="relative w-full aspect-video object-cover rounded-md mb-4 sm:hidden overflow-hidden">
+  <div class="relative w-full aspect-video object-cover rounded-sm mb-4 sm:hidden overflow-hidden">
     <Show when={project.status != "active"}>
-      <div class="text-sm absolute top-2 right-2 bg-[var(--background-color)] text-[var(--foreground-color)] border border-[var(--highlight-border-color)] px-2.5 py-1 rounded-md">
+      <div class="text-xs absolute bottom-1 right-1 bg-[var(--background-color)] border-none text-[var(--foreground-color)] px-1.5 py-0.5 rounded-sm">
         {project.status}
       </div>
     </Show>
     <img src={`/images/projects/${project.image}`} alt={project.name} class="w-full h-full" />
   </div>
 
-  <div class="flex flex-col gap-y-1.5">
-    <h2 class="text-primary-text-light dark:text-primary-text-dark text-xl">
+  <div class="flex flex-col">
+    <h2 class="text-primary-text-light dark:text-primary-text-dark font-bold text-xl mb-0">
       {project.name}
       {project.status != "active" ? <sup class="hidden sm:inline-block text-sm font-light opacity-60">({project.status})</sup> : null}
     </h2>
-    <p class="text-primary-text-light/60 dark:text-primary-text-dark/60">{project.description}</p>
+    <p class="leading-normal text-primary-text-light/60 dark:text-primary-text-dark/60 mt-1">{project.description}</p>
 
-    <div class="w-full flex justify-between items-center">
+    <div class="w-full flex justify-between items-center mt-3">
       <Tags data={(project?.tags || []) as string[]} />
 
       <div class="text-xl space-x-2.5">
