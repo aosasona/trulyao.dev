@@ -1,0 +1,96 @@
+---
+title: "Oops, broke primary keys and sequences after a (lazy) migration"
+date: 2025-10-11
+keywords: postgres, sql, database, migration, fix
+draft: false
+---
+
+# The issue
+
+Recently, I moved the database for the [Hubble preview](https://preview.hubble.keystroke.tools) from Neon to Fly Managed Postgres as a step towards consolidating all my deployed/hosted stuff. I'd also get slightly better latency and performance (though that wasn't the main reason), and I migrated the data using [TablePlus](https://tableplus.com) because I was too lazy to use anything else. All seemed well until I tried to add a new entry and noticed it reported "0 entries created", and I thought "Uh.", looked at the logs and saw a weird-looking error that didn't take long to figure out what the most plausible issue was:
+
+```log
+ERROR: duplicate key value violates unique constraint \"entries_pkey\" (SQLSTATE 23505)
+```
+
+# Why it happened
+
+You probably figured it out too, I had manually exported and imported the table schemas and their data (or just let the migrations run and then imported the data) without much thought. This worked fine since referential integrity was maintained, but the problem was, the rows brought their own primary keys along and the sequences backing those tables had never been used (from the database’s perspective), so they were still at zero. When it tried to insert a new one (1) for the next row, it wasn’t unique anymore, it already existed.
+
+> All I'm saying is: my auto-incremented primary keys were far ahead of the sequences backing them since the rows were inserted manually along with their primary keys.
+
+# Confirming my suspicions
+
+My best guess was the most plausible root of the issue mentioned above, but I needed to confirm I hadn’t screwed up anything else before trying to fix a problem that didn’t exist. I did this by:
+
+- Checking the current value of the sequence
+
+```sql
+SELECT pg_get_serial_sequence('public.entries', 'id'); -- => public.entries_id_seq
+SELECT last_value, is_called FROM public.entries_id_seq; -- => 0, FALSE
+```
+
+- Checking the highest `id` in the `entries` table itself
+
+```sql
+SELECT MAX(id) FROM public.entries; -- => 353
+```
+
+Yes, I was correct, that was indeed the cause.
+
+# Fixing the issue
+
+Now, for the fix, I was too lazy to write this so I tasked GPT-5 with it and reviewed it, made a few adjustments, and used that.
+
+> These sorts of routine tasks (advanced “autocomplete,” one-off scripts, code review, etc.) are what I trust LLMs with at the moment. Anything larger and I’d be playing PR reviewer/manager (no offense to actual managers or PR reviewers, haha). It takes the fun out of it for me, and I find that it’s easier to express the idea (or myself) in code than to try to get this thing to do it exactly how I want; at least for now. And to be honest, I haven't tried the newer Claude Code and stuff.
+
+The full PL/pgSQL code is shown below. It simply goes through every user-created table, checks if it has any rows, and (re)sets the sequence accordingly.
+
+```sql
+DO $$
+DECLARE
+  r RECORD;
+  v_max BIGINT;
+  qseq TEXT;
+BEGIN
+  FOR r IN
+    SELECT
+      ns.nspname  AS schemaname,
+      c.relname   AS tablename,
+      a.attname   AS colname,
+      s.relname   AS seqname
+    FROM pg_class s
+    JOIN pg_depend d ON d.objid = s.oid AND d.classid = 'pg_class'::regclass
+    JOIN pg_class c ON d.refobjid = c.oid
+    JOIN pg_attribute a ON a.attrelid = c.oid AND a.attnum = d.refobjsubid
+    JOIN pg_namespace ns ON ns.oid = c.relnamespace
+    WHERE s.relkind = 'S'
+      AND d.deptype = 'a'
+      AND ns.nspname = 'public'
+  LOOP
+    -- current max id
+    EXECUTE format('SELECT MAX(%I) FROM %I.%I', r.colname, r.schemaname, r.tablename)
+      INTO v_max;
+
+    qseq := quote_ident(r.schemaname) || '.' || quote_ident(r.seqname);
+
+    IF v_max IS NULL THEN
+      -- empty table: nextval() should return 1
+      PERFORM setval(qseq, 1, false);
+      RAISE NOTICE 'Reset % to 1 (empty table %.% column %)', qseq, r.schemaname, r.tablename, r.colname;
+    ELSE
+      -- populated table: nextval() should return v_max+1
+      PERFORM setval(qseq, v_max, true);
+      RAISE NOTICE 'Reset % to % (table %.% column %)', qseq, v_max, r.schemaname, r.tablename, r.colname;
+    END IF;
+  END LOOP;
+END$$;
+```
+
+# Conclusion
+
+I'd write something about confirming that it worked, but I am too lazy to. It was easy to see from the logs and the error going away for the next insert, so... obviously. I did check the sequence’s value against the max ID just to be sure, and it all lined up as expected.
+
+> Uh, I guess I did write something after all.
+
+So, yeah, sequences won’t magically catch up, and Postgres (or any other major database) definitely won’t save you from yourself.
