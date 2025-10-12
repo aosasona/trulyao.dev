@@ -1,6 +1,5 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import Tags from "@components/misc/Tags.astro";
 
 export interface Props {
 	note: CollectionEntry<"notes">;
@@ -12,51 +11,22 @@ const {
 ---
 
 <style>
-  a {
-    text-decoration: none;
-  }
+.note-title {
+	font-family: var(--header-font-family), var(--alt-font-family), Arial, Helvetica, sans-serif;
 
-  time {
-    font-size: theme("fontSize.sm");
-    color: theme("colors.secondary.600");
+	@apply block text-primary-text-light dark:text-primary-text-dark text-lg font-semibold dark:font-medium no-underline leading-tight transition-colors duration-100;
 
-    @apply text-primary-text-light/60 dark:text-primary-text-dark/60;
-  }
-
-  .note-title {
-    display: block;
-    font-family: var(--header-font-family), var(--alt-font-family), Arial, Helvetica, sans-serif;
-    font-size: theme("fontSize.xl");
-    font-weight: theme("fontWeight.bold");
-    line-height: theme("lineHeight.tight");
-    color: theme("colors.primary.text.light");
-    text-decoration: none;
-    margin-bottom: theme("margin.4");
-
-    @apply dark:text-primary-text-dark;
-
-    &:hover {
-      text-decoration: underline;
-      text-underline-offset: theme("textUnderlineOffset.4");
-    }
-  }
-
-  .note-description {
-    @apply text-[14px] text-primary-text-light/60 dark:text-primary-text-dark/60 leading-relaxed tracking-normal -mt-2 mb-3;
-  }
+	&:hover {
+		@apply text-primary-500 dark:text-primary-400 underline underline-offset-4;
+	}
+}
 </style>
 
-<div>
-  <a href={"/notes/" + slug} class="note-title">{data.title}</a>
-  <p class="note-description">{data.description}</p>
-
-  <div class="flex items-center justify-between">
-    <div class="max-w-[75%]">
-      <Tags data={data.tags || []} />
-    </div>
-
-    <time datetime={data.date.toISOString()}>
-      {new Date(data.date).toLocaleDateString("en-GB")}
-    </time>
-  </div>
+<div class="flex items-center justify-between gap-3">
+	<div>
+		<a href={"/notes/" + slug} class="note-title">{data.title}</a>
+	</div>
+	<time class="text-sm text-primary-text-light/60 dark:text-primary-text-dark/60" datetime={data.date.toISOString()}>
+		{new Date(data.date).toLocaleDateString("en-GB")}
+	</time>
 </div>
