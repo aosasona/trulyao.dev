@@ -7,19 +7,23 @@ import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 
 const notes = await getCollection("notes", ({ data }) => {
-  return import.meta.env.PROD ? data.draft !== true : true;
+	return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-let publishednotes = notes?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+let publishednotes = notes?.sort(
+	(a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 let notesByYear: Record<string, Array<CollectionEntry<"notes">>> = {};
 for (const note of publishednotes) {
-  const year = note.data.date.getFullYear().toString();
-  if (!notesByYear[year]) {
-    notesByYear[year] = [];
-  }
-  notesByYear[year].push(note);
+	const year = note.data.date.getFullYear().toString();
+	if (!notesByYear[year]) {
+		notesByYear[year] = [];
+	}
+	notesByYear[year].push(note);
 }
-const years = Object.keys(notesByYear).sort((a, b) => parseInt(b) - parseInt(a));
+const years = Object.keys(notesByYear).sort(
+	(a, b) => parseInt(b) - parseInt(a),
+);
 ---
 
 <Layout title="Notes">
@@ -32,12 +36,12 @@ const years = Object.keys(notesByYear).sort((a, b) => parseInt(b) - parseInt(a))
     <p class="mb-8">
       My (short) notes on a variety of topics, including software development, design, and more that I find useful or interesting enough.
     </p>
-    <div class="mt-4 space-y-20">
+    <div class="posts-container">
       {
         years.map((year) => (
-          <div id={`year-${year}`}>
-            <h2 class="w-min bg-secondary-dark dark:bg-secondary-light text-lg text-primary-text-dark dark:text-primary-text-light px-3 py-0.5 mb-5">{year}</h2>
-            <ul class="space-y-6">
+          <div id={`year-${year}`} class="post-year-container">
+            <h2 class="w-min bg-secondary-dark dark:bg-secondary-light text-lg text-primary-text-dark dark:text-primary-text-light px-3 py-0.5">{year}</h2>
+            <ul class="!space-y-5">
               {notesByYear[year].map((note) => (
                 <NoteListItem note={note} />
               ))}
