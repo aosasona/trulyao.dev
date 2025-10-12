@@ -31,28 +31,28 @@ const currentSection = Astro.url.hash.replace("#", "");
 	background-color: var(--background-color);
 	border: 2px solid var(--foreground-color);
 
-	@apply lg:w-80 lg:overflow-hidden lg:border-none p-1 pb-0 my-4 lg:my-0 lg:p-0 rounded-lg lg:rounded-none;
+	@apply lg:w-80 lg:overflow-hidden lg:border-none p-1 pb-0 my-4 lg:my-0 lg:p-0 select-none;
 
 	& .header {
-		@apply flex justify-between items-center bg-secondary-dark dark:bg-secondary-light text-secondary-light dark:text-secondary-dark px-4 py-2 mb-1 rounded-md;
+		@apply flex justify-between items-center bg-secondary-dark dark:bg-secondary-light text-secondary-light dark:text-secondary-dark px-4 py-2 mb-1;
 
 		& h3 {
-			@apply text-lg lg:text-base cursor-pointer;
+			@apply text-lg lg:text-xl cursor-pointer;
 		}
 	}
 
 	& .contents-list {
-		@apply h-80 lg:h-auto overflow-y-auto lg:text-[13px] lg:px-2;
+		@apply h-full max-h-96 lg:max-h-[60vh] lg:h-auto overflow-y-auto lg:text-sm lg:px-2;
 
 		&::-webkit-scrollbar {
 			display: none;
 		}
 
 		& ul {
-			@apply list-none pt-2 pb-3;
+			@apply list-none pt-1.5 pb-2 lg:py-2;
 
 			& li {
-				@apply px-3;
+				@apply px-3 py-1 lg:py-1.5 leading-normal;
 
 				&.active {
 					@apply bg-primary-100 dark:bg-primary-950;
@@ -119,36 +119,36 @@ const currentSection = Astro.url.hash.replace("#", "");
 </script>
 
 <div class="toc-desktop-wrapper" class:list={{ "hidden lg:block": asSidebar, "lg:hidden": !asSidebar }}>
-  {
-    headings.length > 0 ? (
-      <div class="table-of-contents-container" x-data="{ showContent: true }" data-sidebar={asSidebar}>
-        <div class="header lg:!hidden">
-          <h3>Table of contents</h3>
-          <button @click="showContent = !showContent" class="text-lg -mt-1 lg:hidden" aria-label="Toggle table of contents">
-            <template x-if="!showContent">
-              <Icon name="octicon:chevron-down-16" />
-            </template>
+{
+	headings.length > 0 ? (
+		<div class="table-of-contents-container" x-data="{ showContent: true }" data-sidebar={asSidebar}>
+			<div class="header lg:!hidden">
+				<h3>Table of contents</h3>
+				<button @click="showContent = !showContent" class="text-lg -mt-1 lg:hidden" aria-label="Toggle table of contents">
+					<template x-if="!showContent">
+						<Icon name="octicon:chevron-down-16" />
+					</template>
 
-            <template x-if="showContent">
-              <Icon name="octicon:chevron-up-16" />
-            </template>
-          </button>
-        </div>
+					<template x-if="showContent">
+						<Icon name="octicon:chevron-up-16" />
+					</template>
+				</button>
+			</div>
 
-        <div class="hidden lg:block px-4 py-2 border-b border-b-secondary-100 dark:border-b-secondary-900">
-          <h2 class="font-bold font-body">Table of contents</h2>
-        </div>
+			<div class="hidden lg:block px-4 py-2 border-b border-b-secondary-100 dark:border-b-secondary-900">
+				<h2 class="font-bold font-body text-lg">Table of contents</h2>
+			</div>
 
-        <div class="contents-list" x-show="showContent">
-          <ul>
-            {headings.map((heading) => (
-				<li style={`margin-left: ${(heading.depth - 1) * 0.95}rem`} class={currentSection == heading.slug ? "active" : ""} data-is-nested={heading.depth !== 1} data-header-id={heading.slug}>
-                <a href={`#${heading.slug}`} class="no-underline hover:underline hover:underline-offset-2">{heading.text}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    ) : null
-  }
+			<div class="contents-list" x-show="showContent">
+				<ul>
+					{headings.map((heading) => (
+						<li style={`margin-left: ${(heading.depth - 1) * 0.95}rem`} class={currentSection == heading.slug ? "active" : ""} data-is-nested={heading.depth !== 1} data-header-id={heading.slug}>
+							<a href={`#${heading.slug}`} class="no-underline hover:underline hover:underline-offset-2">{heading.text}</a>
+						</li>
+					))}
+				</ul>
+			</div>
+		</div>
+	) : null
+}
 </div>
