@@ -1,8 +1,74 @@
 ---
 title: My thoughts on LLMs (2025)
 date: 2025-12-16
-description: ""
-keywords: 
-tags: []
+description: "My usage, experience and thoughts on Large Language Models as they are in 2025."
+keywords: llm, rant, experience, thoughts, language, model, ai, artificial intelligence
+tags: ["rant", "llm"]
 draft: false
 ---
+
+I will tell you before you go any further, this article does not have any specific goal or point, I felt like writing about this, so I did.
+
+> The events described here are not in any particular chronological order because my memory sucks, but I will try my best to recount things as I remember them at least, I apologise in advance.
+
+# First Encounter
+
+My first experience with something that claimed to be "intelligent" (or LLM-related at least) was with [tabnine](https://tabnine.com), which I found via, wait for it, a YouTube ad. Yes, someone actually found something useful via a YouTube ad... unless I am remembering incorrectly.
+I was a Visual Studio Code user at the time but I sparingly used it as the "tab autocomplete" solution it was because, well, I did most of my coding offline; being from a not so first-world country with not so great internet at the time. I kinda just forgot about it for a long time until...
+
+# The LLM hype
+
+See, [one _small_ company](https://openai.com) **I** did not know about released this thing that had people in the tech world excited; it was GPT-2. I actually did not and still have not gotten to try GPT-2, I just didn't care much, which even I found strange. I love trying new tech but this was way out of my field, the technical details or achievement meant nothing to me, so I did not bother since I had a lot of other things going on, I didn't really care to know what it really did either.
+
+Then GPT-3 came along and I could not escape it, it was everywhere I looked, even my favorite YouTubers were making videos on this revolutionary technology that would be later presented as something you might know; [ChatGPT](https://chat.openai.com). There was an actual webpage to try it out, the "barrier to entry" was significantly lower, so I gave it a shot. Honestly, I wasn't particularly too impressed, it was behind on current events, it didn't really do what I wanted it to most of the time, it wasn't trustworthy either; it just wasn't very useful to me, I didn't really understand the hype all over my Twitter feed and YouTube homepage. But the bar was really low, compared to the joke that is Siri, it could actually give me plain responses for things I asked, it was a nice alternative to Google but nothing I was eager to jump on.
+
+People who knew me as a "tech person" asked me all the time if I had tried ChatGPT and what I thought about it, and my response was usually along the lines of "Eh, yeah, but I don't use it a lot"; and that was the truth. But at this point, transformers were definitely the hottest thing... everywhere, not just in the tech world.
+
+> I was very ignorant at this time. But during my dissertation when I did get to do some research on the technology, I understood a lot more and I finally got why these progressions have been hyped by people in the know.
+
+# GitHub Copilot
+
+This thing called [GitHub Copilot](https://github.com/copilot) (the OG one, not whatever they call Copilot on the website and app these days) was announced and released by GitHub. At this point in time, I was in my Jetbrains editors phase, and if I recall correctly, I had to switch to VSCode for a while to test out Copilot (I also had a student plan, so I never paid for anything and I still don't know if I need to). It felt magical but also familiar, then I finally remembered tabnine that I had tried a few years earlier but, **this**, this felt really good to use! Unfortunately, it didn't take long for a few things to become obvious to me:
+
+- I couldn't trust it, obviously.
+- It was better as a fancy autocomplete helping complete a function call or a line of code at a time based on what's come before or is in another part of the file, rather than several new lines or even functions.
+
+While these might seem like negatives, I actually see them as positives! See, based on my limited experience with ChatGPT at the time where I had to constantly do manual fact-checking to be sure, I wasn't too surprised to see it get things wrong very often, afterall, this was "new" tech.
+And as a fancy autocomplete, it was good enough to leave it on and install it in my Jetbrains IDE when it eventually became availble, and then in Neovim when [copilot.lua](https://github.com/zbirenbaum/copilot.lua) came around. The fact that it could and would often reference other parts of my active (or even other) files gave me enough confidence to use it and know it wasn't completely making stuff up, and it's been reasonably good at that.
+
+# "AI-assisted coding bad"
+
+I firmly believe in letting computers augment the programmer where possible as long as the right balance can be maintained. I don't think you need to be a master of the C language and be able to remember all its quirks to be considered a "chad" programmer.
+I don't think you need to use Neovim and leave in the desert either to be the greatest programmer ever. Working on Windows has been painful from time to time, but I don't think using Arch Linux makes you better than everyone else. I don't really care. I promise letting the compiler typecheck your code doesn't mean you're weak, no one's looking.
+
+As long as you care about your craft, understand your tools and they help you produce quality software, why not? Use whatever you want; just be objective about it, or honestly, don't be. Have fun. Build whatever crazy ideas come to mind with whatever you want, that's the best part of this job (and for some like myself; hobby too!).
+
+I am not ashamed to say I **prefer** a compiler that "saves me from myself", I am not interested in fighting avoidable issues just to prove I am the better programmer, the computer knows more about my code on many levels; if it can point out my inevitable human mistakes, or optimise parts that could be better, sure. But if I didn't have that, as I often don't with the languages I mainly write (PHP, Go, JavaScript/TypeScript), will I completely crumble? No, I do kind of know what I am doing, I have been doing this before LLMs and (_*cough cough*_) Rust, so, it is what it is. That is exactly how I view LLMs for coding too, but I only really have experience using them as "fancy autocomplete/boilerplate producer", I haven't used any of the agentic stuff, so I cannot speak about that; I don't trust LLMs that far yet, I don't want to spend more time at this stage trying to get it to do what I want.
+
+The natural fear I have is an overdependence on these things; where your brain instinctively pauses and anticipates the next suggestion with zero knowledge being retained at that point. I am not immune to this, but thankfully, I am often annoyed enough and reminded of their limitations when I have to temporarily disable copilot because it either keeps interrupting me (and breaking my flow), or it's just plain wrong over and over. And when I did [move to working on the server at work](/posts/no-newline-at-end-of-file-vim#some-background), I did not install it, and I didn't really notice; I also barely had syntax highlighting and didn't care much either. I started programming in [a very odd way](/posts/computers-are-fast#my-history-with-computers), from Microsoft Word, to Notepad, to Notepad++ where I did not have any of these programming assists because I did not even know they existed, so their absence doesn't completely leave me useless.
+
+I am more worried when new people treat them as the sole way to get the job done, rather than as a way to learn; which they're really good for! That approach is missing what, in my opinion, is the best part of this job; figuring stuff out by understanding why and how things work. However, I do understand that these two things are not mutually exclusive, so I try to be less critical and gatekeeper-y, I too lean on these things, and I also learn with and from them.
+
+> It's like driving a GT car with some downforce, sure you can crank ABS and TC up to the maximum, drive in a very less than ideal manner and you'd still be able to keep it on the road, except you'd be miles off the normal pace and probably chewing through tyres.
+>
+> In order to be truly fast, you don't need to learn to do WITHOUT them, no one's asking you to do that here, you need to understand that they are simply assists, they are tools available in your toolbox, and it is still up to you to go fast and understand how they work, and when you don't want them to kick in by driving a certain way; rather than just keeping your right foot pinned into or out of every corner.
+
+# Trust
+
+My biggest issue with LLMs as they are now, even though they have been rapidly improving, is that I simply cannot trust them. I started paying for ChatGPT Plus while I was researching my dissertation months ago, and it comes very handy for learning new things and understanding them. It saves me a lot of busywork and massively lowers the barrier for getting into new things (like sim racing and motorsports in general as I have recently gotten into that). I didn't need to bother anyone with my questions on why those smaller (GT) cars are just letting the bigger (Prototype) cars by when they're supposed to be racing the first time I watched an Endurance race; this is a silly example but I hope you get my point. They are pretty reliable for that sort of "widespread"/"common" knowledge... ehm, as long as they have been around before their cut-off date which is usually a year in the past.
+
+I am often frustrated when something like ChatGPT 5.2 keeps trying to gaslight me into thinking the NVIDIA 5000 series or the Radeon 9060 XT were not real GPUs yet, even though it was released well after these were released. Even now that it has access to what essentially is a web browser, it keeps confidently telling me they don't exist, giving it a link to Nvidia's own page with all the capabilities it needed to browse web pages did not change that either. And when knowledge cut-off isn't the issue, they just end up losing every context and start making stuff up, it feels like talking to a child; but even my toddler newphew retains more context than they seem to, or am I just "holding it wrong"?
+
+In those moments, I am reminded how these things actually work, they do not possess real intelligence even if they can (attempt to) mimic it, they don't actually self-learn as they might have you believe, and in the end, a lot of what they know still relies on what they have been fed via their training data which is often out of date.
+
+I am not delusional about the fact that I am not talking to a real person with real intelligence, but overall, I am underwhelmed. Every GPT release gets massive hype but all I see when I try them is, well, they're slower because they're "thinking", and still have the same issues.
+
+Perhaps other services like Gemini or Claude are better, I don't really know and I haven't bothered to look since I don't expect them to not have similar issues, and I don't really want to pay for more LLM stuff.
+
+# The future
+
+Nonetheless, I am still excited for the future of AI in general. I have seen really clever use of this technology that I really enjoy using, I even use it to plan my finances and other things. I am also sure people way smarter than I am will keep working to reach **"AGI"**, or something good enough that the marketing people can present as such.
+
+There have been a bunch of interesting ideas and hardware products (like the Limitless pendant I never got to try but appealed to someone with an awful memory like myself), but the tech just isn't there yet. I am glad there have been technical improvements in relation to training, hardware requirements, etc. but it's just not where the hype dictates it should be; for me at least.
+
+I am underwhelmed, I don't care if you augment yourself with AI (or more accurately; LLMs?) as long as it's responsible and disclosed usage, but I am also looking forwards to what's to come in that space.
