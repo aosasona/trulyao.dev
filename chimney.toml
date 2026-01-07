@@ -1,5 +1,11 @@
 root = "."
-domain_names = ["preview.trulyao.dev"]
+domain_names = [
+	"trulyao.dev",
+	"www.trulyao.dev",
+	"preview.trulyao.dev",
+	"3x3cv3.me",
+	"www.3x3cv3.me",
+]
 fallback_file = "404.html"
 default_index_file = "index.html"
 
