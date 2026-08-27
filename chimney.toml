@@ -1,11 +1,5 @@
 root = "."
-domain_names = [
-	"trulyao.dev",
-	"www.trulyao.dev",
-	"preview.trulyao.dev",
-	"3x3cv3.me",
-	"www.3x3cv3.me",
-]
+domain_names = ["trulyao.dev", "www.trulyao.dev"]
 fallback_file = "404.html"
 default_index_file = "index.html"
 
@@ -14,7 +8,9 @@ default_index_file = "index.html"
 "/stack" = "/blog/my-stack-2024"
 
 [redirects]
-"/never-gonna-give-you-up" = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+"/surprise" = "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
 "/x" = "https://twitter.com/trulyao"
 "/github" = "https://github.com/aosasona"
 "/statsfm" = "https://stats.fm/trulyao"
+"/simtrace" = "https://simtrace.run"
+"/telemetry" = "https://simtrace.run"
