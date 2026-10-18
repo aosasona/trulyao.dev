@@ -10,17 +10,12 @@ import MinimalArticleListItem from "@components/items/MinimalArticleListItem.ast
 const MAX_LATEST = 6;
 
 const posts = await getCollection("blog", ({ data }) => {
-	return import.meta.env.PROD ? data.draft !== true : true;
+  return import.meta.env.PROD ? data.draft !== true : true;
 });
 
-const publishedPosts = posts
-	?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-	?.slice(0, MAX_LATEST);
+const publishedPosts = posts?.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())?.slice(0, MAX_LATEST);
 
-const projects = (await getCollection("projects"))?.[0]?.data?.slice(
-	0,
-	MAX_LATEST,
-);
+const projects = (await getCollection("projects"))?.[0]?.data?.slice(0, MAX_LATEST);
 
 const yearsProgramming = new Date().getFullYear() - 2017;
 ---
@@ -32,15 +27,22 @@ const yearsProgramming = new Date().getFullYear() - 2017;
     <section id="about-me" class="space-y-3">
       <!-- prettier-ignore -->
       <p>
-        Hiya! I'm Ayodeji; a software developer, an enjoyer of visual media and a Rookie Motorsports fan (Formula 1, really). I am constantly learning and very keen on crafting the type of software experience I'd like to use—open, fast, intuitive, local-first, and politely out of your way.
+        Hiya! I'm Ayodeji; a software developer, and an avid enjoyer of visual media &amp; many forms of Motorsports. I am constantly learning and very keen on crafting the type of software experience I'd like to use; open, fast, intuitive, and out of your way.
       </p>
 
+      <!-- prettier-ignore -->
       <p>
-        Programming, with its fun discoveries and challenges, is at the very top of the list of things I absolutely enjoy; both as a profession and as a hobby. I am a big fan of statically-typed compiled languages (e.g. Go), PHP, and the BEAM, but I often (have to) dabble in <a href="/tools">other things</a> too. I <a href="/blog">write</a> here from time to time, and I stream infrequently on <a href="https://twitch.tv/3x3cv3">Twitch</a>.
+        Programming, with its fun (and occasionally annoying) discoveries and challenges, is at the very top of the list of things I enjoy; both as a profession and as a hobby. I am a big fan of statically-typed compiled languages (e.g. Go), PHP, and the BEAM, but I often (have to) dabble in <a href="/tools">other things</a> too. I <a href="/blog">write</a> here from time to time, and I stream infrequently on <a href="https://twitch.tv/deR00kie" target="_blank">Twitch</a>.
       </p>
 
+      <!-- prettier-ignore -->
       <p>
-        I have been programming <em>consistently</em> for ~{yearsProgramming} years and professionally for about {yearsProgramming-2} years. I got into it <a href="/posts/computers-are-fast#my-history-with-computers">via Microsoft Word</a> (don't think about it) as a thirteen-year-old. I (painfully) also have a Bachelor's degree in Software Engineering from the <i>University of Northampton</i> (class of 2025), and I am based somewhere in the UK.
+        I have been programming <em>consistently</em> for ~{yearsProgramming} years and professionally for about {yearsProgramming - 2} years. I got into it <a href="/posts/computers-are-fast#my-history-with-computers">via Microsoft Word</a> (don't think about it) as a thirteen-year-old. I also have a Bachelor's degree in Software Engineering from the <i>University of Northampton</i> (class of 2025), and I am based somewhere in the UK, where I work as a software developer for an Insuretech company behind a well-known insurance brand.
+      </p>
+
+      <!-- prettier-ignore -->
+      <p>
+      I am very much into sim racing as well these days, and when I am not programming; either for work or for fun, I am probably sending an LMP3, 420R, MX5, F4 or literally anything else around a track in Le Mans Ultimate, Assetto Corsa, R3E, or iRacing. I have been able to combine these two hobbies of mine as a way to explore the use of Large Language Models and Agentic coding to make things like <a href="https://www.simtrace.run" target="_blank">this</a> that allow me to build tools to help improve my racing, without taking away valuable seat time from the actual racing and practice.
       </p>
 
       <p>You can reliably reach me via the e-mail address at the top of this page, or on X; also linked above.</p>
